@@ -71,6 +71,16 @@ export default function Home({ master }) {
           document.getElementById("myChart3"),
           lineconfig
         )
+
+        const myChart4 = new Chart(
+          document.getElementById("myChart4"),
+          config3
+        )
+
+        const myChart5 = new Chart(
+          document.getElementById("myChart5"),
+          config4
+        )
    }, [])
 
   
@@ -160,6 +170,36 @@ export default function Home({ master }) {
         'rgb(0, 0, 0)'
       ],
       hoverOffset: 4,
+      data: dataSets[0].dataset2,
+    }]
+  };
+
+  const data3 = {
+    labels: labels,
+    datasets: [{
+      label: 'Bexar County Approval',
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 205, 86)',
+        'rgb(0, 0, 0)'
+      ],
+      hoverOffset: 4,
+      data: dataSets[1].dataset1,
+    }]
+  };
+
+  const data4 = {
+    labels: labels,
+    datasets: [{
+      label: 'San Antonio Approval',
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 205, 86)',
+        'rgb(0, 0, 0)'
+      ],
+      hoverOffset: 4,
       data: dataSets[1].dataset2,
     }]
   };
@@ -186,6 +226,34 @@ export default function Home({ master }) {
           title: {
               display: true,
               text: dataSets[0].title,
+              position: 'bottom'
+          }
+      }
+    }
+  };
+
+  const config3 = {
+    type: 'pie',
+    data: data3,
+    options: {
+      plugins: {
+          title: {
+              display: true,
+              text: dataSets[1].title,
+              position: 'bottom'
+          }
+      }
+    }
+  };
+
+  const config4 = {
+    type: 'pie',
+    data: data4,
+    options: {
+      plugins: {
+          title: {
+              display: true,
+              text: dataSets[1].title,
               position: 'bottom'
           }
       }
@@ -311,6 +379,14 @@ const linedata = {
           <div className={styles.card}>
             <h2>City of San Antonio Governance Approval</h2>
             <canvas id="myChart2"></canvas>
+          </div>
+          <div className={styles.card}>
+            <h2>Bexar County Governance Approval</h2>
+            <canvas id="myChart4"></canvas>
+          </div>
+          <div className={styles.card}>
+            <h2>City of San Antonio Governance Approval</h2>
+            <canvas id="myChart5"></canvas>
           </div>
 
         </div>
