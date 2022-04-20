@@ -16,6 +16,9 @@ import { useEffect, useState, MouseEvent, useRef } from 'react'
 //   PieController,
 // // } from 'chart.js';
 import ReactDOM from 'react-dom';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton'
+
 
 // import { Pie } from 'react-chartjs-2';
  import {
@@ -697,6 +700,20 @@ export default function Home({ master }) {
         <p className={styles.description}>
           Visualize polling data in Bexar County!
         </p>
+
+        <Dropdown>
+          <Dropdown.Toggle variant="success" id="dropdown-basic">
+            Browse Issues
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item href="#/action-1">Approval Ratings</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">Homelessness</Dropdown.Item>
+            <Dropdown.Item href="#/action-3">Crime</Dropdown.Item>
+            <Dropdown.Item href="#/action-4">Policy Direction</Dropdown.Item>
+
+          </Dropdown.Menu>
+        </Dropdown>
 
         <div className={styles.grid}>
           <div className={styles.card}>
