@@ -57,6 +57,24 @@ export const options = {
   }
 }
 
+export const optionsProblems = {
+  plugins: {
+    title: {
+      display: true,
+      text: 'Poll 1'
+    }
+  }
+}
+
+export const optionsProblems2 = {
+  plugins: {
+    title: {
+      display: true,
+      text: 'Poll 2'
+    }
+  }
+}
+
 export const optionsApprovals = {
   scales: {      
     y: {
@@ -171,6 +189,7 @@ export default function Home({ master }) {
   const chartRefCOSA = useRef(null);
   const chartRefApprovals = useRef(null);
   const chartRefProblems = useRef(null);
+  const chartRefCrime = useRef(null)
 
   const onClickBEXAR = (event) => {
     const { current: chart } = chartRefBEXAR;
@@ -212,6 +231,17 @@ export default function Home({ master }) {
     printElementsAtEvent(getElementsAtEvent(chart, event));
   };
 
+
+  const onClickProblems2 = (event) => {
+    const { current: chart } = chartRefProblems;
+    if (!chart) {
+      return;
+    }
+    printDatasetAtEvent(getDatasetAtEvent(chart, event));
+    printElementAtEvent(getElementAtEvent(chart, event));
+    printElementsAtEvent(getElementsAtEvent(chart, event));
+  };
+
   const dataSets = { 
     BEXAR: [], 
     COSA: [], 
@@ -223,6 +253,8 @@ export default function Home({ master }) {
     SAWS: [],
     CPS: [],
     VIA: [],
+    PROPERTY_TAXES: [],
+    CRIME: [],
   }
   master.forEach(sheet => {
     var coldata = getColumn(sheet.data, 'BEXAR')
@@ -330,8 +362,89 @@ export default function Home({ master }) {
     var rating = approve / total
     dataSets.VIA.push(rating * 100)
   })
+  master.forEach(sheet => {
+    var coldata = getColumn(sheet.data, 'PROPERTY_TAXES')
+    var racedata = getColumn(sheet.data, 'RACE')
+    var racecounts = countUnique(racedata)
+    var counts = countUnique(coldata)
+    var total = 0
+    for(let key in counts) {
+      total = total + counts[key]
+    }
+    var whites = 0
+    var latino = 0
+    var poc = 0
+    for(let i = 0; i < coldata.length; i++) {
+        if(racedata[i] === '1' && (coldata[i] === '1' || coldata[i] === '2')) {
+          latino = latino + 1
+        } else if(racedata[i] === '3' && (coldata[i] === '1' || coldata[i] === '2')) {
+          whites = whites + 1
+        } else if (coldata[i] === '1' || coldata[i] === '2') {
+          poc = poc + 1
+        }
+    }
+    var notproblem = total - (whites + latino + poc)
+    var demo = [whites, latino, poc, notproblem]
+    dataSets.PROPERTY_TAXES.push(demo)
+  })
 
-  // console.log(dataSets)
+  master.forEach(sheet => {
+    var coldata = getColumn(sheet.data, 'CRIME')
+    var racedata = getColumn(sheet.data, 'RACE')
+    var racecounts = countUnique(racedata)
+    var counts = countUnique(coldata)
+    var total = 0
+    for(let key in counts) {
+      total = total + counts[key]
+    }
+    var whites = 0
+    var latino = 0
+    var poc = 0
+    for(let i = 0; i < coldata.length; i++) {
+        if(racedata[i] === '1' && (coldata[i] === '1' || coldata[i] === '2')) {
+          latino = latino + 1
+        } else if(racedata[i] === '3' && (coldata[i] === '1' || coldata[i] === '2')) {
+          whites = whites + 1
+        } else if (coldata[i] === '1' || coldata[i] === '2') {
+          poc = poc + 1
+        }
+    }
+    var notproblem = total - (whites + latino + poc)
+    var demo = [whites, latino, poc, notproblem]
+    dataSets.CRIME.push(demo)
+  })
+
+  var dataCrime = {
+    labels: ['Whites', 'Latinos','All Voters of Color', 'Not a problem'],
+    datasets: [
+      {
+        label: "Poll 1",
+        data: Object.values(dataSets['CRIME'][1]),
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 206, 86)',
+          'rgb(0, 0, 0)'
+        ]
+      }
+    ]
+  }
+
+  var dataPropertyTaxes = {
+    labels: ['Whites', 'Latinos','All Voters of Color', 'Not a problem'],
+    datasets: [
+      {
+        label: "Poll 1",
+        data: Object.values(dataSets['PROPERTY_TAXES'][0]),
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 206, 86)',
+          'rgb(0, 0, 0)'
+        ]
+      }
+    ]
+  }
 
   var dataApprovals = {
     labels: ['Poll 1', 'Poll 2', 'Poll 3', 'Poll 4', 'Poll 5', 'Poll 6'],
@@ -618,18 +731,30 @@ export default function Home({ master }) {
               width={600}
             />
           </div>
-          {/* <div className={styles.card}>
-            <h2>Is homelessness a problem?</h2>
+          <div className={styles.card}>
+            <h2>Is Homelessness a problem?</h2>
             <Chart 
               ref={chartRefProblems}
               options={optionsProblems}
-              type='line'
+              type='pie'
               onClick={onClickProblems}
-              data={dataProblems} 
-              height={300}
-              width={600}
+              data={dataPropertyTaxes} 
+              height={100}
+              width={100}
             />
-          </div> */}
+          </div>
+          <div className={styles.card}>
+            <h2>Is Crime a serious problem?</h2>
+            <Chart 
+              ref={chartRefCrime}
+              options={optionsProblems2}
+              type='pie'
+              onClick={onClickProblems2}
+              data={dataCrime} 
+              height={100}
+              width={100}
+            />
+          </div>
         </div>
       </main>
 
