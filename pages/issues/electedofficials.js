@@ -62,7 +62,7 @@ const onClickOfficials = (event) => {
   };
 
 export default function ElectedOfficials({master}) {
-    
+
     const router = useRouter()
     const chartRefOfficials = useRef(null)
 
@@ -161,7 +161,7 @@ export default function ElectedOfficials({master}) {
     return(
         <div className={styles.grid}>
             <div className={styles.card}>
-                <h2>Local Government Infrastructure Approval Ratings</h2>
+                <h2>Local Government Approval Ratings</h2>
                 <Chart 
                     ref={chartRefOfficials}
                     options={optionsOfficials}
