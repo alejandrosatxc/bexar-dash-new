@@ -319,7 +319,7 @@ const onClickChallenges = (event) => {
 
     var dataVotingPlans = {
         labels: [
-            'In perosn, on the day of the election',
+            'In person, on the day of the election',
             'In person, before the day of the election',
             'By mail',
             'Do not plan on voting',
