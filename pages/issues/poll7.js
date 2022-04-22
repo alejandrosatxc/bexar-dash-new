@@ -908,6 +908,18 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
+                <h2>What do you think are problems in the greater San Antonio Area?</h2>
+                <Chart 
+                    ref={chartRefProblems}
+                    options={barOptions_stacked}
+                    type='bar'
+                    onClick={onClickProblems}
+                    data={dataProblems} 
+                    height={400}
+                    width={800}
+                />
+            </div>
+            <div className={styles.card}>
                 <h2>chart1</h2>
                 <Chart 
                     ref={chartRefLP}
@@ -968,6 +980,30 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
+                <h2>Have you experienced any of the following?</h2>
+                <Chart 
+                    ref={chartRefExperiences}
+                    options={barOptions_stacked}
+                    type='bar'
+                    onClick={onClickExperiences}
+                    data={dataExperiences} 
+                    height={400}
+                    width={800}
+                />
+            </div>
+            <div className={styles.card}>
+                <h2>What do you think are reasons for the increasing cost of living in Bexar County?</h2>
+                <Chart 
+                    ref={chartRefCOL}
+                    options={barOptions_stacked}
+                    type='bar'
+                    onClick={onClickCOL}
+                    data={dataCOL} 
+                    height={400}
+                    width={800}
+                />
+            </div>
+            <div className={styles.card}>
                 <h2>Do you agree or disagree with the following statement: “Having reliable, high quality child care
 for young children is crucial for parents to be able to work?”</h2>
                 <Chart 
@@ -978,6 +1014,30 @@ for young children is crucial for parents to be able to work?”</h2>
                     data={dataStatement} 
                     height={100}
                     width={50}
+                />
+            </div>
+            <div className={styles.card}>
+                <h2>What do you think is a challenge when looking for a job?</h2>
+                <Chart 
+                    ref={chartRefChallenges}
+                    options={barOptions_stacked}
+                    type='bar'
+                    onClick={onClickChallenges}
+                    data={dataChallenges} 
+                    height={300}
+                    width={800}
+                />
+            </div>
+            <div className={styles.card}>
+                <h2>How important do you think each of the following factors are to a person’s health?</h2>
+                <Chart 
+                    ref={chartRefHealth}
+                    options={barOptions_stacked}
+                    type='bar'
+                    onClick={onClickHealth}
+                    data={dataHealth} 
+                    height={500}
+                    width={800}
                 />
             </div>
             <div className={styles.card}>
@@ -1014,66 +1074,6 @@ for young children is crucial for parents to be able to work?”</h2>
                     data={dataDonations} 
                     height={100}
                     width={50}
-                />
-            </div>
-            <div className={styles.card}>
-                <h2>What do you think are problems in the greater San Antonio Area?</h2>
-                <Chart 
-                    ref={chartRefProblems}
-                    options={barOptions_stacked}
-                    type='bar'
-                    onClick={onClickProblems}
-                    data={dataProblems} 
-                    height={400}
-                    width={800}
-                />
-            </div>
-            <div className={styles.card}>
-                <h2>Have you experienced any of the following?</h2>
-                <Chart 
-                    ref={chartRefExperiences}
-                    options={barOptions_stacked}
-                    type='bar'
-                    onClick={onClickExperiences}
-                    data={dataExperiences} 
-                    height={400}
-                    width={800}
-                />
-            </div>
-            <div className={styles.card}>
-                <h2>What do you think are reasons for the increasing cost of living in Bexar County?</h2>
-                <Chart 
-                    ref={chartRefCOL}
-                    options={barOptions_stacked}
-                    type='bar'
-                    onClick={onClickCOL}
-                    data={dataCOL} 
-                    height={400}
-                    width={800}
-                />
-            </div>
-            <div className={styles.card}>
-                <h2>What do you think is a challenge?</h2>
-                <Chart 
-                    ref={chartRefChallenges}
-                    options={barOptions_stacked}
-                    type='bar'
-                    onClick={onClickChallenges}
-                    data={dataChallenges} 
-                    height={300}
-                    width={800}
-                />
-            </div>
-            <div className={styles.card}>
-                <h2>How important do you think each of the following factors are to a person’s health?</h2>
-                <Chart 
-                    ref={chartRefHealth}
-                    options={barOptions_stacked}
-                    type='bar'
-                    onClick={onClickHealth}
-                    data={dataHealth} 
-                    height={500}
-                    width={800}
                 />
             </div>
         </div>
