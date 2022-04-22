@@ -112,6 +112,8 @@ export default function Poll7({master}) {
     const chartRefFinance = useRef(null)
     const chartRefStatement = useRef(null)
     const chartRefCharity = useRef(null)
+    const chartRefVolunteer = useRef(null)
+
 
 
 const onClickChallenges = (event) => {
@@ -210,6 +212,15 @@ const onClickChallenges = (event) => {
   };
   const onClickCharity = (event) => {
     const { current: chart } = chartRefCharity;
+    if (!chart) {
+      return;
+    }
+    printDatasetAtEvent(getDatasetAtEvent(chart, event));
+    printElementAtEvent(getElementAtEvent(chart, event));
+    printElementsAtEvent(getElementsAtEvent(chart, event));
+  };
+  const onClickVolunteer = (event) => {
+    const { current: chart } = chartRefVolunteer;
     if (!chart) {
       return;
     }
@@ -412,6 +423,26 @@ const onClickChallenges = (event) => {
             {
                 label: "",
                 data: [72, 26, 2],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(0, 0, 0)'
+                ]
+            }
+        ]
+    }
+
+
+    var dataVolunteer = {
+        labels: [
+            'Yes',
+            'No',
+            'I do not know'
+        ],
+        datasets: [ 
+            {
+                label: "",
+                data: [54, 43, 4],
                 backgroundColor: [
                     'rgb(255, 99, 132)',
                     'rgb(54, 162, 235)',
@@ -720,14 +751,25 @@ for young children is crucial for parents to be able to work?”</h2>
                 />
             </div>
             <div className={styles.card}>
-                <h2>Have you provided any monetary support to a charitable or non-profit
-organization in the last year?</h2>
+                <h2>Have you provided any monetary support to a charitable or non-profit organization in the last year?</h2>
                 <Chart 
                     ref={chartRefCharity}
                     options={pieOptions}
                     type='pie'
                     onClick={onClickCharity}
                     data={dataCharity} 
+                    height={100}
+                    width={50}
+                />
+            </div>
+            <div className={styles.card}>
+                <h2>Have you provided volunteer support to a charitable or non-profit organization in the last year?</h2>
+                <Chart 
+                    ref={chartRefVolunteer}
+                    options={pieOptions}
+                    type='pie'
+                    onClick={onClickVolunteer}
+                    data={dataVolunteer} 
                     height={100}
                     width={50}
                 />
