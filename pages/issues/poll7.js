@@ -89,6 +89,7 @@ export default function Poll7({master}) {
     const chartRefCOL = useRef(null)
     const chartRefProblems = useRef(null)
     const chartRefLocalPriorities = useRef(null)
+    const chartRefVotingPlans = useRef(null)
 
 
 const onClickChallenges = (event) => {
@@ -149,7 +150,31 @@ const onClickChallenges = (event) => {
     printElementAtEvent(getElementAtEvent(chart, event));
     printElementsAtEvent(getElementsAtEvent(chart, event));
   };
+  const onClickVotingPlans = (event) => {
+    const { current: chart } = chartRefVotingPlans;
+    if (!chart) {
+      return;
+    }
+    printDatasetAtEvent(getDatasetAtEvent(chart, event));
+    printElementAtEvent(getElementAtEvent(chart, event));
+    printElementsAtEvent(getElementsAtEvent(chart, event));
+  };
 
+    var questions3 = [
+        'Q3'
+    ]
+    let setsVotingPlans = []
+    let Q3col = getColumn(master[6].data, 'Q3')
+    let Q3counts = countUnique(Q3col)
+    var total = 0
+    for(let key in Q3counts) {
+        total = total + Q3counts[key]
+    }
+    let i = 0
+    for(let key in Q3counts) {
+        setsVotingPlans[i] = (Q3counts[key] / total) * 100
+        i = i + 1
+    }
     var questions7 = [
         'Q7A',
         'Q7B',
@@ -221,6 +246,37 @@ const onClickChallenges = (event) => {
         'Q16M'
     ]
     let setsHealth = memes(questions16, master[6].data)
+
+    var dataVotingPlans = {
+        labels: [
+            'In perosn, on the day of the election',
+            'In person, before the day of the election',
+            'By mail',
+            'Do not plan on voting',
+            'I do not know',
+        ],
+        datasets: [
+            {
+                label: "",
+                data: setsVotingPlans,
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 206, 86)',
+                    'rbg(255, 0, 0)',
+                    'rgb(0, 0, 0)',
+                  ]
+            }
+        ]
+    }
+
+    var pieOptions = {
+        plugins: {
+            title: {
+                display: false
+            }
+        }
+    }
 
     var dataProblems = {
         labels: [
@@ -450,6 +506,18 @@ const onClickChallenges = (event) => {
 
     return(
         <div className={styles.grid}>
+            <div className={styles.card}>
+                <h2>Do you plan on voting in this year's election?</h2>
+                <Chart 
+                    ref={chartRefVotingPlans}
+                    options={pieOptions}
+                    type='pie'
+                    onClick={onClickVotingPlans}
+                    data={dataVotingPlans} 
+                    height={100}
+                    width={100}
+                />
+            </div>
             <div className={styles.card}>
                 <h2>What do you think are problems in the greater San Antonio Area?</h2>
                 <Chart 
