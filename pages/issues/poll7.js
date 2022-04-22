@@ -113,6 +113,8 @@ export default function Poll7({master}) {
     const chartRefStatement = useRef(null)
     const chartRefCharity = useRef(null)
     const chartRefVolunteer = useRef(null)
+    const chartRefDonations = useRef(null)
+
 
 
 
@@ -221,6 +223,15 @@ const onClickChallenges = (event) => {
   };
   const onClickVolunteer = (event) => {
     const { current: chart } = chartRefVolunteer;
+    if (!chart) {
+      return;
+    }
+    printDatasetAtEvent(getDatasetAtEvent(chart, event));
+    printElementAtEvent(getElementAtEvent(chart, event));
+    printElementsAtEvent(getElementsAtEvent(chart, event));
+  };
+  const onClickDonations = (event) => {
+    const { current: chart } = chartRefDonations;
     if (!chart) {
       return;
     }
@@ -443,6 +454,25 @@ const onClickChallenges = (event) => {
             {
                 label: "",
                 data: [54, 43, 4],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(0, 0, 0)'
+                ]
+            }
+        ]
+    }
+
+    var dataDonations = {
+        labels: [
+            'Yes',
+            'No',
+            'I do not know'
+        ],
+        datasets: [ 
+            {
+                label: "",
+                data: [78, 16, 6],
                 backgroundColor: [
                     'rgb(255, 99, 132)',
                     'rgb(54, 162, 235)',
@@ -770,6 +800,18 @@ for young children is crucial for parents to be able to work?”</h2>
                     type='pie'
                     onClick={onClickVolunteer}
                     data={dataVolunteer} 
+                    height={100}
+                    width={50}
+                />
+            </div>
+            <div className={styles.card}>
+                <h2>Were some or all of your charitable donations in 2021 benefiting a community in Bexar County?</h2>
+                <Chart 
+                    ref={chartRefDonations}
+                    options={pieOptions}
+                    type='pie'
+                    onClick={onClickDonations}
+                    data={dataDonations} 
                     height={100}
                     width={50}
                 />
