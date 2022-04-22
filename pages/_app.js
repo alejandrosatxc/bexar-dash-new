@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 import Head from 'next/head'
 import Image from 'next/image'
 import ReactDOM from 'react-dom';
+import Button from 'react-bootstrap/Button'
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 
@@ -42,6 +43,8 @@ function MyApp({ Component, pageProps }) {
             {/* <Dropdown.Item href="/issues/direction">Policy Direction</Dropdown.Item> */}
           </Dropdown.Menu>
         </Dropdown>
+        <br></br>
+        <Button href="/issues/poll7">NEW - Poll 7 Results!</Button>
 
       <Component {...pageProps} />
       </main>
