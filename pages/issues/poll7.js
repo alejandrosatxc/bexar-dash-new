@@ -548,7 +548,7 @@ const onClickChallenges = (event) => {
     return(
         <div className={styles.grid}>
             <div className={styles.card}>
-                <h2>Do you plan on voting in this year's election?</h2>
+                <h2>Do you plan on voting in this year&apos;s election?</h2>
                 <Chart 
                     ref={chartRefVotingPlans}
                     options={pieOptions}
