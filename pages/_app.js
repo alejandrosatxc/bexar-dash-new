@@ -36,6 +36,7 @@ function MyApp({ Component, pageProps }) {
             <Dropdown.Item href="/">Home</Dropdown.Item>
             <Dropdown.Item href="/issues/localgovernment">Local Government</Dropdown.Item>
             <Dropdown.Item href="/issues/electedofficials">Elected Officials</Dropdown.Item>
+            <Dropdown.Item href="/issues/poll7">Poll 7</Dropdown.Item>
             {/* <Dropdown.Item href="/issues/homelessness">Homelessness</Dropdown.Item> */}
             <Dropdown.Item href="/issues/crime">Crime</Dropdown.Item>
             {/* <Dropdown.Item href="/issues/direction">Policy Direction</Dropdown.Item> */}

@@ -245,6 +245,17 @@ export default function Home({master}) {
         ],
         borderWidth: 1,
       },
+      {
+        label: 'Poll 7',
+        data: Object.values(dataSets['COSA'][6]),
+        backgroundColor: [
+          'rgb(200, 100, 50)',
+          // 'rgb(54, 162, 235)',
+          // 'rgb(255, 206, 86)',
+          // 'rgb(75, 192, 192)'
+        ],
+        borderWidth: 1,
+      },
       
     ],
   };
