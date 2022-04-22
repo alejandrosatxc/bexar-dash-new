@@ -110,6 +110,7 @@ export default function Poll7({master}) {
     const chartRefAHP = useRef(null)
     const chartRefLife = useRef(null)
     const chartRefFinance = useRef(null)
+    const chartRefStatement = useRef(null)
 
 
 const onClickChallenges = (event) => {
@@ -197,6 +198,16 @@ const onClickChallenges = (event) => {
     printElementAtEvent(getElementAtEvent(chart, event));
     printElementsAtEvent(getElementsAtEvent(chart, event));
   };
+  const onClickStatement = (event) => {
+    const { current: chart } = chartRefStatement;
+    if (!chart) {
+      return;
+    }
+    printDatasetAtEvent(getDatasetAtEvent(chart, event));
+    printElementAtEvent(getElementAtEvent(chart, event));
+    printElementsAtEvent(getElementsAtEvent(chart, event));
+  };
+  
 
  
     let setsVotingPlans = simplePie('Q3', master[6].data)
@@ -356,6 +367,25 @@ const onClickChallenges = (event) => {
                     'rgb(255, 206, 86)',
                     'rgb(100, 100, 100)',
                     'rgb(0, 0, 0)',
+                ]
+            }
+        ]
+    }
+
+    var dataStatement = {
+        labels: [
+            'Agree',
+            'Disagree',
+            'I do not know'
+        ],
+        datasets: [ 
+            {
+                label: "",
+                data: [84, 11, 5],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(0, 0, 0)'
                 ]
             }
         ]
@@ -642,6 +672,19 @@ Projects?</h2>
                     type='pie'
                     onClick={onClickFinance}
                     data={dataFinance} 
+                    height={100}
+                    width={50}
+                />
+            </div>
+            <div className={styles.card}>
+                <h2>Do you agree or disagree with the following statement: “Having reliable, high quality child care
+for young children is crucial for parents to be able to work?”</h2>
+                <Chart 
+                    ref={chartRefStatement}
+                    options={pieOptions}
+                    type='pie'
+                    onClick={onClickStatement}
+                    data={dataStatement} 
                     height={100}
                     width={50}
                 />
