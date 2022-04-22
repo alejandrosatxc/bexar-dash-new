@@ -57,12 +57,10 @@ const memes = (arrQuestions, dataSheet) => {
     arrQuestions.forEach(q => {
         cols.push(getColumn(dataSheet, q)) //get data from poll 7
     })
-    //console.log(cols)
     var counts = []
     cols.forEach(col => {
         counts.push(countUnique(col)) //array of objects
     })
-    // console.log(counts)
     var sets = [...Array(counts.length)].map(e => Array(counts[0].length))
     for(let i = 0; i < counts.length; i++) {
         let k = 0
@@ -108,9 +106,9 @@ export default function Poll7({master}) {
     const chartRefExperiences = useRef(null)
     const chartRefCOL = useRef(null)
     const chartRefProblems = useRef(null)
-    const chartRefLocalPriorities = useRef(null)
     const chartRefVotingPlans = useRef(null)
     const chartRefAHP = useRef(null)
+    const chartRefLife = useRef(null)
 
 
 const onClickChallenges = (event) => {
@@ -162,15 +160,6 @@ const onClickChallenges = (event) => {
     printElementAtEvent(getElementAtEvent(chart, event));
     printElementsAtEvent(getElementsAtEvent(chart, event));
   };
-  const onClickLocalPriorities = (event) => {
-    const { current: chart } = chartRefLocalPriorities;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
   const onClickVotingPlans = (event) => {
     const { current: chart } = chartRefVotingPlans;
     if (!chart) {
@@ -182,6 +171,15 @@ const onClickChallenges = (event) => {
   };
   const onClickAHP = (event) => {
     const { current: chart } = chartRefAHP;
+    if (!chart) {
+      return;
+    }
+    printDatasetAtEvent(getDatasetAtEvent(chart, event));
+    printElementAtEvent(getElementAtEvent(chart, event));
+    printElementsAtEvent(getElementsAtEvent(chart, event));
+  };
+  const onClickLife = (event) => {
+    const { current: chart } = chartRefLife;
     if (!chart) {
       return;
     }
@@ -302,6 +300,25 @@ const onClickChallenges = (event) => {
                     setsAHP[3] + setsAHP[4] + setsAHP[5],
                     setsAHP[6]
                 ],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(0, 0, 0)'
+                ]
+            }
+        ]
+    }
+
+    var dataLife = {
+        labels: [
+            'Thriving',
+            'Struggling',
+            'Suffering'
+        ],
+        datasets: [
+            {
+                label: "",
+                data: [47, 48, 5],
                 backgroundColor: [
                     'rgb(255, 99, 132)',
                     'rgb(54, 162, 235)',
@@ -568,6 +585,18 @@ Projects?</h2>
                     type='pie'
                     onClick={onClickAHP}
                     data={dataAHP} 
+                    height={100}
+                    width={50}
+                />
+            </div>
+            <div className={styles.card}>
+                <h2>Do you feel you are Thriving, Struggling, or Suffering in where you are in life right now?</h2>
+                <Chart 
+                    ref={chartRefLife}
+                    options={pieOptions}
+                    type='pie'
+                    onClick={onClickLife}
+                    data={dataLife} 
                     height={100}
                     width={50}
                 />
