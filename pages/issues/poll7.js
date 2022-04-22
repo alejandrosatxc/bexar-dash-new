@@ -109,6 +109,7 @@ export default function Poll7({master}) {
     const chartRefVotingPlans = useRef(null)
     const chartRefAHP = useRef(null)
     const chartRefLife = useRef(null)
+    const chartRefFinance = useRef(null)
 
 
 const onClickChallenges = (event) => {
@@ -180,6 +181,15 @@ const onClickChallenges = (event) => {
   };
   const onClickLife = (event) => {
     const { current: chart } = chartRefLife;
+    if (!chart) {
+      return;
+    }
+    printDatasetAtEvent(getDatasetAtEvent(chart, event));
+    printElementAtEvent(getElementAtEvent(chart, event));
+    printElementsAtEvent(getElementsAtEvent(chart, event));
+  };
+  const onClickFinance = (event) => {
+    const { current: chart } = chartRefFinance;
     if (!chart) {
       return;
     }
@@ -323,6 +333,29 @@ const onClickChallenges = (event) => {
                     'rgb(255, 99, 132)',
                     'rgb(54, 162, 235)',
                     'rgb(0, 0, 0)'
+                ]
+            }
+        ]
+    }
+
+    var dataFinance = {
+        labels: [
+            'Living Comfortably',
+            'Meeting living expenses',
+            'Only just meeting living expenses',
+            'Having trouble meeting expenses',
+            'I do not know'
+        ],
+        datasets: [
+            {
+                label: "",
+                data: [35, 35, 18, 11, 1],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 206, 86)',
+                    'rgb(100, 100, 100)',
+                    'rgb(0, 0, 0)',
                 ]
             }
         ]
@@ -597,6 +630,18 @@ Projects?</h2>
                     type='pie'
                     onClick={onClickLife}
                     data={dataLife} 
+                    height={100}
+                    width={50}
+                />
+            </div>
+            <div className={styles.card}>
+                <h2>How would you describe your current financial situation?</h2>
+                <Chart 
+                    ref={chartRefFinance}
+                    options={pieOptions}
+                    type='pie'
+                    onClick={onClickFinance}
+                    data={dataFinance} 
                     height={100}
                     width={50}
                 />
