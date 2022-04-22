@@ -52,7 +52,7 @@ const printDatasetAtEvent = (dataset) => {
     console.log(elements.length);
 };
 
-const memes = (arrQuestions, dataSheet,) => {
+const memes = (arrQuestions, dataSheet) => {
     var cols = []
     arrQuestions.forEach(q => {
         cols.push(getColumn(dataSheet, q)) //get data from poll 7
@@ -80,6 +80,26 @@ const memes = (arrQuestions, dataSheet,) => {
     }
     return sets
 }
+
+const simplePie = (question, datasheet) => {
+    let set = []
+    let col = getColumn(datasheet, question)
+    let counts = countUnique(col)
+    var total = 0
+    for(let key in counts) {
+        total = total + counts[key]
+    }
+    if('' in counts) {
+        total = total - counts['']
+    }
+    var i = 0
+    for(let key in counts) {
+        set[i] = (counts[key] / total) * 100
+        i = i + 1
+    }
+
+    return set
+}
   
 export default function Poll7({master}) {
     const router = useRouter()
@@ -90,6 +110,7 @@ export default function Poll7({master}) {
     const chartRefProblems = useRef(null)
     const chartRefLocalPriorities = useRef(null)
     const chartRefVotingPlans = useRef(null)
+    const chartRefAHP = useRef(null)
 
 
 const onClickChallenges = (event) => {
@@ -159,22 +180,19 @@ const onClickChallenges = (event) => {
     printElementAtEvent(getElementAtEvent(chart, event));
     printElementsAtEvent(getElementsAtEvent(chart, event));
   };
+  const onClickAHP = (event) => {
+    const { current: chart } = chartRefAHP;
+    if (!chart) {
+      return;
+    }
+    printDatasetAtEvent(getDatasetAtEvent(chart, event));
+    printElementAtEvent(getElementAtEvent(chart, event));
+    printElementsAtEvent(getElementsAtEvent(chart, event));
+  };
 
-    var questions3 = [
-        'Q3'
-    ]
-    let setsVotingPlans = []
-    let Q3col = getColumn(master[6].data, 'Q3')
-    let Q3counts = countUnique(Q3col)
-    var total = 0
-    for(let key in Q3counts) {
-        total = total + Q3counts[key]
-    }
-    let i = 0
-    for(let key in Q3counts) {
-        setsVotingPlans[i] = (Q3counts[key] / total) * 100
-        i = i + 1
-    }
+ 
+    let setsVotingPlans = simplePie('Q3', master[6].data)
+    let setsAHP = simplePie('Q4', master[6].data)
     var questions7 = [
         'Q7A',
         'Q7B',
@@ -263,19 +281,34 @@ const onClickChallenges = (event) => {
                     'rgb(255, 99, 132)',
                     'rgb(54, 162, 235)',
                     'rgb(255, 206, 86)',
-                    'rbg(255, 0, 0)',
+                    'rgb(100, 100, 100)',
                     'rgb(0, 0, 0)',
                   ]
             }
         ]
     }
 
-    var pieOptions = {
-        plugins: {
-            title: {
-                display: false
+    var dataAHP = {
+        labels: [
+            'Yes',
+            'No',
+            'I do not know'
+        ],
+        datasets: [ 
+            {
+                label: "",
+                data: [
+                    setsAHP[0] + setsAHP[1] + setsAHP[2],
+                    setsAHP[3] + setsAHP[4] + setsAHP[5],
+                    setsAHP[6]
+                ],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(0, 0, 0)'
+                ]
             }
-        }
+        ]
     }
 
     var dataProblems = {
@@ -504,6 +537,14 @@ const onClickChallenges = (event) => {
         },
     }
 
+    var pieOptions = {
+        plugins: {
+            title: {
+                display: false
+            }
+        }
+    }
+
     return(
         <div className={styles.grid}>
             <div className={styles.card}>
@@ -516,6 +557,19 @@ const onClickChallenges = (event) => {
                     data={dataVotingPlans} 
                     height={100}
                     width={100}
+                />
+            </div>
+            <div className={styles.card}>
+                <h2>Do you think you would vote yes or no on a 150 million dollar bond for Affordable Housing
+Projects?</h2>
+                <Chart 
+                    ref={chartRefAHP}
+                    options={pieOptions}
+                    type='pie'
+                    onClick={onClickAHP}
+                    data={dataAHP} 
+                    height={100}
+                    width={50}
                 />
             </div>
             <div className={styles.card}>
