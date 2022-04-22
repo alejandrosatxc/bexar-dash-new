@@ -61,7 +61,10 @@ const memes = (arrQuestions, dataSheet) => {
     cols.forEach(col => {
         counts.push(countUnique(col)) //array of objects
     })
+    console.log(cols)
+    console.log(counts)
     var sets = [...Array(counts.length)].map(e => Array(counts[0].length))
+    console.log(sets)
     for(let i = 0; i < counts.length; i++) {
         let k = 0
         let total = 0
@@ -114,6 +117,10 @@ export default function Poll7({master}) {
     const chartRefCharity = useRef(null)
     const chartRefVolunteer = useRef(null)
     const chartRefDonations = useRef(null)
+    const chartRefLP = useRef(null)
+    const chartRefFP = useRef(null)
+    const chartRefS = useRef(null)
+
 
 
 
@@ -239,6 +246,33 @@ const onClickChallenges = (event) => {
     printElementAtEvent(getElementAtEvent(chart, event));
     printElementsAtEvent(getElementsAtEvent(chart, event));
   };
+  const onClickLP = (event) => {
+    const { current: chart } = chartRefLP;
+    if (!chart) {
+      return;
+    }
+    printDatasetAtEvent(getDatasetAtEvent(chart, event));
+    printElementAtEvent(getElementAtEvent(chart, event));
+    printElementsAtEvent(getElementsAtEvent(chart, event));
+  };
+  const onClickFP = (event) => {
+    const { current: chart } = chartRefFP;
+    if (!chart) {
+      return;
+    }
+    printDatasetAtEvent(getDatasetAtEvent(chart, event));
+    printElementAtEvent(getElementAtEvent(chart, event));
+    printElementsAtEvent(getElementsAtEvent(chart, event));
+  };
+  const onClickS = (event) => {
+    const { current: chart } = chartRefS;
+    if (!chart) {
+      return;
+    }
+    printDatasetAtEvent(getDatasetAtEvent(chart, event));
+    printElementAtEvent(getElementAtEvent(chart, event));
+    printElementsAtEvent(getElementsAtEvent(chart, event));
+  };
   
   
 
@@ -263,16 +297,32 @@ const onClickChallenges = (event) => {
         'Q7O',
         'CRIME'
     ]
-    let setsProblems = memes(questions7, master[6].data)   
-    // var questions8LP = [
-    //     'Q8C',
-    //     'Q8E',
-    //     'Q8K',
-    //     'Q8L',
-    //     'Q8O',
-    //     'Q8P',
+    let setsProblems = memes(questions7, master[6].data)
+    let questions8LP = [
+        'Q8C',
+        'Q8E',
+        'Q8K',
+        'Q8L',
+        'Q8O',
+        'Q8P'
+    ]
+    // let questions8FP = [
+    //     'Q8B',
+    //     'Q8D',
+    //     'Q8G',
+    //     'Q8J',
+    //     'Q8N'
+    // ]   
+    // let questions8S = [
+    //     'Q8A',
+    //     'Q8F',
+    //     'Q8H',
+    //     'Q8I',
+    //     'Q8M'
     // ]
-    // let setsLocalPriorities = memes(questions8LP, master[6].data)
+    let setsLP = memes(questions8LP, master[6].data)
+    // let setsFP = memes(questions8FP, master[6].data)
+    // let setsS = memes(questions8S, master[6].data)
     var questions12 = [
         'Q12A',
         'Q12B',
@@ -280,6 +330,8 @@ const onClickChallenges = (event) => {
         'Q12D',
         'Q12E',
     ]
+  
+
     let setsExperiences = memes(questions12, master[6].data)
     var questions13 = [
         'Q13A',
@@ -330,11 +382,11 @@ const onClickChallenges = (event) => {
                 label: "",
                 data: setsVotingPlans,
                 backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 206, 86)',
-                    'rgb(100, 100, 100)',
-                    'rgb(0, 0, 0)',
+                    'rgb(12, 38, 96)',
+                    'rgb(196, 99, 0)',
+                    'rgb(66, 116, 200)',
+                    'rgb(233, 168, 34)',
+                    'rgb(4, 15, 39)',
                   ]
             }
         ]
@@ -355,9 +407,9 @@ const onClickChallenges = (event) => {
                     setsAHP[6]
                 ],
                 backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(0, 0, 0)'
+                    'rgb(12, 38, 96)',
+                    'rgb(196, 99, 0)',
+                    'rgb(66, 116, 200)',
                 ]
             }
         ]
@@ -374,9 +426,9 @@ const onClickChallenges = (event) => {
                 label: "",
                 data: [47, 48, 5],
                 backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(0, 0, 0)'
+                    'rgb(12, 38, 96)',
+                    'rgb(196, 99, 0)',
+                    'rgb(66, 116, 200)',
                 ]
             }
         ]
@@ -395,11 +447,11 @@ const onClickChallenges = (event) => {
                 label: "",
                 data: [35, 35, 18, 11, 1],
                 backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 206, 86)',
-                    'rgb(100, 100, 100)',
-                    'rgb(0, 0, 0)',
+                    'rgb(12, 38, 96)',
+                    'rgb(196, 99, 0)',
+                    'rgb(66, 116, 200)',
+                    'rgb(233, 168, 34)',
+                    'rgb(4, 15, 39)',
                 ]
             }
         ]
@@ -416,9 +468,9 @@ const onClickChallenges = (event) => {
                 label: "",
                 data: [84, 11, 5],
                 backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(0, 0, 0)'
+                    'rgb(12, 38, 96)',
+                    'rgb(196, 99, 0)',
+                    'rgb(66, 116, 200)',
                 ]
             }
         ]
@@ -435,9 +487,9 @@ const onClickChallenges = (event) => {
                 label: "",
                 data: [72, 26, 2],
                 backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(0, 0, 0)'
+                    'rgb(12, 38, 96)',
+                    'rgb(196, 99, 0)',
+                    'rgb(66, 116, 200)',
                 ]
             }
         ]
@@ -455,9 +507,9 @@ const onClickChallenges = (event) => {
                 label: "",
                 data: [54, 43, 4],
                 backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(0, 0, 0)'
+                    'rgb(12, 38, 96)',
+                    'rgb(196, 99, 0)',
+                    'rgb(66, 116, 200)',
                 ]
             }
         ]
@@ -474,9 +526,9 @@ const onClickChallenges = (event) => {
                 label: "",
                 data: [78, 16, 6],
                 backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(0, 0, 0)'
+                    'rgb(12, 38, 96)',
+                    'rgb(196, 99, 0)',
+                    'rgb(66, 116, 200)',
                 ]
             }
         ]
@@ -505,30 +557,143 @@ const onClickChallenges = (event) => {
             {
                 label: 'Extremly Serious',
                 data: setsProblems[0],
-                backgroundColor: "rgba(255, 0, 0, 0.8)",
+                backgroundColor: 'rgb(12, 38, 96)',
             },
             {
               label: 'Very Serious',
               data: setsProblems[1],
-              backgroundColor: "rgba(0, 0, 255, 0.8)",
+              backgroundColor: 'rgb(196, 99, 0)',
             },
             {
               label: 'Somewhat Serious',
               data: setsProblems[2],
-              backgroundColor: "rgba(0, 255, 0, 0.8)",
+              backgroundColor: 'rgb(66, 116, 200)',
           },
           {
               label: 'Not Serious',
               data: setsProblems[3],
-              backgroundColor: "rgba(0, 255, 255, 0.8)",
+              backgroundColor: 'rgb(233, 168, 34)',
           },
           {
             label: 'I do not know',
             data: setsProblems[4],
-            backgroundColor: "rgba(0, 0, 0, 0.8)",
+            backgroundColor: 'rgb(4, 15, 39)',
           }
         ]
     }
+
+    var dataLP = {
+        labels: [
+            'Inadequate public transit service options',
+            'Homelessness',
+            'The amount you pay in local property taxes',
+            'An increase in property crimes, such as burglary and theft',
+            'The amount you pay in local utility rates',
+            'An increase in violent crimes'
+        ],
+        datasets: [
+            {
+                label: 'Local Governmnet',
+                data: setsLP[0],
+                backgroundColor: 'rgb(12, 38, 96)',
+            },
+            {
+              label: 'Texas Government',
+              data: setsLP[1],
+              backgroundColor: 'rgb(196, 99, 0)',
+            },
+            {
+              label: 'Federal Government',
+              data: setsLP[2],
+              backgroundColor: 'rgb(66, 116, 200)',
+          },
+          {
+              label: 'Not a Government Problem',
+              data: setsLP[3],
+              backgroundColor: 'rgb(233, 168, 34)',
+          },
+          {
+            label: 'I do not know',
+            data: setsLP[4],
+            backgroundColor: 'rgb(4, 15, 39)',
+          }
+        ]
+    }
+
+    var dataFP = {
+        labels: [
+            'Increasing cost of living',
+            'The cost of healthcare',
+            'Climate change',
+            'The rising price of gas',
+            'The rising price of food',
+        ],
+        datasets: [
+            {
+                label: 'Local Governmnet',
+                data: [16, 6, 6, 5, 11],
+                backgroundColor: 'rgb(12, 38, 96)',
+            },
+            {
+              label: 'Texas Government',
+              data: [28, 22, 12, 16, 21],
+              backgroundColor: 'rgb(196, 99, 0)',
+            },
+            {
+              label: 'Federal Government',
+              data: [50, 66, 55, 73, 60],
+              backgroundColor: 'rgb(66, 116, 200)',
+          },
+          {
+              label: 'Not a Government Problem',
+              data: [4, 4, 22, 3, 5],
+              backgroundColor: 'rgb(233, 168, 34)',
+          },
+          {
+            label: 'I do not know',
+            data: [2, 2, 5, 3, 3],
+            backgroundColor: 'rgb(4, 15, 39)',
+          }
+        ]
+    }
+
+    var dataS = {
+        labels: [
+            'The cost of housing for middle- and working-class families',
+            'A lack of high-quality child care options for working families',
+            'Unemployment',
+            'A lack of high-speed internet options in the area',
+            'The affordability of high-speed internet in the area'
+        ],
+        datasets: [
+            {
+                label: 'Local Governmnet',
+                data: [31, 36, 23, 43, 38],
+                backgroundColor: 'rgb(12, 38, 96)',
+            },
+            {
+              label: 'Texas Government',
+              data: [36, 29, 41, 25, 24],
+              backgroundColor: 'rgb(196, 99, 0)',
+            },
+            {
+              label: 'Federal Government',
+              data: [24, 18, 26, 10, 12],
+              backgroundColor: 'rgb(66, 116, 200)',
+          },
+          {
+              label: 'Not a Government Problem',
+              data: [6, 11, 8, 18, 20],
+              backgroundColor: 'rgb(233, 168, 34)',
+          },
+          {
+            label: 'I do not know',
+            data: [3, 6, 3, 5, 5],
+            backgroundColor: 'rgb(4, 15, 39)',
+          }
+        ]
+    }
+    
 
     var dataExperiences = {
         labels: [
@@ -542,22 +707,22 @@ const onClickChallenges = (event) => {
             {
                 label: 'Yes',
                 data: setsExperiences[0],
-                backgroundColor: "rgba(255, 0, 0, 0.8)",
+                backgroundColor: 'rgb(12, 38, 96)',
             },
             {
               label: 'Yes, a family member or friend',
               data: setsExperiences[1],
-              backgroundColor: "rgba(0, 0, 255, 0.8)",
+              backgroundColor: 'rgb(196, 99, 0)',
             },
             {
               label: 'No',
               data: setsExperiences[2],
-              backgroundColor: "rgba(0, 255, 0, 0.8)",
+              backgroundColor: 'rgb(66, 116, 200)',
           },
           {
               label: 'I do not know',
               data: setsExperiences[3],
-              backgroundColor: "rgba(0, 0, 0, 0.8)",
+              backgroundColor: 'rgb(233, 168, 34)'
           }
         ]
     }
@@ -577,27 +742,27 @@ const onClickChallenges = (event) => {
             {
                 label: 'Major Reason',
                 data: setsCOL[0],
-                backgroundColor: "rgba(255, 0, 0, 0.8)",
+                backgroundColor: 'rgb(12, 38, 96)',
             },
             {
               label: 'Minor Reason',
               data: setsCOL[1],
-              backgroundColor: "rgba(0, 0, 255, 0.8)",
+              backgroundColor: 'rgb(196, 99, 0)',
             },
             {
               label: 'Not much of a Reason',
               data: setsCOL[2],
-              backgroundColor: "rgba(0, 255, 0, 0.8)",
+              backgroundColor: 'rgb(66, 116, 200)',
           },
           {
             label: 'Not a Reason',
             data: setsCOL[3],
-            backgroundColor: "rgba(0, 255, 255, 0.8)",
+            backgroundColor: 'rgb(233, 168, 34)'
         },
           {
               label: 'I do not know',
               data: setsCOL[4],
-              backgroundColor: "rgba(0, 0, 0, 0.8)",
+              backgroundColor: 'rgb(233, 168, 34)',
           }
         ]
     }
@@ -614,22 +779,22 @@ const onClickChallenges = (event) => {
               {
                   label: 'Major Challenge',
                   data: setsChallenges[0],
-                  backgroundColor: "rgba(255, 0, 0, 0.8)",
+                  backgroundColor: 'rgb(12, 38, 96)',
               },
               {
                 label: 'Minor Challenge',
                 data: setsChallenges[1],
-                backgroundColor: "rgba(0, 0, 255, 0.8)",
+                backgroundColor: 'rgb(196, 99, 0)',
               },
               {
                 label: 'Not a Challenge',
                 data: setsChallenges[2],
-                backgroundColor: "rgba(0, 255, 0, 0.8)",
+                backgroundColor: 'rgb(66, 116, 200)',
             },
             {
                 label: 'I do not know',
                 data: setsChallenges[3],
-                backgroundColor: "rgba(0, 0, 0, 0.8)",
+                backgroundColor: 'rgb(233, 168, 34)'
             }
           ]
       }
@@ -654,32 +819,32 @@ const onClickChallenges = (event) => {
             {
                 label: 'Extremly Important',
                 data: setsHealth[0],
-                backgroundColor: "rgba(255, 0, 0, 0.8)",
+                backgroundColor:'rgb(12, 38, 96)',
             },
             {
               label: 'Very Important',
               data: setsHealth[1],
-              backgroundColor: "rgba(0, 0, 255, 0.8)",
+              backgroundColor: 'rgb(196, 99, 0)',
             },
             {
               label: 'Somewhat Important',
               data: setsHealth[2],
-              backgroundColor: "rgba(0, 255, 0, 0.8)",
+              backgroundColor: 'rgb(66, 116, 200)',
           },
           {
               label: 'Not Too Important',
               data: setsHealth[3],
-              backgroundColor: "rgba(0, 255, 255, 0.8)",
+              backgroundColor: 'rgb(233, 168, 34)'
           },
           {
             label: 'Not At All Important',
             data: setsHealth[4],
-            backgroundColor: "rgba(255, 0, 255, 0.8)",
+            backgroundColor: 'rgb(4, 15, 39)',
           },
           {
             label: 'I do not know',
             data: setsHealth[5],
-            backgroundColor: "rgba(0, 0, 0, 0.8)",
+            backgroundColor: 'rgb(233, 168, 34)'
           }
         ]
     }
@@ -719,7 +884,7 @@ const onClickChallenges = (event) => {
     return(
         <div className={styles.grid}>
             <div className={styles.card}>
-                <h2>Do you plan on voting in this year&apos;s election?</h2>
+                <h2>How do you plan on voting in this year&apos;s elections?</h2>
                 <Chart 
                     ref={chartRefVotingPlans}
                     options={pieOptions}
@@ -731,8 +896,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>Do you think you would vote yes or no on a 150 million dollar bond for Affordable Housing
-Projects?</h2>
+                <h3>Do you think you would vote yes or no on a measure about to vote on a 150 million dollar bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?</h3>
                 <Chart 
                     ref={chartRefAHP}
                     options={pieOptions}
@@ -741,6 +905,42 @@ Projects?</h2>
                     data={dataAHP} 
                     height={100}
                     width={50}
+                />
+            </div>
+            <div className={styles.card}>
+                <h2>chart1</h2>
+                <Chart 
+                    ref={chartRefLP}
+                    options={barOptions_stacked}
+                    type='bar'
+                    onClick={onClickLP}
+                    data={dataLP} 
+                    height={400}
+                    width={800}
+                />
+            </div>
+            <div className={styles.card}>
+                <h2>Chart 2 </h2>
+                <Chart 
+                    ref={chartRefFP}
+                    options={barOptions_stacked}
+                    type='bar'
+                    onClick={onClickFP}
+                    data={dataFP} 
+                    height={400}
+                    width={800}
+                />
+            </div>
+            <div className={styles.card}>
+                <h2>Chart 3</h2>
+                <Chart 
+                    ref={chartRefS}
+                    options={barOptions_stacked}
+                    type='bar'
+                    onClick={onClickS}
+                    data={dataS} 
+                    height={400}
+                    width={800}
                 />
             </div>
             <div className={styles.card}>
