@@ -46,8 +46,13 @@ function MyApp({ Component, pageProps }) {
 
         <style type="text/css">
         {`
-        .btn-menu {
+        .btn-localgovernment {
           background-color: #C46300;
+          color: white;
+        }
+
+         .btn-electedofficals {
+          background-color: #E9A822;
           color: white;
         }
 
@@ -58,23 +63,24 @@ function MyApp({ Component, pageProps }) {
         `}
       </style>
 
-        <Dropdown>
+        {/* <Dropdown>
           <Dropdown.Toggle variant="menu" id="dropdown-basic">
             Browse Issues
           </Dropdown.Toggle>
-
+ 
           <Dropdown.Menu>
             <Dropdown.Item href="/">Home</Dropdown.Item>
             <Dropdown.Item href="/issues/localgovernment">Local Government</Dropdown.Item>
             <Dropdown.Item href="/issues/electedofficials">Elected Officials</Dropdown.Item>
             <Dropdown.Item href="/issues/poll7">Poll 7</Dropdown.Item>
-            {/* <Dropdown.Item href="/issues/homelessness">Homelessness</Dropdown.Item> */}
+            <Dropdown.Item href="/issues/homelessness">Homelessness</Dropdown.Item>
             <Dropdown.Item href="/issues/crime">Crime</Dropdown.Item>
-            {/* <Dropdown.Item href="/issues/direction">Policy Direction</Dropdown.Item> */}
+            <Dropdown.Item href="/issues/direction">Policy Direction</Dropdown.Item>
           </Dropdown.Menu>
-        </Dropdown>
-        <br></br>
-        <Button variant="poll7" href="/issues/poll7">NEW - Poll 7 Results!</Button>
+        </Dropdown> */}
+        <Button variant="poll7" href="/issues/poll7">NEW - Poll 7 Results!</Button><br></br>
+        <Button variant="localgovernment" href="/issues/localgovernment">Local Government</Button><br></br>
+        <Button variant="electedofficals" href="/issues/electedofficials">Elected Officals</Button>
 
       <Component {...pageProps} />
       </main>
