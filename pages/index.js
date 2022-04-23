@@ -166,106 +166,106 @@ export default function Home({master}) {
 
   
 
-  var dataCOSA = {
-    labels: ['Right Track', 'Wrong Direction', 'Mixed', 'Do not know'],
-    datasets: [
-      {
-        label: 'Poll 1',
-        data: Object.values(dataSets['COSA'][0]),
-        backgroundColor: [
-          'rgb(255, 99, 132)',
-          // 'rgb(54, 162, 235)',
-          // 'rgb(255, 206, 86)',
-          // 'rgb(75, 192, 192)'
-        ],
-        borderWidth: 1,
-      },
-      {
-        label: 'Poll 2',
-        data: Object.values(dataSets['COSA'][1]),
-        backgroundColor: [
-          'rgb(0, 99, 132)',
-          // 'rgb(54, 162, 235)',
-          // 'rgb(255, 206, 86)',
-          // 'rgb(75, 192, 192)'
-        ],
-        borderWidth: 1,
-      },
-      {
-        label: 'Poll 3',
-        data: Object.values(dataSets['COSA'][2]),
-        backgroundColor: [
-          'rgb(0, 0, 132)',
-          // 'rgb(54, 162, 235)',
-          // 'rgb(255, 206, 86)',
-          // 'rgb(75, 192, 192)'
-        ],
-        borderWidth: 1,
-      },
-      {
-        label: 'Poll 4',
-        data: Object.values(dataSets['COSA'][3]),
-        backgroundColor: [
-          'rgb(100, 0, 132)',
-          // 'rgb(54, 162, 235)',
-          // 'rgb(255, 206, 86)',
-          // 'rgb(75, 192, 192)'
-        ],
-        borderWidth: 1,
-      },
-      {
-        label: 'Poll 5',
-        data: Object.values(dataSets['COSA'][4]),
-        backgroundColor: [
-          'rgb(0, 99, 0)',
-          // 'rgb(54, 162, 235)',
-          // 'rgb(255, 206, 86)',
-          // 'rgb(75, 192, 192)'
-        ],
-        borderWidth: 1,
-      },
-      {
-        label: 'Poll 6',
-        data: Object.values(dataSets['COSA'][5]),
-        backgroundColor: [
-          'rgb(255, 255, 0)',
-          // 'rgb(54, 162, 235)',
-          // 'rgb(255, 206, 86)',
-          // 'rgb(75, 192, 192)'
-        ],
-        borderWidth: 1,
-      },
-      {
-        label: 'Poll 7',
-        data: Object.values(dataSets['COSA'][6]),
-        backgroundColor: [
-          'rgb(200, 100, 50)',
-          // 'rgb(54, 162, 235)',
-          // 'rgb(255, 206, 86)',
-          // 'rgb(75, 192, 192)'
-        ],
-        borderWidth: 1,
-      },
+  // var dataCOSA = {
+  //   labels: ['Right Track', 'Wrong Direction', 'Mixed', 'Do not know'],
+  //   datasets: [
+  //     {
+  //       label: 'Poll 1',
+  //       data: Object.values(dataSets['COSA'][0]),
+  //       backgroundColor: [
+  //         'rgb(255, 99, 132)',
+  //         // 'rgb(54, 162, 235)',
+  //         // 'rgb(255, 206, 86)',
+  //         // 'rgb(75, 192, 192)'
+  //       ],
+  //       borderWidth: 1,
+  //     },
+  //     {
+  //       label: 'Poll 2',
+  //       data: Object.values(dataSets['COSA'][1]),
+  //       backgroundColor: [
+  //         'rgb(0, 99, 132)',
+  //         // 'rgb(54, 162, 235)',
+  //         // 'rgb(255, 206, 86)',
+  //         // 'rgb(75, 192, 192)'
+  //       ],
+  //       borderWidth: 1,
+  //     },
+  //     {
+  //       label: 'Poll 3',
+  //       data: Object.values(dataSets['COSA'][2]),
+  //       backgroundColor: [
+  //         'rgb(0, 0, 132)',
+  //         // 'rgb(54, 162, 235)',
+  //         // 'rgb(255, 206, 86)',
+  //         // 'rgb(75, 192, 192)'
+  //       ],
+  //       borderWidth: 1,
+  //     },
+  //     {
+  //       label: 'Poll 4',
+  //       data: Object.values(dataSets['COSA'][3]),
+  //       backgroundColor: [
+  //         'rgb(100, 0, 132)',
+  //         // 'rgb(54, 162, 235)',
+  //         // 'rgb(255, 206, 86)',
+  //         // 'rgb(75, 192, 192)'
+  //       ],
+  //       borderWidth: 1,
+  //     },
+  //     {
+  //       label: 'Poll 5',
+  //       data: Object.values(dataSets['COSA'][4]),
+  //       backgroundColor: [
+  //         'rgb(0, 99, 0)',
+  //         // 'rgb(54, 162, 235)',
+  //         // 'rgb(255, 206, 86)',
+  //         // 'rgb(75, 192, 192)'
+  //       ],
+  //       borderWidth: 1,
+  //     },
+  //     {
+  //       label: 'Poll 6',
+  //       data: Object.values(dataSets['COSA'][5]),
+  //       backgroundColor: [
+  //         'rgb(255, 255, 0)',
+  //         // 'rgb(54, 162, 235)',
+  //         // 'rgb(255, 206, 86)',
+  //         // 'rgb(75, 192, 192)'
+  //       ],
+  //       borderWidth: 1,
+  //     },
+  //     {
+  //       label: 'Poll 7',
+  //       data: Object.values(dataSets['COSA'][6]),
+  //       backgroundColor: [
+  //         'rgb(200, 100, 50)',
+  //         // 'rgb(54, 162, 235)',
+  //         // 'rgb(255, 206, 86)',
+  //         // 'rgb(75, 192, 192)'
+  //       ],
+  //       borderWidth: 1,
+  //     },
       
-    ],
-  };
+  //   ],
+  // };
 
-  const options = {
-    scales: {
-      y: {
-        title: {
-          display: true,
-          text: "Number of Votes"
-        }
-      }
-    },
-    plugins: {
-      title: {
-        display: true,
-        text: 'Click legend to interact!'
-      }
-    }
-  }
+  // const options = {
+  //   scales: {
+  //     y: {
+  //       title: {
+  //         display: true,
+  //         text: "Number of Votes"
+  //       }
+  //     }
+  //   },
+  //   plugins: {
+  //     title: {
+  //       display: true,
+  //       text: 'Click legend to interact!'
+  //     }
+  //   }
+  // }
  
    
 
