@@ -16,13 +16,13 @@ function MyApp({ Component, pageProps }) {
   return (
     
     <div className={styles.container}>
-      <Navbar bg='white' sticky='top' variant="light">
+      <Navbar bg="dark" variant="light" sticky='top'>
           <Container>
             <Navbar.Brand href="#home">
               <img
                 alt=""
                 src="/BF-Logo.jpeg"
-                width="400"
+                width="60"
                 height="80"
                 className="d-inline-block align-top"
               />{' '}
@@ -41,11 +41,25 @@ function MyApp({ Component, pageProps }) {
         </h1>
 
         <p className={styles.description}>
-          Visualize polling data in Bexar County!
+          A data dashboard by <Image src="/bf-1.png" alt="Vercel Logo" width={144} height={32} /><br></br>Visualizing Bexar Facts polling data
         </p>
 
+        <style type="text/css">
+        {`
+        .btn-menu {
+          background-color: #C46300;
+          color: white;
+        }
+
+        .btn-poll7 {
+          background-color: #4274C8;
+          color: white;
+        }
+        `}
+      </style>
+
         <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
+          <Dropdown.Toggle variant="menu" id="dropdown-basic">
             Browse Issues
           </Dropdown.Toggle>
 
@@ -60,7 +74,7 @@ function MyApp({ Component, pageProps }) {
           </Dropdown.Menu>
         </Dropdown>
         <br></br>
-        <Button href="/issues/poll7">NEW - Poll 7 Results!</Button>
+        <Button variant="poll7" href="/issues/poll7">NEW - Poll 7 Results!</Button>
 
       <Component {...pageProps} />
       </main>

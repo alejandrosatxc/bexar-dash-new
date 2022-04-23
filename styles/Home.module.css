@@ -1,9 +1,6 @@
 .container {
   /* padding: 0 2rem; */
-}
-
-.color-nav {
-  background-color: white;
+  width: 100%
 }
 
 .main {
@@ -17,6 +14,7 @@
 }
 
 .footer {
+  width: 100%;
   display: flex;
   flex: 1;
   padding: 2rem 0;

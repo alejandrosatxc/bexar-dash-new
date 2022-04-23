@@ -844,7 +844,7 @@ const onClickChallenges = (event) => {
           {
             label: 'I do not know',
             data: setsHealth[5],
-            backgroundColor: 'rgb(233, 168, 34)'
+            backgroundColor: 'rgb(235, 223, 203)'
           }
         ]
     }
@@ -920,7 +920,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>chart1</h2>
+                <h2>Local Priorities</h2>
                 <Chart 
                     ref={chartRefLP}
                     options={barOptions_stacked}
@@ -932,7 +932,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>Chart 2 </h2>
+                <h2>Federal Priorities</h2>
                 <Chart 
                     ref={chartRefFP}
                     options={barOptions_stacked}
@@ -944,7 +944,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>Chart 3</h2>
+                <h2>Split on which level of government should lead</h2>
                 <Chart 
                     ref={chartRefS}
                     options={barOptions_stacked}
@@ -1004,8 +1004,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>Do you agree or disagree with the following statement: “Having reliable, high quality child care
-for young children is crucial for parents to be able to work?”</h2>
+                <h2>Do you agree or disagree with the following statement: “Having reliable, high quality child care for young children is crucial for parents to be able to work?”</h2>
                 <Chart 
                     ref={chartRefStatement}
                     options={pieOptions}
