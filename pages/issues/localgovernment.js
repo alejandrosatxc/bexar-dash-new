@@ -156,7 +156,7 @@ export default function LocalGov({master}) {
       })
 
     var dataApprovals = {
-        labels: ['Poll 1', 'Poll 2', 'Poll 3', 'Poll 4', 'Poll 5', 'Poll 6'],
+        labels: ['Poll 1', 'Poll 2', 'Poll 3', 'Poll 4', 'Poll 5', 'Poll 6', 'Poll 7'],
         datasets: [
             {
                 label: 'City Council',
@@ -218,10 +218,7 @@ export default function LocalGov({master}) {
             label: 'Poll 1',
             data: Object.values(dataSets['BEXAR'][0]),
             backgroundColor: [
-              'rgb(255, 99, 132)',
-              // 'rgb(54, 162, 235)',
-              // 'rgb(255, 206, 86)',
-              // 'rgb(75, 192, 192)'
+              'rgb(12, 38, 96)',
             ],
             borderWidth: 1,
           },
@@ -229,10 +226,7 @@ export default function LocalGov({master}) {
             label: 'Poll 2',
             data: Object.values(dataSets['BEXAR'][1]),
             backgroundColor: [
-              'rgb(0, 99, 132)',
-              // 'rgb(54, 162, 235)',
-              // 'rgb(255, 206, 86)',
-              // 'rgb(75, 192, 192)'
+              'rgb(196, 99, 0)',
             ],
             borderWidth: 1,
           },
@@ -240,10 +234,7 @@ export default function LocalGov({master}) {
             label: 'Poll 3',
             data: Object.values(dataSets['BEXAR'][2]),
             backgroundColor: [
-              'rgb(0, 0, 132)',
-              // 'rgb(54, 162, 235)',
-              // 'rgb(255, 206, 86)',
-              // 'rgb(75, 192, 192)'
+              'rgb(66, 116, 200)',
             ],
             borderWidth: 1,
           },
@@ -251,10 +242,7 @@ export default function LocalGov({master}) {
             label: 'Poll 4',
             data: Object.values(dataSets['BEXAR'][3]),
             backgroundColor: [
-              'rgb(100, 0, 132)',
-              // 'rgb(54, 162, 235)',
-              // 'rgb(255, 206, 86)',
-              // 'rgb(75, 192, 192)'
+              'rgb(233, 168, 34)'
             ],
             borderWidth: 1,
           },
@@ -262,10 +250,7 @@ export default function LocalGov({master}) {
             label: 'Poll 5',
             data: Object.values(dataSets['BEXAR'][4]),
             backgroundColor: [
-              'rgb(0, 99, 0)',
-              // 'rgb(54, 162, 235)',
-              // 'rgb(255, 206, 86)',
-              // 'rgb(75, 192, 192)'
+              'rgb(4, 15, 39)',
             ],
             borderWidth: 1,
           },
@@ -273,10 +258,15 @@ export default function LocalGov({master}) {
             label: 'Poll 6',
             data: Object.values(dataSets['BEXAR'][5]),
             backgroundColor: [
-              'rgb(255, 255, 0)',
-              // 'rgb(54, 162, 235)',
-              // 'rgb(255, 206, 86)',
-              // 'rgb(75, 192, 192)'
+              'rgb(235, 223, 203)',
+            ],
+            borderWidth: 1,
+          },
+          {
+            label: 'Poll 7',
+            data: Object.values(dataSets['BEXAR'][5]),
+            backgroundColor: [
+              'rgb(0, 0, 0)',
             ],
             borderWidth: 1,
           },

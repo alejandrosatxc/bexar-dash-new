@@ -113,33 +113,33 @@ export default function ElectedOfficials({master}) {
         labels: ['Poll 1', 'Poll 2', 'Poll 3', 'Poll 4', 'Poll 5', 'Poll 6'],
         datasets: [
           {
-            label: 'Ron Nirenberg',
-            data: Object.values(dataSets['NIRENBERG']),
-            backgroundColor: [
-              'rgb(255, 99, 132)',
-            ],
-            borderColor: [
-              'rgb(255, 99, 132)',
-            ]
-          },
-          {
-            label: 'Judge Wolff',
-            data: Object.values(dataSets['WOLFF']),
-            backgroundColor: [
-              'rgb(0, 99, 132)',
-            ],
-            borderColor: [
-              'rgb(0, 99, 132)',
-            ]
-          },
-          {
-            label: 'Greg Abbot',
+            label: 'Governor Greg Abbott',
             data: Object.values(dataSets['ABBOT']),
             backgroundColor: [
-              'rgb(0, 0, 132)',
+              'rgb(12, 38, 96)',
             ],
             borderColor: [
-              'rgb(0, 0, 132)',
+              'rgb(12, 38, 96)',
+            ]
+          },
+          {
+            label: 'San Antonio Mayor Ron Nirenberg',
+            data: Object.values(dataSets['NIRENBERG']),
+            backgroundColor: [
+              'rgb(196, 99, 0)',
+            ],
+            borderColor: [
+              'rgb(196, 99, 0)',
+            ]
+          },
+          {
+            label: 'Bexar County Judge Nelson Wolff',
+            data: Object.values(dataSets['WOLFF']),
+            backgroundColor: [
+              'rgb(66, 116, 200)',
+            ],
+            borderColor: [
+              'rgb(66, 116, 200)',
             ]
           },
         ],
@@ -161,7 +161,7 @@ export default function ElectedOfficials({master}) {
     return(
         <div className={styles.grid}>
             <div className={styles.card}>
-                <h2>Elected Officials Approval Ratings</h2>
+                <h2>Do you approve or disapprove of the job they are doing?</h2>
                 <Chart 
                     ref={chartRefOfficials}
                     options={optionsOfficials}

@@ -16,13 +16,20 @@ function MyApp({ Component, pageProps }) {
   return (
     
     <div className={styles.container}>
-      <Navbar bg="dark" variant="light" sticky='top'>
+      <style type="text/css">
+        {`
+        .nav-light {
+          background-color: #ffffff;
+        }
+        `}
+      </style>
+      <Navbar bg='white' variant='light' sticky='top'>
           <Container>
             <Navbar.Brand href="#home">
               <img
                 alt=""
                 src="/BF-Logo.jpeg"
-                width="60"
+                width="330"
                 height="80"
                 className="d-inline-block align-top"
               />{' '}
@@ -49,16 +56,19 @@ function MyApp({ Component, pageProps }) {
         .btn-localgovernment {
           background-color: #C46300;
           color: white;
+          margin: 10px;
         }
 
-         .btn-electedofficals {
+         .btn-electedofficials {
           background-color: #E9A822;
           color: white;
+          margin: 10px;
         }
 
         .btn-poll7 {
           background-color: #4274C8;
           color: white;
+          margin: 10px;
         }
         `}
       </style>
@@ -78,10 +88,12 @@ function MyApp({ Component, pageProps }) {
             <Dropdown.Item href="/issues/direction">Policy Direction</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown> */}
-        <Button variant="poll7" href="/issues/poll7">NEW - Poll 7 Results!</Button><br></br>
-        <Button variant="localgovernment" href="/issues/localgovernment">Local Government</Button><br></br>
-        <Button variant="electedofficals" href="/issues/electedofficials">Elected Officals</Button>
 
+        <div className="menuButtons">
+          <Button variant="poll7" href="/issues/poll7">NEW - Poll 7 Results!</Button>
+          <Button variant="localgovernment" href="/issues/localgovernment">Local Government</Button>
+          <Button variant="electedofficials" href="/issues/electedofficials">Elected Officials</Button>
+        </div>
       <Component {...pageProps} />
       </main>
       <footer className={styles.footer}>

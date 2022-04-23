@@ -119,9 +119,6 @@ export default function Poll7({master}) {
     const chartRefS = useRef(null)
 
 
-
-
-
 const onClickChallenges = (event) => {
     const { current: chart } = chartRefChallenges;
     if (!chart) {
@@ -701,7 +698,7 @@ const onClickChallenges = (event) => {
             'Postponed medical or dental care',
             ['Had to change your living arrangements', 'because you couldn’t afford your', 'rent or mortgage'],
             'Have looked for, but been unable to find affordable childcare',
-            'Held off from making a large purchase such as a car or a home',
+            ['Held off from making a large purchase', 'such as a car or a home']
         ],
         datasets: [
             {
@@ -726,10 +723,10 @@ const onClickChallenges = (event) => {
         labels: [
             'Landlords raising the price of rent to maximize profits',
             'Disruptions in the supply chain of materials and goods',
-            'Forced closures of businesses during the COVID-19 pandemic the last two years',
+            ['Forced closures of businesses during the','COVID-19 pandemic the last two years'],
             'A lack of high-paying jobs in the area',
             'Not enough affordable housing to meet the local demand',
-            'Sanctions against Russia forbidding the import of crude oil and petroleum',
+            ['Sanctions against Russia forbidding', 'the import of crude oil and petroleum'],
             'Price gouging from companies on essential goods',
             'Labor shortages'
         ],
@@ -860,20 +857,37 @@ const onClickChallenges = (event) => {
                 }
             },
             y: {
-                stacked: true
+                stacked: true,
+                ticks: {
+                    font: {
+                        size: 14
+                    }
+                }
             }
         },
-        legend:{
-            display: true
+        plugins: {
+            legend:{
+                display: true,
+                labels: {
+                    font: {
+                        size: 16
+                    }
+                }
+            },
         },
     }
 
     var pieOptions = {
         plugins: {
-            title: {
-                display: false
-            }
-        }
+            legend:{
+                display: true,
+                labels: {
+                    font: {
+                        size: 16
+                    }
+                }
+            },
+        },
     }
 
     return(
@@ -910,7 +924,7 @@ const onClickChallenges = (event) => {
                     type='bar'
                     onClick={onClickProblems}
                     data={dataProblems} 
-                    height={400}
+                    height={700}
                     width={800}
                 />
             </div>
@@ -997,8 +1011,8 @@ const onClickChallenges = (event) => {
                     type='bar'
                     onClick={onClickCOL}
                     data={dataCOL} 
-                    height={400}
-                    width={800}
+                    height={500}
+                    width={900}
                 />
             </div>
             <div className={styles.card}>
@@ -1033,7 +1047,7 @@ const onClickChallenges = (event) => {
                     type='bar'
                     onClick={onClickHealth}
                     data={dataHealth} 
-                    height={500}
+                    height={550}
                     width={800}
                 />
             </div>
