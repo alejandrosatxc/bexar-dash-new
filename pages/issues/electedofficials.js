@@ -110,7 +110,7 @@ export default function ElectedOfficials({master}) {
       })
 
       var dataOfficials = {
-        labels: ['Poll 1', 'Poll 2', 'Poll 3', 'Poll 4', 'Poll 5', 'Poll 6'],
+        labels: ['Poll 1', 'Poll 2', 'Poll 3', 'Poll 4', 'Poll 5', 'Poll 6', 'Poll 7'],
         datasets: [
           {
             label: 'Governor Greg Abbott',
@@ -154,8 +154,25 @@ export default function ElectedOfficials({master}) {
                 display: true,
                 text: "Percentage"
               }
+          },
+          x: {
+            ticks: {
+              font: {
+                size: 16
+              }
+            }
           }
         },
+        plugins: {
+          legend: {
+            display: true,
+            labels: {
+              font: {
+                size: 16
+              }
+            }
+          }
+        }
       }
 
     return(
@@ -168,7 +185,7 @@ export default function ElectedOfficials({master}) {
                     type='line'
                     onClick={onClickOfficials}
                     data={dataOfficials} 
-                    height={300}
+                    height={400}
                     width={600}
                 />
             </div>

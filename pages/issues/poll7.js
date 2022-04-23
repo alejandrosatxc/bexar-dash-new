@@ -900,8 +900,6 @@ const onClickChallenges = (event) => {
                     type='pie'
                     onClick={onClickVotingPlans}
                     data={dataVotingPlans} 
-                    height={100}
-                    width={100}
                 />
             </div>
             <div className={styles.card}>
@@ -912,8 +910,6 @@ const onClickChallenges = (event) => {
                     type='pie'
                     onClick={onClickAHP}
                     data={dataAHP} 
-                    height={100}
-                    width={50}
                 />
             </div>
             <div className={styles.card}>

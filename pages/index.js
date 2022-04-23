@@ -78,16 +78,6 @@ export default function Home({master}) {
     printElementsAtEvent(getElementsAtEvent(chart, event));
   };
 
-  const onClickCOSA = (event) => {
-    const { current: chart } = chartRefCOSA;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-
   const onClickApprovals = (event) => {
     const { current: chart } = chartRefApprovals;
     if (!chart) {
@@ -123,11 +113,11 @@ export default function Home({master}) {
     COSA: [], 
     PROPERTY_TAXES: [],
   }
-  master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'COSA')
-    var counts = countUnique(coldata)
-    dataSets.COSA.push(counts)
-  })
+  // master.forEach(sheet => {
+  //   var coldata = getColumn(sheet.data, 'COSA')
+  //   var counts = countUnique(coldata)
+  //   dataSets.COSA.push(counts)
+  // })
   
   
   master.forEach(sheet => {
@@ -284,16 +274,7 @@ export default function Home({master}) {
       
         <div className={styles.grid}>
           
-          <div className={styles.card}>
-            <h2>Would you say City of San Antonio policy is on the Right Track or going the Wrong direction</h2>
-            <Chart 
-              ref={chartRefCOSA}
-              type='bar'
-              onClick={onClickCOSA}
-              options={options} 
-              data={dataCOSA} 
-            />
-          </div>
+          
         </div>
   )
 }
