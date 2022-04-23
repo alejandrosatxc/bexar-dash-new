@@ -61,10 +61,7 @@ const memes = (arrQuestions, dataSheet) => {
     cols.forEach(col => {
         counts.push(countUnique(col)) //array of objects
     })
-    console.log(cols)
-    console.log(counts)
     var sets = [...Array(counts.length)].map(e => Array(counts[0].length))
-    console.log(sets)
     for(let i = 0; i < counts.length; i++) {
         let k = 0
         let total = 0
@@ -1005,7 +1002,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h3>Do you agree or disagree with the following statement: “Having reliable, high quality child care for young children is crucial for parents to be able to work?”</h3>
+                <h3>Do you agree or disagree with the following statement &quot;Having reliable, high quality child care for young children is crucial for parents to be able to work?&quot;</h3>
                 <Chart 
                     ref={chartRefStatement}
                     options={pieOptions}
@@ -1029,7 +1026,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h3>How important do you think each of the following factors are to a person’s health?</h3>
+                <h3>How important do you think each of the following factors are to a person&apos;s health?</h3>
                 <Chart 
                     ref={chartRefHealth}
                     options={barOptions_stacked}
