@@ -906,7 +906,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h3>Some say these issues are problems in the greater San Antonio area. Do you think it's a serious problem, somewhat serious problem or not a serious problem?</h3>
+                <h3>Some say these issues are problems in the greater San Antonio area. Do you think it&apos;s a serious problem, somewhat serious problem or not a serious problem?</h3>
                 <Chart 
                     ref={chartRefProblems}
                     options={barOptions_stacked}
