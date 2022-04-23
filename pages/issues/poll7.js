@@ -534,6 +534,11 @@ const onClickChallenges = (event) => {
         ]
     }
 
+    //Combining Very Serious and Serious into one data point
+    var newSet = []
+    for(let i = 0; i < setsProblems[0].length; i++) {
+        newSet.push(setsProblems[0][i] + setsProblems[1][i])
+    }
     var dataProblems = {
         labels: [
             'The cost of housing for middle- and working-class families',
@@ -555,29 +560,24 @@ const onClickChallenges = (event) => {
         ],
         datasets: [
             {
-                label: 'Extremly Serious',
-                data: setsProblems[0],
-                backgroundColor: 'rgb(12, 38, 96)',
-            },
-            {
-              label: 'Very Serious',
-              data: setsProblems[1],
-              backgroundColor: 'rgb(196, 99, 0)',
+              label: 'Serious',
+              data: newSet,
+              backgroundColor: 'rgb(12, 38, 96)',
             },
             {
               label: 'Somewhat Serious',
               data: setsProblems[2],
-              backgroundColor: 'rgb(66, 116, 200)',
+              backgroundColor: 'rgb(196, 99, 0)',
           },
           {
               label: 'Not Serious',
               data: setsProblems[3],
-              backgroundColor: 'rgb(233, 168, 34)',
+              backgroundColor: 'rgb(66, 116, 200)',
           },
           {
             label: 'I do not know',
             data: setsProblems[4],
-            backgroundColor: 'rgb(4, 15, 39)',
+            backgroundColor: 'rgb(233, 168, 34)'
           }
         ]
     }
@@ -694,7 +694,10 @@ const onClickChallenges = (event) => {
         ]
     }
     
-
+    // var newSetExperiences = []
+    // for(let i = 0; i < setsHealth[0].length; i++) {
+    //     newSetExperiences.push(setsHealth[0][i] + setsHealth[1][i])
+    // }
     var dataExperiences = {
         labels: [
             'Skipped meals because you couldn’t afford food',
@@ -706,23 +709,18 @@ const onClickChallenges = (event) => {
         datasets: [
             {
                 label: 'Yes',
-                data: setsExperiences[0],
+                data: [20, 53, 29, 22, 57],
                 backgroundColor: 'rgb(12, 38, 96)',
             },
             {
-              label: 'Yes, a family member or friend',
-              data: setsExperiences[1],
-              backgroundColor: 'rgb(196, 99, 0)',
-            },
-            {
               label: 'No',
-              data: setsExperiences[2],
-              backgroundColor: 'rgb(66, 116, 200)',
+              data: [78, 45, 69, 66, 39],
+              backgroundColor: 'rgb(196, 99, 0)',
           },
           {
               label: 'I do not know',
-              data: setsExperiences[3],
-              backgroundColor: 'rgb(233, 168, 34)'
+              data: [2,2,2,12,3],
+              backgroundColor: 'rgb(66, 116, 200)',
           }
         ]
     }
@@ -762,7 +760,7 @@ const onClickChallenges = (event) => {
           {
               label: 'I do not know',
               data: setsCOL[4],
-              backgroundColor: 'rgb(233, 168, 34)',
+              backgroundColor: 'rgb(4, 15, 39)'
           }
         ]
     }
@@ -799,6 +797,11 @@ const onClickChallenges = (event) => {
           ]
       }
 
+    var newSetHealth = []
+    for(let i = 0; i < setsHealth[0].length; i++) {
+        newSetHealth.push(setsHealth[0][i] + setsHealth[1][i])
+    }
+
       var dataHealth = {
         labels: [
             'Lack of access to high-quality medical care',
@@ -815,36 +818,31 @@ const onClickChallenges = (event) => {
             'Racism and discrimination',
             'Family violence',
         ],
-        datasets: [
+        datasets: [     
             {
-                label: 'Extremly Important',
-                data: setsHealth[0],
+                label: 'Important',
+                data: newSetHealth,
                 backgroundColor:'rgb(12, 38, 96)',
-            },
-            {
-              label: 'Very Important',
-              data: setsHealth[1],
-              backgroundColor: 'rgb(196, 99, 0)',
             },
             {
               label: 'Somewhat Important',
               data: setsHealth[2],
-              backgroundColor: 'rgb(66, 116, 200)',
+              backgroundColor: 'rgb(196, 99, 0)',
           },
           {
               label: 'Not Too Important',
               data: setsHealth[3],
-              backgroundColor: 'rgb(233, 168, 34)'
+              backgroundColor: 'rgb(66, 116, 200)',
           },
           {
             label: 'Not At All Important',
             data: setsHealth[4],
-            backgroundColor: 'rgb(4, 15, 39)',
+            backgroundColor: 'rgb(233, 168, 34)'
           },
           {
             label: 'I do not know',
             data: setsHealth[5],
-            backgroundColor: 'rgb(235, 223, 203)'
+            backgroundColor: 'rgb(4, 15, 39)',
           }
         ]
     }
@@ -884,7 +882,7 @@ const onClickChallenges = (event) => {
     return(
         <div className={styles.grid}>
             <div className={styles.card}>
-                <h2>How do you plan on voting in this year&apos;s elections?</h2>
+                <h3>How do you plan on voting in this year&apos;s elections?</h3>
                 <Chart 
                     ref={chartRefVotingPlans}
                     options={pieOptions}
@@ -896,7 +894,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h3>Do you think you would vote yes or no on a measure about to vote on a 150 million dollar bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?</h3>
+                <h3>Would you vote yes or no on a measure about to vote on a 150 million dollar bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?</h3>
                 <Chart 
                     ref={chartRefAHP}
                     options={pieOptions}
@@ -908,7 +906,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>What do you think are problems in the greater San Antonio Area?</h2>
+                <h3>Some say these issues are problems in the greater San Antonio area. Do you think it's a serious problem, somewhat serious problem or not a serious problem?</h3>
                 <Chart 
                     ref={chartRefProblems}
                     options={barOptions_stacked}
@@ -919,8 +917,11 @@ const onClickChallenges = (event) => {
                     width={800}
                 />
             </div>
+            <div>
+                <h2>For the following 3 charts, respondents were asked:  Which government level do you think should take the lead in addressing the stated issue?</h2>
+            </div>
             <div className={styles.card}>
-                <h2>Local Priorities</h2>
+                <h3>Local Priorities</h3>
                 <Chart 
                     ref={chartRefLP}
                     options={barOptions_stacked}
@@ -932,7 +933,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>Federal Priorities</h2>
+                <h3>Federal Priorities</h3>
                 <Chart 
                     ref={chartRefFP}
                     options={barOptions_stacked}
@@ -944,7 +945,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>Split on which level of government should lead</h2>
+                <h3>Split on which level of government should lead</h3>
                 <Chart 
                     ref={chartRefS}
                     options={barOptions_stacked}
@@ -956,7 +957,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>Do you feel you are Thriving, Struggling, or Suffering in where you are in life right now?</h2>
+                <h3>The Cantril Self-Anchoring Scale is a tool used to assess the well-being of a population by asking respondents to rate where their life stands now, and where they think it will be in five years, using a hypothetical ten-point “ladder” scale. By combining a respondents rating we are able able to identify if people feel they are Thriving, Struggling, or Suffering.</h3>
                 <Chart 
                     ref={chartRefLife}
                     options={pieOptions}
@@ -968,7 +969,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>How would you describe your current financial situation?</h2>
+                <h3>How would you describe your current financial situation?</h3>
                 <Chart 
                     ref={chartRefFinance}
                     options={pieOptions}
@@ -980,7 +981,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>Have you experienced any of the following?</h2>
+                <h3>Have you experienced any of the following over the last 12 months?</h3>
                 <Chart 
                     ref={chartRefExperiences}
                     options={barOptions_stacked}
@@ -992,7 +993,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>What do you think are reasons for the increasing cost of living in Bexar County?</h2>
+                <h3>Do you think these things contribute to the rising cost of living in Bexar County?</h3>
                 <Chart 
                     ref={chartRefCOL}
                     options={barOptions_stacked}
@@ -1004,7 +1005,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>Do you agree or disagree with the following statement: “Having reliable, high quality child care for young children is crucial for parents to be able to work?”</h2>
+                <h3>Do you agree or disagree with the following statement: “Having reliable, high quality child care for young children is crucial for parents to be able to work?”</h3>
                 <Chart 
                     ref={chartRefStatement}
                     options={pieOptions}
@@ -1016,7 +1017,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>What do you think is a challenge when looking for a job?</h2>
+                <h3>What do you think is a challenge when looking for a job?</h3>
                 <Chart 
                     ref={chartRefChallenges}
                     options={barOptions_stacked}
@@ -1028,7 +1029,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>How important do you think each of the following factors are to a person’s health?</h2>
+                <h3>How important do you think each of the following factors are to a person’s health?</h3>
                 <Chart 
                     ref={chartRefHealth}
                     options={barOptions_stacked}
@@ -1040,7 +1041,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>Have you provided any monetary support to a charitable or non-profit organization in the last year?</h2>
+                <h3>Have you provided any monetary support to a charitable or non-profit organization in the last year?</h3>
                 <Chart 
                     ref={chartRefCharity}
                     options={pieOptions}
@@ -1052,7 +1053,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>Have you provided volunteer support to a charitable or non-profit organization in the last year?</h2>
+                <h3>Have you or anyone in your household provided volunteer support to a charitable or non-profit organization in the last year?</h3>
                 <Chart 
                     ref={chartRefVolunteer}
                     options={pieOptions}
@@ -1064,7 +1065,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h2>Were some or all of your charitable donations in 2021 benefiting a community in Bexar County?</h2>
+                <h3>Were some or all of your charitable donations in 2021 benefiting a community in Bexar County?</h3>
                 <Chart 
                     ref={chartRefDonations}
                     options={pieOptions}

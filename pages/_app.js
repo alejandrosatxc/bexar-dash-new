@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to Bexar-Dash!
+          Welcome to Bexar-Dash
         </h1>
 
         <p className={styles.description}>
