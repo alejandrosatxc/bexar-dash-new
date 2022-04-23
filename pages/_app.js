@@ -7,12 +7,28 @@ import ReactDOM from 'react-dom';
 import Button from 'react-bootstrap/Button'
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton'
+import Navbar from 'react-bootstrap/Navbar'
+import { Container } from 'react-bootstrap';
 
 
 
 function MyApp({ Component, pageProps }) {
   return (
+    
     <div className={styles.container}>
+      <Navbar bg='white' sticky='top' variant="light">
+          <Container>
+            <Navbar.Brand href="#home">
+              <img
+                alt=""
+                src="/BF-Logo.jpeg"
+                width="400"
+                height="80"
+                className="d-inline-block align-top"
+              />{' '}
+            </Navbar.Brand>
+          </Container>
+      </Navbar>
       <Head>
         <title>Bexar Dash</title>
         <meta name="description" content="Bexar Facts' Data Dashboard!" />
