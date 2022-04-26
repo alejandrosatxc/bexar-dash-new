@@ -47,9 +47,11 @@ function MyApp({ Component, pageProps }) {
           Welcome to Bexar-Dash
         </h1>
 
-        <p className={styles.description}>
-          A data dashboard by <Image src="/bf-1.png" alt="Vercel Logo" width={144} height={32} /><br></br>Visualizing Bexar Facts polling data
-        </p>
+        <div className={styles.description}>
+          A data dashboard by&nbsp;
+          <Image src="/bf-1.png" alt="Vercel Logo" width={164} height={32} />
+          ,&nbsp;visualizing Bexar Facts polling data
+        </div>
 
         <style type="text/css">
         {`

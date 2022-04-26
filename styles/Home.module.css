@@ -54,6 +54,8 @@
 }
 
 .description {
+  display: flex;
+  align-items: center;
   margin: 4rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
@@ -120,9 +122,16 @@
   border-color: #0070f3;
 }
 
-.card h2 {
+.card h3 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
+  text-justify: auto;
+}
+
+.chart h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  text-justify: auto;
 }
 
 .card p {
