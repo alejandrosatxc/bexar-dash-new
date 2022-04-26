@@ -94,7 +94,7 @@
   transition: color 0.15s ease, border-color 0.15s ease;
   background-color: white;
   position: relative;
-  max-width: 35vw;
+  max-width: 44vw;
 }
 
 .chart {
@@ -152,7 +152,7 @@
   }
 
   .card {
-    max-width: 200vw;
+    max-width: 150vw;
   }
 
   .chart {

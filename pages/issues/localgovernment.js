@@ -11,7 +11,7 @@ import {
     getElementsAtEvent,
 } from 'react-chartjs-2';
 import 'chart.js/auto';
-
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 export async function getStaticProps() {
     const master = await getMaster()
@@ -256,7 +256,7 @@ export default function LocalGov({master}) {
             label: 'Poll 7',
             data: Object.values(dataSets['COSA'][6]),
             backgroundColor: [
-              'rgb(255, 99, 132)',
+              'rgb(0, 0, 0)',
             ],
             borderWidth: 1,
           },
@@ -375,7 +375,7 @@ export default function LocalGov({master}) {
             label: 'Poll 7',
             data: Object.values(dataSets['BEXAR'][6]),
             backgroundColor: [
-              'rgb(255, 99, 132)',
+              'rgb(0, 0, 0)',
             ],
             borderWidth: 1,
           },
@@ -406,6 +406,25 @@ const options = {
       }
     },
     plugins: {
+      tooltip: {
+        enabled: true,
+        callbacks: {
+            label: function(context){
+              var data = context.dataset.data,
+                  label = context.label,
+                  currentValue = context.raw,
+                  total = 0;
+    
+            //   for( var i = 0; i < data.length; i++ ){
+            //     total += data[i];
+            //   }
+               var percentage = parseFloat((currentValue).toFixed(1));
+    
+              return label + ": ("  + percentage + '%)';
+            }
+        }
+    
+    },
       legend: {
         display: true,
         labels: {
@@ -422,6 +441,7 @@ const options = {
   }
 
  const optionsApprovals = {
+   spanGaps: true,
     scales: {      
       y: {
           min: 35,
@@ -440,6 +460,24 @@ const options = {
       }
     },
     plugins: {
+      tooltip: {
+        enabled: true,
+        callbacks: {
+            label: function(context){
+              var data = context.dataset.data,
+                  label = context.label,
+                  currentValue = context.raw,
+                  total = 0;
+    
+            //   for( var i = 0; i < data.length; i++ ){
+            //     total += data[i];
+            //   }
+               var percentage = parseFloat((currentValue).toFixed(1));
+    
+              return label + ": ("  + percentage + '%)';
+            },
+        },
+      },
       legend: {
         display: true,
         labels: {
@@ -471,6 +509,7 @@ const options = {
                 onClick={onClickCOSA}
                 options={options} 
                 data={dataCOSA} 
+
               />
           </div>
             <div className={styles.chart}>
@@ -481,9 +520,8 @@ const options = {
                 type='line'
                 onClick={onClickApprovals}
                 data={dataApprovals} 
-                height={300}
-                width={600}
                 />
+                <p> The gaps indicate that some local entities were not included in every poll.</p>
           </div>
         </div>
     )

@@ -51,20 +51,21 @@ const printDatasetAtEvent = (dataset) => {
     console.log(elements.length);
 };
 
-const onClickOfficials = (event) => {
-    const { current: chart } = chartRefApprovals;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-
 export default function ElectedOfficials({master}) {
 
     const router = useRouter()
     const chartRefOfficials = useRef(null)
+
+
+const onClickOfficials = (event) => {
+  const { current: chart } = chartRefOfficials;
+  if (!chart) {
+    return;
+  }
+  printDatasetAtEvent(getDatasetAtEvent(chart, event));
+  printElementAtEvent(getElementAtEvent(chart, event));
+  printElementsAtEvent(getElementsAtEvent(chart, event));
+};
 
     const dataSets = {
         NIRENBERG: [], 
@@ -164,6 +165,25 @@ export default function ElectedOfficials({master}) {
           }
         },
         plugins: {
+          tooltip: {
+            enabled: true,
+            callbacks: {
+                label: function(context){
+                  var data = context.dataset.data,
+                      label = context.label,
+                      currentValue = context.raw,
+                      total = 0;
+        
+                //   for( var i = 0; i < data.length; i++ ){
+                //     total += data[i];
+                //   }
+                   var percentage = parseFloat((currentValue).toFixed(1));
+        
+                  return label + ": ("  + percentage + '%)';
+                }
+            }
+        
+        },
           legend: {
             display: true,
             labels: {

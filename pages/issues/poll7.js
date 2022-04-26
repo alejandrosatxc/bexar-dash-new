@@ -11,6 +11,8 @@ import {
     getElementsAtEvent,
 } from 'react-chartjs-2';
 import 'chart.js/auto';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+
 import { getClientBuildManifest } from 'next/dist/client/route-loader';
 
 
@@ -825,14 +827,10 @@ const onClickChallenges = (event) => {
           }
         ]
     }
+    console.log(setsProblems)
 
-      var barOptions_stacked = {
-        // maintainAspectRatio: false,
-        // responsive: true,
+    var barOptions_stacked = {
         indexAxis: 'y',
-        tooltips: {
-            enabled: false
-        },
         scales: {
             x: {
                 stacked: true,
@@ -853,6 +851,44 @@ const onClickChallenges = (event) => {
             }
         },
         plugins: {
+            title: {
+                display: true,
+                text: 'Click legend to interact!'
+            },
+            tooltip: {
+                enabled: true,
+                callbacks: {
+                    label: function(context){
+                      var data = context.dataset.data,
+                          label = context.label,
+                          currentValue = context.raw,
+                          total = 0;
+            
+                    //   for( var i = 0; i < data.length; i++ ){
+                    //     total += data[i];
+                    //   }
+                       var percentage = parseFloat((currentValue).toFixed(1));
+            
+                      return label + ": ("  + percentage + '%)';
+                    }
+                }
+            
+            },
+            datalabels: {
+                display: function(context) {
+                    return context.dataset.data[context.dataIndex] > 8;
+                  },
+                  formatter: (value, ctx) => {
+                    let sum = 0;
+                    let dataArr = ctx.chart.data.datasets[0].data;
+                    dataArr.map(data => {
+                        sum += data;
+                    });
+                    let percentage = (value).toFixed(0)+"%";
+                    return percentage;
+                },                
+                color: "white"
+              },
             legend:{
                 display: true,
                 labels: {
@@ -868,6 +904,48 @@ const onClickChallenges = (event) => {
         responsive: true,
         // maintainAspectRatio: false,
         plugins: {
+            title: {
+                display: true,
+                text: 'Click legend to interact!'
+            },
+            tooltip: {
+                enabled: true,
+                callbacks: {
+                    label: function(context){
+                      var data = context.dataset.data,
+                          label = context.label,
+                          currentValue = context.raw,
+                          total = 0;
+            
+                    //   for( var i = 0; i < data.length; i++ ){
+                    //     total += data[i];
+                    //   }
+                       var percentage = parseFloat((currentValue).toFixed(1));
+            
+                      return label + ": ("  + percentage + '%)';
+                    }
+                }
+            
+            },
+            datalabels: {
+                font: {
+                    size: 20
+                },
+                display: function(context) {
+                    return context.dataset.data[context.dataIndex] > 4;
+                  },
+                formatter: (value, ctx) => {
+                  let datasets = ctx.chart.data.datasets;
+                  if (datasets.indexOf(ctx.dataset) === datasets.length - 1) {
+                    let sum = datasets[0].data.reduce((a, b) => a + b, 0);
+                    let percentage = Math.round((value / sum) * 100) + "%";
+                    return percentage;
+                  } else {
+                    return percentage;
+                  }
+                },
+                color: "white"
+              },
             legend:{
                 display: true,
                 labels: {
@@ -879,7 +957,9 @@ const onClickChallenges = (event) => {
         },
     }
 
+
     return(
+
         <div className={styles.grid}>
             <div className={styles.card}>
                 <h3>How do you plan on voting in this year&apos;s elections?</h3>
@@ -888,7 +968,8 @@ const onClickChallenges = (event) => {
                     options={pieOptions}
                     type='pie'
                     onClick={onClickVotingPlans}
-                    data={dataVotingPlans}                     
+                    data={dataVotingPlans}
+                    plugins={[ChartDataLabels]}
                 />
             </div>
             <div className={styles.card}>
@@ -898,7 +979,8 @@ const onClickChallenges = (event) => {
                     options={pieOptions}
                     type='pie'
                     onClick={onClickAHP}
-                    data={dataAHP} 
+                    data={dataAHP}
+                    plugins={[ChartDataLabels]}
                 />
             </div>
         
@@ -910,6 +992,8 @@ const onClickChallenges = (event) => {
                     type='bar'
                     onClick={onClickProblems}
                     data={dataProblems} 
+                    plugins={[ChartDataLabels]}
+
                 />
             </div>
             <div>
@@ -923,6 +1007,8 @@ const onClickChallenges = (event) => {
                     type='bar'
                     onClick={onClickLP}
                     data={dataLP} 
+                    plugins={[ChartDataLabels]}
+
                 />
             </div>
             <div className={styles.chart}>
@@ -933,6 +1019,7 @@ const onClickChallenges = (event) => {
                     type='bar'
                     onClick={onClickFP}
                     data={dataFP} 
+                    plugins={[ChartDataLabels]}
                 />
             </div>
             <div className={styles.chart}>
@@ -943,6 +1030,8 @@ const onClickChallenges = (event) => {
                     type='bar'
                     onClick={onClickS}
                     data={dataS}
+                    plugins={[ChartDataLabels]}
+
                 />
             </div>
             <div className={styles.card}>
@@ -953,6 +1042,7 @@ const onClickChallenges = (event) => {
                     type='pie'
                     onClick={onClickLife}
                     data={dataLife}
+                    plugins={[ChartDataLabels]}
                 />
             </div>
             <div className={styles.card}>
@@ -963,6 +1053,7 @@ const onClickChallenges = (event) => {
                     type='pie'
                     onClick={onClickFinance}
                     data={dataFinance} 
+                    plugins={[ChartDataLabels]}
                 />
             </div>
             <div className={styles.chart}>
@@ -972,7 +1063,8 @@ const onClickChallenges = (event) => {
                     options={barOptions_stacked}
                     type='bar'
                     onClick={onClickExperiences}
-                    data={dataExperiences} 
+                    data={dataExperiences}
+                    plugins={[ChartDataLabels]}
                 />
             </div>
             <div className={styles.chart}>
@@ -983,6 +1075,7 @@ const onClickChallenges = (event) => {
                     type='bar'
                     onClick={onClickCOL}
                     data={dataCOL}
+                    plugins={[ChartDataLabels]}
                 />
             </div>
             <div className={styles.card}>
@@ -993,6 +1086,8 @@ const onClickChallenges = (event) => {
                     type='pie'
                     onClick={onClickStatement}
                     data={dataStatement} 
+                    plugins={[ChartDataLabels]}
+
                 />
             </div>
             <div className={styles.chart}>
@@ -1002,7 +1097,8 @@ const onClickChallenges = (event) => {
                     options={barOptions_stacked}
                     type='bar'
                     onClick={onClickChallenges}
-                    data={dataChallenges} 
+                    data={dataChallenges}
+                    plugins={[ChartDataLabels]}
                 />
             </div>
             <div className={styles.chart}>
@@ -1013,6 +1109,7 @@ const onClickChallenges = (event) => {
                     type='bar'
                     onClick={onClickHealth}
                     data={dataHealth}
+                    plugins={[ChartDataLabels]}
                 />
             </div>
             <div className={styles.card}>
@@ -1023,6 +1120,7 @@ const onClickChallenges = (event) => {
                     type='pie'
                     onClick={onClickCharity}
                     data={dataCharity}
+                    plugins={[ChartDataLabels]}
                 />
             </div>
             <div className={styles.card}>
@@ -1033,6 +1131,8 @@ const onClickChallenges = (event) => {
                     type='pie'
                     onClick={onClickVolunteer}
                     data={dataVolunteer}
+                    plugins={[ChartDataLabels]}
+
                 />
             </div>
             <div className={styles.card}>
@@ -1043,6 +1143,8 @@ const onClickChallenges = (event) => {
                     type='pie'
                     onClick={onClickDonations}
                     data={dataDonations} 
+                    plugins={[ChartDataLabels]}
+
                 /> 
             </div>
         </div>
