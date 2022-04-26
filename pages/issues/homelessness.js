@@ -73,7 +73,7 @@ export default function Homelessness({master}) {
     }
 
 
-<div className={styles.card}>
+  return(<div className={styles.card}>
             <h2>Is Homelessness a problem?</h2>
             <Chart 
               ref={chartRefProblems}
@@ -85,3 +85,5 @@ export default function Homelessness({master}) {
               width={100}
             />
           </div>
+        )
+  }
