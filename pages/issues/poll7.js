@@ -827,7 +827,6 @@ const onClickChallenges = (event) => {
           }
         ]
     }
-    console.log(setsProblems)
 
     var barOptions_stacked = {
         indexAxis: 'y',
