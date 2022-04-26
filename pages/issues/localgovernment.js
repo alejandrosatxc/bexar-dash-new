@@ -492,7 +492,7 @@ const options = {
     return(
         <div className={styles.grid}>
             <div className={styles.chart}>
-                <h2>Would you say Bexar County policy is on the Right Track or going the Wrong direction</h2>
+                <h2>Would you say Bexar County policy is on the Right Track or going the Wrong direction?</h2>
                 <Chart 
                 ref={chartRefBEXAR}
                 type='bar'
@@ -502,7 +502,7 @@ const options = {
                 />
             </div>
             <div className={styles.chart}>
-              <h2>Would you say City of San Antonio policy is on the Right Track or going the Wrong direction</h2>
+              <h2>Would you say City of San Antonio policy is on the Right Track or going the Wrong direction?</h2>
               <Chart 
                 ref={chartRefCOSA}
                 type='bar'
