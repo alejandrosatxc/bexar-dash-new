@@ -367,7 +367,7 @@ const onClickChallenges = (event) => {
                     'rgb(196, 99, 0)',
                     'rgb(66, 116, 200)',
                     'rgb(233, 168, 34)',
-                    'rgb(4, 15, 39)',
+                    'rgb(235, 223, 203)',
                   ]
             }
         ]
@@ -432,7 +432,7 @@ const onClickChallenges = (event) => {
                     'rgb(196, 99, 0)',
                     'rgb(66, 116, 200)',
                     'rgb(233, 168, 34)',
-                    'rgb(4, 15, 39)',
+                    'rgb(235, 223, 203)',
                 ]
             }
         ]
@@ -596,7 +596,7 @@ const onClickChallenges = (event) => {
           {
             label: 'I do not know',
             data: setsLP[4],
-            backgroundColor: 'rgb(4, 15, 39)',
+            backgroundColor: 'rgb(235, 223, 203)',
           }
         ]
     }
@@ -633,7 +633,7 @@ const onClickChallenges = (event) => {
           {
             label: 'I do not know',
             data: [2, 2, 5, 3, 3],
-            backgroundColor: 'rgb(4, 15, 39)',
+            backgroundColor: 'rgb(235, 223, 203)',
           }
         ]
     }
@@ -670,7 +670,7 @@ const onClickChallenges = (event) => {
           {
             label: 'I do not know',
             data: [3, 6, 3, 5, 5],
-            backgroundColor: 'rgb(4, 15, 39)',
+            backgroundColor: 'rgb(235, 223, 203)',
           }
         ]
     }
@@ -741,7 +741,7 @@ const onClickChallenges = (event) => {
           {
               label: 'I do not know',
               data: setsCOL[4],
-              backgroundColor: 'rgb(4, 15, 39)'
+              backgroundColor: 'rgb(235, 223, 203)'
           }
         ]
     }
@@ -823,7 +823,7 @@ const onClickChallenges = (event) => {
           {
             label: 'I do not know',
             data: setsHealth[5],
-            backgroundColor: 'rgb(4, 15, 39)',
+            backgroundColor: 'rgb(235, 223, 203)',
           }
         ]
     }
