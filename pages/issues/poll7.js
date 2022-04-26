@@ -300,23 +300,8 @@ const onClickChallenges = (event) => {
         'Q8O',
         'Q8P'
     ]
-    // let questions8FP = [
-    //     'Q8B',
-    //     'Q8D',
-    //     'Q8G',
-    //     'Q8J',
-    //     'Q8N'
-    // ]   
-    // let questions8S = [
-    //     'Q8A',
-    //     'Q8F',
-    //     'Q8H',
-    //     'Q8I',
-    //     'Q8M'
-    // ]
     let setsLP = memes(questions8LP, master[6].data)
-    // let setsFP = memes(questions8FP, master[6].data)
-    // let setsS = memes(questions8S, master[6].data)
+
     var questions12 = [
         'Q12A',
         'Q12B',
@@ -842,6 +827,8 @@ const onClickChallenges = (event) => {
     }
 
       var barOptions_stacked = {
+        // maintainAspectRatio: false,
+        // responsive: true,
         indexAxis: 'y',
         tooltips: {
             enabled: false
@@ -878,6 +865,8 @@ const onClickChallenges = (event) => {
     }
 
     var pieOptions = {
+        responsive: true,
+        // maintainAspectRatio: false,
         plugins: {
             legend:{
                 display: true,
@@ -894,17 +883,17 @@ const onClickChallenges = (event) => {
         <div className={styles.grid}>
             <div className={styles.card}>
                 <h3>How do you plan on voting in this year&apos;s elections?</h3>
-                <Chart 
+                <Chart
                     ref={chartRefVotingPlans}
                     options={pieOptions}
                     type='pie'
                     onClick={onClickVotingPlans}
-                    data={dataVotingPlans} 
+                    data={dataVotingPlans}                     
                 />
             </div>
             <div className={styles.card}>
                 <h3>Would you vote yes or no on a measure about to vote on a 150 million dollar bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?</h3>
-                <Chart 
+                <Chart
                     ref={chartRefAHP}
                     options={pieOptions}
                     type='pie'
@@ -912,7 +901,8 @@ const onClickChallenges = (event) => {
                     data={dataAHP} 
                 />
             </div>
-            <div className={styles.card}>
+        
+            <div className={styles.chart}>
                 <h3>Some say these issues are problems in the greater San Antonio area. Do you think it&apos;s a serious problem, somewhat serious problem or not a serious problem?</h3>
                 <Chart 
                     ref={chartRefProblems}
@@ -920,14 +910,12 @@ const onClickChallenges = (event) => {
                     type='bar'
                     onClick={onClickProblems}
                     data={dataProblems} 
-                    height={700}
-                    width={800}
                 />
             </div>
             <div>
                 <h2>For the following 3 charts, respondents were asked:  Which government level do you think should take the lead in addressing the stated issue?</h2>
             </div>
-            <div className={styles.card}>
+            <div className={styles.chart}>
                 <h3>Local Priorities</h3>
                 <Chart 
                     ref={chartRefLP}
@@ -935,11 +923,9 @@ const onClickChallenges = (event) => {
                     type='bar'
                     onClick={onClickLP}
                     data={dataLP} 
-                    height={400}
-                    width={800}
                 />
             </div>
-            <div className={styles.card}>
+            <div className={styles.chart}>
                 <h3>Federal Priorities</h3>
                 <Chart 
                     ref={chartRefFP}
@@ -947,20 +933,16 @@ const onClickChallenges = (event) => {
                     type='bar'
                     onClick={onClickFP}
                     data={dataFP} 
-                    height={400}
-                    width={800}
                 />
             </div>
-            <div className={styles.card}>
+            <div className={styles.chart}>
                 <h3>Split on which level of government should lead</h3>
                 <Chart 
                     ref={chartRefS}
                     options={barOptions_stacked}
                     type='bar'
                     onClick={onClickS}
-                    data={dataS} 
-                    height={400}
-                    width={800}
+                    data={dataS}
                 />
             </div>
             <div className={styles.card}>
@@ -970,9 +952,7 @@ const onClickChallenges = (event) => {
                     options={pieOptions}
                     type='pie'
                     onClick={onClickLife}
-                    data={dataLife} 
-                    height={100}
-                    width={50}
+                    data={dataLife}
                 />
             </div>
             <div className={styles.card}>
@@ -983,11 +963,9 @@ const onClickChallenges = (event) => {
                     type='pie'
                     onClick={onClickFinance}
                     data={dataFinance} 
-                    height={100}
-                    width={50}
                 />
             </div>
-            <div className={styles.card}>
+            <div className={styles.chart}>
                 <h3>Have you experienced any of the following over the last 12 months?</h3>
                 <Chart 
                     ref={chartRefExperiences}
@@ -995,20 +973,16 @@ const onClickChallenges = (event) => {
                     type='bar'
                     onClick={onClickExperiences}
                     data={dataExperiences} 
-                    height={400}
-                    width={800}
                 />
             </div>
-            <div className={styles.card}>
+            <div className={styles.chart}>
                 <h3>Do you think these things contribute to the rising cost of living in Bexar County?</h3>
                 <Chart 
                     ref={chartRefCOL}
                     options={barOptions_stacked}
                     type='bar'
                     onClick={onClickCOL}
-                    data={dataCOL} 
-                    height={500}
-                    width={900}
+                    data={dataCOL}
                 />
             </div>
             <div className={styles.card}>
@@ -1019,11 +993,9 @@ const onClickChallenges = (event) => {
                     type='pie'
                     onClick={onClickStatement}
                     data={dataStatement} 
-                    height={100}
-                    width={50}
                 />
             </div>
-            <div className={styles.card}>
+            <div className={styles.chart}>
                 <h3>What do you think is a challenge when looking for a job?</h3>
                 <Chart 
                     ref={chartRefChallenges}
@@ -1031,20 +1003,16 @@ const onClickChallenges = (event) => {
                     type='bar'
                     onClick={onClickChallenges}
                     data={dataChallenges} 
-                    height={300}
-                    width={800}
                 />
             </div>
-            <div className={styles.card}>
+            <div className={styles.chart}>
                 <h3>How important do you think each of the following factors are to a person&apos;s health?</h3>
                 <Chart 
                     ref={chartRefHealth}
                     options={barOptions_stacked}
                     type='bar'
                     onClick={onClickHealth}
-                    data={dataHealth} 
-                    height={550}
-                    width={800}
+                    data={dataHealth}
                 />
             </div>
             <div className={styles.card}>
@@ -1054,9 +1022,7 @@ const onClickChallenges = (event) => {
                     options={pieOptions}
                     type='pie'
                     onClick={onClickCharity}
-                    data={dataCharity} 
-                    height={100}
-                    width={50}
+                    data={dataCharity}
                 />
             </div>
             <div className={styles.card}>
@@ -1066,9 +1032,7 @@ const onClickChallenges = (event) => {
                     options={pieOptions}
                     type='pie'
                     onClick={onClickVolunteer}
-                    data={dataVolunteer} 
-                    height={100}
-                    width={50}
+                    data={dataVolunteer}
                 />
             </div>
             <div className={styles.card}>
@@ -1079,9 +1043,7 @@ const onClickChallenges = (event) => {
                     type='pie'
                     onClick={onClickDonations}
                     data={dataDonations} 
-                    height={100}
-                    width={50}
-                />
+                /> 
             </div>
         </div>
     )

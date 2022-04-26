@@ -70,26 +70,11 @@ function MyApp({ Component, pageProps }) {
           color: white;
           margin: 10px;
         }
+
+        
         `}
       </style>
-
-        {/* <Dropdown>
-          <Dropdown.Toggle variant="menu" id="dropdown-basic">
-            Browse Issues
-          </Dropdown.Toggle>
- 
-          <Dropdown.Menu>
-            <Dropdown.Item href="/">Home</Dropdown.Item>
-            <Dropdown.Item href="/issues/localgovernment">Local Government</Dropdown.Item>
-            <Dropdown.Item href="/issues/electedofficials">Elected Officials</Dropdown.Item>
-            <Dropdown.Item href="/issues/poll7">Poll 7</Dropdown.Item>
-            <Dropdown.Item href="/issues/homelessness">Homelessness</Dropdown.Item>
-            <Dropdown.Item href="/issues/crime">Crime</Dropdown.Item>
-            <Dropdown.Item href="/issues/direction">Policy Direction</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown> */}
-
-        <div className="menuButtons">
+        <div className={styles.menuButtons}>
           <Button variant="poll7" href="/issues/poll7">NEW - Poll 7 Results!</Button>
           <Button variant="localgovernment" href="/issues/localgovernment">Local Government</Button>
           <Button variant="electedofficials" href="/issues/electedofficials">Elected Officials</Button>

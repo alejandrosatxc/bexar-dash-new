@@ -177,16 +177,14 @@ export default function ElectedOfficials({master}) {
 
     return(
         <div className={styles.grid}>
-            <div className={styles.card}>
+            <div className={styles.chart}>
                 <h2>Do you approve or disapprove of the job they are doing?</h2>
                 <Chart 
                     ref={chartRefOfficials}
                     options={optionsOfficials}
                     type='line'
                     onClick={onClickOfficials}
-                    data={dataOfficials} 
-                    height={400}
-                    width={600}
+                    data={dataOfficials}
                 />
             </div>
         </div>

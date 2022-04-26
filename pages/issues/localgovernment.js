@@ -453,7 +453,7 @@ const options = {
 
     return(
         <div className={styles.grid}>
-            <div className={styles.card}>
+            <div className={styles.chart}>
                 <h2>Would you say Bexar County policy is on the Right Track or going the Wrong direction</h2>
                 <Chart 
                 ref={chartRefBEXAR}
@@ -463,7 +463,7 @@ const options = {
                 data={dataBEXAR} 
                 />
             </div>
-            <div className={styles.card}>
+            <div className={styles.chart}>
               <h2>Would you say City of San Antonio policy is on the Right Track or going the Wrong direction</h2>
               <Chart 
                 ref={chartRefCOSA}
@@ -473,7 +473,7 @@ const options = {
                 data={dataCOSA} 
               />
           </div>
-            <div className={styles.card}>
+            <div className={styles.chart}>
                 <h2>Do you approve or disapprove of the job they are doing?</h2>
                 <Chart 
                 ref={chartRefApprovals}
