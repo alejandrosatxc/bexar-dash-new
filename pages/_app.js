@@ -81,7 +81,7 @@ function MyApp({ Component, pageProps }) {
           <Button variant="localgovernment" href="/issues/localgovernment">Local Government</Button>
           <Button variant="electedofficials" href="/issues/electedofficials">Elected Officials</Button>
         </div>
-        <h4 className={styles.disclaimer}>Having trouble viewing? Formatting is optimized for viewing on desktop or laptop only</h4>
+        <p className={styles.disclaimer}>This dashboard is currently formatted for viewing on desktop or laptop only. We will make it mobile friendly overtime.</p>
       <Component {...pageProps} />
       </main>
       <footer className={styles.footer}>
