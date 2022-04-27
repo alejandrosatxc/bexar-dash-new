@@ -972,7 +972,7 @@ const onClickChallenges = (event) => {
                 />
             </div>
             <div className={styles.card}>
-                <h3>Would you vote yes or no on a measure about to vote on a 150 million dollar bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?</h3>
+                <h3>Would you vote yes or no on a 150 million dollar City of San Antonio bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?</h3>
                 <Chart
                     ref={chartRefAHP}
                     options={pieOptions}
