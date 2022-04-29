@@ -26,6 +26,11 @@ function MyApp({ Component, pageProps }) {
       <Navbar bg='white' variant='light' sticky='top'>
           <Container>
             <Navbar.Brand href="#home">
+            <a
+            href="https://bexarfacts.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
               <img
                 alt=""
                 src="/BF-Logo.jpeg"
@@ -33,6 +38,7 @@ function MyApp({ Component, pageProps }) {
                 height="80"
                 className="d-inline-block align-top"
               />{' '}
+              </a>
             </Navbar.Brand>
           </Container>
       </Navbar>
