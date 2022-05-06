@@ -12,6 +12,8 @@ import {
 import 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { getClientBuildManifest } from 'next/dist/client/route-loader';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton'
 
 export async function getStaticProps() {
     const master = await getMaster()
@@ -78,29 +80,59 @@ const onClickChallenges = (event) => {
     printElementsAtEvent(getElementsAtEvent(chart, event));
   };
 
-  const onClickProblems = (event) => {
+  const onClickProblems = (event, filter) => {
     const { current: chart } = chartRefProblems;
     if (!chart) {
       return;
     }
+    let sets = memes(questions7, master[6].data, filter)
+    //Combining Very Serious and Serious into one data point
+    var newSet = []
+    for(let i = 0; i < sets[0].length; i++) {
+        newSet.push(sets[0][i] + sets[1][i])
+    }
+
+    chart.config.data.datasets[0].data = newSet
+    chart.config.data.datasets[1].data = sets[2]
+    chart.config.data.datasets[2].data = sets[3]
+    chart.config.data.datasets[3].data = sets[4]
+
+
+
+    console.log(chart.config.data.datasets[0].data)
+    chart.update()
     printDatasetAtEvent(getDatasetAtEvent(chart, event));
     printElementAtEvent(getElementAtEvent(chart, event));
     printElementsAtEvent(getElementsAtEvent(chart, event));
   };
-  const onClickVotingPlans = (event) => {
+
+  const onClickVotingPlans = (event, filter) => {
     const { current: chart } = chartRefVotingPlans;
+    console.log(filter)
     if (!chart) {
       return;
     }
+    chart.config.data.datasets[0].data = simplePie('Q3', master[6].data, filter)
+    console.log(chart.config.data.datasets[0].data)
+    chart.update()
     printDatasetAtEvent(getDatasetAtEvent(chart, event));
     printElementAtEvent(getElementAtEvent(chart, event));
     printElementsAtEvent(getElementsAtEvent(chart, event));
   };
-  const onClickAHP = (event) => {
+
+  const onClickAHP = (event, filter) => {
     const { current: chart } = chartRefAHP;
     if (!chart) {
       return;
     }
+    let set = simplePie('Q4', master[6].data, filter)
+    chart.config.data.datasets[0].data = [
+        set[0] + set[1] + set[2],
+        set[3] + set[4] + set[5],
+        set[6]
+    ]
+    console.log(chart.config.data.datasets[0].data)
+    chart.update()
     printDatasetAtEvent(getDatasetAtEvent(chart, event));
     printElementAtEvent(getElementAtEvent(chart, event));
     printElementsAtEvent(getElementsAtEvent(chart, event));
@@ -190,8 +222,8 @@ const onClickChallenges = (event) => {
   
 
  
-    let setsVotingPlans = simplePie('Q3', master[6].data)
-    let setsAHP = simplePie('Q4', master[6].data)
+    let setsVotingPlans = simplePie('Q3', master[6].data, 'none')
+    let setsAHP = simplePie('Q4', master[6].data, 'none')
     var questions7 = [
         'Q7A',
         'Q7B',
@@ -210,7 +242,7 @@ const onClickChallenges = (event) => {
         'Q7O',
         'CRIME'
     ]
-    let setsProblems = memes(questions7, master[6].data)
+    let setsProblems = memes(questions7, master[6].data, 'none')
     let questions8LP = [
         'Q8C',
         'Q8E',
@@ -879,22 +911,56 @@ const onClickChallenges = (event) => {
         <div className={styles.grid}>
             <div className={styles.card}>
                 <h3>How do you plan on voting in this year&apos;s elections?</h3>
+                <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        Demographics
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item onClick={(e) => onClickVotingPlans(e, 'none')}>All</Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Header>Gender</Dropdown.Header>
+                        <Dropdown.Item onClick={(e) => onClickVotingPlans(e, 'male')}>Male</Dropdown.Item>
+                        <Dropdown.Item onClick={(e) => onClickVotingPlans(e, 'female')}>Female</Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Header>Race</Dropdown.Header>
+                        <Dropdown.Item onClick={(e) => onClickVotingPlans(e, 'hispanic')}>Hispanic</Dropdown.Item>
+                        <Dropdown.Item onClick={(e) => onClickVotingPlans(e, 'black')}>African American or Black</Dropdown.Item>
+                        <Dropdown.Item onClick={(e) => onClickVotingPlans(e, 'white')}>Caucasian or White</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
                 <Chart
                     ref={chartRefVotingPlans}
                     options={pieOptions}
                     type='pie'
-                    onClick={onClickVotingPlans}
+                    // onClick={onClickVotingPlans}
                     data={dataVotingPlans}
                     plugins={[ChartDataLabels]}
                 />
             </div>
             <div className={styles.card}>
                 <h3>Would you vote yes or no on a 150 million dollar City of San Antonio bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?</h3>
+                <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        Demographics
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item onClick={(e) => onClickAHP(e, 'none')}>All</Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Header>Gender</Dropdown.Header>
+                        <Dropdown.Item onClick={(e) => onClickAHP(e, 'male')}>Male</Dropdown.Item>
+                        <Dropdown.Item onClick={(e) => onClickAHP(e, 'female')}>Female</Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Header>Race</Dropdown.Header>
+                        <Dropdown.Item onClick={(e) => onClickAHP(e, 'hispanic')}>Hispanic</Dropdown.Item>
+                        <Dropdown.Item onClick={(e) => onClickAHP(e, 'black')}>African American or Black</Dropdown.Item>
+                        <Dropdown.Item onClick={(e) => onClickAHP(e, 'white')}>Caucasian or White</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
                 <Chart
                     ref={chartRefAHP}
                     options={pieOptions}
                     type='pie'
-                    onClick={onClickAHP}
+                    // onClick={onClickAHP}
                     data={dataAHP}
                     plugins={[ChartDataLabels]}
                 />
@@ -902,11 +968,28 @@ const onClickChallenges = (event) => {
         
             <div className={styles.chart}>
                 <h3>Some say these issues are problems in the greater San Antonio area. Do you think it&apos;s a serious problem, somewhat serious problem or not a serious problem?</h3>
+                <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        Demographics
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item onClick={(e) => onClickProblems(e, 'none')}>All</Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Header>Gender</Dropdown.Header>
+                        <Dropdown.Item onClick={(e) => onClickProblems(e, 'male')}>Male</Dropdown.Item>
+                        <Dropdown.Item onClick={(e) => onClickProblems(e, 'female')}>Female</Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Header>Race</Dropdown.Header>
+                        <Dropdown.Item onClick={(e) => onClickProblems(e, 'hispanic')}>Hispanic</Dropdown.Item>
+                        <Dropdown.Item onClick={(e) => onClickProblems(e, 'black')}>African American or Black</Dropdown.Item>
+                        <Dropdown.Item onClick={(e) => onClickProblems(e, 'white')}>Caucasian or White</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
                 <Chart 
                     ref={chartRefProblems}
                     options={barOptions_stacked}
                     type='bar'
-                    onClick={onClickProblems}
+                    // onClick={onClickProblems}
                     data={dataProblems} 
                     plugins={[ChartDataLabels]}
 
