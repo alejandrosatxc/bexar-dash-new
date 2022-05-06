@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }) {
                 width="330"
                 height="80"
                 className="d-inline-block align-top"
-              />{' '}
+              />
               </a>
             </Navbar.Brand>
           </Container>
