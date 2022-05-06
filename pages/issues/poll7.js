@@ -3,7 +3,6 @@ import styles from '../../styles/Home.module.css'
 import getMaster from '../../lib/master'
 import { memes, simplePie, countUnique, getColumn, printDatasetAtEvent, printElementAtEvent, printElementsAtEvent} from '../../lib/myfuncs'
 import { useEffect, useState, MouseEvent, useRef } from 'react'
-
 import {
     Chart,
     getDatasetAtEvent,
@@ -14,13 +13,10 @@ import 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { getClientBuildManifest } from 'next/dist/client/route-loader';
 
-
 export async function getStaticProps() {
     const master = await getMaster()
     return({props: {master}})
 }
-
-
   
 export default function Poll7({master}) {
     const router = useRouter()
