@@ -14,6 +14,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { getClientBuildManifest } from 'next/dist/client/route-loader';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton'
+import PieChart from '../../components/PieChart'
 
 export async function getStaticProps() {
     const master = await getMaster()
@@ -27,7 +28,6 @@ export default function Poll7({master}) {
     const chartRefExperiences = useRef(null)
     const chartRefCOL = useRef(null)
     const chartRefProblems = useRef(null)
-    const chartRefVotingPlans = useRef(null)
     const chartRefAHP = useRef(null)
     const chartRefLife = useRef(null)
     const chartRefFinance = useRef(null)
@@ -99,20 +99,6 @@ const onClickChallenges = (event) => {
 
 
 
-    console.log(chart.config.data.datasets[0].data)
-    chart.update()
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-
-  const onClickVotingPlans = (event, filter) => {
-    const { current: chart } = chartRefVotingPlans;
-    console.log(filter)
-    if (!chart) {
-      return;
-    }
-    chart.config.data.datasets[0].data = simplePie('Q3', master[6].data, filter)
     console.log(chart.config.data.datasets[0].data)
     chart.update()
     printDatasetAtEvent(getDatasetAtEvent(chart, event));
@@ -909,34 +895,13 @@ const onClickChallenges = (event) => {
     return(
 
         <div className={styles.grid}>
-            <div className={styles.card}>
-                <h3>How do you plan on voting in this year&apos;s elections?</h3>
-                <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Demographics
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <Dropdown.Item onClick={(e) => onClickVotingPlans(e, 'none')}>All</Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Header>Gender</Dropdown.Header>
-                        <Dropdown.Item onClick={(e) => onClickVotingPlans(e, 'male')}>Male</Dropdown.Item>
-                        <Dropdown.Item onClick={(e) => onClickVotingPlans(e, 'female')}>Female</Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Header>Race</Dropdown.Header>
-                        <Dropdown.Item onClick={(e) => onClickVotingPlans(e, 'hispanic')}>Hispanic</Dropdown.Item>
-                        <Dropdown.Item onClick={(e) => onClickVotingPlans(e, 'black')}>African American or Black</Dropdown.Item>
-                        <Dropdown.Item onClick={(e) => onClickVotingPlans(e, 'white')}>Caucasian or White</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-                <Chart
-                    ref={chartRefVotingPlans}
-                    options={pieOptions}
-                    type='pie'
-                    // onClick={onClickVotingPlans}
-                    data={dataVotingPlans}
-                    plugins={[ChartDataLabels]}
-                />
-            </div>
+            <PieChart
+                title="How do you plan on voting in this year's elections?"
+                column="Q3"
+                masterDataset={master[6].data}
+                dataset={dataVotingPlans}
+                options={pieOptions}
+            /> 
             <div className={styles.card}>
                 <h3>Would you vote yes or no on a 150 million dollar City of San Antonio bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?</h3>
                 <Dropdown>
@@ -1004,7 +969,7 @@ const onClickChallenges = (event) => {
                     ref={chartRefLP}
                     options={barOptions_stacked}
                     type='bar'
-                    onClick={onClickLP}
+                    // onClick={onClickLP}
                     data={dataLP} 
                     plugins={[ChartDataLabels]}
 
