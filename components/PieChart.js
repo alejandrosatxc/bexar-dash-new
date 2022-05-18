@@ -1,0 +1,65 @@
+import { useEffect, useState, MouseEvent, useRef } from 'react'
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import { memes, simplePie, countUnique, getColumn, printDatasetAtEvent, printElementAtEvent, printElementsAtEvent} from '../lib/myfuncs'
+import {
+    Chart,
+    getDatasetAtEvent,
+    getElementAtEvent,
+    getElementsAtEvent,
+} from 'react-chartjs-2';
+import 'chart.js/auto';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+
+import styles from '../styles/Home.module.css'
+
+const PieChart = (props) => {
+
+    const [dropDownTitle, setDropDownTitle] = useState("Demographics: All")
+    const chartRef = useRef(null)
+
+    const renderChart = (e, filter) => {
+        const { current: chart } = chartRef;
+        console.log(filter)
+        if (!chart) {
+          return;
+        }
+        //Access the chart's data object, and render a new chart using the filtered data.
+        chart.config.data.datasets[0].data = simplePie(props.column, props.masterDataset, filter)
+        setDropDownTitle("Demographics: " + e.target.textContent)
+        chart.update()
+    
+        printDatasetAtEvent(getDatasetAtEvent(chart, e));
+        printElementAtEvent(getElementAtEvent(chart, e));
+        printElementsAtEvent(getElementsAtEvent(chart, e));
+    }
+
+    return(
+        <div className={styles.card}>
+            <h3>{props.title}</h3>
+            <DropdownButton id="dropdown-basic-button" title={dropDownTitle}>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'none')}}>All</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Header>Gender</Dropdown.Header>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'male')}}>Male</Dropdown.Item>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'female')}}>Female</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Header>Race</Dropdown.Header>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'hispanic')}}>Hispanic</Dropdown.Item>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'black')}}>African American or Black</Dropdown.Item>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'white')}}>Caucasian or White</Dropdown.Item>
+                </DropdownButton>
+                <Chart
+                    ref={chartRef}
+                    options={props.options}
+                    type='pie'
+                    // onClick={onClickVotingPlans}
+                    data={props.dataset}
+                    plugins={[ChartDataLabels]}
+                />
+        </div>
+    )
+
+}
+
+export default PieChart
