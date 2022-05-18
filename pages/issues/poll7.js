@@ -1,20 +1,9 @@
-import { useRouter } from 'next/router'
 import styles from '../../styles/Home.module.css'
 import getMaster from '../../lib/master'
-import { memes, simplePie, countUnique, getColumn, printDatasetAtEvent, printElementAtEvent, printElementsAtEvent} from '../../lib/myfuncs'
-import { useEffect, useState, MouseEvent, useRef } from 'react'
-import {
-    Chart,
-    getDatasetAtEvent,
-    getElementAtEvent,
-    getElementsAtEvent,
-} from 'react-chartjs-2';
+import { memes, simplePie} from '../../lib/myfuncs'
 import 'chart.js/auto';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { getClientBuildManifest } from 'next/dist/client/route-loader';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton'
 import PieChart from '../../components/PieChart'
+import BarChart from '../../components/BarChart'
 
 export async function getStaticProps() {
     const master = await getMaster()
@@ -22,191 +11,6 @@ export async function getStaticProps() {
 }
   
 export default function Poll7({master}) {
-    const router = useRouter()
-    const chartRefChallenges = useRef(null)
-    const chartRefHealth = useRef(null)
-    const chartRefExperiences = useRef(null)
-    const chartRefCOL = useRef(null)
-    const chartRefProblems = useRef(null)
-    const chartRefAHP = useRef(null)
-    const chartRefLife = useRef(null)
-    const chartRefFinance = useRef(null)
-    const chartRefStatement = useRef(null)
-    const chartRefCharity = useRef(null)
-    const chartRefVolunteer = useRef(null)
-    const chartRefDonations = useRef(null)
-    const chartRefLP = useRef(null)
-    const chartRefFP = useRef(null)
-    const chartRefS = useRef(null)
-
-
-const onClickChallenges = (event) => {
-    const { current: chart } = chartRefChallenges;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-
-  const onClickHealth = (event) => {
-    const { current: chart } = chartRefHealth;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-
-  const onClickExperiences = (event) => {
-    const { current: chart } = chartRefExperiences;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-
-  const onClickCOL = (event) => {
-    const { current: chart } = chartRefCOL;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-
-  const onClickProblems = (event, filter) => {
-    const { current: chart } = chartRefProblems;
-    if (!chart) {
-      return;
-    }
-    let sets = memes(questions7, master[6].data, filter)
-    //Combining Very Serious and Serious into one data point
-    var newSet = []
-    for(let i = 0; i < sets[0].length; i++) {
-        newSet.push(sets[0][i] + sets[1][i])
-    }
-
-    chart.config.data.datasets[0].data = newSet
-    chart.config.data.datasets[1].data = sets[2]
-    chart.config.data.datasets[2].data = sets[3]
-    chart.config.data.datasets[3].data = sets[4]
-
-
-
-    console.log(chart.config.data.datasets[0].data)
-    chart.update()
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-
-  const onClickAHP = (event, filter) => {
-    const { current: chart } = chartRefAHP;
-    if (!chart) {
-      return;
-    }
-    let set = simplePie('Q4', master[6].data, filter)
-    chart.config.data.datasets[0].data = [
-        set[0] + set[1] + set[2],
-        set[3] + set[4] + set[5],
-        set[6]
-    ]
-    console.log(chart.config.data.datasets[0].data)
-    chart.update()
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-  const onClickLife = (event) => {
-    const { current: chart } = chartRefLife;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-  const onClickFinance = (event) => {
-    const { current: chart } = chartRefFinance;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-  const onClickStatement = (event) => {
-    const { current: chart } = chartRefStatement;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-  const onClickCharity = (event) => {
-    const { current: chart } = chartRefCharity;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-  const onClickVolunteer = (event) => {
-    const { current: chart } = chartRefVolunteer;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-  const onClickDonations = (event) => {
-    const { current: chart } = chartRefDonations;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-  const onClickLP = (event) => {
-    const { current: chart } = chartRefLP;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-  const onClickFP = (event) => {
-    const { current: chart } = chartRefFP;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-  const onClickS = (event) => {
-    const { current: chart } = chartRefS;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-  
-  
-
  
     let setsVotingPlans = simplePie('Q3', master[6].data, 'none')
     let setsAHP = simplePie('Q4', master[6].data, 'none')
@@ -229,7 +33,7 @@ const onClickChallenges = (event) => {
         'CRIME'
     ]
     let setsProblems = memes(questions7, master[6].data, 'none')
-    let questions8LP = [
+    var questions8LP = [
         'Q8C',
         'Q8E',
         'Q8K',
@@ -238,7 +42,24 @@ const onClickChallenges = (event) => {
         'Q8P'
     ]
     let setsLP = memes(questions8LP, master[6].data)
-
+    var questions8FP = [
+        'Q8B',
+        'Q8D',
+        'Q8G',
+        'Q8J',
+        'Q8N'
+    ]
+    let setsFP = memes(questions8FP, master[6].data, 'none')
+    var questions8S = [
+        'Q8A',
+        'Q8F',
+        'Q8H',
+        'Q8I',
+        'Q8M'
+    ]
+    let setsS = memes(questions8S, master[6].data, 'none')
+    let setsLife = simplePie('Q10', master[6].data, 'none')
+    let setsFinance = simplePie('Q11', master[6].data, 'none')
     var questions12 = [
         'Q12A',
         'Q12B',
@@ -246,8 +67,6 @@ const onClickChallenges = (event) => {
         'Q12D',
         'Q12E',
     ]
-  
-
     let setsExperiences = memes(questions12, master[6].data)
     var questions13 = [
         'Q13A',
@@ -260,6 +79,7 @@ const onClickChallenges = (event) => {
         'Q13H'
     ]
     let setsCOL = memes(questions13, master[6].data)
+    let setsStatement = simplePie('Q14', master[6].data)
     var questions15 = [
         'Q15A',
         'Q15B',
@@ -284,6 +104,9 @@ const onClickChallenges = (event) => {
         'Q16M'
     ]
     let setsHealth = memes(questions16, master[6].data)
+    let setsCharity = simplePie('Q17', master[6].data)
+    let setsVolunteer = simplePie('Q18', master[6].data)
+    let setsDonations = simplePie('Q20', master[6].data)
 
     var dataVotingPlans = {
         labels: [
@@ -340,7 +163,11 @@ const onClickChallenges = (event) => {
         datasets: [
             {
                 label: "",
-                data: [47, 48, 5],
+                data: [
+                    setsLife[7] + setsLife[8] + setsLife[9] + setsLife[10],
+                    setsLife[5] + setsLife[6],
+                    setsLife[0] + setsLife[1] + setsLife[2] + setsLife[3] + setsLife[4]
+                ],
                 backgroundColor: [
                     'rgb(12, 38, 96)',
                     'rgb(196, 99, 0)',
@@ -361,7 +188,7 @@ const onClickChallenges = (event) => {
         datasets: [
             {
                 label: "",
-                data: [35, 35, 18, 11, 1],
+                data: setsFinance,
                 backgroundColor: [
                     'rgb(12, 38, 96)',
                     'rgb(196, 99, 0)',
@@ -382,7 +209,11 @@ const onClickChallenges = (event) => {
         datasets: [ 
             {
                 label: "",
-                data: [84, 11, 5],
+                data: [
+                    setsStatement[0] + setsStatement[1],
+                    setsStatement[2] + setsStatement[3],
+                    setsStatement[4]
+                ],
                 backgroundColor: [
                     'rgb(12, 38, 96)',
                     'rgb(196, 99, 0)',
@@ -401,7 +232,7 @@ const onClickChallenges = (event) => {
         datasets: [ 
             {
                 label: "",
-                data: [72, 26, 2],
+                data: setsCharity,
                 backgroundColor: [
                     'rgb(12, 38, 96)',
                     'rgb(196, 99, 0)',
@@ -410,7 +241,6 @@ const onClickChallenges = (event) => {
             }
         ]
     }
-
 
     var dataVolunteer = {
         labels: [
@@ -421,7 +251,7 @@ const onClickChallenges = (event) => {
         datasets: [ 
             {
                 label: "",
-                data: [54, 43, 4],
+                data: setsVolunteer,
                 backgroundColor: [
                     'rgb(12, 38, 96)',
                     'rgb(196, 99, 0)',
@@ -440,7 +270,7 @@ const onClickChallenges = (event) => {
         datasets: [ 
             {
                 label: "",
-                data: [78, 16, 6],
+                data: setsDonations,
                 backgroundColor: [
                     'rgb(12, 38, 96)',
                     'rgb(196, 99, 0)',
@@ -547,29 +377,29 @@ const onClickChallenges = (event) => {
         datasets: [
             {
                 label: 'Local Governmnet',
-                data: [16, 6, 6, 5, 11],
+                data: setsFP[0],
                 backgroundColor: 'rgb(12, 38, 96)',
             },
             {
               label: 'Texas Government',
-              data: [28, 22, 12, 16, 21],
+              data: setsFP[1],
               backgroundColor: 'rgb(196, 99, 0)',
             },
             {
               label: 'Federal Government',
-              data: [50, 66, 55, 73, 60],
+              data: setsFP[2],
               backgroundColor: 'rgb(66, 116, 200)',
-          },
-          {
+            },
+            {
               label: 'Not a Government Problem',
-              data: [4, 4, 22, 3, 5],
+              data: setsFP[3],
               backgroundColor: 'rgb(233, 168, 34)',
-          },
-          {
+            },
+            {
             label: 'I do not know',
-            data: [2, 2, 5, 3, 3],
+            data: setsFP[4],
             backgroundColor: 'rgb(235, 223, 203)',
-          }
+            }
         ]
     }
 
@@ -584,36 +414,36 @@ const onClickChallenges = (event) => {
         datasets: [
             {
                 label: 'Local Governmnet',
-                data: [31, 36, 23, 43, 38],
+                data: setsS[0],
                 backgroundColor: 'rgb(12, 38, 96)',
             },
             {
               label: 'Texas Government',
-              data: [36, 29, 41, 25, 24],
+              data: setsS[1],
               backgroundColor: 'rgb(196, 99, 0)',
             },
             {
               label: 'Federal Government',
-              data: [24, 18, 26, 10, 12],
+              data: setsS[2],
               backgroundColor: 'rgb(66, 116, 200)',
           },
           {
               label: 'Not a Government Problem',
-              data: [6, 11, 8, 18, 20],
+              data: setsS[3],
               backgroundColor: 'rgb(233, 168, 34)',
           },
           {
             label: 'I do not know',
-            data: [3, 6, 3, 5, 5],
+            data: setsS[4],
             backgroundColor: 'rgb(235, 223, 203)',
           }
         ]
     }
-    
-    // var newSetExperiences = []
-    // for(let i = 0; i < setsHealth[0].length; i++) {
-    //     newSetExperiences.push(setsHealth[0][i] + setsHealth[1][i])
-    // }
+    //Combining 2 fields into one data point
+    var newSetE = []
+    for(let i = 0; i < setsExperiences[0].length; i++) {
+        newSetE.push(setsExperiences[0][i] + setsExperiences[1][i])
+    }
     var dataExperiences = {
         labels: [
             'Skipped meals because you couldn’t afford food',
@@ -625,17 +455,17 @@ const onClickChallenges = (event) => {
         datasets: [
             {
                 label: 'Yes',
-                data: [20, 53, 29, 22, 57],
+                data: newSetE,
                 backgroundColor: 'rgb(12, 38, 96)',
             },
             {
               label: 'No',
-              data: [78, 45, 69, 66, 39],
+              data: setsExperiences[2],
               backgroundColor: 'rgb(196, 99, 0)',
           },
           {
               label: 'I do not know',
-              data: [2,2,2,12,3],
+              data: setsExperiences[3],
               backgroundColor: 'rgb(66, 116, 200)',
           }
         ]
@@ -681,7 +511,7 @@ const onClickChallenges = (event) => {
         ]
     }
 
-      var dataChallenges = {
+    var dataChallenges = {
           labels: [
               'Finding affordable childcare',
               'Finding a job that pays sufficiently or gives enough hours',
@@ -711,14 +541,15 @@ const onClickChallenges = (event) => {
                 backgroundColor: 'rgb(233, 168, 34)'
             }
           ]
-      }
+    }
+    //Combining 2 fields into one data point
 
     var newSetHealth = []
     for(let i = 0; i < setsHealth[0].length; i++) {
         newSetHealth.push(setsHealth[0][i] + setsHealth[1][i])
     }
 
-      var dataHealth = {
+    var dataHealth = {
         labels: [
             'Lack of access to high-quality medical care',
             'Having a low income',
@@ -891,7 +722,6 @@ const onClickChallenges = (event) => {
         },
     }
 
-
     return(
 
         <div className={styles.grid}>
@@ -901,218 +731,133 @@ const onClickChallenges = (event) => {
                 masterDataset={master[6].data}
                 dataset={dataVotingPlans}
                 options={pieOptions}
+                reshape="none"
             /> 
-            <div className={styles.card}>
-                <h3>Would you vote yes or no on a 150 million dollar City of San Antonio bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?</h3>
-                <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Demographics
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <Dropdown.Item onClick={(e) => onClickAHP(e, 'none')}>All</Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Header>Gender</Dropdown.Header>
-                        <Dropdown.Item onClick={(e) => onClickAHP(e, 'male')}>Male</Dropdown.Item>
-                        <Dropdown.Item onClick={(e) => onClickAHP(e, 'female')}>Female</Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Header>Race</Dropdown.Header>
-                        <Dropdown.Item onClick={(e) => onClickAHP(e, 'hispanic')}>Hispanic</Dropdown.Item>
-                        <Dropdown.Item onClick={(e) => onClickAHP(e, 'black')}>African American or Black</Dropdown.Item>
-                        <Dropdown.Item onClick={(e) => onClickAHP(e, 'white')}>Caucasian or White</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-                <Chart
-                    ref={chartRefAHP}
-                    options={pieOptions}
-                    type='pie'
-                    // onClick={onClickAHP}
-                    data={dataAHP}
-                    plugins={[ChartDataLabels]}
-                />
-            </div>
-        
-            <div className={styles.chart}>
-                <h3>Some say these issues are problems in the greater San Antonio area. Do you think it&apos;s a serious problem, somewhat serious problem or not a serious problem?</h3>
-                <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Demographics
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <Dropdown.Item onClick={(e) => onClickProblems(e, 'none')}>All</Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Header>Gender</Dropdown.Header>
-                        <Dropdown.Item onClick={(e) => onClickProblems(e, 'male')}>Male</Dropdown.Item>
-                        <Dropdown.Item onClick={(e) => onClickProblems(e, 'female')}>Female</Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Header>Race</Dropdown.Header>
-                        <Dropdown.Item onClick={(e) => onClickProblems(e, 'hispanic')}>Hispanic</Dropdown.Item>
-                        <Dropdown.Item onClick={(e) => onClickProblems(e, 'black')}>African American or Black</Dropdown.Item>
-                        <Dropdown.Item onClick={(e) => onClickProblems(e, 'white')}>Caucasian or White</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-                <Chart 
-                    ref={chartRefProblems}
-                    options={barOptions_stacked}
-                    type='bar'
-                    // onClick={onClickProblems}
-                    data={dataProblems} 
-                    plugins={[ChartDataLabels]}
-
-                />
-            </div>
+            <PieChart
+                title="Would you vote yes or no on a 150 million dollar City of San Antonio bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?"
+                column="Q4"
+                masterDataset={master[6].data}
+                dataset={dataAHP}
+                options={pieOptions}
+                reshape="ahp"
+            />
+            <BarChart
+                title="Some say these issues are problems in the greater San Antonio area. Do you think it's a serious problem, somewhat serious problem or not a serious problem?"               
+                columns={questions7}
+                masterDataset={master[6].data}
+                dataset={dataProblems}
+                options={barOptions_stacked}
+                reshape="problems"
+            />
             <div>
                 <h2>For the following 3 charts, respondents were asked:  Which government level do you think should take the lead in addressing the stated issue?</h2>
             </div>
-            <div className={styles.chart}>
-                <h3>Local Priorities</h3>
-                <Chart 
-                    ref={chartRefLP}
-                    options={barOptions_stacked}
-                    type='bar'
-                    // onClick={onClickLP}
-                    data={dataLP} 
-                    plugins={[ChartDataLabels]}
-
-                />
-            </div>
-            <div className={styles.chart}>
-                <h3>Federal Priorities</h3>
-                <Chart 
-                    ref={chartRefFP}
-                    options={barOptions_stacked}
-                    type='bar'
-                    onClick={onClickFP}
-                    data={dataFP} 
-                    plugins={[ChartDataLabels]}
-                />
-            </div>
-            <div className={styles.chart}>
-                <h3>Split on which level of government should lead</h3>
-                <Chart 
-                    ref={chartRefS}
-                    options={barOptions_stacked}
-                    type='bar'
-                    onClick={onClickS}
-                    data={dataS}
-                    plugins={[ChartDataLabels]}
-
-                />
-            </div>
-            <div className={styles.card}>
-                <h3>The Cantril Self-Anchoring Scale is a tool used to assess the well-being of a population by asking respondents to rate where their life stands now, and where they think it will be in five years, using a hypothetical ten-point “ladder” scale. By combining a respondents rating we are able able to identify if people feel they are Thriving, Struggling, or Suffering.</h3>
-                <Chart 
-                    ref={chartRefLife}
-                    options={pieOptions}
-                    type='pie'
-                    onClick={onClickLife}
-                    data={dataLife}
-                    plugins={[ChartDataLabels]}
-                />
-            </div>
-            <div className={styles.card}>
-                <h3>How would you describe your current financial situation?</h3>
-                <Chart 
-                    ref={chartRefFinance}
-                    options={pieOptions}
-                    type='pie'
-                    onClick={onClickFinance}
-                    data={dataFinance} 
-                    plugins={[ChartDataLabels]}
-                />
-            </div>
-            <div className={styles.chart}>
-                <h3>Have you experienced any of the following over the last 12 months?</h3>
-                <Chart 
-                    ref={chartRefExperiences}
-                    options={barOptions_stacked}
-                    type='bar'
-                    onClick={onClickExperiences}
-                    data={dataExperiences}
-                    plugins={[ChartDataLabels]}
-                />
-            </div>
-            <div className={styles.chart}>
-                <h3>Do you think these things contribute to the rising cost of living in Bexar County?</h3>
-                <Chart 
-                    ref={chartRefCOL}
-                    options={barOptions_stacked}
-                    type='bar'
-                    onClick={onClickCOL}
-                    data={dataCOL}
-                    plugins={[ChartDataLabels]}
-                />
-            </div>
-            <div className={styles.card}>
-                <h3>Do you agree or disagree with the following statement &quot;Having reliable, high quality child care for young children is crucial for parents to be able to work?&quot;</h3>
-                <Chart 
-                    ref={chartRefStatement}
-                    options={pieOptions}
-                    type='pie'
-                    onClick={onClickStatement}
-                    data={dataStatement} 
-                    plugins={[ChartDataLabels]}
-
-                />
-            </div>
-            <div className={styles.chart}>
-                <h3>What do you think is a challenge when looking for a job?</h3>
-                <Chart 
-                    ref={chartRefChallenges}
-                    options={barOptions_stacked}
-                    type='bar'
-                    onClick={onClickChallenges}
-                    data={dataChallenges}
-                    plugins={[ChartDataLabels]}
-                />
-            </div>
-            <div className={styles.chart}>
-                <h3>How important do you think each of the following factors are to a person&apos;s health?</h3>
-                <Chart 
-                    ref={chartRefHealth}
-                    options={barOptions_stacked}
-                    type='bar'
-                    onClick={onClickHealth}
-                    data={dataHealth}
-                    plugins={[ChartDataLabels]}
-                />
-            </div>
-            <div className={styles.card}>
-                <h3>Have you provided any monetary support to a charitable or non-profit organization in the last year?</h3>
-                <Chart 
-                    ref={chartRefCharity}
-                    options={pieOptions}
-                    type='pie'
-                    onClick={onClickCharity}
-                    data={dataCharity}
-                    plugins={[ChartDataLabels]}
-                />
-            </div>
-            <div className={styles.card}>
-                <h3>Have you or anyone in your household provided volunteer support to a charitable or non-profit organization in the last year?</h3>
-                <Chart 
-                    ref={chartRefVolunteer}
-                    options={pieOptions}
-                    type='pie'
-                    onClick={onClickVolunteer}
-                    data={dataVolunteer}
-                    plugins={[ChartDataLabels]}
-
-                />
-            </div>
-            <div className={styles.card}>
-                <h3>Were some or all of your charitable donations in 2021 benefiting a community in Bexar County?</h3>
-                <Chart 
-                    ref={chartRefDonations}
-                    options={pieOptions}
-                    type='pie'
-                    onClick={onClickDonations}
-                    data={dataDonations} 
-                    plugins={[ChartDataLabels]}
-
-                /> 
-            </div>
+            <BarChart
+                title="Local Priorities"
+                columns={questions8LP}
+                masterDataset={master[6].data}
+                dataset={dataLP}
+                options={barOptions_stacked}
+                reshape="lp"
+            />
+           <BarChart
+                title="Federal Priorities"
+                columns={questions8FP}
+                masterDataset={master[6].data}
+                dataset={dataFP}
+                options={barOptions_stacked}
+                reshape="fp"
+            />
+            <BarChart
+                title="Split on which level of government should lead"
+                columns={questions8S}
+                masterDataset={master[6].data}
+                dataset={dataS}
+                options={barOptions_stacked}
+                reshape="s"
+            />
+            <PieChart
+                title="The Cantril Self-Anchoring Scale is a tool used to assess the well-being of a population by asking respondents to rate where their life stands now, and where they think it will be in five years, using a hypothetical ten-point “ladder” scale. By combining a respondents rating we are able able to identify if people feel they are Thriving, Struggling, or Suffering."
+                column="Q10"
+                masterDataset={master[6].data}
+                dataset={dataLife}
+                options={pieOptions}
+                reshape="life"
+            />
+                
+            <PieChart
+                title="How would you describe your current financial situation?"
+                column="Q11"
+                masterDataset={master[6].data}
+                dataset={dataFinance}
+                options={pieOptions}
+                reshape="none"
+            />
+            
+            <BarChart
+                title="Have you experienced any of the following over the last 12 months?"
+                columns={questions12}
+                masterDataset={master[6].data}
+                dataset={dataExperiences}
+                options={barOptions_stacked}
+                reshape="experiences"
+            />
+             <BarChart
+                title="Do you think these things contribute to the rising cost of living in Bexar County?"
+                columns={questions13}
+                masterDataset={master[6].data}
+                dataset={dataCOL}
+                options={barOptions_stacked}
+                reshape="lp"
+            />
+            <PieChart
+                title='Do you agree or disagree with the following statement "Having reliable, high quality child care for young children is crucial for parents to be able to work?"'
+                column="Q11"
+                masterDataset={master[6].data}
+                dataset={dataStatement}
+                options={pieOptions}
+                reshape="statement"
+            />
+            <BarChart
+                title="What do you think is a challenge when looking for a job?"
+                columns={questions15}
+                masterDataset={master[6].data}
+                dataset={dataChallenges}
+                options={barOptions_stacked}
+                reshape="challenges"
+            />        
+            <BarChart
+                title="How important do you think each of the following factors are to a person's health?"
+                columns={questions16}
+                masterDataset={master[6].data}
+                dataset={dataHealth}
+                options={barOptions_stacked}
+                reshape="health"
+            />
+            <PieChart
+                title="Have you provided any monetary support to a charitable or non-profit organization in the last year?"
+                column="Q17"
+                masterDataset={master[6].data}
+                dataset={dataCharity}
+                options={pieOptions}
+                reshape="none"
+            />
+            <PieChart
+                title="Have you or anyone in your household provided volunteer support to a charitable or non-profit organization in the last year?"
+                column="Q18"
+                masterDataset={master[6].data}
+                dataset={dataVolunteer}
+                options={pieOptions}
+                reshape="none"
+            />
+            <PieChart
+                title="Were some or all of your charitable donations in 2021 benefiting a community in Bexar County?"
+                column="Q20"
+                masterDataset={master[6].data}
+                dataset={dataDonations}
+                options={pieOptions}
+                reshape="none"
+            />
         </div>
     )
-
-
   }

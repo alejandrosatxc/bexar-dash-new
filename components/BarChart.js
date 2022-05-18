@@ -13,7 +13,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 import styles from '../styles/Home.module.css'
 
-const PieChart = (props) => {
+const BarChart = (props) => {
 
     const [dropDownTitle, setDropDownTitle] = useState("Demographics: All")
     const chartRef = useRef(null)
@@ -25,33 +25,57 @@ const PieChart = (props) => {
           return;
         }
         //Access the chart's data object, and render a new chart using the filtered data.
+        let sets = memes(props.columns, props.masterDataset, filter)
         switch(props.reshape) {
             case 'none':
-                chart.config.data.datasets[0].data = simplePie(props.column, props.masterDataset, filter)
+                chart.config.data.datasets[0].data = memes(props.columns, props.masterDataset, filter)
                 break;
-            case 'ahp':
-                var set = simplePie(props.column, props.masterDataset, filter)
-                chart.config.data.datasets[0].data = [
-                    set[0] + set[1] + set[2],
-                    set[3] + set[4] + set[5],
-                    set[6]
-                ]
+            case 'problems':
+                var newSet = []
+                for(let i = 0; i < sets[0].length; i++) {
+                    newSet.push(sets[0][i] + sets[1][i])
+                }
+                chart.config.data.datasets[0].data = newSet
+                chart.config.data.datasets[1].data = sets[2]
+                chart.config.data.datasets[2].data = sets[3]
+                chart.config.data.datasets[3].data = sets[4]
                 break;
-            case 'life':
-                var set = simplePie(props.column, props.masterDataset, filter)
-                chart.config.data.datasets[0].data = [
-                    set[7] + set[8] + set[9] + set[10],
-                    set[5] + set[6],
-                    set[0] + set[1] + set[2] + set[3] + set[4]
-                ]
+            case 'experiences':
+                var newSet = []
+                for(let i = 0; i < sets[0].length; i++) {
+                    newSet.push(sets[0][i] + sets[1][i])
+                }
+                chart.config.data.datasets[0].data = newSet
+                chart.config.data.datasets[1].data = sets[2]
+                chart.config.data.datasets[2].data = sets[3]
                 break;
-            case 'statement':
-                var set = simplePie(props.column, props.masterDataset, filter)
-                chart.config.data.datasets[0].data = [
-                    set[0] + set[1],
-                    set[2] + set[3],
-                    set[4]
-                ]
+            case 'challenges':
+                chart.config.data.datasets[0].data = sets[0]
+                chart.config.data.datasets[1].data = sets[1]
+                chart.config.data.datasets[2].data = sets[2]
+                chart.config.data.datasets[3].data = sets[3]
+                break;
+            case 'lp':
+            case 'fp':
+            case 's':
+                chart.config.data.datasets[0].data = sets[0]
+                chart.config.data.datasets[1].data = sets[1]
+                chart.config.data.datasets[2].data = sets[2]
+                chart.config.data.datasets[3].data = sets[3]
+                chart.config.data.datasets[4].data = sets[4]
+                break;
+            case 'health':
+                var newSet = []
+                for(let i = 0; i < sets[0].length; i++) {
+                    newSet.push(sets[0][i] + sets[1][i])
+                }
+                chart.config.data.datasets[0].data = newSet
+                chart.config.data.datasets[1].data = sets[2]
+                chart.config.data.datasets[2].data = sets[3]
+                chart.config.data.datasets[3].data = sets[4]
+                chart.config.data.datasets[4].data = sets[5]
+                break;
+            default:
                 break;
 
         }
@@ -64,7 +88,7 @@ const PieChart = (props) => {
     }
 
     return(
-        <div className={styles.card}>
+        <div className={styles.chart}>
             <h3>{props.title}</h3>
             <DropdownButton id="dropdown-basic-button" title={dropDownTitle}>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'none')}}>All</Dropdown.Item>
@@ -81,7 +105,7 @@ const PieChart = (props) => {
                 <Chart
                     ref={chartRef}
                     options={props.options}
-                    type='pie'
+                    type='bar'
                     // onClick={onClickVotingPlans}
                     data={props.dataset}
                     plugins={[ChartDataLabels]}
@@ -91,4 +115,4 @@ const PieChart = (props) => {
 
 }
 
-export default PieChart
+export default BarChart
