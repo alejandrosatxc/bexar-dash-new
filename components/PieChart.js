@@ -1,7 +1,7 @@
-import { useEffect, useState, MouseEvent, useRef } from 'react'
+import { useState, useRef } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton'
-import { memes, simplePie, countUnique, getColumn, printDatasetAtEvent, printElementAtEvent, printElementsAtEvent} from '../lib/myfuncs'
+import { simplePie, printDatasetAtEvent, printElementAtEvent, printElementsAtEvent} from '../lib/myfuncs'
 import {
     Chart,
     getDatasetAtEvent,
@@ -82,7 +82,6 @@ const PieChart = (props) => {
                     ref={chartRef}
                     options={props.options}
                     type='pie'
-                    // onClick={onClickVotingPlans}
                     data={props.dataset}
                     plugins={[ChartDataLabels]}
                 />

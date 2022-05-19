@@ -1,7 +1,7 @@
 import styles from '../../styles/Home.module.css'
 import getMaster from '../../lib/master'
 import PieChart from '../../components/PieChart'
-import { memes, simplePie, countUnique, getColumn, printDatasetAtEvent, printElementAtEvent, printElementsAtEvent} from '../../lib/myfuncs'
+import { memes, simplePie } from '../../lib/myfuncs'
 
 
 export async function getStaticProps() {
@@ -127,16 +127,16 @@ export default function test({master}) {
                 dataset={dataVotingPlans}
                 options={pieOptions}
             />   
-             {/* <PieChart
+            <PieChart
                 title="Would you vote yes or no on a 150 million dollar City of San Antonio bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?"
                 column="Q4"
                 masterDataset={master[6].data}
                 dataset={dataAHP}
                 options={pieOptions}
                 dataFunction={() => {
-                    
-                }}
-            />                 */}
+                
+            }}
+        />                
         </div>
     )
 }

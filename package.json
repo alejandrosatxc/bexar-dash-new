@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@observablehq/plot": "^0.4.2",
     "bootstrap": "^5.1.3",
     "chart.js": "^3.7.1",
     "chartjs-plugin-datalabels": "^2.0.0",

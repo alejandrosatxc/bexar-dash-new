@@ -3,14 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from '../styles/Home.module.css'
 import Head from 'next/head'
 import Image from 'next/image'
-import ReactDOM from 'react-dom';
 import Button from 'react-bootstrap/Button'
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton'
 import Navbar from 'react-bootstrap/Navbar'
 import { Container } from 'react-bootstrap';
-
-
 
 function MyApp({ Component, pageProps }) {
   return (
