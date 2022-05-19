@@ -77,6 +77,11 @@ const PieChart = (props) => {
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'hispanic')}}>Hispanic</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'black')}}>African American or Black</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'white')}}>Caucasian or White</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Header>Party</Dropdown.Header>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'democrat')}}>Democrat</Dropdown.Item>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'republican')}}>Republican</Dropdown.Item>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'independent')}}>Independent</Dropdown.Item>
                 </DropdownButton>
                 <Chart
                     ref={chartRef}
