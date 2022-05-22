@@ -11,14 +11,7 @@ function MyApp({ Component, pageProps }) {
   return (
     
     <div className={styles.container}>
-      <style type="text/css">
-        {`
-        .nav-light {
-          background-color: #ffffff;
-        }
-        `}
-      </style>
-      <Navbar bg='white' variant='light' sticky='top'>
+      <Navbar className={styles.nav} sticky='top'>
           <Container>
             <Navbar.Brand>
             <a
