@@ -79,6 +79,12 @@
   align-items: center;
 }
 
+.poll7 {
+  background-color: #4274C8;
+  color: white;
+  margin: 10px;
+}
+
 .grid {
   display: flex;
   align-items: center;

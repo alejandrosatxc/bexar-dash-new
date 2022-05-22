@@ -66,19 +66,12 @@ function MyApp({ Component, pageProps }) {
           background-color: #E9A822;
           color: white;
           margin: 10px;
-        }
-
-        .btn-poll7 {
-          background-color: #4274C8;
-          color: white;
-          margin: 10px;
-        }
-
+        }  
         
         `}
       </style>
         <div className={styles.menuButtons}>
-          <Button variant="poll7" href="/issues/poll7">NEW - Poll 7 Results!</Button>
+          <Button className={styles.poll7} href="/issues/poll7">NEW - Poll 7 Results!</Button>
           <Button variant="localgovernment" href="/issues/localgovernment">Local Government</Button>
           <Button variant="electedofficials" href="/issues/electedofficials">Elected Officials</Button>
         </div>
