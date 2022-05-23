@@ -6,7 +6,7 @@ import PieChart from '../../components/PieChart'
 import BarChart from '../../components/BarChart'
 
 //This is a pull request test
-
+//Second line for a test
 export async function getStaticProps() {
     const master = await getMaster()
     return({props: {master}})
