@@ -89,7 +89,16 @@
   color: white;
   margin: 10px;
 }
-
+.localgov{
+  background-color: #C46300;
+  color: white;
+  margin: 10px;
+}
+.electedofc{
+  background-color: #E9A822;
+  color: white;
+  margin: 10px;
+}
 .grid {
   display: flex;
   align-items: center;
