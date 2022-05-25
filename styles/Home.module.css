@@ -101,11 +101,18 @@
 }
 .grid {
   display: flex;
-  align-items: center;
+  align-items: center baseline safe center;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 95%;
+  max-width: 95%;  
+  flex-flow: row wrap;
+  border:1px solid black;
+
+}
+.graph{
+  border:1px solid black;
+
 }
 
 .card {
@@ -120,6 +127,9 @@
   background-color: white;
   position: relative;
   max-width: 44vw;
+  overflow: hidden;
+  flex-basis: auto;
+  
 }
 
 .chart {
@@ -134,9 +144,9 @@
   background-color: white;
   position: relative;
   width: 90%;
+  overflow: hidden
   /* overflow-x: auto; */
 }
-
 
 .card:hover,
 .card:focus,
@@ -180,6 +190,8 @@
   .grid {
     max-width: 95%;
     flex-direction: column;
+    flex-flow: row wrap;
+    flex-basis: auto;
     /* overflow-x: auto; */
   }
 
