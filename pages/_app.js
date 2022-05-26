@@ -49,9 +49,9 @@ function MyApp({ Component, pageProps }) {
 
       
         <div className={styles.menuButtons}>
-          <Button className={styles.poll7} href="/issues/poll7">NEW - Poll 7 Results!</Button>
-          <Button className={styles.localgov} href="/issues/localgovernment">Local Government</Button>
-          <Button className={styles.electedofc} href="/issues/electedofficials">Elected Officials</Button>
+          <Button className={styles.poll7} variant='poll7' href="/issues/poll7">NEW - Poll 7 Results!</Button>
+          <Button className={styles.localgov} variant='localgov' href="/issues/localgovernment">Local Government</Button>
+          <Button className={styles.electedofc} variant='electedofc' href="/issues/electedofficials">Elected Officials</Button>
         </div>
         <p className={styles.disclaimer}>This dashboard is currently formatted for viewing on desktop or laptop only. We will make it mobile friendly overtime.</p>
       <Component {...pageProps} />
