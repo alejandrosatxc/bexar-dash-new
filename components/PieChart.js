@@ -10,7 +10,6 @@ import {
 } from 'react-chartjs-2';
 import 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-
 import styles from '../styles/Home.module.css'
 
 const PieChart = (props) => {
@@ -82,17 +81,22 @@ const PieChart = (props) => {
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'democrat')}}>Democrat</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'republican')}}>Republican</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'independent')}}>Independent</Dropdown.Item>
+                    <Dropdown.Header>Income</Dropdown.Header>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'lowerclass')}}>$60,000 and under</Dropdown.Item>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'middleclass')}}>$60,001-$100,000</Dropdown.Item>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'upperclass')}}>$100,000+</Dropdown.Item>
                 </DropdownButton>
-                <Chart
-                    ref={chartRef}
-                    options={props.options}
-                    type='pie'
-                    data={props.dataset}
-                    plugins={[ChartDataLabels]}
-                />
+                <div className={styles.graph}>
+                    <Chart
+                        ref={chartRef}
+                        options={props.options}
+                        type='pie'
+                        data={props.dataset}
+                        plugins={[ChartDataLabels]}
+                    />
+                </div>
         </div>
     )
-
 }
 
 export default PieChart

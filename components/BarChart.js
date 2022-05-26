@@ -106,14 +106,18 @@ const BarChart = (props) => {
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'democrat')}}>Democrat</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'republican')}}>Republican</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'independent')}}>Independent</Dropdown.Item>
-                </DropdownButton>
-                <Chart
-                    ref={chartRef}
-                    options={props.options}
-                    type='bar'
-                    data={props.dataset}
-                    plugins={[ChartDataLabels]}
-                />
+                    <Dropdown.Header>Income</Dropdown.Header>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'lowerclass')}}>$60,000 and under</Dropdown.Item>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'middleclass')}}>$60,001-$100,000</Dropdown.Item>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'upperclass')}}>$100,000+</Dropdown.Item>
+            </DropdownButton>
+            <Chart
+                ref={chartRef}
+                options={props.options}
+                type='bar'
+                data={props.dataset}
+                plugins={[ChartDataLabels]}
+            />
         </div>
     )
 
