@@ -82,6 +82,12 @@ const PieChart = (props) => {
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'republican')}}>Republican</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'independent')}}>Independent</Dropdown.Item>
                     <Dropdown.Divider />
+                    <Dropdown.Header>Education</Dropdown.Header>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'highschool')}}>High School Graduate or less</Dropdown.Item>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'college_some')}}>Some College/vocational school</Dropdown.Item>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'college_4')}}>College 4 years</Dropdown.Item>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'postgrad')}}>Post-graduate work</Dropdown.Item>
+                    <Dropdown.Divider />
                     <Dropdown.Header>Income</Dropdown.Header>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'lowerclass')}}>$60,000 and under</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'middleclass')}}>$60,001-$100,000</Dropdown.Item>
@@ -92,6 +98,11 @@ const PieChart = (props) => {
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'age_adult')}}>35-49</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'age_old')}}>50-64</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'age_elder')}}>65+</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Header>Employment</Dropdown.Header>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'employed')}}>Employed</Dropdown.Item>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'unemployed')}}>Unemployed</Dropdown.Item>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'retired')}}>Retired</Dropdown.Item>
                 </DropdownButton>
                 <div className={styles.graph}>
                     <Chart
