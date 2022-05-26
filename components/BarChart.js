@@ -106,10 +106,17 @@ const BarChart = (props) => {
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'democrat')}}>Democrat</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'republican')}}>Republican</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'independent')}}>Independent</Dropdown.Item>
+                    <Dropdown.Divider />
                     <Dropdown.Header>Income</Dropdown.Header>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'lowerclass')}}>$60,000 and under</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'middleclass')}}>$60,001-$100,000</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'upperclass')}}>$100,000+</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Header>Age</Dropdown.Header>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'age_young')}}>18-34</Dropdown.Item>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'age_adult')}}>35-49</Dropdown.Item>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'age_old')}}>50-64</Dropdown.Item>
+                    <Dropdown.Item onClick={(e) => {renderChart(e, 'age_elder')}}>65+</Dropdown.Item>
             </DropdownButton>
             <Chart
                 ref={chartRef}
