@@ -92,7 +92,7 @@ const BarChart = (props) => {
             <style type="text/css">
             {`
                 .dropdown-menu {
-                    height: 300px;
+                    height: 350px;
                     overflow-y: scroll;
                 }   
             `}
