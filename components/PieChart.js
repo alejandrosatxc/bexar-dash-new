@@ -65,6 +65,14 @@ const PieChart = (props) => {
     return(
         <div className={styles.card}>
             <h3>{props.title}</h3>
+            <style type="text/css">
+            {`
+                .dropdown-menu {
+                    height: 300px;
+                    overflow-y: scroll;
+                }   
+            `}
+            </style>
             <DropdownButton id="dropdown-basic-button" title={dropDownTitle}>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'none')}}>All</Dropdown.Item>
                     <Dropdown.Divider />

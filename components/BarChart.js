@@ -89,6 +89,14 @@ const BarChart = (props) => {
 
     return(
         <div className={styles.chart}>
+            <style type="text/css">
+            {`
+                .dropdown-menu {
+                    height: 300px;
+                    overflow-y: scroll;
+                }   
+            `}
+            </style>
             <h3>{props.title}</h3>
             <DropdownButton id="dropdown-basic-button" title={dropDownTitle}>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'none')}}>All</Dropdown.Item>
