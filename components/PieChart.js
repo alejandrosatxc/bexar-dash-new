@@ -65,7 +65,9 @@ const PieChart = (props) => {
 
     return(
         <div className={styles.card}>
-            <h3>{props.title}</h3>
+           
+            <h3>{props.title}</h3> 
+            <br></br>
             <DropdownButton id="dropdown-basic-button" title={dropDownTitle}>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'none')}}>All</Dropdown.Item>
                     <Dropdown.Divider />
@@ -82,15 +84,21 @@ const PieChart = (props) => {
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'democrat')}}>Democrat</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'republican')}}>Republican</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'independent')}}>Independent</Dropdown.Item>
-                </DropdownButton>
-                <Chart
+                </DropdownButton> 
+                <div className={styles.graph}>
+               <Chart 
+                /*<Chart width={800} height={800}*/
+
                     ref={chartRef}
                     options={props.options}
                     type='pie'
                     data={props.dataset}
                     plugins={[ChartDataLabels]}
+                    //radius={1000}
                 />
-        </div>
+               </div> 
+                </div>
+        
     )
 
 }

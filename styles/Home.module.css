@@ -1,4 +1,4 @@
-.container {
+.container { /*background of page*/
   width: 100%;
   background-color: #f5f5f5;
 }
@@ -99,24 +99,34 @@
   color: white;
   margin: 10px;
 }
-.grid {
+.grid {  /*whole page with graphs*/
   display: flex;
   align-items: center baseline safe center;
+  flex-basis: auto;
+  /*align-items: center baseline safe center; */
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 95%;  
-  flex-flow: row wrap;
-  border:1px solid black;
+  /*flex-flow: row wrap;*/
+  /*border:5px solid pink;*/
 
 }
 .graph{
-  border:1px solid black;
-
+  /*border:5px solid yellow;*/
+  max-width: 44vw;
+  /*max-height: fit-content;*/
+  width: 700px;
+  height: 800px;
+   
 }
 
-.card {
-  margin: 1rem;
+.newQ{
+  text-align: left;
+  background-color:antiquewhite;
+}
+
+.card {   /*Background for pie-chart card*/
+  margin: 1rem; 
   padding: 1.5rem;
   text-align: center;
   color: inherit;
@@ -126,13 +136,14 @@
   transition: color 0.15s ease, border-color 0.15s ease;
   background-color: white;
   position: relative;
-  max-width: 44vw;
-  overflow: hidden;
-  flex-basis: auto;
-  
+  /*max-width: 44vw;*/
+  width: 40%;
+  overflow: hidden; 
+  flex-wrap: wrap;
 }
 
-.chart {
+.chart {           /*Background for bar-chart card*/
+  
   margin: 1rem;
   padding: 1.5rem;
   text-align: center;

@@ -89,7 +89,7 @@ const BarChart = (props) => {
 
     return(
         <div className={styles.chart}>
-            <h3>{props.title}</h3>
+            <h2>{props.title}</h2>
             <DropdownButton id="dropdown-basic-button" title={dropDownTitle}>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'none')}}>All</Dropdown.Item>
                     <Dropdown.Divider />
@@ -107,6 +107,7 @@ const BarChart = (props) => {
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'republican')}}>Republican</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'independent')}}>Independent</Dropdown.Item>
                 </DropdownButton>
+                
                 <Chart
                     ref={chartRef}
                     options={props.options}
