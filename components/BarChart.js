@@ -88,7 +88,7 @@ const BarChart = (props) => {
     }
 
     return(
-        <div className={styles.chart}>
+        <div className={styles.bar}>
             <style type="text/css">
             {`
                 .dropdown-menu {
@@ -137,6 +137,7 @@ const BarChart = (props) => {
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'unemployed')}}>Unemployed</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'retired')}}>Retired</Dropdown.Item>
             </DropdownButton>
+            <div>
             <Chart
                 ref={chartRef}
                 options={props.options}
@@ -144,6 +145,7 @@ const BarChart = (props) => {
                 data={props.dataset}
                 plugins={[ChartDataLabels]}
             />
+            </div>
         </div>
     )
 
