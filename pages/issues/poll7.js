@@ -4,7 +4,8 @@ import { memes, simplePie} from '../../lib/myfuncs'
 import 'chart.js/auto';
 import PieChart from '../../components/PieChart'
 import BarChart from '../../components/BarChart'
-import { Container } from 'react-bootstrap';
+
+import 'bootstrap/dist/css/bootstrap.css';
 //This is a pull request test
 //Second line for a test
 export async function getStaticProps() {
@@ -726,9 +727,9 @@ export default function Poll7({master}) {
     }
 
     return(
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12 col-md-6">
+<div className="container-fluid">
+  <div className="row">
+    <div className="col-12 col-md-6">
             <PieChart
                 title="How do you plan on voting in this year's elections?"
                 column="Q3"
@@ -738,8 +739,8 @@ export default function Poll7({master}) {
                 reshape="none"
             />
  </div>
- {/* <div class="w-100"></div> */}
- <div class="col-12 col-md-6">
+ {/* <divclassName="w-100"></div> */}
+ <div className="col-12 col-md-6">
             <PieChart
                 title="Would you vote yes or no on a 150 million dollar City of San Antonio bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?"
                 column="Q4"
@@ -751,8 +752,8 @@ export default function Poll7({master}) {
             </div>
             </div>
 
-    <div class="row">
-    <div class="col-12">
+    <div className="row">
+    <div className="col-12">
             <BarChart
                 title="Some say these issues are problems in the greater San Antonio area. Do you think it's a serious problem, somewhat serious problem or not a serious problem?"               
                 columns={questions7}
@@ -763,14 +764,14 @@ export default function Poll7({master}) {
             />
            </div></div>
 
-    <div class="row">
-    <div class="col-12">
+    <div className="row">
+    <div className="col-12">
         <h2>For the following 3 charts, respondents were asked:  Which government level do you think should take the lead in addressing the stated issue?</h2>
     </div> </div>
 
 
-    <div class="row">
-    <div class="col-12">
+    <div className="row">
+    <div className="col-12">
             <BarChart
                 title="Local Priorities"
                 columns={questions8LP}
@@ -781,8 +782,8 @@ export default function Poll7({master}) {
             />
             </div></div>
 
-    <div class="row">
-    <div class="col-12">
+    <div className="row">
+    <div className="col-12">
            <BarChart
                 title="Federal Priorities"
                 columns={questions8FP}
@@ -793,8 +794,8 @@ export default function Poll7({master}) {
             />
             </div>
             </div>
-    <div class="row">
-    <div class="col-12">
+    <div className="row">
+    <div className="col-12">
             <BarChart
                 title="Split on which level of government should lead"
                 columns={questions8S}
@@ -806,8 +807,8 @@ export default function Poll7({master}) {
 </div>
 </div>
 
-<div class="row">
-<div class="col-12 col-md-6">
+<div className="row">
+<div className="col-12 col-md-6">
 <PieChart
                 title="The Cantril Self-Anchoring Scale is a tool used to assess the well-being of a population by asking respondents to rate where their life stands now, and where they think it will be in five years, using a hypothetical ten-point “ladder” scale. By combining a respondents rating we are able able to identify if people feel they are Thriving, Struggling, or Suffering."
                 column="Q10"
@@ -817,7 +818,7 @@ export default function Poll7({master}) {
                 reshape="life"
             />
       </div>
-      <div class="col-12 col-md-6">
+      <div className="col-12 col-md-6">
             <PieChart
                 title="How would you describe your current financial situation?"
                 column="Q11"
@@ -830,8 +831,8 @@ export default function Poll7({master}) {
         </div>
 
 
-    <div class="row">
-    <div class="col-12">
+    <div className="row">
+    <div className="col-12">
         <BarChart
                 title="Have you experienced any of the following over the last 12 months?"
                 columns={questions12}
@@ -841,8 +842,8 @@ export default function Poll7({master}) {
                 reshape="experiences"
             />
             </div></div>
-    <div class="row">
-    <div class="col-12">
+    <div className="row">
+    <div className="col-12">
              <BarChart
                 title="Do you think these things contribute to the rising cost of living in Bexar County?"
                 columns={questions13}
@@ -854,8 +855,8 @@ export default function Poll7({master}) {
 
         </div></div>
 
-    <div class="row justify-content-md-center">
-    <div class="col-12 col-md-6">
+    <div className="row justify-content-md-center">
+    <div className="col-12 col-md-6">
         <PieChart
                 title='Do you agree or disagree with the following statement "Having reliable, high quality child care for young children is crucial for parents to be able to work?"'
                 column="Q11"
@@ -867,8 +868,8 @@ export default function Poll7({master}) {
     </div></div>
 
 
-    <div class="row">
-    <div class="col-12">
+    <div className="row">
+    <div className="col-12">
 <BarChart
                 title="What do you think is a challenge when looking for a job?"
                 columns={questions15}
@@ -880,8 +881,8 @@ export default function Poll7({master}) {
 
         </div></div>  
 
-    <div class="row">
-    <div class="col-12">
+    <div className="row">
+    <div className="col-12">
     
             <BarChart
                 title="How important do you think each of the following factors are to a person's health?"
@@ -893,8 +894,8 @@ export default function Poll7({master}) {
             />
     </div></div>  
 
-    <div class="row">
-    <div class="col-12 col-md-6">
+    <div className="row">
+    <div className="col-12 col-md-6">
     <PieChart
                 title="Have you provided any monetary support to a charitable or non-profit organization in the last year?"
                 column="Q17"
@@ -904,7 +905,7 @@ export default function Poll7({master}) {
                 reshape="none"
             />
             </div>
-    <div class="col-12 col-md-6">
+    <div className="col-12 col-md-6">
             <PieChart
                 title="Have you or anyone in your household provided volunteer support to a charitable or non-profit organization in the last year?"
                 column="Q18"
@@ -915,8 +916,8 @@ export default function Poll7({master}) {
             />
         </div></div>
 
-    <div class="row justify-content-md-center">
-    <div class="col-12 col-md-6">
+    <div className="row justify-content-md-center">
+    <div className="col-12 col-md-6">
         <PieChart
                 title="Were some or all of your charitable donations in 2021 benefiting a community in Bexar County?"
                 column="Q20"
