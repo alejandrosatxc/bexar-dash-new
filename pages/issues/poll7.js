@@ -611,6 +611,7 @@ export default function Poll7({master}) {
             y: {
                 stacked: true,
                 ticks: {
+                    autoSkip: false,
                     font: {
                         size: 14
                     }
@@ -725,7 +726,6 @@ export default function Poll7({master}) {
     }
 
     return(
-
         <div className={styles.grid}>
             <PieChart
                 title="How do you plan on voting in this year's elections?"
