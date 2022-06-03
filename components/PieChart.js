@@ -112,7 +112,7 @@ const PieChart = (props) => {
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'unemployed')}}>Unemployed</Dropdown.Item>
                     <Dropdown.Item onClick={(e) => {renderChart(e, 'retired')}}>Retired</Dropdown.Item>
                 </DropdownButton>
-                <div >
+                <div className={styles.piechart}>
                     <Chart
                         ref={chartRef}
                         options={props.options}

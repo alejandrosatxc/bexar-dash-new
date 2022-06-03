@@ -670,8 +670,8 @@ export default function Poll7({master}) {
     }
 
     var pieOptions = {
-        responsive: true,
-        // maintainAspectRatio: false,
+        //responsive: true,
+        maintainAspectRatio: false,
         plugins: {
             title: {
                 display: true,
