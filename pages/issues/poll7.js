@@ -5,7 +5,7 @@ import 'chart.js/auto';
 import PieChart from '../../components/PieChart'
 import BarChart from '../../components/BarChart'
 
-import 'bootstrap/dist/css/bootstrap.css';
+//import 'bootstrap/dist/css/bootstrap.css';
 //This is a pull request test
 //Second line for a test
 export async function getStaticProps() {
