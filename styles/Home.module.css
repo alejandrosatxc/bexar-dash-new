@@ -107,13 +107,16 @@
   flex-wrap: wrap;
   max-width: 95%;  
   flex-flow: row wrap;
-  border:1px solid black;
+/*  border:1px solid black; */
 
 }
+
+/*
 .graph{
   border:1px solid black;
 
 }
+*/
 
 .card {
   margin: 1rem;
