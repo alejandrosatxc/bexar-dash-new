@@ -89,92 +89,50 @@
   color: white;
   margin: 10px;
 }
-.localgov{
+
+.localgov {
   background-color: #C46300;
   color: white;
   margin: 10px;
 }
-.electedofc{
+
+.electedofc {
   background-color: #E9A822;
   color: white;
   margin: 10px;
 }
-.grid {
-  display: flex;
-  align-items: center baseline safe center;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 95%;  
-  flex-flow: row wrap;
-/*  border:1px solid black; */
 
-}
-
-/*
-.graph{
-  border:1px solid black;
-
-}
-*/
-
-.card {
+.pie {
   margin: 1rem;
   padding: 1.5rem;
   text-align: center;
   color: inherit;
   text-decoration: none;
-  border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   background-color: white;
-  position: relative;
-  max-width: 44vw;
-  overflow: hidden;
-  flex-basis: auto;
-  
 }
 
-.chart {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: center;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  background-color: white;
-  position: relative;
-  width: 90%;
-  overflow: hidden
-  /* overflow-x: auto; */
+.piechart {
+  height: 500px;
 }
 
-.pie{
-  border:1px solid black;
+.bar {
   margin: 1rem;
   padding: 1.5rem;
   text-align: center;
   color: inherit;
   text-decoration: none;
-  border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   background-color: white;
 }
-.bar{
-  border:1px solid black;
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: center;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  background-color: white;
+
+.barchart {
+  height: 800px;
+  width: auto;
 }
+
 .card:hover,
 .card:focus,
 .card:active {
@@ -206,24 +164,22 @@
 }
 
 
- @media handheld, screen and (max-width: 700px) {
+@media handheld,
+(max-width: 1000px) {
 
-   .container {
+  .container {
     width: 1000px;
-  }  
+  }
 
-  .piechart{
+  .piechart {
     height: 500px;
   }
-  /* .main {
-    width: 1000px;
-  } */
+
   .grid {
     max-width: 95%;
     flex-direction: column;
     flex-flow: row wrap;
     flex-basis: auto;
-    /* overflow-x: auto; */
   }
 
   .card {
@@ -238,7 +194,5 @@
     max-width: auto;
     overflow-x: auto;
     white-space: nowrap;
-    /* display: flex; */
-    /* overflow-x: auto; */
   }
-} 
+}

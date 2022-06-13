@@ -290,21 +290,21 @@ export default function Poll7({ master }) {
     }
     var dataProblems = {
         labels: [
-            'The cost of housing for middle- and working-class families',
+            ['The cost of housing for  middle-', 'and working-class families'],
             'Increasing cost of living',
-            'Inadequate public transit service options',
+            ['Inadequate public transit', 'service options'],
             'The cost of healthcare',
             'Homelessness',
-            'A lack of high-quality child care options for working families',
+            ['A lack of high-quality child care', 'options for working families'],
             'Climate change',
             'Unemployment',
-            'A lack of high-speed internet options in the area',
+            ['A lack of high-speed', 'internet options in the area'],
             'The rising price of gas',
-            'The amount you pay in local property taxes',
-            'An increase in property crimes, such as burglary and theft',
-            'The affordability of high-speed internet in the area',
+            ['The amount you pay', 'in local property taxes'],
+            ['An increase in property crimes', 'such as burglary and theft'],
+            ['The affordability of high-', 'speed internet in the area'],
             'The rising price of food',
-            'The amount you pay in local utility rates',
+            ['The amount you pay', 'in local utility rates'],
             'An increase in violent crimes'
         ],
         datasets: [
@@ -333,11 +333,11 @@ export default function Poll7({ master }) {
 
     var dataLP = {
         labels: [
-            'Inadequate public transit service options',
+            ['Inadequate public', 'transit service options'],
             'Homelessness',
-            'The amount you pay in local property taxes',
-            'An increase in property crimes, such as burglary and theft',
-            'The amount you pay in local utility rates',
+            ['The amount you pay', 'in local property taxes'],
+            ['An increase in property crimes', ' such as burglary and theft'],
+            ['The amount you pay', 'in local utility rates'],
             'An increase in violent crimes'
         ],
         datasets: [
@@ -408,11 +408,11 @@ export default function Poll7({ master }) {
 
     var dataS = {
         labels: [
-            'The cost of housing for middle- and working-class families',
-            'A lack of high-quality child care options for working families',
+            ['The cost of housing for middle-', 'and working-class families'],
+            ['A lack of high-quality child care', 'options for working families'],
             'Unemployment',
-            'A lack of high-speed internet options in the area',
-            'The affordability of high-speed internet in the area'
+            ['A lack of high-speed', 'internet options in the area'],
+            ['The affordability of high-', 'speed internet in the area']
         ],
         datasets: [
             {
@@ -449,10 +449,10 @@ export default function Poll7({ master }) {
     }
     var dataExperiences = {
         labels: [
-            'Skipped meals because you couldn’t afford food',
+            ['Skipped meals because you', 'couldn’t afford food'],
             'Postponed medical or dental care',
             ['Had to change your living arrangements', 'because you couldn’t afford your', 'rent or mortgage'],
-            'Have looked for, but been unable to find affordable childcare',
+            ['Have looked for, but been unable', 'to find affordable childcare'],
             ['Held off from making a large purchase', 'such as a car or a home']
         ],
         datasets: [
@@ -476,13 +476,13 @@ export default function Poll7({ master }) {
 
     var dataCOL = {
         labels: [
-            'Landlords raising the price of rent to maximize profits',
-            'Disruptions in the supply chain of materials and goods',
+            ['Landlords raising the price', 'of rent to maximize profits'],
+            ['Disruptions in the supply chain', 'of materials and goods'],
             ['Forced closures of businesses during the', 'COVID-19 pandemic the last two years'],
             'A lack of high-paying jobs in the area',
-            'Not enough affordable housing to meet the local demand',
+            ['Not enough affordable housing', 'to meet the local demand'],
             ['Sanctions against Russia forbidding', 'the import of crude oil and petroleum'],
-            'Price gouging from companies on essential goods',
+            ['Price gouging from companies', 'on essential goods'],
             'Labor shortages'
         ],
         datasets: [
@@ -517,9 +517,9 @@ export default function Poll7({ master }) {
     var dataChallenges = {
         labels: [
             'Finding affordable childcare',
-            'Finding a job that pays sufficiently or gives enough hours',
-            'Receiving more in unemployment benefits than a job would pay',
-            'A lack of good, mid-level jobs that are not starting positions',
+            ['Finding a job that pays sufficiently', 'or gives enough hours'],
+            ['Receiving more in unemployment benefits', 'than a job would pay'],
+            ['A lack of good, mid-level jobs', 'that are not starting positions'],
             'A lack of job training or skill-building programs',
         ],
         datasets: [
@@ -598,6 +598,8 @@ export default function Poll7({ master }) {
     }
 
     var barOptions_stacked = {
+        //responsive: true,
+        maintainAspectRatio: false,
         indexAxis: 'y',
         scales: {
             x: {
@@ -614,8 +616,8 @@ export default function Poll7({ master }) {
                 ticks: {
                     autoSkip: false,
                     font: {
-                        size: 14
-                    }
+                        size: 16
+                    },
                 }
             }
         },
@@ -629,13 +631,8 @@ export default function Poll7({ master }) {
                 callbacks: {
                     label: function (context) {
                         var data = context.dataset.data,
-                            label = context.label,
-                            currentValue = context.raw,
-                            total = 0;
-
-                        //   for( var i = 0; i < data.length; i++ ){
-                        //     total += data[i];
-                        //   }
+                            label = context.dataset.label,
+                            currentValue = context.raw
                         var percentage = parseFloat((currentValue).toFixed(1));
 
                         return label + ": (" + percentage + '%)';
