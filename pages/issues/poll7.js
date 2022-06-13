@@ -750,7 +750,6 @@ export default function Poll7({ master }) {
                     />
                 </div>
             </div>
-
             <div className="row">
                 <div className="col-12">
                     <BarChart
@@ -761,14 +760,13 @@ export default function Poll7({ master }) {
                         options={barOptions_stacked}
                         reshape="problems"
                     />
-                </div></div>
-
+                </div>
+            </div>
             <div className="row">
                 <div className="col-12">
                     <h2>For the following 3 charts, respondents were asked:  Which government level do you think should take the lead in addressing the stated issue?</h2>
-                </div> </div>
-
-
+                </div>
+            </div>
             <div className="row">
                 <div className="col-12">
                     <BarChart
@@ -779,8 +777,8 @@ export default function Poll7({ master }) {
                         options={barOptions_stacked}
                         reshape="lp"
                     />
-                </div></div>
-
+                </div>
+            </div>
             <div className="row">
                 <div className="col-12">
                     <BarChart
@@ -805,7 +803,6 @@ export default function Poll7({ master }) {
                     />
                 </div>
             </div>
-
             <div className="row">
                 <div className="col-12 col-md-6">
                     <PieChart
@@ -828,8 +825,6 @@ export default function Poll7({ master }) {
                     />
                 </div>
             </div>
-
-
             <div className="row">
                 <div className="col-12">
                     <BarChart
@@ -840,7 +835,8 @@ export default function Poll7({ master }) {
                         options={barOptions_stacked}
                         reshape="experiences"
                     />
-                </div></div>
+                </div>
+            </div>
             <div className="row">
                 <div className="col-12">
                     <BarChart
@@ -851,9 +847,8 @@ export default function Poll7({ master }) {
                         options={barOptions_stacked}
                         reshape="lp"
                     />
-
-                </div></div>
-
+                </div>
+            </div>
             <div className="row justify-content-md-center">
                 <div className="col-12 col-md-6">
                     <PieChart
@@ -864,9 +859,8 @@ export default function Poll7({ master }) {
                         options={pieOptions}
                         reshape="statement"
                     />
-                </div></div>
-
-
+                </div>
+            </div>
             <div className="row">
                 <div className="col-12">
                     <BarChart
@@ -877,12 +871,10 @@ export default function Poll7({ master }) {
                         options={barOptions_stacked}
                         reshape="challenges"
                     />
-
-                </div></div>
-
+                </div>
+            </div>
             <div className="row">
                 <div className="col-12">
-
                     <BarChart
                         title="How important do you think each of the following factors are to a person's health?"
                         columns={questions16}
@@ -891,8 +883,8 @@ export default function Poll7({ master }) {
                         options={barOptions_stacked}
                         reshape="health"
                     />
-                </div></div>
-
+                </div>
+            </div>
             <div className="row">
                 <div className="col-12 col-md-6">
                     <PieChart
@@ -913,8 +905,8 @@ export default function Poll7({ master }) {
                         options={pieOptions}
                         reshape="none"
                     />
-                </div></div>
-
+                </div>
+            </div>
             <div className="row justify-content-md-center">
                 <div className="col-12 col-md-6">
                     <PieChart
@@ -925,8 +917,8 @@ export default function Poll7({ master }) {
                         options={pieOptions}
                         reshape="none"
                     />
-                </div></div>
-
+                </div>
+            </div>
         </div>
 
     )
