@@ -1,6 +1,6 @@
 import styles from '../../styles/Home.module.css'
 import getMaster from '../../lib/master'
-import { memes, simplePie} from '../../lib/myfuncs'
+import { memes, simplePie } from '../../lib/myfuncs'
 import 'chart.js/auto';
 import PieChart from '../../components/PieChart'
 import BarChart from '../../components/BarChart'
@@ -10,11 +10,11 @@ import BarChart from '../../components/BarChart'
 //Second line for a test
 export async function getStaticProps() {
     const master = await getMaster()
-    return({props: {master}})
+    return ({ props: { master } })
 }
-  
-export default function Poll7({master}) {
- 
+
+export default function Poll7({ master }) {
+
     let setsVotingPlans = simplePie('Q3', master[6].data, 'none')
     let setsAHP = simplePie('Q4', master[6].data, 'none')
     var questions7 = [
@@ -129,7 +129,7 @@ export default function Poll7({master}) {
                     'rgb(66, 116, 200)',
                     'rgb(233, 168, 34)',
                     'rgb(235, 223, 203)',
-                  ]
+                ]
             }
         ]
     }
@@ -140,7 +140,7 @@ export default function Poll7({master}) {
             'No',
             'I do not know'
         ],
-        datasets: [ 
+        datasets: [
             {
                 label: "",
                 data: [
@@ -209,7 +209,7 @@ export default function Poll7({master}) {
             'Disagree',
             'I do not know'
         ],
-        datasets: [ 
+        datasets: [
             {
                 label: "",
                 data: [
@@ -232,7 +232,7 @@ export default function Poll7({master}) {
             'No',
             'I do not know'
         ],
-        datasets: [ 
+        datasets: [
             {
                 label: "",
                 data: setsCharity,
@@ -251,7 +251,7 @@ export default function Poll7({master}) {
             'No',
             'I do not know'
         ],
-        datasets: [ 
+        datasets: [
             {
                 label: "",
                 data: setsVolunteer,
@@ -270,7 +270,7 @@ export default function Poll7({master}) {
             'No',
             'I do not know'
         ],
-        datasets: [ 
+        datasets: [
             {
                 label: "",
                 data: setsDonations,
@@ -285,7 +285,7 @@ export default function Poll7({master}) {
 
     //Combining Very Serious and Serious into one data point
     var newSet = []
-    for(let i = 0; i < setsProblems[0].length; i++) {
+    for (let i = 0; i < setsProblems[0].length; i++) {
         newSet.push(setsProblems[0][i] + setsProblems[1][i])
     }
     var dataProblems = {
@@ -309,25 +309,25 @@ export default function Poll7({master}) {
         ],
         datasets: [
             {
-              label: 'Serious',
-              data: newSet,
-              backgroundColor: 'rgb(12, 38, 96)',
+                label: 'Serious',
+                data: newSet,
+                backgroundColor: 'rgb(12, 38, 96)',
             },
             {
-              label: 'Somewhat Serious',
-              data: setsProblems[2],
-              backgroundColor: 'rgb(196, 99, 0)',
-          },
-          {
-              label: 'Not Serious',
-              data: setsProblems[3],
-              backgroundColor: 'rgb(66, 116, 200)',
-          },
-          {
-            label: 'I do not know',
-            data: setsProblems[4],
-            backgroundColor: 'rgb(233, 168, 34)'
-          }
+                label: 'Somewhat Serious',
+                data: setsProblems[2],
+                backgroundColor: 'rgb(196, 99, 0)',
+            },
+            {
+                label: 'Not Serious',
+                data: setsProblems[3],
+                backgroundColor: 'rgb(66, 116, 200)',
+            },
+            {
+                label: 'I do not know',
+                data: setsProblems[4],
+                backgroundColor: 'rgb(233, 168, 34)'
+            }
         ]
     }
 
@@ -347,25 +347,25 @@ export default function Poll7({master}) {
                 backgroundColor: 'rgb(12, 38, 96)',
             },
             {
-              label: 'Texas Government',
-              data: setsLP[1],
-              backgroundColor: 'rgb(196, 99, 0)',
+                label: 'Texas Government',
+                data: setsLP[1],
+                backgroundColor: 'rgb(196, 99, 0)',
             },
             {
-              label: 'Federal Government',
-              data: setsLP[2],
-              backgroundColor: 'rgb(66, 116, 200)',
-          },
-          {
-              label: 'Not a Government Problem',
-              data: setsLP[3],
-              backgroundColor: 'rgb(233, 168, 34)',
-          },
-          {
-            label: 'I do not know',
-            data: setsLP[4],
-            backgroundColor: 'rgb(235, 223, 203)',
-          }
+                label: 'Federal Government',
+                data: setsLP[2],
+                backgroundColor: 'rgb(66, 116, 200)',
+            },
+            {
+                label: 'Not a Government Problem',
+                data: setsLP[3],
+                backgroundColor: 'rgb(233, 168, 34)',
+            },
+            {
+                label: 'I do not know',
+                data: setsLP[4],
+                backgroundColor: 'rgb(235, 223, 203)',
+            }
         ]
     }
 
@@ -384,24 +384,24 @@ export default function Poll7({master}) {
                 backgroundColor: 'rgb(12, 38, 96)',
             },
             {
-              label: 'Texas Government',
-              data: setsFP[1],
-              backgroundColor: 'rgb(196, 99, 0)',
+                label: 'Texas Government',
+                data: setsFP[1],
+                backgroundColor: 'rgb(196, 99, 0)',
             },
             {
-              label: 'Federal Government',
-              data: setsFP[2],
-              backgroundColor: 'rgb(66, 116, 200)',
+                label: 'Federal Government',
+                data: setsFP[2],
+                backgroundColor: 'rgb(66, 116, 200)',
             },
             {
-              label: 'Not a Government Problem',
-              data: setsFP[3],
-              backgroundColor: 'rgb(233, 168, 34)',
+                label: 'Not a Government Problem',
+                data: setsFP[3],
+                backgroundColor: 'rgb(233, 168, 34)',
             },
             {
-            label: 'I do not know',
-            data: setsFP[4],
-            backgroundColor: 'rgb(235, 223, 203)',
+                label: 'I do not know',
+                data: setsFP[4],
+                backgroundColor: 'rgb(235, 223, 203)',
             }
         ]
     }
@@ -421,30 +421,30 @@ export default function Poll7({master}) {
                 backgroundColor: 'rgb(12, 38, 96)',
             },
             {
-              label: 'Texas Government',
-              data: setsS[1],
-              backgroundColor: 'rgb(196, 99, 0)',
+                label: 'Texas Government',
+                data: setsS[1],
+                backgroundColor: 'rgb(196, 99, 0)',
             },
             {
-              label: 'Federal Government',
-              data: setsS[2],
-              backgroundColor: 'rgb(66, 116, 200)',
-          },
-          {
-              label: 'Not a Government Problem',
-              data: setsS[3],
-              backgroundColor: 'rgb(233, 168, 34)',
-          },
-          {
-            label: 'I do not know',
-            data: setsS[4],
-            backgroundColor: 'rgb(235, 223, 203)',
-          }
+                label: 'Federal Government',
+                data: setsS[2],
+                backgroundColor: 'rgb(66, 116, 200)',
+            },
+            {
+                label: 'Not a Government Problem',
+                data: setsS[3],
+                backgroundColor: 'rgb(233, 168, 34)',
+            },
+            {
+                label: 'I do not know',
+                data: setsS[4],
+                backgroundColor: 'rgb(235, 223, 203)',
+            }
         ]
     }
     //Combining 2 fields into one data point
     var newSetE = []
-    for(let i = 0; i < setsExperiences[0].length; i++) {
+    for (let i = 0; i < setsExperiences[0].length; i++) {
         newSetE.push(setsExperiences[0][i] + setsExperiences[1][i])
     }
     var dataExperiences = {
@@ -462,15 +462,15 @@ export default function Poll7({master}) {
                 backgroundColor: 'rgb(12, 38, 96)',
             },
             {
-              label: 'No',
-              data: setsExperiences[2],
-              backgroundColor: 'rgb(196, 99, 0)',
-          },
-          {
-              label: 'I do not know',
-              data: setsExperiences[3],
-              backgroundColor: 'rgb(66, 116, 200)',
-          }
+                label: 'No',
+                data: setsExperiences[2],
+                backgroundColor: 'rgb(196, 99, 0)',
+            },
+            {
+                label: 'I do not know',
+                data: setsExperiences[3],
+                backgroundColor: 'rgb(66, 116, 200)',
+            }
         ]
     }
 
@@ -478,7 +478,7 @@ export default function Poll7({master}) {
         labels: [
             'Landlords raising the price of rent to maximize profits',
             'Disruptions in the supply chain of materials and goods',
-            ['Forced closures of businesses during the','COVID-19 pandemic the last two years'],
+            ['Forced closures of businesses during the', 'COVID-19 pandemic the last two years'],
             'A lack of high-paying jobs in the area',
             'Not enough affordable housing to meet the local demand',
             ['Sanctions against Russia forbidding', 'the import of crude oil and petroleum'],
@@ -492,48 +492,48 @@ export default function Poll7({master}) {
                 backgroundColor: 'rgb(12, 38, 96)',
             },
             {
-              label: 'Minor Reason',
-              data: setsCOL[1],
-              backgroundColor: 'rgb(196, 99, 0)',
+                label: 'Minor Reason',
+                data: setsCOL[1],
+                backgroundColor: 'rgb(196, 99, 0)',
             },
             {
-              label: 'Not much of a Reason',
-              data: setsCOL[2],
-              backgroundColor: 'rgb(66, 116, 200)',
-          },
-          {
-            label: 'Not a Reason',
-            data: setsCOL[3],
-            backgroundColor: 'rgb(233, 168, 34)'
-        },
-          {
-              label: 'I do not know',
-              data: setsCOL[4],
-              backgroundColor: 'rgb(235, 223, 203)'
-          }
+                label: 'Not much of a Reason',
+                data: setsCOL[2],
+                backgroundColor: 'rgb(66, 116, 200)',
+            },
+            {
+                label: 'Not a Reason',
+                data: setsCOL[3],
+                backgroundColor: 'rgb(233, 168, 34)'
+            },
+            {
+                label: 'I do not know',
+                data: setsCOL[4],
+                backgroundColor: 'rgb(235, 223, 203)'
+            }
         ]
     }
 
     var dataChallenges = {
-          labels: [
-              'Finding affordable childcare',
-              'Finding a job that pays sufficiently or gives enough hours',
-              'Receiving more in unemployment benefits than a job would pay',
-              'A lack of good, mid-level jobs that are not starting positions',
-              'A lack of job training or skill-building programs',
-          ],
-          datasets: [
-              {
-                  label: 'Major Challenge',
-                  data: setsChallenges[0],
-                  backgroundColor: 'rgb(12, 38, 96)',
-              },
-              {
+        labels: [
+            'Finding affordable childcare',
+            'Finding a job that pays sufficiently or gives enough hours',
+            'Receiving more in unemployment benefits than a job would pay',
+            'A lack of good, mid-level jobs that are not starting positions',
+            'A lack of job training or skill-building programs',
+        ],
+        datasets: [
+            {
+                label: 'Major Challenge',
+                data: setsChallenges[0],
+                backgroundColor: 'rgb(12, 38, 96)',
+            },
+            {
                 label: 'Minor Challenge',
                 data: setsChallenges[1],
                 backgroundColor: 'rgb(196, 99, 0)',
-              },
-              {
+            },
+            {
                 label: 'Not a Challenge',
                 data: setsChallenges[2],
                 backgroundColor: 'rgb(66, 116, 200)',
@@ -543,12 +543,12 @@ export default function Poll7({master}) {
                 data: setsChallenges[3],
                 backgroundColor: 'rgb(233, 168, 34)'
             }
-          ]
+        ]
     }
     //Combining 2 fields into one data point
 
     var newSetHealth = []
-    for(let i = 0; i < setsHealth[0].length; i++) {
+    for (let i = 0; i < setsHealth[0].length; i++) {
         newSetHealth.push(setsHealth[0][i] + setsHealth[1][i])
     }
 
@@ -568,32 +568,32 @@ export default function Poll7({master}) {
             'Racism and discrimination',
             'Family violence',
         ],
-        datasets: [     
+        datasets: [
             {
                 label: 'Important',
                 data: newSetHealth,
-                backgroundColor:'rgb(12, 38, 96)',
+                backgroundColor: 'rgb(12, 38, 96)',
             },
             {
-              label: 'Somewhat Important',
-              data: setsHealth[2],
-              backgroundColor: 'rgb(196, 99, 0)',
-          },
-          {
-              label: 'Not Too Important',
-              data: setsHealth[3],
-              backgroundColor: 'rgb(66, 116, 200)',
-          },
-          {
-            label: 'Not At All Important',
-            data: setsHealth[4],
-            backgroundColor: 'rgb(233, 168, 34)'
-          },
-          {
-            label: 'I do not know',
-            data: setsHealth[5],
-            backgroundColor: 'rgb(235, 223, 203)',
-          }
+                label: 'Somewhat Important',
+                data: setsHealth[2],
+                backgroundColor: 'rgb(196, 99, 0)',
+            },
+            {
+                label: 'Not Too Important',
+                data: setsHealth[3],
+                backgroundColor: 'rgb(66, 116, 200)',
+            },
+            {
+                label: 'Not At All Important',
+                data: setsHealth[4],
+                backgroundColor: 'rgb(233, 168, 34)'
+            },
+            {
+                label: 'I do not know',
+                data: setsHealth[5],
+                backgroundColor: 'rgb(235, 223, 203)',
+            }
         ]
     }
 
@@ -612,7 +612,7 @@ export default function Poll7({master}) {
             y: {
                 stacked: true,
                 ticks: {
-                    autoSkip:false, 
+                    autoSkip: false,
                     font: {
                         size: 14
                     }
@@ -627,38 +627,38 @@ export default function Poll7({master}) {
             tooltip: {
                 enabled: true,
                 callbacks: {
-                    label: function(context){
-                      var data = context.dataset.data,
-                          label = context.label,
-                          currentValue = context.raw,
-                          total = 0;
-            
-                    //   for( var i = 0; i < data.length; i++ ){
-                    //     total += data[i];
-                    //   }
-                       var percentage = parseFloat((currentValue).toFixed(1));
-            
-                      return label + ": ("  + percentage + '%)';
+                    label: function (context) {
+                        var data = context.dataset.data,
+                            label = context.label,
+                            currentValue = context.raw,
+                            total = 0;
+
+                        //   for( var i = 0; i < data.length; i++ ){
+                        //     total += data[i];
+                        //   }
+                        var percentage = parseFloat((currentValue).toFixed(1));
+
+                        return label + ": (" + percentage + '%)';
                     }
                 }
-            
+
             },
             datalabels: {
-                display: function(context) {
+                display: function (context) {
                     return context.dataset.data[context.dataIndex] > 8;
-                  },
-                  formatter: (value, ctx) => {
+                },
+                formatter: (value, ctx) => {
                     let sum = 0;
                     let dataArr = ctx.chart.data.datasets[0].data;
                     dataArr.map(data => {
                         sum += data;
                     });
-                    let percentage = (value).toFixed(0)+"%";
+                    let percentage = (value).toFixed(0) + "%";
                     return percentage;
-                },                
+                },
                 color: "white"
-              },
-            legend:{
+            },
+            legend: {
                 display: true,
                 labels: {
                     font: {
@@ -680,42 +680,42 @@ export default function Poll7({master}) {
             tooltip: {
                 enabled: true,
                 callbacks: {
-                    label: function(context){
-                      var data = context.dataset.data,
-                          label = context.label,
-                          currentValue = context.raw,
-                          total = 0;
-            
-                    //   for( var i = 0; i < data.length; i++ ){
-                    //     total += data[i];
-                    //   }
-                       var percentage = parseFloat((currentValue).toFixed(1));
-            
-                      return label + ": ("  + percentage + '%)';
+                    label: function (context) {
+                        var data = context.dataset.data,
+                            label = context.label,
+                            currentValue = context.raw,
+                            total = 0;
+
+                        //   for( var i = 0; i < data.length; i++ ){
+                        //     total += data[i];
+                        //   }
+                        var percentage = parseFloat((currentValue).toFixed(1));
+
+                        return label + ": (" + percentage + '%)';
                     }
                 }
-            
+
             },
             datalabels: {
                 font: {
                     size: 20
                 },
-                display: function(context) {
+                display: function (context) {
                     return context.dataset.data[context.dataIndex] > 4;
-                  },
+                },
                 formatter: (value, ctx) => {
-                  let datasets = ctx.chart.data.datasets;
-                  if (datasets.indexOf(ctx.dataset) === datasets.length - 1) {
-                    let sum = datasets[0].data.reduce((a, b) => a + b, 0);
-                    let percentage = Math.round((value / sum) * 100) + "%";
-                    return percentage;
-                  } else {
-                    return percentage;
-                  }
+                    let datasets = ctx.chart.data.datasets;
+                    if (datasets.indexOf(ctx.dataset) === datasets.length - 1) {
+                        let sum = datasets[0].data.reduce((a, b) => a + b, 0);
+                        let percentage = Math.round((value / sum) * 100) + "%";
+                        return percentage;
+                    } else {
+                        return percentage;
+                    }
                 },
                 color: "white"
-              },
-            legend:{
+            },
+            legend: {
                 display: true,
                 labels: {
                     font: {
@@ -726,209 +726,208 @@ export default function Poll7({master}) {
         },
     }
 
-    return(
-<div className="container-fluid">
-  <div className="row">
-    <div className="col-12 col-md-6">
-            <PieChart
-                title="How do you plan on voting in this year's elections?"
-                column="Q3"
-                masterDataset={master[6].data}
-                dataset={dataVotingPlans}
-                options={pieOptions}
-                reshape="none"
-            />
- </div>
- {/* <divclassName="w-100"></div> */}
- <div className="col-12 col-md-6">
-            <PieChart
-                title="Would you vote yes or no on a 150 million dollar City of San Antonio bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?"
-                column="Q4"
-                masterDataset={master[6].data}
-                dataset={dataAHP}
-                options={pieOptions}
-                reshape="ahp"
-            />
+    return (
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-12 col-md-6">
+                    <PieChart
+                        title="How do you plan on voting in this year's elections?"
+                        column="Q3"
+                        masterDataset={master[6].data}
+                        dataset={dataVotingPlans}
+                        options={pieOptions}
+                        reshape="none"
+                    />
+                </div>
+                <div className="col-12 col-md-6">
+                    <PieChart
+                        title="Would you vote yes or no on a 150 million dollar City of San Antonio bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?"
+                        column="Q4"
+                        masterDataset={master[6].data}
+                        dataset={dataAHP}
+                        options={pieOptions}
+                        reshape="ahp"
+                    />
+                </div>
             </div>
+
+            <div className="row">
+                <div className="col-12">
+                    <BarChart
+                        title="Some say these issues are problems in the greater San Antonio area. Do you think it's a serious problem, somewhat serious problem or not a serious problem?"
+                        columns={questions7}
+                        masterDataset={master[6].data}
+                        dataset={dataProblems}
+                        options={barOptions_stacked}
+                        reshape="problems"
+                    />
+                </div></div>
+
+            <div className="row">
+                <div className="col-12">
+                    <h2>For the following 3 charts, respondents were asked:  Which government level do you think should take the lead in addressing the stated issue?</h2>
+                </div> </div>
+
+
+            <div className="row">
+                <div className="col-12">
+                    <BarChart
+                        title="Local Priorities"
+                        columns={questions8LP}
+                        masterDataset={master[6].data}
+                        dataset={dataLP}
+                        options={barOptions_stacked}
+                        reshape="lp"
+                    />
+                </div></div>
+
+            <div className="row">
+                <div className="col-12">
+                    <BarChart
+                        title="Federal Priorities"
+                        columns={questions8FP}
+                        masterDataset={master[6].data}
+                        dataset={dataFP}
+                        options={barOptions_stacked}
+                        reshape="fp"
+                    />
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-12">
+                    <BarChart
+                        title="Split on which level of government should lead"
+                        columns={questions8S}
+                        masterDataset={master[6].data}
+                        dataset={dataS}
+                        options={barOptions_stacked}
+                        reshape="s"
+                    />
+                </div>
             </div>
 
-    <div className="row">
-    <div className="col-12">
-            <BarChart
-                title="Some say these issues are problems in the greater San Antonio area. Do you think it's a serious problem, somewhat serious problem or not a serious problem?"               
-                columns={questions7}
-                masterDataset={master[6].data}
-                dataset={dataProblems}
-                options={barOptions_stacked}
-                reshape="problems"
-            />
-           </div></div>
-
-    <div className="row">
-    <div className="col-12">
-        <h2>For the following 3 charts, respondents were asked:  Which government level do you think should take the lead in addressing the stated issue?</h2>
-    </div> </div>
-
-
-    <div className="row">
-    <div className="col-12">
-            <BarChart
-                title="Local Priorities"
-                columns={questions8LP}
-                masterDataset={master[6].data}
-                dataset={dataLP}
-                options={barOptions_stacked}
-                reshape="lp"
-            />
-            </div></div>
-
-    <div className="row">
-    <div className="col-12">
-           <BarChart
-                title="Federal Priorities"
-                columns={questions8FP}
-                masterDataset={master[6].data}
-                dataset={dataFP}
-                options={barOptions_stacked}
-                reshape="fp"
-            />
+            <div className="row">
+                <div className="col-12 col-md-6">
+                    <PieChart
+                        title="The Cantril Self-Anchoring Scale is a tool used to assess the well-being of a population by asking respondents to rate where their life stands now, and where they think it will be in five years, using a hypothetical ten-point “ladder” scale. By combining a respondents rating we are able able to identify if people feel they are Thriving, Struggling, or Suffering."
+                        column="Q10"
+                        masterDataset={master[6].data}
+                        dataset={dataLife}
+                        options={pieOptions}
+                        reshape="life"
+                    />
+                </div>
+                <div className="col-12 col-md-6">
+                    <PieChart
+                        title="How would you describe your current financial situation?"
+                        column="Q11"
+                        masterDataset={master[6].data}
+                        dataset={dataFinance}
+                        options={pieOptions}
+                        reshape="none"
+                    />
+                </div>
             </div>
-            </div>
-    <div className="row">
-    <div className="col-12">
-            <BarChart
-                title="Split on which level of government should lead"
-                columns={questions8S}
-                masterDataset={master[6].data}
-                dataset={dataS}
-                options={barOptions_stacked}
-                reshape="s"
-            />
-</div>
-</div>
 
-<div className="row">
-<div className="col-12 col-md-6">
-<PieChart
-                title="The Cantril Self-Anchoring Scale is a tool used to assess the well-being of a population by asking respondents to rate where their life stands now, and where they think it will be in five years, using a hypothetical ten-point “ladder” scale. By combining a respondents rating we are able able to identify if people feel they are Thriving, Struggling, or Suffering."
-                column="Q10"
-                masterDataset={master[6].data}
-                dataset={dataLife}
-                options={pieOptions}
-                reshape="life"
-            />
-      </div>
-      <div className="col-12 col-md-6">
-            <PieChart
-                title="How would you describe your current financial situation?"
-                column="Q11"
-                masterDataset={master[6].data}
-                dataset={dataFinance}
-                options={pieOptions}
-                reshape="none"
-            />
+
+            <div className="row">
+                <div className="col-12">
+                    <BarChart
+                        title="Have you experienced any of the following over the last 12 months?"
+                        columns={questions12}
+                        masterDataset={master[6].data}
+                        dataset={dataExperiences}
+                        options={barOptions_stacked}
+                        reshape="experiences"
+                    />
+                </div></div>
+            <div className="row">
+                <div className="col-12">
+                    <BarChart
+                        title="Do you think these things contribute to the rising cost of living in Bexar County?"
+                        columns={questions13}
+                        masterDataset={master[6].data}
+                        dataset={dataCOL}
+                        options={barOptions_stacked}
+                        reshape="lp"
+                    />
+
+                </div></div>
+
+            <div className="row justify-content-md-center">
+                <div className="col-12 col-md-6">
+                    <PieChart
+                        title='Do you agree or disagree with the following statement "Having reliable, high quality child care for young children is crucial for parents to be able to work?"'
+                        column="Q11"
+                        masterDataset={master[6].data}
+                        dataset={dataStatement}
+                        options={pieOptions}
+                        reshape="statement"
+                    />
+                </div></div>
+
+
+            <div className="row">
+                <div className="col-12">
+                    <BarChart
+                        title="What do you think is a challenge when looking for a job?"
+                        columns={questions15}
+                        masterDataset={master[6].data}
+                        dataset={dataChallenges}
+                        options={barOptions_stacked}
+                        reshape="challenges"
+                    />
+
+                </div></div>
+
+            <div className="row">
+                <div className="col-12">
+
+                    <BarChart
+                        title="How important do you think each of the following factors are to a person's health?"
+                        columns={questions16}
+                        masterDataset={master[6].data}
+                        dataset={dataHealth}
+                        options={barOptions_stacked}
+                        reshape="health"
+                    />
+                </div></div>
+
+            <div className="row">
+                <div className="col-12 col-md-6">
+                    <PieChart
+                        title="Have you provided any monetary support to a charitable or non-profit organization in the last year?"
+                        column="Q17"
+                        masterDataset={master[6].data}
+                        dataset={dataCharity}
+                        options={pieOptions}
+                        reshape="none"
+                    />
+                </div>
+                <div className="col-12 col-md-6">
+                    <PieChart
+                        title="Have you or anyone in your household provided volunteer support to a charitable or non-profit organization in the last year?"
+                        column="Q18"
+                        masterDataset={master[6].data}
+                        dataset={dataVolunteer}
+                        options={pieOptions}
+                        reshape="none"
+                    />
+                </div></div>
+
+            <div className="row justify-content-md-center">
+                <div className="col-12 col-md-6">
+                    <PieChart
+                        title="Were some or all of your charitable donations in 2021 benefiting a community in Bexar County?"
+                        column="Q20"
+                        masterDataset={master[6].data}
+                        dataset={dataDonations}
+                        options={pieOptions}
+                        reshape="none"
+                    />
+                </div></div>
+
         </div>
-        </div>
 
-
-    <div className="row">
-    <div className="col-12">
-        <BarChart
-                title="Have you experienced any of the following over the last 12 months?"
-                columns={questions12}
-                masterDataset={master[6].data}
-                dataset={dataExperiences}
-                options={barOptions_stacked}
-                reshape="experiences"
-            />
-            </div></div>
-    <div className="row">
-    <div className="col-12">
-             <BarChart
-                title="Do you think these things contribute to the rising cost of living in Bexar County?"
-                columns={questions13}
-                masterDataset={master[6].data}
-                dataset={dataCOL}
-                options={barOptions_stacked}
-                reshape="lp"
-            />
-
-        </div></div>
-
-    <div className="row justify-content-md-center">
-    <div className="col-12 col-md-6">
-        <PieChart
-                title='Do you agree or disagree with the following statement "Having reliable, high quality child care for young children is crucial for parents to be able to work?"'
-                column="Q11"
-                masterDataset={master[6].data}
-                dataset={dataStatement}
-                options={pieOptions}
-                reshape="statement"
-            />
-    </div></div>
-
-
-    <div className="row">
-    <div className="col-12">
-<BarChart
-                title="What do you think is a challenge when looking for a job?"
-                columns={questions15}
-                masterDataset={master[6].data}
-                dataset={dataChallenges}
-                options={barOptions_stacked}
-                reshape="challenges"
-            />    
-
-        </div></div>  
-
-    <div className="row">
-    <div className="col-12">
-    
-            <BarChart
-                title="How important do you think each of the following factors are to a person's health?"
-                columns={questions16}
-                masterDataset={master[6].data}
-                dataset={dataHealth}
-                options={barOptions_stacked}
-                reshape="health"
-            />
-    </div></div>  
-
-    <div className="row">
-    <div className="col-12 col-md-6">
-    <PieChart
-                title="Have you provided any monetary support to a charitable or non-profit organization in the last year?"
-                column="Q17"
-                masterDataset={master[6].data}
-                dataset={dataCharity}
-                options={pieOptions}
-                reshape="none"
-            />
-            </div>
-    <div className="col-12 col-md-6">
-            <PieChart
-                title="Have you or anyone in your household provided volunteer support to a charitable or non-profit organization in the last year?"
-                column="Q18"
-                masterDataset={master[6].data}
-                dataset={dataVolunteer}
-                options={pieOptions}
-                reshape="none"
-            />
-        </div></div>
-
-    <div className="row justify-content-md-center">
-    <div className="col-12 col-md-6">
-        <PieChart
-                title="Were some or all of your charitable donations in 2021 benefiting a community in Bexar County?"
-                column="Q20"
-                masterDataset={master[6].data}
-                dataset={dataDonations}
-                options={pieOptions}
-                reshape="none"
-            />
-             </div></div>
-
-            </div>
-        
     )
-  }
+}
