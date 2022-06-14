@@ -847,7 +847,7 @@ export default function Poll7({ master }) {
                 </div>
             </div>
             <div className="row justify-content-md-center">
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-md-6 w-100">
                     <PieChart
                         title='Do you agree or disagree with the following statement "Having reliable, high quality child care for young children is crucial for parents to be able to work?"'
                         column="Q11"
@@ -905,7 +905,7 @@ export default function Poll7({ master }) {
                 </div>
             </div>
             <div className="row justify-content-md-center">
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-md-6 w-100">
                     <PieChart
                         title="Were some or all of your charitable donations in 2021 benefiting a community in Bexar County?"
                         column="Q20"
