@@ -3,27 +3,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from '../styles/Home.module.css'
 import Head from 'next/head'
 import Image from 'next/image'
-import ReactDOM from 'react-dom';
 import Button from 'react-bootstrap/Button'
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton'
 import Navbar from 'react-bootstrap/Navbar'
 import { Container } from 'react-bootstrap';
-
-
 
 function MyApp({ Component, pageProps }) {
   return (
     
     <div className={styles.container}>
-      <style type="text/css">
-        {`
-        .nav-light {
-          background-color: #ffffff;
-        }
-        `}
-      </style>
-      <Navbar bg='white' variant='light' sticky='top'>
+      <Navbar className={styles.nav} sticky='top'>
           <Container>
             <Navbar.Brand>
             <a
@@ -59,33 +47,11 @@ function MyApp({ Component, pageProps }) {
           ,&nbsp;visualizing Bexar Facts polling data
         </div>
 
-        <style type="text/css">
-        {`
-        .btn-localgovernment {
-          background-color: #C46300;
-          color: white;
-          margin: 10px;
-        }
-
-         .btn-electedofficials {
-          background-color: #E9A822;
-          color: white;
-          margin: 10px;
-        }
-
-        .btn-poll7 {
-          background-color: #4274C8;
-          color: white;
-          margin: 10px;
-        }
-
-        
-        `}
-      </style>
+      
         <div className={styles.menuButtons}>
-          <Button variant="poll7" href="/issues/poll7">NEW - Poll 7 Results!</Button>
-          <Button variant="localgovernment" href="/issues/localgovernment">Local Government</Button>
-          <Button variant="electedofficials" href="/issues/electedofficials">Elected Officials</Button>
+          <Button className={styles.poll7} variant='poll7' href="/issues/poll7">NEW - Poll 7 Results!</Button>
+          <Button className={styles.localgov} variant='localgov' href="/issues/localgovernment">Local Government</Button>
+          <Button className={styles.electedofc} variant='electedofc' href="/issues/electedofficials">Elected Officials</Button>
         </div>
         <p className={styles.disclaimer}>This dashboard is currently formatted for viewing on desktop or laptop only. We will make it mobile friendly overtime.</p>
       <Component {...pageProps} />
