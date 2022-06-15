@@ -463,7 +463,7 @@ export default function LocalGov({ master }) {
   return (
     <Container fluid>
       <Row className="justify-content-sm-center">
-        <Col xs={11} className="w-100">
+        <Col xs={12} className="w-100">
           <div className={styles.vbar}>
             <h2>Would you say Bexar County policy is on the Right Track or going the Wrong direction?</h2>
             <div className={styles.vbarchart}>
@@ -480,7 +480,7 @@ export default function LocalGov({ master }) {
       </Row>
 
       <Row className="justify-content-sm-center">
-        <Col xs={11} className="w-100">
+        <Col xs={12} className="w-100">
           <div className={styles.vbar}>
             <h2>Would you say City of San Antonio policy is on the Right Track or going the Wrong direction?</h2>
             <div className={styles.vbarchart}>
@@ -490,14 +490,13 @@ export default function LocalGov({ master }) {
                 onClick={onClickCOSA}
                 options={options}
                 data={dataCOSA}
-
               />
             </div>
           </div>
         </Col>
       </Row>
       <Row className="justify-content-sm-center">
-        <Col xs={11} className="w-100">
+        <Col xs={12} className="w-100">
           <div className={styles.line}>
             <h2>Do you approve or disapprove of the job they are doing?</h2>
             <div className={styles.linechart}>
