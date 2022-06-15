@@ -347,6 +347,8 @@ export default function LocalGov({master}) {
 
 
 const options = {
+  maintainAspectRatio: false,
+
     scales: {
       y: {
         min: 0,
@@ -403,6 +405,7 @@ const options = {
   }
 
  const optionsApprovals = {
+  maintainAspectRatio: false,
    spanGaps: true,
     scales: {      
       y: {
@@ -454,10 +457,10 @@ const options = {
     return(
       <div className="container-fluid">
       <div className="row justify-content-sm-center">
-      <div className="col-11">
-        {/* <div className={styles.grid}>*/}
-             <div className={styles.bar2}>
+      <div className="col-11 w-100">
+             <div className={styles.vbar}>
                 <h2>Would you say Bexar County policy is on the Right Track or going the Wrong direction?</h2>
+                <div className={styles.vbarchart}>
                 <Chart
                 ref={chartRefBEXAR}
                 type='bar'
@@ -465,13 +468,15 @@ const options = {
                 options={options} 
                 data={dataBEXAR} 
                 /> 
+                </div>
             </div></div>
              </div>
             
         <div className="row justify-content-sm-center">
-        <div className="col-11">
-            <div className={styles.bar2}>
+        <div className="col-11 w-100">
+            <div className={styles.vbar}>
               <h2>Would you say City of San Antonio policy is on the Right Track or going the Wrong direction?</h2>
+              <div className={styles.vbarchart}>
               <Chart 
                 ref={chartRefCOSA}
                 type='bar'
@@ -480,18 +485,21 @@ const options = {
                 data={dataCOSA} 
 
               />
+              </div>
           </div> </div></div>
           <div className="row justify-content-sm-center">
-          <div className="col-11">
-            <div className={styles.bar2}>
+          <div className="col-11 w-100">
+            <div className={styles.line}>
                 <h2>Do you approve or disapprove of the job they are doing?</h2>
-                <Chart 
-                ref={chartRefApprovals}
-                options={optionsApprovals}
-                type='line'
-                onClick={onClickApprovals}
-                data={dataApprovals} 
-                />
+                <div className={styles.linechart}>
+                  <Chart 
+                  ref={chartRefApprovals}
+                  options={optionsApprovals}
+                  type='line'
+                  onClick={onClickApprovals}
+                  data={dataApprovals} 
+                  />
+                  </div>
                 <p> The gaps indicate that some local entities were not included in every poll.</p>
           </div></div>
         </div> </div>

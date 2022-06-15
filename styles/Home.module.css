@@ -115,14 +115,12 @@
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   background-color: white;
-  border: 10px solid red;
-
+  /* border: 10px solid red; */
 }
 
 .piechart {
   height: 500px;
-  border: 10px solid black;
-
+  /* border: 10px solid black; */
 }
 
 .bar {
@@ -137,7 +135,12 @@
   width: 100%;
 }
 
-.bar2 {
+.barchart {
+  height: 800px;
+  width: auto;
+}
+
+.vbar {
   margin: 1rem 0;
   padding: 1.5rem;
   text-align: center;
@@ -146,16 +149,33 @@
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   background-color: white;
-  /* width: 100%; */
+  width: 100%;
 }
 
-.barchart2 {
-  height: 800px;
+.vbarchart {
+  height: 600px;
+  width: auto;
+}
+
+.line {
+  margin: 1rem 0;
+  padding: 1.5rem;
+  text-align: center;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  background-color: white;
+  width: 100%;
+}
+
+.linechart {
+  height: 550px;
   width: auto;
 }
 
 .grid {
-  height: 800px;
+  /* height: 800px; */
   width: auto;
   display: flex;
   align-items: center baseline safe center;
@@ -164,8 +184,7 @@
   flex-wrap: wrap;
   max-width: 95%;  
   flex-flow: row wrap;
-  border: 10px solid blue;
-  border: 10px solid blue;
+  /* border: 10px solid blue; */
 }
 
 .chart {

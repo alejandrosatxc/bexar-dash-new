@@ -165,7 +165,7 @@ const onClickOfficials = (event) => {
 
     return(
         <div className={styles.grid}>
-            <div className={styles.chart}>
+            <div className={styles.line}>
                 <h2>Do you approve or disapprove of the job they are doing?</h2>
                 <Chart 
                     ref={chartRefOfficials}
