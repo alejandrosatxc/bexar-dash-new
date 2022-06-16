@@ -16,8 +16,17 @@ export async function getStaticProps() {
 
 export default function Poll7({ master }) {
 
+    let chartData = require('/charts.json')
+    
+
     let setsVotingPlans = simplePie('Q3', master[6].data, 'none')
     let setsAHP = simplePie('Q4', master[6].data, 'none')
+    chartData.chartVotingPlans.datasets[0].data = setsVotingPlans
+    chartData.chartAHP.datasets[0].data = [
+        setsAHP[0] + setsAHP[1] + setsAHP[2],
+        setsAHP[3] + setsAHP[4] + setsAHP[5],
+        setsAHP[6]
+    ]
     var questions7 = [
         'Q7A',
         'Q7B',
@@ -37,6 +46,17 @@ export default function Poll7({ master }) {
         'CRIME'
     ]
     let setsProblems = memes(questions7, master[6].data, 'none')
+    //Combining Very Serious and Serious into one data point
+    var newSet = []
+    for (let i = 0; i < setsProblems[0].length; i++) {
+        newSet.push(setsProblems[0][i] + setsProblems[1][i])
+    }
+    chartData.chartProblems.datasets[0].data = newSet
+    chartData.chartProblems.datasets[1].data = setsProblems[2]
+    chartData.chartProblems.datasets[2].data = setsProblems[3]
+    chartData.chartProblems.datasets[3].data = setsProblems[4]
+
+
     var questions8LP = [
         'Q8C',
         'Q8E',
@@ -111,52 +131,6 @@ export default function Poll7({ master }) {
     let setsCharity = simplePie('Q17', master[6].data)
     let setsVolunteer = simplePie('Q18', master[6].data)
     let setsDonations = simplePie('Q20', master[6].data)
-
-    var dataVotingPlans = {
-        labels: [
-            'In person, on the day of the election',
-            'In person, before the day of the election',
-            'By mail',
-            'Do not plan on voting',
-            'I do not know',
-        ],
-        datasets: [
-            {
-                label: "",
-                data: setsVotingPlans,
-                backgroundColor: [
-                    'rgb(12, 38, 96)',
-                    'rgb(196, 99, 0)',
-                    'rgb(66, 116, 200)',
-                    'rgb(233, 168, 34)',
-                    'rgb(235, 223, 203)',
-                ]
-            }
-        ]
-    }
-
-    var dataAHP = {
-        labels: [
-            'Yes',
-            'No',
-            'I do not know'
-        ],
-        datasets: [
-            {
-                label: "",
-                data: [
-                    setsAHP[0] + setsAHP[1] + setsAHP[2],
-                    setsAHP[3] + setsAHP[4] + setsAHP[5],
-                    setsAHP[6]
-                ],
-                backgroundColor: [
-                    'rgb(12, 38, 96)',
-                    'rgb(196, 99, 0)',
-                    'rgb(66, 116, 200)',
-                ]
-            }
-        ]
-    }
 
     var dataLife = {
         labels: [
@@ -280,54 +254,6 @@ export default function Poll7({ master }) {
                     'rgb(196, 99, 0)',
                     'rgb(66, 116, 200)',
                 ]
-            }
-        ]
-    }
-
-    //Combining Very Serious and Serious into one data point
-    var newSet = []
-    for (let i = 0; i < setsProblems[0].length; i++) {
-        newSet.push(setsProblems[0][i] + setsProblems[1][i])
-    }
-    var dataProblems = {
-        labels: [
-            ['The cost of housing for  middle-', 'and working-class families'],
-            'Increasing cost of living',
-            ['Inadequate public transit', 'service options'],
-            'The cost of healthcare',
-            'Homelessness',
-            ['A lack of high-quality child care', 'options for working families'],
-            'Climate change',
-            'Unemployment',
-            ['A lack of high-speed', 'internet options in the area'],
-            'The rising price of gas',
-            ['The amount you pay', 'in local property taxes'],
-            ['An increase in property crimes', 'such as burglary and theft'],
-            ['The affordability of high-', 'speed internet in the area'],
-            'The rising price of food',
-            ['The amount you pay', 'in local utility rates'],
-            'An increase in violent crimes'
-        ],
-        datasets: [
-            {
-                label: 'Serious',
-                data: newSet,
-                backgroundColor: 'rgb(12, 38, 96)',
-            },
-            {
-                label: 'Somewhat Serious',
-                data: setsProblems[2],
-                backgroundColor: 'rgb(196, 99, 0)',
-            },
-            {
-                label: 'Not Serious',
-                data: setsProblems[3],
-                backgroundColor: 'rgb(66, 116, 200)',
-            },
-            {
-                label: 'I do not know',
-                data: setsProblems[4],
-                backgroundColor: 'rgb(233, 168, 34)'
             }
         ]
     }
@@ -732,7 +658,7 @@ export default function Poll7({ master }) {
                         title="How do you plan on voting in this year's elections?"
                         column="Q3"
                         masterDataset={master[6].data}
-                        dataset={dataVotingPlans}
+                        dataset={chartData.chartVotingPlans}
                         options={pieOptions}
                         reshape="none"
                     />
@@ -742,7 +668,7 @@ export default function Poll7({ master }) {
                         title="Would you vote yes or no on a 150 million dollar City of San Antonio bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?"
                         column="Q4"
                         masterDataset={master[6].data}
-                        dataset={dataAHP}
+                        dataset={chartData.chartAHP}
                         options={pieOptions}
                         reshape="ahp"
                     />
@@ -754,9 +680,9 @@ export default function Poll7({ master }) {
                         title="Some say these issues are problems in the greater San Antonio area. Do you think it's a serious problem, somewhat serious problem or not a serious problem?"
                         columns={questions7}
                         masterDataset={master[6].data}
-                        dataset={dataProblems}
+                        dataset={chartData.chartProblems}
                         options={barOptions_stacked}
-                        reshapde="problems"
+                        reshape="problems"
                     />
                 </Col>
             </Row>
