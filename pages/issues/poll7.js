@@ -66,6 +66,12 @@ export default function Poll7({ master }) {
         'Q8P'
     ]
     let setsLP = memes(questions8LP, master[6].data)
+    chartData.chartLP.datasets[0].data = setsLP[0]
+    chartData.chartLP.datasets[1].data = setsLP[1]
+    chartData.chartLP.datasets[2].data = setsLP[2]
+    chartData.chartLP.datasets[3].data = setsLP[3]
+    chartData.chartLP.datasets[4].data = setsLP[4]
+
     var questions8FP = [
         'Q8B',
         'Q8D',
@@ -74,6 +80,12 @@ export default function Poll7({ master }) {
         'Q8N'
     ]
     let setsFP = memes(questions8FP, master[6].data, 'none')
+    chartData.chartFP.datasets[0].data = setsFP[0]
+    chartData.chartFP.datasets[1].data = setsFP[1]
+    chartData.chartFP.datasets[2].data = setsFP[2]
+    chartData.chartFP.datasets[3].data = setsFP[3]
+    chartData.chartFP.datasets[4].data = setsFP[4]
+
     var questions8S = [
         'Q8A',
         'Q8F',
@@ -82,6 +94,12 @@ export default function Poll7({ master }) {
         'Q8M'
     ]
     let setsS = memes(questions8S, master[6].data, 'none')
+    chartData.chartS.datasets[0].data = setsS[0]
+    chartData.chartS.datasets[1].data = setsS[1]
+    chartData.chartS.datasets[2].data = setsS[2]
+    chartData.chartS.datasets[3].data = setsS[3]
+    chartData.chartS.datasets[4].data = setsS[4]
+
     let setsLife = simplePie('Q10', master[6].data, 'none')
     let setsFinance = simplePie('Q11', master[6].data, 'none')
     var questions12 = [
@@ -258,117 +276,6 @@ export default function Poll7({ master }) {
         ]
     }
 
-    var dataLP = {
-        labels: [
-            ['Inadequate public', 'transit service options'],
-            'Homelessness',
-            ['The amount you pay', 'in local property taxes'],
-            ['An increase in property crimes', ' such as burglary and theft'],
-            ['The amount you pay', 'in local utility rates'],
-            'An increase in violent crimes'
-        ],
-        datasets: [
-            {
-                label: 'Local Governmnet',
-                data: setsLP[0],
-                backgroundColor: 'rgb(12, 38, 96)',
-            },
-            {
-                label: 'Texas Government',
-                data: setsLP[1],
-                backgroundColor: 'rgb(196, 99, 0)',
-            },
-            {
-                label: 'Federal Government',
-                data: setsLP[2],
-                backgroundColor: 'rgb(66, 116, 200)',
-            },
-            {
-                label: 'Not a Government Problem',
-                data: setsLP[3],
-                backgroundColor: 'rgb(233, 168, 34)',
-            },
-            {
-                label: 'I do not know',
-                data: setsLP[4],
-                backgroundColor: 'rgb(235, 223, 203)',
-            }
-        ]
-    }
-
-    var dataFP = {
-        labels: [
-            'Increasing cost of living',
-            'The cost of healthcare',
-            'Climate change',
-            'The rising price of gas',
-            'The rising price of food',
-        ],
-        datasets: [
-            {
-                label: 'Local Governmnet',
-                data: setsFP[0],
-                backgroundColor: 'rgb(12, 38, 96)',
-            },
-            {
-                label: 'Texas Government',
-                data: setsFP[1],
-                backgroundColor: 'rgb(196, 99, 0)',
-            },
-            {
-                label: 'Federal Government',
-                data: setsFP[2],
-                backgroundColor: 'rgb(66, 116, 200)',
-            },
-            {
-                label: 'Not a Government Problem',
-                data: setsFP[3],
-                backgroundColor: 'rgb(233, 168, 34)',
-            },
-            {
-                label: 'I do not know',
-                data: setsFP[4],
-                backgroundColor: 'rgb(235, 223, 203)',
-            }
-        ]
-    }
-
-    var dataS = {
-        labels: [
-            ['The cost of housing for middle-', 'and working-class families'],
-            ['A lack of high-quality child care', 'options for working families'],
-            'Unemployment',
-            ['A lack of high-speed', 'internet options in the area'],
-            ['The affordability of high-', 'speed internet in the area']
-        ],
-        datasets: [
-            {
-                label: 'Local Governmnet',
-                data: setsS[0],
-                backgroundColor: 'rgb(12, 38, 96)',
-            },
-            {
-                label: 'Texas Government',
-                data: setsS[1],
-                backgroundColor: 'rgb(196, 99, 0)',
-            },
-            {
-                label: 'Federal Government',
-                data: setsS[2],
-                backgroundColor: 'rgb(66, 116, 200)',
-            },
-            {
-                label: 'Not a Government Problem',
-                data: setsS[3],
-                backgroundColor: 'rgb(233, 168, 34)',
-            },
-            {
-                label: 'I do not know',
-                data: setsS[4],
-                backgroundColor: 'rgb(235, 223, 203)',
-            }
-        ]
-    }
     //Combining 2 fields into one data point
     var newSetE = []
     for (let i = 0; i < setsExperiences[0].length; i++) {
@@ -697,7 +604,7 @@ export default function Poll7({ master }) {
                         title="Local Priorities"
                         columns={questions8LP}
                         masterDataset={master[6].data}
-                        dataset={dataLP}
+                        dataset={chartData.chartLP}
                         options={barOptions_stacked}
                         reshape="lp"
                     />
@@ -709,7 +616,7 @@ export default function Poll7({ master }) {
                         title="Federal Priorities"
                         columns={questions8FP}
                         masterDataset={master[6].data}
-                        dataset={dataFP}
+                        dataset={chartData.chartFP}
                         options={barOptions_stacked}
                         reshape="fp"
                     />
@@ -721,7 +628,7 @@ export default function Poll7({ master }) {
                         title="Split on which level of government should lead"
                         columns={questions8S}
                         masterDataset={master[6].data}
-                        dataset={dataS}
+                        dataset={chartData.chartS}
                         options={barOptions_stacked}
                         reshape="s"
                     />
