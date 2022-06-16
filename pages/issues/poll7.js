@@ -101,7 +101,13 @@ export default function Poll7({ master }) {
     chartData.chartS.datasets[4].data = setsS[4]
 
     let setsLife = simplePie('Q10', master[6].data, 'none')
+    chartData.chartLife.datasets[0].data = [
+        setsLife[7] + setsLife[8] + setsLife[9] + setsLife[10],
+        setsLife[5] + setsLife[6],
+        setsLife[0] + setsLife[1] + setsLife[2] + setsLife[3] + setsLife[4]
+    ]
     let setsFinance = simplePie('Q11', master[6].data, 'none')
+    chartData.chartFinance.datasets[0].data = setsFinance
     var questions12 = [
         'Q12A',
         'Q12B',
@@ -110,6 +116,15 @@ export default function Poll7({ master }) {
         'Q12E',
     ]
     let setsExperiences = memes(questions12, master[6].data)
+    //Combining 2 fields into one data point
+    var newSetE = []
+    for (let i = 0; i < setsExperiences[0].length; i++) {
+        newSetE.push(setsExperiences[0][i] + setsExperiences[1][i])
+    }
+    chartData.chartExperiences.datasets[0].data = newSetE
+    chartData.chartExperiences.datasets[1].data = setsExperiences[2]
+    chartData.chartExperiences.datasets[2].data = setsExperiences[3]
+
     var questions13 = [
         'Q13A',
         'Q13B',
@@ -121,7 +136,19 @@ export default function Poll7({ master }) {
         'Q13H'
     ]
     let setsCOL = memes(questions13, master[6].data)
+    chartData.chartCOL.datasets[0].data = setsCOL[0]
+    chartData.chartCOL.datasets[1].data = setsCOL[1]
+    chartData.chartCOL.datasets[2].data = setsCOL[2]
+    chartData.chartCOL.datasets[3].data = setsCOL[3]
+    chartData.chartCOL.datasets[4].data = setsCOL[4]
+
     let setsStatement = simplePie('Q14', master[6].data)
+    chartData.chartStatement.datasets[0].data = [
+        setsStatement[0] + setsStatement[1],
+        setsStatement[2] + setsStatement[3],
+        setsStatement[4]
+    ]
+
     var questions15 = [
         'Q15A',
         'Q15B',
@@ -130,6 +157,11 @@ export default function Poll7({ master }) {
         'Q15E'
     ]
     let setsChallenges = memes(questions15, master[6].data)
+    chartData.chartChallenges.datasets[0].data = setsChallenges[0]
+    chartData.chartChallenges.datasets[1].data = setsChallenges[1]
+    chartData.chartChallenges.datasets[2].data = setsChallenges[2]
+    chartData.chartChallenges.datasets[3].data = setsChallenges[3]
+    
     var questions16 = [
         'Q16A',
         'Q16B',
@@ -146,290 +178,25 @@ export default function Poll7({ master }) {
         'Q16M'
     ]
     let setsHealth = memes(questions16, master[6].data)
-    let setsCharity = simplePie('Q17', master[6].data)
-    let setsVolunteer = simplePie('Q18', master[6].data)
-    let setsDonations = simplePie('Q20', master[6].data)
-
-    var dataLife = {
-        labels: [
-            'Thriving',
-            'Struggling',
-            'Suffering'
-        ],
-        datasets: [
-            {
-                label: "",
-                data: [
-                    setsLife[7] + setsLife[8] + setsLife[9] + setsLife[10],
-                    setsLife[5] + setsLife[6],
-                    setsLife[0] + setsLife[1] + setsLife[2] + setsLife[3] + setsLife[4]
-                ],
-                backgroundColor: [
-                    'rgb(12, 38, 96)',
-                    'rgb(196, 99, 0)',
-                    'rgb(66, 116, 200)',
-                ]
-            }
-        ]
-    }
-
-    var dataFinance = {
-        labels: [
-            'Living Comfortably',
-            'Meeting living expenses',
-            'Only just meeting living expenses',
-            'Having trouble meeting expenses',
-            'I do not know'
-        ],
-        datasets: [
-            {
-                label: "",
-                data: setsFinance,
-                backgroundColor: [
-                    'rgb(12, 38, 96)',
-                    'rgb(196, 99, 0)',
-                    'rgb(66, 116, 200)',
-                    'rgb(233, 168, 34)',
-                    'rgb(235, 223, 203)',
-                ]
-            }
-        ]
-    }
-
-    var dataStatement = {
-        labels: [
-            'Agree',
-            'Disagree',
-            'I do not know'
-        ],
-        datasets: [
-            {
-                label: "",
-                data: [
-                    setsStatement[0] + setsStatement[1],
-                    setsStatement[2] + setsStatement[3],
-                    setsStatement[4]
-                ],
-                backgroundColor: [
-                    'rgb(12, 38, 96)',
-                    'rgb(196, 99, 0)',
-                    'rgb(66, 116, 200)',
-                ]
-            }
-        ]
-    }
-
-    var dataCharity = {
-        labels: [
-            'Yes',
-            'No',
-            'I do not know'
-        ],
-        datasets: [
-            {
-                label: "",
-                data: setsCharity,
-                backgroundColor: [
-                    'rgb(12, 38, 96)',
-                    'rgb(196, 99, 0)',
-                    'rgb(66, 116, 200)',
-                ]
-            }
-        ]
-    }
-
-    var dataVolunteer = {
-        labels: [
-            'Yes',
-            'No',
-            'I do not know'
-        ],
-        datasets: [
-            {
-                label: "",
-                data: setsVolunteer,
-                backgroundColor: [
-                    'rgb(12, 38, 96)',
-                    'rgb(196, 99, 0)',
-                    'rgb(66, 116, 200)',
-                ]
-            }
-        ]
-    }
-
-    var dataDonations = {
-        labels: [
-            'Yes',
-            'No',
-            'I do not know'
-        ],
-        datasets: [
-            {
-                label: "",
-                data: setsDonations,
-                backgroundColor: [
-                    'rgb(12, 38, 96)',
-                    'rgb(196, 99, 0)',
-                    'rgb(66, 116, 200)',
-                ]
-            }
-        ]
-    }
 
     //Combining 2 fields into one data point
-    var newSetE = []
-    for (let i = 0; i < setsExperiences[0].length; i++) {
-        newSetE.push(setsExperiences[0][i] + setsExperiences[1][i])
-    }
-    var dataExperiences = {
-        labels: [
-            ['Skipped meals because you', 'couldn’t afford food'],
-            'Postponed medical or dental care',
-            ['Had to change your living arrangements', 'because you couldn’t afford your', 'rent or mortgage'],
-            ['Have looked for, but been unable', 'to find affordable childcare'],
-            ['Held off from making a large purchase', 'such as a car or a home']
-        ],
-        datasets: [
-            {
-                label: 'Yes',
-                data: newSetE,
-                backgroundColor: 'rgb(12, 38, 96)',
-            },
-            {
-                label: 'No',
-                data: setsExperiences[2],
-                backgroundColor: 'rgb(196, 99, 0)',
-            },
-            {
-                label: 'I do not know',
-                data: setsExperiences[3],
-                backgroundColor: 'rgb(66, 116, 200)',
-            }
-        ]
-    }
-
-    var dataCOL = {
-        labels: [
-            ['Landlords raising the price', 'of rent to maximize profits'],
-            ['Disruptions in the supply chain', 'of materials and goods'],
-            ['Forced closures of businesses during the', 'COVID-19 pandemic the last two years'],
-            'A lack of high-paying jobs in the area',
-            ['Not enough affordable housing', 'to meet the local demand'],
-            ['Sanctions against Russia forbidding', 'the import of crude oil and petroleum'],
-            ['Price gouging from companies', 'on essential goods'],
-            'Labor shortages'
-        ],
-        datasets: [
-            {
-                label: 'Major Reason',
-                data: setsCOL[0],
-                backgroundColor: 'rgb(12, 38, 96)',
-            },
-            {
-                label: 'Minor Reason',
-                data: setsCOL[1],
-                backgroundColor: 'rgb(196, 99, 0)',
-            },
-            {
-                label: 'Not much of a Reason',
-                data: setsCOL[2],
-                backgroundColor: 'rgb(66, 116, 200)',
-            },
-            {
-                label: 'Not a Reason',
-                data: setsCOL[3],
-                backgroundColor: 'rgb(233, 168, 34)'
-            },
-            {
-                label: 'I do not know',
-                data: setsCOL[4],
-                backgroundColor: 'rgb(235, 223, 203)'
-            }
-        ]
-    }
-
-    var dataChallenges = {
-        labels: [
-            'Finding affordable childcare',
-            ['Finding a job that pays sufficiently', 'or gives enough hours'],
-            ['Receiving more in unemployment benefits', 'than a job would pay'],
-            ['A lack of good, mid-level jobs', 'that are not starting positions'],
-            'A lack of job training or skill-building programs',
-        ],
-        datasets: [
-            {
-                label: 'Major Challenge',
-                data: setsChallenges[0],
-                backgroundColor: 'rgb(12, 38, 96)',
-            },
-            {
-                label: 'Minor Challenge',
-                data: setsChallenges[1],
-                backgroundColor: 'rgb(196, 99, 0)',
-            },
-            {
-                label: 'Not a Challenge',
-                data: setsChallenges[2],
-                backgroundColor: 'rgb(66, 116, 200)',
-            },
-            {
-                label: 'I do not know',
-                data: setsChallenges[3],
-                backgroundColor: 'rgb(233, 168, 34)'
-            }
-        ]
-    }
-    //Combining 2 fields into one data point
-
     var newSetHealth = []
     for (let i = 0; i < setsHealth[0].length; i++) {
         newSetHealth.push(setsHealth[0][i] + setsHealth[1][i])
     }
 
-    var dataHealth = {
-        labels: [
-            'Lack of access to high-quality medical care',
-            'Having a low income',
-            'High stress',
-            'Lack of access to high-quality, healthy food',
-            'Not having health insurance',
-            'Smoking',
-            'Personal behavioral choices',
-            'Being exposed to air, water or chemical pollution',
-            'Bad genes',
-            'Poor neighborhood and housing conditions',
-            'Not having enough opportunity for education',
-            'Racism and discrimination',
-            'Family violence',
-        ],
-        datasets: [
-            {
-                label: 'Important',
-                data: newSetHealth,
-                backgroundColor: 'rgb(12, 38, 96)',
-            },
-            {
-                label: 'Somewhat Important',
-                data: setsHealth[2],
-                backgroundColor: 'rgb(196, 99, 0)',
-            },
-            {
-                label: 'Not Too Important',
-                data: setsHealth[3],
-                backgroundColor: 'rgb(66, 116, 200)',
-            },
-            {
-                label: 'Not At All Important',
-                data: setsHealth[4],
-                backgroundColor: 'rgb(233, 168, 34)'
-            },
-            {
-                label: 'I do not know',
-                data: setsHealth[5],
-                backgroundColor: 'rgb(235, 223, 203)',
-            }
-        ]
-    }
+    chartData.chartHealth.datasets[0].data = setsHealth[0]
+    chartData.chartHealth.datasets[1].data = setsHealth[1]
+    chartData.chartHealth.datasets[2].data = setsHealth[2]
+    chartData.chartHealth.datasets[3].data = setsHealth[3]
+    chartData.chartHealth.datasets[4].data = setsHealth[4]
+
+    let setsCharity = simplePie('Q17', master[6].data)
+    chartData.chartCharity.datasets[0].data = setsCharity
+    let setsVolunteer = simplePie('Q18', master[6].data)
+    chartData.chartVolunteer.datasets[0].data = setsVolunteer
+    let setsDonations = simplePie('Q20', master[6].data)
+    chartData.chartDonations.datasets[0].data = setsDonations
 
     var barOptions_stacked = {
         //responsive: true,
@@ -640,7 +407,7 @@ export default function Poll7({ master }) {
                         title="The Cantril Self-Anchoring Scale is a tool used to assess the well-being of a population by asking respondents to rate where their life stands now, and where they think it will be in five years, using a hypothetical ten-point “ladder” scale. By combining a respondents rating we are able able to identify if people feel they are Thriving, Struggling, or Suffering."
                         column="Q10"
                         masterDataset={master[6].data}
-                        dataset={dataLife}
+                        dataset={chartData.chartLife}
                         options={pieOptions}
                         reshape="life"
                     />
@@ -650,7 +417,7 @@ export default function Poll7({ master }) {
                         title="How would you describe your current financial situation?"
                         column="Q11"
                         masterDataset={master[6].data}
-                        dataset={dataFinance}
+                        dataset={chartData.chartFinance}
                         options={pieOptions}
                         reshape="none"
                     />
@@ -662,7 +429,7 @@ export default function Poll7({ master }) {
                         title="Have you experienced any of the following over the last 12 months?"
                         columns={questions12}
                         masterDataset={master[6].data}
-                        dataset={dataExperiences}
+                        dataset={chartData.chartExperiences}
                         options={barOptions_stacked}
                         reshape="experiences"
                     />
@@ -674,7 +441,7 @@ export default function Poll7({ master }) {
                         title="Do you think these things contribute to the rising cost of living in Bexar County?"
                         columns={questions13}
                         masterDataset={master[6].data}
-                        dataset={dataCOL}
+                        dataset={chartData.chartCOL}
                         options={barOptions_stacked}
                         reshape="lp"
                     />
@@ -686,7 +453,7 @@ export default function Poll7({ master }) {
                         title='Do you agree or disagree with the following statement "Having reliable, high quality child care for young children is crucial for parents to be able to work?"'
                         column="Q11"
                         masterDataset={master[6].data}
-                        dataset={dataStatement}
+                        dataset={chartData.chartStatement}
                         options={pieOptions}
                         reshape="statement"
                     />
@@ -698,7 +465,7 @@ export default function Poll7({ master }) {
                         title="What do you think is a challenge when looking for a job?"
                         columns={questions15}
                         masterDataset={master[6].data}
-                        dataset={dataChallenges}
+                        dataset={chartData.chartChallenges}
                         options={barOptions_stacked}
                         reshape="challenges"
                     />
@@ -710,7 +477,7 @@ export default function Poll7({ master }) {
                         title="How important do you think each of the following factors are to a person's health?"
                         columns={questions16}
                         masterDataset={master[6].data}
-                        dataset={dataHealth}
+                        dataset={chartData.chartHealth}
                         options={barOptions_stacked}
                         reshape="health"
                     />
@@ -722,7 +489,7 @@ export default function Poll7({ master }) {
                         title="Have you provided any monetary support to a charitable or non-profit organization in the last year?"
                         column="Q17"
                         masterDataset={master[6].data}
-                        dataset={dataCharity}
+                        dataset={chartData.chartCharity}
                         options={pieOptions}
                         reshape="none"
                     />
@@ -732,7 +499,7 @@ export default function Poll7({ master }) {
                         title="Have you or anyone in your household provided volunteer support to a charitable or non-profit organization in the last year?"
                         column="Q18"
                         masterDataset={master[6].data}
-                        dataset={dataVolunteer}
+                        dataset={chartData.chartVolunteer}
                         options={pieOptions}
                         reshape="none"
                     />
@@ -744,7 +511,7 @@ export default function Poll7({ master }) {
                         title="Were some or all of your charitable donations in 2021 benefiting a community in Bexar County?"
                         column="Q20"
                         masterDataset={master[6].data}
-                        dataset={dataDonations}
+                        dataset={chartData.chartDonations}
                         options={pieOptions}
                         reshape="none"
                     />
