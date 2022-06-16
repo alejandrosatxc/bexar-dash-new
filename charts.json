@@ -1,0 +1,105 @@
+{
+    "chartVotingPlans" : {
+        "labels" : [
+            "In person, on the day of the election",
+            "In person, before the day of the election",
+            "By mail",
+            "Do not plan on voting",
+            "I do not know"
+        ],
+        "datasets": [
+            {
+                "label" : "",
+                "data" : null,
+                "backgroundColor" : [
+                    "rgb(12, 38, 96)",
+                    "rgb(196, 99, 0)",
+                    "rgb(66, 116, 200)",
+                    "rgb(233, 168, 34)",
+                    "rgb(235, 223, 203)"
+                ]
+            }
+        ]
+    },
+    
+    "chartAHP" : {
+        "labels": [
+            "Yes",
+            "No",
+            "I do not know"
+        ],
+        "datasets" : [ 
+            {
+                "label" : "",
+                "data" : null,
+                "backgroundColor" : [
+                    "rgb(12, 38, 96)",
+                    "rgb(196, 99, 0)",
+                    "rgb(66, 116, 200)"
+                ]
+            }
+        ]
+    },
+
+    "chartProblems" : {
+        "labels" : [
+            ["The cost of housing for  middle-", "and working-class families"],
+            "Increasing cost of living",
+            ["Inadequate public transit", "service options"],
+            "The cost of healthcare",
+            "Homelessness",
+            ["A lack of high-quality child care", "options for working families"],
+            "Climate change",
+            "Unemployment",
+            ["A lack of high-speed", "internet options in the area"],
+            "The rising price of gas",
+            ["The amount you pay", "in local property taxes"],
+            ["An increase in property crimes", "such as burglary and theft"],
+            ["The affordability of high-", "speed internet in the area"],
+            "The rising price of food",
+            ["The amount you pay", "in local utility rates"],
+            "An increase in violent crimes"
+        ],
+        "datasets" : [
+            {
+                "label": "Serious",
+                "data": null,
+                "backgroundColor" : "rgb(12, 38, 96)"
+            },
+            {
+                "label" : "Somewhat Serious",
+                "data" : null,
+                "backgroundColor" : "rgb(196, 99, 0)"
+            },
+            {
+                "label" : "Not Serious",
+                "data" : null,
+                "backgroundColor" : "rgb(66, 116, 200)"
+            },
+            {
+                "label" : "I do not know",
+                "data" : null,
+                "backgroundColor" : "rgb(233, 168, 34)"
+            }
+        ]
+    },
+
+    "chartLife" : {
+        "labels": [
+            "Thriving",
+            "Struggling",
+            "Suffering"
+        ],
+        "datasets" : [
+            {
+                "label" : "",
+                "data" : null,
+                "backgroundColor" : [
+                    "rgb(12, 38, 96)",
+                    "rgb(196, 99, 0)",
+                    "rgb(66, 116, 200)"
+                ]
+            }
+        ]
+    }
+}
