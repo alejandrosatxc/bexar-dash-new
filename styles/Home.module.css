@@ -170,8 +170,8 @@
 }
 
 .linechart {
-  height: 450px;
-  width: auto;
+  height: auto;
+  /* width: auto; */
 }
 
 .grid {
