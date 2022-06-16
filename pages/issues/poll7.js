@@ -6,9 +6,6 @@ import PieChart from '../../components/PieChart'
 import BarChart from '../../components/BarChart'
 import { Container, Row, Col } from 'react-bootstrap';
 
-//import 'bootstrap/dist/css/bootstrap.css';
-//This is a pull request test
-//Second line for a test
 export async function getStaticProps() {
     const master = await getMaster()
     return ({ props: { master } })
@@ -17,7 +14,6 @@ export async function getStaticProps() {
 export default function Poll7({ master }) {
 
     let chartData = require('/charts.json')
-    
 
     let setsVotingPlans = simplePie('Q3', master[6].data, 'none')
     let setsAHP = simplePie('Q4', master[6].data, 'none')
@@ -55,7 +51,6 @@ export default function Poll7({ master }) {
     chartData.chartProblems.datasets[1].data = setsProblems[2]
     chartData.chartProblems.datasets[2].data = setsProblems[3]
     chartData.chartProblems.datasets[3].data = setsProblems[4]
-
 
     var questions8LP = [
         'Q8C',
@@ -161,7 +156,7 @@ export default function Poll7({ master }) {
     chartData.chartChallenges.datasets[1].data = setsChallenges[1]
     chartData.chartChallenges.datasets[2].data = setsChallenges[2]
     chartData.chartChallenges.datasets[3].data = setsChallenges[3]
-    
+
     var questions16 = [
         'Q16A',
         'Q16B',
