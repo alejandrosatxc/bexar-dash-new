@@ -23,7 +23,7 @@ export default function Poll7({ master }) {
         setsAHP[3] + setsAHP[4] + setsAHP[5],
         setsAHP[6]
     ]
-    
+
     let setsProblems = generateChartDatasets(chartData.chartProblems.columns, master[6].data, 'none')
     //Combining Very Serious and Serious into one data point
     var newSet = []
@@ -35,127 +35,68 @@ export default function Poll7({ master }) {
     chartData.chartProblems.chartConfig.datasets[2].data = setsProblems[3]
     chartData.chartProblems.chartConfig.datasets[3].data = setsProblems[4]
 
-    var questions8LP = [
-        'Q8C',
-        'Q8E',
-        'Q8K',
-        'Q8L',
-        'Q8O',
-        'Q8P'
-    ]
-    let setsLP = memes(questions8LP, master[6].data)
-    chartData.chartLP.datasets[0].data = setsLP[0]
-    chartData.chartLP.datasets[1].data = setsLP[1]
-    chartData.chartLP.datasets[2].data = setsLP[2]
-    chartData.chartLP.datasets[3].data = setsLP[3]
-    chartData.chartLP.datasets[4].data = setsLP[4]
+    let setsLP = generateChartDatasets(chartData.chartLP.columns, master[6].data)
+    chartData.chartLP.chartConfig.datasets[0].data = setsLP[0]
+    chartData.chartLP.chartConfig.datasets[1].data = setsLP[1]
+    chartData.chartLP.chartConfig.datasets[2].data = setsLP[2]
+    chartData.chartLP.chartConfig.datasets[3].data = setsLP[3]
+    chartData.chartLP.chartConfig.datasets[4].data = setsLP[4]
 
-    var questions8FP = [
-        'Q8B',
-        'Q8D',
-        'Q8G',
-        'Q8J',
-        'Q8N'
-    ]
-    let setsFP = memes(questions8FP, master[6].data, 'none')
-    chartData.chartFP.datasets[0].data = setsFP[0]
-    chartData.chartFP.datasets[1].data = setsFP[1]
-    chartData.chartFP.datasets[2].data = setsFP[2]
-    chartData.chartFP.datasets[3].data = setsFP[3]
-    chartData.chartFP.datasets[4].data = setsFP[4]
+    let setsFP = generateChartDatasets(chartData.chartFP.columns, master[6].data, 'none')
+    chartData.chartFP.chartConfig.datasets[0].data = setsFP[0]
+    chartData.chartFP.chartConfig.datasets[1].data = setsFP[1]
+    chartData.chartFP.chartConfig.datasets[2].data = setsFP[2]
+    chartData.chartFP.chartConfig.datasets[3].data = setsFP[3]
+    chartData.chartFP.chartConfig.datasets[4].data = setsFP[4]
 
-    var questions8S = [
-        'Q8A',
-        'Q8F',
-        'Q8H',
-        'Q8I',
-        'Q8M'
-    ]
-    let setsS = memes(questions8S, master[6].data, 'none')
-    chartData.chartS.datasets[0].data = setsS[0]
-    chartData.chartS.datasets[1].data = setsS[1]
-    chartData.chartS.datasets[2].data = setsS[2]
-    chartData.chartS.datasets[3].data = setsS[3]
-    chartData.chartS.datasets[4].data = setsS[4]
+    let setsS = generateChartDatasets(chartData.chartS.columns, master[6].data, 'none')
+    chartData.chartS.chartConfig.datasets[0].data = setsS[0]
+    chartData.chartS.chartConfig.datasets[1].data = setsS[1]
+    chartData.chartS.chartConfig.datasets[2].data = setsS[2]
+    chartData.chartS.chartConfig.datasets[3].data = setsS[3]
+    chartData.chartS.chartConfig.datasets[4].data = setsS[4]
 
-    let setsLife = simplePie('Q10', master[6].data, 'none')
-    chartData.chartLife.datasets[0].data = [
+    let setsLife = generateChartDatasets(chartData.chartLife.columns, master[6].data, 'none')
+    chartData.chartLife.chartConfig.datasets[0].data = [
         setsLife[7] + setsLife[8] + setsLife[9] + setsLife[10],
         setsLife[5] + setsLife[6],
         setsLife[0] + setsLife[1] + setsLife[2] + setsLife[3] + setsLife[4]
     ]
-    let setsFinance = simplePie('Q11', master[6].data, 'none')
-    chartData.chartFinance.datasets[0].data = setsFinance
-    var questions12 = [
-        'Q12A',
-        'Q12B',
-        'Q12C',
-        'Q12D',
-        'Q12E',
-    ]
-    let setsExperiences = memes(questions12, master[6].data)
+
+    let setsFinance = generateChartDatasets(chartData.chartFinance.columns, master[6].data, 'none')
+    chartData.chartFinance.chartConfig.datasets[0].data = setsFinance
+
+    let setsExperiences = generateChartDatasets(chartData.chartExperiences.columns, master[6].data)
     //Combining 2 fields into one data point
     var newSetE = []
     for (let i = 0; i < setsExperiences[0].length; i++) {
         newSetE.push(setsExperiences[0][i] + setsExperiences[1][i])
     }
-    chartData.chartExperiences.datasets[0].data = newSetE
-    chartData.chartExperiences.datasets[1].data = setsExperiences[2]
-    chartData.chartExperiences.datasets[2].data = setsExperiences[3]
+    chartData.chartExperiences.chartConfig.datasets[0].data = newSetE
+    chartData.chartExperiences.chartConfig.datasets[1].data = setsExperiences[2]
+    chartData.chartExperiences.chartConfig.datasets[2].data = setsExperiences[3]
 
-    var questions13 = [
-        'Q13A',
-        'Q13B',
-        'Q13C',
-        'Q13D',
-        'Q13E',
-        'Q13F',
-        'Q13G',
-        'Q13H'
-    ]
-    let setsCOL = memes(questions13, master[6].data)
-    chartData.chartCOL.datasets[0].data = setsCOL[0]
-    chartData.chartCOL.datasets[1].data = setsCOL[1]
-    chartData.chartCOL.datasets[2].data = setsCOL[2]
-    chartData.chartCOL.datasets[3].data = setsCOL[3]
-    chartData.chartCOL.datasets[4].data = setsCOL[4]
+    let setsCOL = generateChartDatasets(chartData.chartCOL.columns, master[6].data)
+    chartData.chartCOL.chartConfig.datasets[0].data = setsCOL[0]
+    chartData.chartCOL.chartConfig.datasets[1].data = setsCOL[1]
+    chartData.chartCOL.chartConfig.datasets[2].data = setsCOL[2]
+    chartData.chartCOL.chartConfig.datasets[3].data = setsCOL[3]
+    chartData.chartCOL.chartConfig.datasets[4].data = setsCOL[4]
 
-    let setsStatement = simplePie('Q14', master[6].data)
-    chartData.chartStatement.datasets[0].data = [
+    let setsStatement = generateChartDatasets(chartData.chartStatement.columns, master[6].data)
+    chartData.chartStatement.chartConfig.datasets[0].data = [
         setsStatement[0] + setsStatement[1],
         setsStatement[2] + setsStatement[3],
         setsStatement[4]
     ]
 
-    var questions15 = [
-        'Q15A',
-        'Q15B',
-        'Q15C',
-        'Q15D',
-        'Q15E'
-    ]
-    let setsChallenges = memes(questions15, master[6].data)
-    chartData.chartChallenges.datasets[0].data = setsChallenges[0]
-    chartData.chartChallenges.datasets[1].data = setsChallenges[1]
-    chartData.chartChallenges.datasets[2].data = setsChallenges[2]
-    chartData.chartChallenges.datasets[3].data = setsChallenges[3]
+    let setsChallenges = generateChartDatasets(chartData.chartChallenges.columns, master[6].data)
+    chartData.chartChallenges.chartConfig.datasets[0].data = setsChallenges[0]
+    chartData.chartChallenges.chartConfig.datasets[1].data = setsChallenges[1]
+    chartData.chartChallenges.chartConfig.datasets[2].data = setsChallenges[2]
+    chartData.chartChallenges.chartConfig.datasets[3].data = setsChallenges[3]
 
-    var questions16 = [
-        'Q16A',
-        'Q16B',
-        'Q16C',
-        'Q16D',
-        'Q16E',
-        'Q16F',
-        'Q16G',
-        'Q16H',
-        'Q16I',
-        'Q16J',
-        'Q16K',
-        'Q16L',
-        'Q16M'
-    ]
-    let setsHealth = memes(questions16, master[6].data)
+    let setsHealth = generateChartDatasets(chartData.chartHealth.columns, master[6].data)
 
     //Combining 2 fields into one data point
     var newSetHealth = []
@@ -163,18 +104,18 @@ export default function Poll7({ master }) {
         newSetHealth.push(setsHealth[0][i] + setsHealth[1][i])
     }
 
-    chartData.chartHealth.datasets[0].data = setsHealth[0]
-    chartData.chartHealth.datasets[1].data = setsHealth[1]
-    chartData.chartHealth.datasets[2].data = setsHealth[2]
-    chartData.chartHealth.datasets[3].data = setsHealth[3]
-    chartData.chartHealth.datasets[4].data = setsHealth[4]
+    chartData.chartHealth.chartConfig.datasets[0].data = newSetHealth
+    chartData.chartHealth.chartConfig.datasets[1].data = setsHealth[2]
+    chartData.chartHealth.chartConfig.datasets[2].data = setsHealth[3]
+    chartData.chartHealth.chartConfig.datasets[3].data = setsHealth[4]
+    chartData.chartHealth.chartConfig.datasets[4].data = setsHealth[5]
 
-    let setsCharity = simplePie('Q17', master[6].data)
-    chartData.chartCharity.datasets[0].data = setsCharity
-    let setsVolunteer = simplePie('Q18', master[6].data)
-    chartData.chartVolunteer.datasets[0].data = setsVolunteer
-    let setsDonations = simplePie('Q20', master[6].data)
-    chartData.chartDonations.datasets[0].data = setsDonations
+    let setsCharity = generateChartDatasets(chartData.chartCharity.columns, master[6].data)
+    chartData.chartCharity.chartConfig.datasets[0].data = setsCharity
+    let setsVolunteer = generateChartDatasets(chartData.chartVolunteer.columns, master[6].data)
+    chartData.chartVolunteer.chartConfig.datasets[0].data = setsVolunteer
+    let setsDonations = generateChartDatasets(chartData.chartDonations.columns, master[6].data)
+    chartData.chartDonations.chartConfig.datasets[0].data = setsDonations
 
     var barOptions_stacked = {
         //responsive: true,
@@ -308,7 +249,7 @@ export default function Poll7({ master }) {
                 <Col lg={6} xs={12} >
                     <PieChart
                         title="How do you plan on voting in this year's elections?"
-                        column="Q3"
+                        column={chartData.chartVotingPlans.columns}
                         masterDataset={master[6].data}
                         dataset={chartData.chartVotingPlans.chartConfig}
                         options={pieOptions}
@@ -318,7 +259,7 @@ export default function Poll7({ master }) {
                 <Col lg={6} xs={12}>
                     <PieChart
                         title="Would you vote yes or no on a 150 million dollar City of San Antonio bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?"
-                        column="Q4"
+                        column={chartData.chartAHP.columns}
                         masterDataset={master[6].data}
                         dataset={chartData.chartAHP.chartConfig}
                         options={pieOptions}
@@ -347,9 +288,9 @@ export default function Poll7({ master }) {
                 <Col xs={12}>
                     <BarChart
                         title="Local Priorities"
-                        columns={questions8LP}
+                        columns={chartData.chartLP.columns}
                         masterDataset={master[6].data}
-                        dataset={chartData.chartLP}
+                        dataset={chartData.chartLP.chartConfig}
                         options={barOptions_stacked}
                         reshape="lp"
                     />
@@ -359,9 +300,9 @@ export default function Poll7({ master }) {
                 <Col xs={12}>
                     <BarChart
                         title="Federal Priorities"
-                        columns={questions8FP}
+                        columns={chartData.chartFP.columns}
                         masterDataset={master[6].data}
-                        dataset={chartData.chartFP}
+                        dataset={chartData.chartFP.chartConfig}
                         options={barOptions_stacked}
                         reshape="fp"
                     />
@@ -371,9 +312,9 @@ export default function Poll7({ master }) {
                 <Col xs={12}>
                     <BarChart
                         title="Split on which level of government should lead"
-                        columns={questions8S}
+                        columns={chartData.chartS.columns}
                         masterDataset={master[6].data}
-                        dataset={chartData.chartS}
+                        dataset={chartData.chartS.chartConfig}
                         options={barOptions_stacked}
                         reshape="s"
                     />
@@ -383,9 +324,9 @@ export default function Poll7({ master }) {
                 <Col lg={6} xs={12}>
                     <PieChart
                         title="The Cantril Self-Anchoring Scale is a tool used to assess the well-being of a population by asking respondents to rate where their life stands now, and where they think it will be in five years, using a hypothetical ten-point “ladder” scale. By combining a respondents rating we are able able to identify if people feel they are Thriving, Struggling, or Suffering."
-                        column="Q10"
+                        column={chartData.chartLife.columns}
                         masterDataset={master[6].data}
-                        dataset={chartData.chartLife}
+                        dataset={chartData.chartLife.chartConfig}
                         options={pieOptions}
                         reshape="life"
                     />
@@ -393,9 +334,9 @@ export default function Poll7({ master }) {
                 <Col lg={6} xs={12}>
                     <PieChart
                         title="How would you describe your current financial situation?"
-                        column="Q11"
+                        column={chartData.chartFinance.columns}
                         masterDataset={master[6].data}
-                        dataset={chartData.chartFinance}
+                        dataset={chartData.chartFinance.chartConfig}
                         options={pieOptions}
                         reshape="none"
                     />
@@ -405,9 +346,9 @@ export default function Poll7({ master }) {
                 <Col xs={12}>
                     <BarChart
                         title="Have you experienced any of the following over the last 12 months?"
-                        columns={questions12}
+                        columns={chartData.chartExperiences.columns}
                         masterDataset={master[6].data}
-                        dataset={chartData.chartExperiences}
+                        dataset={chartData.chartExperiences.chartConfig}
                         options={barOptions_stacked}
                         reshape="experiences"
                     />
@@ -417,9 +358,9 @@ export default function Poll7({ master }) {
                 <Col xs={12}>
                     <BarChart
                         title="Do you think these things contribute to the rising cost of living in Bexar County?"
-                        columns={questions13}
+                        columns={chartData.chartCOL.columns}
                         masterDataset={master[6].data}
-                        dataset={chartData.chartCOL}
+                        dataset={chartData.chartCOL.chartConfig}
                         options={barOptions_stacked}
                         reshape="lp"
                     />
@@ -429,9 +370,9 @@ export default function Poll7({ master }) {
                 <Col lg={6} xs={12} className="w-100">
                     <PieChart
                         title='Do you agree or disagree with the following statement "Having reliable, high quality child care for young children is crucial for parents to be able to work?"'
-                        column="Q11"
+                        column={chartData.chartStatement.columns}
                         masterDataset={master[6].data}
-                        dataset={chartData.chartStatement}
+                        dataset={chartData.chartStatement.chartConfig}
                         options={pieOptions}
                         reshape="statement"
                     />
@@ -441,9 +382,9 @@ export default function Poll7({ master }) {
                 <Col xs={12}>
                     <BarChart
                         title="What do you think is a challenge when looking for a job?"
-                        columns={questions15}
+                        columns={chartData.chartChallenges.columns}
                         masterDataset={master[6].data}
-                        dataset={chartData.chartChallenges}
+                        dataset={chartData.chartChallenges.chartConfig}
                         options={barOptions_stacked}
                         reshape="challenges"
                     />
@@ -453,9 +394,9 @@ export default function Poll7({ master }) {
                 <Col xs={12}>
                     <BarChart
                         title="How important do you think each of the following factors are to a person's health?"
-                        columns={questions16}
+                        columns={chartData.chartHealth.columns}
                         masterDataset={master[6].data}
-                        dataset={chartData.chartHealth}
+                        dataset={chartData.chartHealth.chartConfig}
                         options={barOptions_stacked}
                         reshape="health"
                     />
@@ -465,9 +406,9 @@ export default function Poll7({ master }) {
                 <Col lg={6} xs={12}>
                     <PieChart
                         title="Have you provided any monetary support to a charitable or non-profit organization in the last year?"
-                        column="Q17"
+                        column={chartData.chartCharity.columns}
                         masterDataset={master[6].data}
-                        dataset={chartData.chartCharity}
+                        dataset={chartData.chartCharity.chartConfig}
                         options={pieOptions}
                         reshape="none"
                     />
@@ -475,9 +416,9 @@ export default function Poll7({ master }) {
                 <Col lg={6} xs={12}>
                     <PieChart
                         title="Have you or anyone in your household provided volunteer support to a charitable or non-profit organization in the last year?"
-                        column="Q18"
+                        column={chartData.chartVolunteer.columns}
                         masterDataset={master[6].data}
-                        dataset={chartData.chartVolunteer}
+                        dataset={chartData.chartVolunteer.chartConfig}
                         options={pieOptions}
                         reshape="none"
                     />
@@ -487,9 +428,9 @@ export default function Poll7({ master }) {
                 <Col lg={6} xs={12} className="w-100">
                     <PieChart
                         title="Were some or all of your charitable donations in 2021 benefiting a community in Bexar County?"
-                        column="Q20"
+                        column={chartData.chartDonations.columns}
                         masterDataset={master[6].data}
-                        dataset={chartData.chartDonations}
+                        dataset={chartData.chartDonations.chartConfig}
                         options={pieOptions}
                         reshape="none"
                     />
