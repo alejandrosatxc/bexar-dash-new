@@ -1,6 +1,6 @@
 import styles from '../../styles/Home.module.css'
 import getMaster from '../../lib/master'
-import { memes, simplePie, generateChartDatasets } from '../../lib/myfuncs'
+import { generateChartDatasets } from '../../lib/myfuncs'
 import 'chart.js/auto';
 import PieChart from '../../components/PieChart'
 import BarChart from '../../components/BarChart'
@@ -17,7 +17,7 @@ export default function Poll7({ master }) {
 
     let setsVotingPlans = generateChartDatasets(chartData.chartVotingPlans.columns, master[6].data, 'none')
     let setsAHP = generateChartDatasets(chartData.chartAHP.columns, master[6].data, 'none')
-    chartData.chartVotingPlans.chartConfig.datasets[0].data = setsVotingPlans
+    chartData.chartVotingPlans.chartConfig.daƒßtasets[0].data = setsVotingPlans
     chartData.chartAHP.chartConfig.datasets[0].data = [
         setsAHP[0] + setsAHP[1] + setsAHP[2],
         setsAHP[3] + setsAHP[4] + setsAHP[5],
