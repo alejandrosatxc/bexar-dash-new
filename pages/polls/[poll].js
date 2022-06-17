@@ -26,6 +26,16 @@ export async function getStaticProps() {
     return ({ props: { master } })
 }
 
+//This function will take each chart object and set the data values for
+//each of its datasets
+export function combineDataPoints(chart, sets) {
+    let i = 0
+    chart.chartConfig.datasets.forEach(dataset => {
+        dataset.data = sets[i]
+        i = i + 1
+    })
+}
+
 export default function Poll({ master }) {
 
     const router = useRouter()
@@ -55,25 +65,13 @@ export default function Poll({ master }) {
     chartData.chartProblems.chartConfig.datasets[3].data = setsProblems[4]
 
     let setsLP = generateChartDatasets(chartData.chartLP.columns, master[pollNum].data)
-    chartData.chartLP.chartConfig.datasets[0].data = setsLP[0]
-    chartData.chartLP.chartConfig.datasets[1].data = setsLP[1]
-    chartData.chartLP.chartConfig.datasets[2].data = setsLP[2]
-    chartData.chartLP.chartConfig.datasets[3].data = setsLP[3]
-    chartData.chartLP.chartConfig.datasets[4].data = setsLP[4]
+    combineDataPoints(chartData.chartLP, setsLP)
 
     let setsFP = generateChartDatasets(chartData.chartFP.columns, master[pollNum].data, 'none')
-    chartData.chartFP.chartConfig.datasets[0].data = setsFP[0]
-    chartData.chartFP.chartConfig.datasets[1].data = setsFP[1]
-    chartData.chartFP.chartConfig.datasets[2].data = setsFP[2]
-    chartData.chartFP.chartConfig.datasets[3].data = setsFP[3]
-    chartData.chartFP.chartConfig.datasets[4].data = setsFP[4]
+    combineDataPoints(chartData.chartFP, setsFP)
 
     let setsS = generateChartDatasets(chartData.chartS.columns, master[pollNum].data, 'none')
-    chartData.chartS.chartConfig.datasets[0].data = setsS[0]
-    chartData.chartS.chartConfig.datasets[1].data = setsS[1]
-    chartData.chartS.chartConfig.datasets[2].data = setsS[2]
-    chartData.chartS.chartConfig.datasets[3].data = setsS[3]
-    chartData.chartS.chartConfig.datasets[4].data = setsS[4]
+    combineDataPoints(chartData.chartS, setsS)
 
     let setsLife = generateChartDatasets(chartData.chartLife.columns, master[pollNum].data, 'none')
     chartData.chartLife.chartConfig.datasets[0].data = [
@@ -96,11 +94,7 @@ export default function Poll({ master }) {
     chartData.chartExperiences.chartConfig.datasets[2].data = setsExperiences[3]
 
     let setsCOL = generateChartDatasets(chartData.chartCOL.columns, master[pollNum].data)
-    chartData.chartCOL.chartConfig.datasets[0].data = setsCOL[0]
-    chartData.chartCOL.chartConfig.datasets[1].data = setsCOL[1]
-    chartData.chartCOL.chartConfig.datasets[2].data = setsCOL[2]
-    chartData.chartCOL.chartConfig.datasets[3].data = setsCOL[3]
-    chartData.chartCOL.chartConfig.datasets[4].data = setsCOL[4]
+    combineDataPoints(chartData.chartCOL, setsCOL)
 
     let setsStatement = generateChartDatasets(chartData.chartStatement.columns, master[pollNum].data)
     chartData.chartStatement.chartConfig.datasets[0].data = [
@@ -110,13 +104,9 @@ export default function Poll({ master }) {
     ]
 
     let setsChallenges = generateChartDatasets(chartData.chartChallenges.columns, master[pollNum].data)
-    chartData.chartChallenges.chartConfig.datasets[0].data = setsChallenges[0]
-    chartData.chartChallenges.chartConfig.datasets[1].data = setsChallenges[1]
-    chartData.chartChallenges.chartConfig.datasets[2].data = setsChallenges[2]
-    chartData.chartChallenges.chartConfig.datasets[3].data = setsChallenges[3]
+    combineDataPoints(chartData.chartChallenges, setsChallenges)
 
     let setsHealth = generateChartDatasets(chartData.chartHealth.columns, master[pollNum].data)
-
     //Combining 2 fields into one data point
     var newSetHealth = []
     for (let i = 0; i < setsHealth[0].length; i++) {
