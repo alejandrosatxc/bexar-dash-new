@@ -416,7 +416,7 @@ export default function LocalGov({ master }) {
     scales: {
       y: {
         min: 35,
-        max: 85,
+        max: 100,
         title: {
           display: true,
           text: "Percentage"

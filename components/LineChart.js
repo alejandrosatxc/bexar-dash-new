@@ -74,7 +74,7 @@ const chartRef = useRef(null)
                 chart.config.data.datasets[0].data =Object.values(dataSets['ABBOT'])
                 chart.config.data.datasets[1].data =Object.values(dataSets['NIRENBERG'])
                 chart.config.data.datasets[2].data =Object.values(dataSets['WOLFF'])
-                break;
+                    break;
             case 'entity':
                 console.log("hello")
                 const dataSets2 = {
@@ -86,7 +86,7 @@ const chartRef = useRef(null)
                   }
 
                   props.masterDataset.forEach(sheet => {
-                    var coldata = getColumn(sheet.data, 'CC')
+                    var coldata = getColumn(sheet.data, 'CC', filter)
                     var counts = countUnique(coldata)
                     var total = 0
                     for (let key in counts) {
@@ -98,7 +98,7 @@ const chartRef = useRef(null)
                     dataSets2.CC.push(rating * 100)
                   })
                   props.masterDataset.forEach(sheet => {
-                    var coldata = getColumn(sheet.data, 'COUNCIL')
+                    var coldata = getColumn(sheet.data, 'COUNCIL', filter)
                     var counts = countUnique(coldata)
                     var total = 0
                     for (let key in counts) {
@@ -110,7 +110,7 @@ const chartRef = useRef(null)
                     dataSets2.COUNCIL.push(rating * 100)
                   })
                   props.masterDataset.forEach(sheet => {
-                    var coldata = getColumn(sheet.data, 'SAWS')
+                    var coldata = getColumn(sheet.data, 'SAWS', filter)
                     var counts = countUnique(coldata)
                     var total = 0
                     for (let key in counts) {
@@ -122,7 +122,7 @@ const chartRef = useRef(null)
                     dataSets2.SAWS.push(rating * 100)
                   })
                   props.masterDataset.forEach(sheet => {
-                    var coldata = getColumn(sheet.data, 'CPS')
+                    var coldata = getColumn(sheet.data, 'CPS', filter)
                     var counts = countUnique(coldata)
                     var total = 0
                     for (let key in counts) {
@@ -134,7 +134,7 @@ const chartRef = useRef(null)
                     dataSets2.CPS.push(rating * 100)
                   })
                   props.masterDataset.forEach(sheet => {
-                    var coldata = getColumn(sheet.data, 'VIA')
+                    var coldata = getColumn(sheet.data, 'VIA', filter)
                     var counts = countUnique(coldata)
                     var total = 0
                     for (let key in counts) {
@@ -151,10 +151,10 @@ const chartRef = useRef(null)
                   chart.config.data.datasets[2].data =Object.values(dataSets2['SAWS'])
                   chart.config.data.datasets[3].data =Object.values(dataSets2['CPS'])
                   chart.config.data.datasets[4].data =Object.values(dataSets2['VIA'])
-                  break;
+                    break;
                 
                 default:
-                break;
+                    break;
 
         }
         setDropDownTitle("Demographics: " + e.target.textContent)
