@@ -64,14 +64,9 @@ export default function Poll({ master }) {
     chartData.chartProblems.chartConfig.datasets[2].data = setsProblems[3]
     chartData.chartProblems.chartConfig.datasets[3].data = setsProblems[4]
 
-    let setsLP = generateChartDatasets(chartData.chartLP.columns, master[pollNum].data)
-    combineDataPoints(chartData.chartLP, setsLP)
-
-    let setsFP = generateChartDatasets(chartData.chartFP.columns, master[pollNum].data, 'none')
-    combineDataPoints(chartData.chartFP, setsFP)
-
-    let setsS = generateChartDatasets(chartData.chartS.columns, master[pollNum].data, 'none')
-    combineDataPoints(chartData.chartS, setsS)
+    combineDataPoints(chartData.chartLP, generateChartDatasets(chartData.chartLP.columns, master[pollNum].data))
+    combineDataPoints(chartData.chartFP, generateChartDatasets(chartData.chartFP.columns, master[pollNum].data, 'none'))
+    combineDataPoints(chartData.chartS, generateChartDatasets(chartData.chartS.columns, master[pollNum].data, 'none'))
 
     let setsLife = generateChartDatasets(chartData.chartLife.columns, master[pollNum].data, 'none')
     chartData.chartLife.chartConfig.datasets[0].data = [
@@ -93,8 +88,7 @@ export default function Poll({ master }) {
     chartData.chartExperiences.chartConfig.datasets[1].data = setsExperiences[2]
     chartData.chartExperiences.chartConfig.datasets[2].data = setsExperiences[3]
 
-    let setsCOL = generateChartDatasets(chartData.chartCOL.columns, master[pollNum].data)
-    combineDataPoints(chartData.chartCOL, setsCOL)
+    combineDataPoints(chartData.chartCOL, generateChartDatasets(chartData.chartCOL.columns, master[pollNum].data))
 
     let setsStatement = generateChartDatasets(chartData.chartStatement.columns, master[pollNum].data)
     chartData.chartStatement.chartConfig.datasets[0].data = [
@@ -103,8 +97,7 @@ export default function Poll({ master }) {
         setsStatement[4]
     ]
 
-    let setsChallenges = generateChartDatasets(chartData.chartChallenges.columns, master[pollNum].data)
-    combineDataPoints(chartData.chartChallenges, setsChallenges)
+    combineDataPoints(chartData.chartChallenges, generateChartDatasets(chartData.chartChallenges.columns, master[pollNum].data))
 
     let setsHealth = generateChartDatasets(chartData.chartHealth.columns, master[pollNum].data)
     //Combining 2 fields into one data point
