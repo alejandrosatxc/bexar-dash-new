@@ -1,6 +1,6 @@
 import styles from '../../styles/Home.module.css'
 import getMaster from '../../lib/master'
-import { memes, simplePie } from '../../lib/myfuncs'
+import { memes, simplePie, generateChartDatasets } from '../../lib/myfuncs'
 import 'chart.js/auto';
 import PieChart from '../../components/PieChart'
 import BarChart from '../../components/BarChart'
@@ -15,42 +15,25 @@ export default function Poll7({ master }) {
 
     let chartData = require('/charts.json')
 
-    let setsVotingPlans = simplePie('Q3', master[6].data, 'none')
-    let setsAHP = simplePie('Q4', master[6].data, 'none')
-    chartData.chartVotingPlans.datasets[0].data = setsVotingPlans
-    chartData.chartAHP.datasets[0].data = [
+    let setsVotingPlans = generateChartDatasets(chartData.chartVotingPlans.columns, master[6].data, 'none')
+    let setsAHP = generateChartDatasets(chartData.chartAHP.columns, master[6].data, 'none')
+    chartData.chartVotingPlans.chartConfig.datasets[0].data = setsVotingPlans
+    chartData.chartAHP.chartConfig.datasets[0].data = [
         setsAHP[0] + setsAHP[1] + setsAHP[2],
         setsAHP[3] + setsAHP[4] + setsAHP[5],
         setsAHP[6]
     ]
-    var questions7 = [
-        'Q7A',
-        'Q7B',
-        'Q7C',
-        'Q7D',
-        'HOMELESSNESS',
-        'Q7F',
-        'Q7G',
-        'Q7H',
-        'Q7I',
-        'Q7J',
-        'PROPERTY_TAXES',
-        'Q7L',
-        'Q7M',
-        'Q7N',
-        'Q7O',
-        'CRIME'
-    ]
-    let setsProblems = memes(questions7, master[6].data, 'none')
+    
+    let setsProblems = generateChartDatasets(chartData.chartProblems.columns, master[6].data, 'none')
     //Combining Very Serious and Serious into one data point
     var newSet = []
     for (let i = 0; i < setsProblems[0].length; i++) {
         newSet.push(setsProblems[0][i] + setsProblems[1][i])
     }
-    chartData.chartProblems.datasets[0].data = newSet
-    chartData.chartProblems.datasets[1].data = setsProblems[2]
-    chartData.chartProblems.datasets[2].data = setsProblems[3]
-    chartData.chartProblems.datasets[3].data = setsProblems[4]
+    chartData.chartProblems.chartConfig.datasets[0].data = newSet
+    chartData.chartProblems.chartConfig.datasets[1].data = setsProblems[2]
+    chartData.chartProblems.chartConfig.datasets[2].data = setsProblems[3]
+    chartData.chartProblems.chartConfig.datasets[3].data = setsProblems[4]
 
     var questions8LP = [
         'Q8C',
@@ -327,7 +310,7 @@ export default function Poll7({ master }) {
                         title="How do you plan on voting in this year's elections?"
                         column="Q3"
                         masterDataset={master[6].data}
-                        dataset={chartData.chartVotingPlans}
+                        dataset={chartData.chartVotingPlans.chartConfig}
                         options={pieOptions}
                         reshape="none"
                     />
@@ -337,7 +320,7 @@ export default function Poll7({ master }) {
                         title="Would you vote yes or no on a 150 million dollar City of San Antonio bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?"
                         column="Q4"
                         masterDataset={master[6].data}
-                        dataset={chartData.chartAHP}
+                        dataset={chartData.chartAHP.chartConfig}
                         options={pieOptions}
                         reshape="ahp"
                     />
@@ -347,9 +330,9 @@ export default function Poll7({ master }) {
                 <Col xs={12}>
                     <BarChart
                         title="Some say these issues are problems in the greater San Antonio area. Do you think it's a serious problem, somewhat serious problem or not a serious problem?"
-                        columns={questions7}
+                        columns={chartData.chartProblems.columns}
                         masterDataset={master[6].data}
-                        dataset={chartData.chartProblems}
+                        dataset={chartData.chartProblems.chartConfig}
                         options={barOptions_stacked}
                         reshape="problems"
                     />
