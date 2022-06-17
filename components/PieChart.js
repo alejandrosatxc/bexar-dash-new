@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton'
-import { simplePie, printDatasetAtEvent, printElementAtEvent, printElementsAtEvent} from '../lib/myfuncs'
+import { printDatasetAtEvent, printElementAtEvent, printElementsAtEvent, generateChartDatasets} from '../lib/myfuncs'
 import {
     Chart,
     getDatasetAtEvent,
@@ -26,10 +26,10 @@ const PieChart = (props) => {
         //Access the chart's data object, and render a new chart using the filtered data.
         switch(props.reshape) {
             case 'none':
-                chart.config.data.datasets[0].data = simplePie(props.column, props.masterDataset, filter)
+                chart.config.data.datasets[0].data = generateChartDatasets(props.column, props.masterDataset, filter)
                 break;
             case 'ahp':
-                var set = simplePie(props.column, props.masterDataset, filter)
+                var set = generateChartDatasets(props.column, props.masterDataset, filter)
                 chart.config.data.datasets[0].data = [
                     set[0] + set[1] + set[2],
                     set[3] + set[4] + set[5],
@@ -37,7 +37,7 @@ const PieChart = (props) => {
                 ]
                 break;
             case 'life':
-                var set = simplePie(props.column, props.masterDataset, filter)
+                var set = generateChartDatasets(props.column, props.masterDataset, filter)
                 chart.config.data.datasets[0].data = [
                     set[7] + set[8] + set[9] + set[10],
                     set[5] + set[6],
@@ -45,7 +45,7 @@ const PieChart = (props) => {
                 ]
                 break;
             case 'statement':
-                var set = simplePie(props.column, props.masterDataset, filter)
+                var set = generateChartDatasets(props.column, props.masterDataset, filter)
                 chart.config.data.datasets[0].data = [
                     set[0] + set[1],
                     set[2] + set[3],
