@@ -12,7 +12,7 @@ import {
   getElementsAtEvent,
 } from 'react-chartjs-2';
 import 'chart.js/auto';
-
+import LineChart from '../../components/LineChart'
 
 export async function getStaticProps() {
   const master = await getMaster()
@@ -20,20 +20,6 @@ export async function getStaticProps() {
 }
 
 export default function ElectedOfficials({ master }) {
-
-  const router = useRouter()
-  const chartRefOfficials = useRef(null)
-
-
-  const onClickOfficials = (event) => {
-    const { current: chart } = chartRefOfficials;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
 
   const dataSets = {
     NIRENBERG: [],
@@ -118,8 +104,8 @@ export default function ElectedOfficials({ master }) {
     maintainAspectRatio: false,
     scales: {
       y: {
-        min: 35,
-        max: 85,
+        min: 0,
+        max: 100,
         title: {
           display: true,
           text: "Percentage"
@@ -155,32 +141,27 @@ export default function ElectedOfficials({ master }) {
       },
       legend: {
         display: true,
-        labels: {
           font: {
             size: 16
           }
         }
       }
     }
-  }
+  
 
   return (
     // <div className={styles.grid}>
     <Container>
       <Row className="justify-content-sm-center">
         <Col className="w-100">
-          <div className={styles.line}>
-            <h2>Do you approve or disapprove of the job they are doing?</h2>
-            <div className={styles.linechart}>
-              <Chart
-                ref={chartRefOfficials}
-                options={optionsOfficials}
-                type='line'
-                onClick={onClickOfficials}
-                data={dataOfficials}
-              />
-            </div>
-          </div>
+            <LineChart
+            title = "Do you approve or disapprove of the job they are doing?"
+            //columns = 
+            masterDataset= {master}
+            dataset={dataOfficials}
+            options= {optionsOfficials}
+            reshape='none'
+            />
         </Col>
       </Row>
     </Container>

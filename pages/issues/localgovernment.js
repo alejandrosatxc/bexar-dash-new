@@ -17,7 +17,7 @@ import {
 } from 'react-chartjs-2';
 import 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-
+import LineChart from '../../components/LineChart'
 export async function getStaticProps() {
   const master = await getMaster()
   return ({ props: { master } })
@@ -497,7 +497,17 @@ export default function LocalGov({ master }) {
       </Row>
       <Row className="justify-content-sm-center">
         <Col xs={12} className="w-100">
-          <div className={styles.line}>
+        <LineChart
+            title = "Do you approve or disapprove of the job they are doing?"
+            //columns = 
+            masterDataset= {master}
+            dataset={dataApprovals}
+            options= {optionsApprovals}
+            reshape='entity'
+            />
+
+
+          {/* <div className={styles.line}>
             <h2>Do you approve or disapprove of the job they are doing?</h2>
             <div className={styles.linechart}>
               <Chart
@@ -509,7 +519,7 @@ export default function LocalGov({ master }) {
               />
             </div>
             <p> The gaps indicate that some local entities were not included in every poll.</p>
-          </div>
+          </div> */}
         </Col>
       </Row>
     </Container>
