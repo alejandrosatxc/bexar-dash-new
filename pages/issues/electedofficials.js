@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import styles from '../../styles/Home.module.css'
 import getMaster from '../../lib/master'
-import { memes, simplePie, countUnique, getColumn, printDatasetAtEvent, printElementAtEvent, printElementsAtEvent } from '../../lib/myfuncs'
-import { useEffect, useState, MouseEvent, useRef } from 'react'
+import { countUnique, getColumn, printDatasetAtEvent, printElementAtEvent, printElementsAtEvent } from '../../lib/myfuncs'
+import { useRef } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 
 import {
@@ -115,6 +115,7 @@ export default function ElectedOfficials({ master }) {
   }
 
   const optionsOfficials = {
+    maintainAspectRatio: false,
     scales: {
       y: {
         min: 35,
@@ -167,7 +168,7 @@ export default function ElectedOfficials({ master }) {
     // <div className={styles.grid}>
     <Container>
       <Row className="justify-content-sm-center">
-        <Col xs={12} className="w-100">
+        <Col className="w-100">
           <div className={styles.line}>
             <h2>Do you approve or disapprove of the job they are doing?</h2>
             <div className={styles.linechart}>
