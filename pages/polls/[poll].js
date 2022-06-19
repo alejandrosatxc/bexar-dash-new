@@ -41,9 +41,12 @@ export function combineDataPoints(chart, sets) {
                 })
                 newset.push(total)
             })
+
+            dataset.data = newset
+        } else {
+            dataset.data = sets[i]
+            i = i + 1
         }
-        dataset.data = sets[i]
-        i = i + 1
     })
 }
 
@@ -56,13 +59,8 @@ export default function Poll({ master }) {
     let chartData = require('/charts.json')
 
     combineDataPoints(chartData.chartVotingPlans, generateChartDatasets(chartData.chartVotingPlans.columns, master[pollNum].data, 'none'))
-    let setsAHP = generateChartDatasets(chartData.chartAHP.columns, master[pollNum].data, 'none')
-    chartData.chartAHP.chartConfig.datasets[0].data = [
-        setsAHP[0] + setsAHP[1] + setsAHP[2],
-        setsAHP[3] + setsAHP[4] + setsAHP[5],
-        setsAHP[6]
-    ]
-
+    combineDataPoints(chartData.chartAHP, generateChartDatasets(chartData.chartAHP.columns, master[pollNum].data, 'none'))
+ 
     let setsProblems = generateChartDatasets(chartData.chartProblems.columns, master[pollNum].data, 'none')
     //Combining Very Serious and Serious into one data point
     var newSet = []
@@ -77,14 +75,7 @@ export default function Poll({ master }) {
     combineDataPoints(chartData.chartLP, generateChartDatasets(chartData.chartLP.columns, master[pollNum].data))
     combineDataPoints(chartData.chartFP, generateChartDatasets(chartData.chartFP.columns, master[pollNum].data, 'none'))
     combineDataPoints(chartData.chartS, generateChartDatasets(chartData.chartS.columns, master[pollNum].data, 'none'))
-
-    let setsLife = generateChartDatasets(chartData.chartLife.columns, master[pollNum].data, 'none')
-    chartData.chartLife.chartConfig.datasets[0].data = [
-        setsLife[7] + setsLife[8] + setsLife[9] + setsLife[10],
-        setsLife[5] + setsLife[6],
-        setsLife[0] + setsLife[1] + setsLife[2] + setsLife[3] + setsLife[4]
-    ]
-
+    combineDataPoints(chartData.chartLife, generateChartDatasets(chartData.chartLife.columns, master[pollNum].data, 'none'))
     combineDataPoints(chartData.chartFinance, generateChartDatasets(chartData.chartFinance.columns, master[pollNum].data, 'none'))
 
     let setsExperiences = generateChartDatasets(chartData.chartExperiences.columns, master[pollNum].data)
@@ -98,14 +89,7 @@ export default function Poll({ master }) {
     chartData.chartExperiences.chartConfig.datasets[2].data = setsExperiences[3]
 
     combineDataPoints(chartData.chartCOL, generateChartDatasets(chartData.chartCOL.columns, master[pollNum].data))
-
-    let setsStatement = generateChartDatasets(chartData.chartStatement.columns, master[pollNum].data)
-    chartData.chartStatement.chartConfig.datasets[0].data = [
-        setsStatement[0] + setsStatement[1],
-        setsStatement[2] + setsStatement[3],
-        setsStatement[4]
-    ]
-
+    combineDataPoints(chartData.chartStatement, generateChartDatasets(chartData.chartStatement.columns, master[pollNum].data))
     combineDataPoints(chartData.chartChallenges, generateChartDatasets(chartData.chartChallenges.columns, master[pollNum].data))
 
     let setsHealth = generateChartDatasets(chartData.chartHealth.columns, master[pollNum].data)

@@ -95,11 +95,11 @@ const LineChart = (props) => {
     <div className={styles.line}>
       <style type="text/css">
         {`
-                .dropdown-menu {
-                    height: 350px;
-                    overflow-y: scroll;
-                }   
-            `}
+          .dropdown-menu {
+            height: 350px;
+            overflow-y: scroll;
+          }   
+        `}
       </style>
       <h3>{props.title}</h3>
       <DropdownButton id="dropdown-basic-button" title={dropDownTitle}>
@@ -149,7 +149,8 @@ const LineChart = (props) => {
           type='line'
           data={props.dataset}
         />
-      </div></div>
+      </div>
+    </div>
 
   )
 }
