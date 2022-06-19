@@ -27,41 +27,24 @@ export default function ElectedOfficials({ master }) {
     ABBOT: [],
   }
 
-  master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'NIRENBERG')
-    var counts = countUnique(coldata)
-    var total = 0
-    for (let key in counts) {
-      total = total + counts[key]
-    }
-    var approve = counts['1'] + counts['2']
-    var rating = approve / total
-    // console.log("approve: " + approve + " total: " + total)
-    dataSets.NIRENBERG.push(rating * 100)
-  })
-  master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'WOLFF')
-    var counts = countUnique(coldata)
-    var total = 0
-    for (let key in counts) {
-      total = total + counts[key]
-    }
-    var approve = counts['1'] + counts['2']
-    // console.log("approve: " + approve + " total: " + total)
-    var rating = approve / total
-    dataSets.WOLFF.push(rating * 100)
-  })
-  master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'ABBOT')
-    var counts = countUnique(coldata)
-    var total = 0
-    for (let key in counts) {
-      total = total + counts[key]
-    }
-    var approve = counts['1'] + counts['2']
-    // console.log("approve: " + approve + " total: " + total)
-    var rating = approve / total
-    dataSets.ABBOT.push(rating * 100)
+  const columns = [
+    'NIRENBERG',
+    'WOLFF',
+    'ABBOT'
+  ]
+
+  columns.forEach(col => {
+    master.forEach(sheet => {
+      var coldata = getColumn(sheet.data, col, 'none')
+      var counts = countUnique(coldata)
+      var total = 0
+      for (let key in counts) {
+        total = total + counts[key]
+      }
+      var approve = counts['1'] + counts['2']
+      var rating = approve / total
+      dataSets[col].push(rating * 100)
+    })
   })
 
   var dataOfficials = {
@@ -150,22 +133,20 @@ export default function ElectedOfficials({ master }) {
   
 
   return (
-    // <div className={styles.grid}>
     <Container>
       <Row className="justify-content-sm-center">
         <Col className="w-100">
             <LineChart
-            title = "Do you approve or disapprove of the job they are doing?"
-            //columns = 
-            masterDataset= {master}
+            title="Do you approve or disapprove of the job they are doing?"
+            columns={columns}
+            masterDataset={master}
             dataset={dataOfficials}
-            options= {optionsOfficials}
+            options={optionsOfficials}
             reshape='none'
             />
         </Col>
       </Row>
     </Container>
-    // </div>
   )
 
 }

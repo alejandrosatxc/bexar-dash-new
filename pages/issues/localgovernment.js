@@ -3,7 +3,7 @@ import styles from '../../styles/Home.module.css'
 import getMaster from '../../lib/master'
 import { Container, Row, Col } from 'react-bootstrap'
 import {
-  memes, simplePie, countUnique, getColumn,
+  countUnique, getColumn,
   printDatasetAtEvent,
   printElementAtEvent,
   printElementsAtEvent
@@ -18,6 +18,7 @@ import {
 import 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import LineChart from '../../components/LineChart'
+
 export async function getStaticProps() {
   const master = await getMaster()
   return ({ props: { master } })
@@ -108,67 +109,6 @@ export default function LocalGov({ master }) {
     dataSets.BEXAR.push(counts)
   })
 
-  master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'CC')
-    var counts = countUnique(coldata)
-    var total = 0
-    for (let key in counts) {
-      total = total + counts[key]
-    }
-    var approve = counts['1'] + counts['2']
-    // console.log("approve: " + approve + " total: " + total)
-    var rating = approve / total
-    dataSets.CC.push(rating * 100)
-  })
-  master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'COUNCIL')
-    var counts = countUnique(coldata)
-    var total = 0
-    for (let key in counts) {
-      total = total + counts[key]
-    }
-    var approve = counts['1'] + counts['2']
-    // console.log("approve: " + approve + " total: " + total)
-    var rating = approve / total
-    dataSets.COUNCIL.push(rating * 100)
-  })
-  master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'SAWS')
-    var counts = countUnique(coldata)
-    var total = 0
-    for (let key in counts) {
-      total = total + counts[key]
-    }
-    var approve = counts['1'] + counts['2']
-    // console.log("approve: " + approve + " total: " + total)
-    var rating = approve / total
-    dataSets.SAWS.push(rating * 100)
-  })
-  master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'CPS')
-    var counts = countUnique(coldata)
-    var total = 0
-    for (let key in counts) {
-      total = total + counts[key]
-    }
-    var approve = counts['1'] + counts['2']
-    // console.log("approve: " + approve + " total: " + total)
-    var rating = approve / total
-    dataSets.CPS.push(rating * 100)
-  })
-  master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'VIA')
-    var counts = countUnique(coldata)
-    var total = 0
-    for (let key in counts) {
-      total = total + counts[key]
-    }
-    var approve = counts['1'] + counts['2']
-    // console.log("approve: " + approve + " total: " + total)
-    var rating = approve / total
-    dataSets.VIA.push(rating * 100)
-  })
-
   var dataCOSA = {
     labels: ['Right Track', 'Wrong Direction', 'Mixed', 'Do not know'],
     datasets: [
@@ -231,6 +171,28 @@ export default function LocalGov({ master }) {
 
     ],
   };
+
+  const columns = [
+    'COUNCIL',
+    'CC',
+    'SAWS',
+    'CPS',
+    'VIA',
+  ]
+
+  columns.forEach(col => {
+    master.forEach(sheet => {
+      var coldata = getColumn(sheet.data, col,'none')
+      var counts = countUnique(coldata)
+      var total = 0
+      for (let key in counts) {
+        total = total + counts[key]
+      }
+      var approve = counts['1'] + counts['2']
+      var rating = approve / total
+      dataSets[col].push(rating * 100)
+    })
+  })
 
   var dataApprovals = {
     labels: ['Poll 1', 'Poll 2', 'Poll 3', 'Poll 4', 'Poll 5', 'Poll 6', 'Poll 7'],
@@ -498,28 +460,13 @@ export default function LocalGov({ master }) {
       <Row className="justify-content-sm-center">
         <Col xs={12} className="w-100">
         <LineChart
-            title = "Do you approve or disapprove of the job they are doing?"
-            //columns = 
+            title="Do you approve or disapprove of the job they are doing?"
+            columns={columns} 
             masterDataset= {master}
             dataset={dataApprovals}
             options= {optionsApprovals}
             reshape='entity'
             />
-
-
-          {/* <div className={styles.line}>
-            <h2>Do you approve or disapprove of the job they are doing?</h2>
-            <div className={styles.linechart}>
-              <Chart
-                ref={chartRefApprovals}
-                options={optionsApprovals}
-                type='line'
-                onClick={onClickApprovals}
-                data={dataApprovals}
-              />
-            </div>
-            <p> The gaps indicate that some local entities were not included in every poll.</p>
-          </div> */}
         </Col>
       </Row>
     </Container>

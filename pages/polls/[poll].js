@@ -44,9 +44,8 @@ export default function Poll({ master }) {
 
     let chartData = require('/charts.json')
 
-    let setsVotingPlans = generateChartDatasets(chartData.chartVotingPlans.columns, master[pollNum].data, 'none')
+    combineDataPoints(chartData.chartVotingPlans, generateChartDatasets(chartData.chartVotingPlans.columns, master[pollNum].data, 'none'))
     let setsAHP = generateChartDatasets(chartData.chartAHP.columns, master[pollNum].data, 'none')
-    chartData.chartVotingPlans.chartConfig.datasets[0].data = setsVotingPlans
     chartData.chartAHP.chartConfig.datasets[0].data = [
         setsAHP[0] + setsAHP[1] + setsAHP[2],
         setsAHP[3] + setsAHP[4] + setsAHP[5],
@@ -75,8 +74,7 @@ export default function Poll({ master }) {
         setsLife[0] + setsLife[1] + setsLife[2] + setsLife[3] + setsLife[4]
     ]
 
-    let setsFinance = generateChartDatasets(chartData.chartFinance.columns, master[pollNum].data, 'none')
-    chartData.chartFinance.chartConfig.datasets[0].data = setsFinance
+    combineDataPoints(chartData.chartFinance, generateChartDatasets(chartData.chartFinance.columns, master[pollNum].data, 'none'))
 
     let setsExperiences = generateChartDatasets(chartData.chartExperiences.columns, master[pollNum].data)
     //Combining 2 fields into one data point
@@ -112,12 +110,10 @@ export default function Poll({ master }) {
     chartData.chartHealth.chartConfig.datasets[3].data = setsHealth[4]
     chartData.chartHealth.chartConfig.datasets[4].data = setsHealth[5]
 
-    let setsCharity = generateChartDatasets(chartData.chartCharity.columns, master[pollNum].data)
-    chartData.chartCharity.chartConfig.datasets[0].data = setsCharity
-    let setsVolunteer = generateChartDatasets(chartData.chartVolunteer.columns, master[pollNum].data)
-    chartData.chartVolunteer.chartConfig.datasets[0].data = setsVolunteer
-    let setsDonations = generateChartDatasets(chartData.chartDonations.columns, master[pollNum].data)
-    chartData.chartDonations.chartConfig.datasets[0].data = setsDonations
+    combineDataPoints(chartData.chartCharity, generateChartDatasets(chartData.chartCharity.columns, master[pollNum].data))
+    combineDataPoints(chartData.chartVolunteer, generateChartDatasets(chartData.chartVolunteer.columns, master[pollNum].data))
+    combineDataPoints(chartData.chartDonations, generateChartDatasets(chartData.chartDonations.columns, master[pollNum].data))
+
 
     var barOptions_stacked = {
         //responsive: true,
