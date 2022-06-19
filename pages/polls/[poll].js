@@ -1,5 +1,5 @@
 import getMaster from '../../lib/master'
-import { generateChartDatasets } from '../../lib/myfuncs'
+import { generateChartDatasets, combineDataPoints } from '../../lib/myfuncs'
 import 'chart.js/auto';
 import PieChart from '../../components/PieChart'
 import BarChart from '../../components/BarChart'
@@ -24,39 +24,6 @@ export async function getStaticPaths() {
 export async function getStaticProps() {
     const master = await getMaster()
     return ({ props: { master } })
-}
-
-//This function will take each chart object and set the data values for
-//each of its datasets
-export function combineDataPoints(chart, sets) {
-    let i = 0
-
-    chart.chartConfig.datasets.forEach(dataset => {
-        //As it is, this loop will only combine adjacent datasets and at most combine 2 datasets
-        //and it will only combine the first 2 datasets
-        if(dataset.combine) {
-            var combinedDataset = []
-            for (let k = 0; k < sets[0].length; k++) {
-                combinedDataset.push(sets[0][k] + sets[1][k])
-            }
-            dataset.data = combinedDataset
-            i = i + 2  
-        } else if(dataset.shape) {
-            let newset = []
-            dataset.shape.forEach(combo => {
-                let total = 0
-                combo.forEach(index => {
-                    total = total + sets[i][index]
-                })
-                newset.push(total)
-            })
-
-            dataset.data = newset
-        } else {
-            dataset.data = sets[i]
-            i = i + 1
-        }
-    })
 }
 
 export default function Poll({ master }) {
