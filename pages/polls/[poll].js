@@ -31,6 +31,17 @@ export async function getStaticProps() {
 export function combineDataPoints(chart, sets) {
     let i = 0
     chart.chartConfig.datasets.forEach(dataset => {
+        if(dataset.shape) {
+            let newset = []
+
+            dataset.shape.forEach(combo => {
+                let total = 0
+                combo.forEach(index => {
+                    total = total + sets[i][index]
+                })
+                newset.push(total)
+            })
+        }
         dataset.data = sets[i]
         i = i + 1
     })
