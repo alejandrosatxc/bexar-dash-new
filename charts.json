@@ -96,6 +96,7 @@
             ],
             "datasets" : [
                 {
+                    "combine" : true,
                     "label": "Serious",
                     "data": null,
                     "backgroundColor" : "rgb(12, 38, 96)"
@@ -334,6 +335,7 @@
             ],
             "datasets" : [
                 {
+                    "combine" : true,
                     "label": "Yes",
                     "data": null,
                     "backgroundColor" : "rgb(12, 38, 96)"
@@ -508,6 +510,7 @@
             ],
             "datasets" : [
                 {
+                    "combine" : true,
                     "label" : "Important",
                     "data" : null,
                     "backgroundColor" : "rgb(12, 38, 96)"

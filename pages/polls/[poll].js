@@ -30,10 +30,19 @@ export async function getStaticProps() {
 //each of its datasets
 export function combineDataPoints(chart, sets) {
     let i = 0
-    chart.chartConfig.datasets.forEach(dataset => {
-        if(dataset.shape) {
-            let newset = []
 
+    chart.chartConfig.datasets.forEach(dataset => {
+        //As it is, this loop will only combine adjacent datasets and at most combine 2 datasets
+        //and it will only combine the first 2 datasets
+        if(dataset.combine) {
+            var combinedDataset = []
+            for (let k = 0; k < sets[0].length; k++) {
+                combinedDataset.push(sets[0][k] + sets[1][k])
+            }
+            dataset.data = combinedDataset
+            i = i + 2  
+        } else if(dataset.shape) {
+            let newset = []
             dataset.shape.forEach(combo => {
                 let total = 0
                 combo.forEach(index => {
@@ -58,53 +67,19 @@ export default function Poll({ master }) {
 
     let chartData = require('/charts.json')
 
-    combineDataPoints(chartData.chartVotingPlans, generateChartDatasets(chartData.chartVotingPlans.columns, master[pollNum].data, 'none'))
-    combineDataPoints(chartData.chartAHP, generateChartDatasets(chartData.chartAHP.columns, master[pollNum].data, 'none'))
- 
-    let setsProblems = generateChartDatasets(chartData.chartProblems.columns, master[pollNum].data, 'none')
-    //Combining Very Serious and Serious into one data point
-    var newSet = []
-    for (let i = 0; i < setsProblems[0].length; i++) {
-        newSet.push(setsProblems[0][i] + setsProblems[1][i])
-    }
-    chartData.chartProblems.chartConfig.datasets[0].data = newSet
-    chartData.chartProblems.chartConfig.datasets[1].data = setsProblems[2]
-    chartData.chartProblems.chartConfig.datasets[2].data = setsProblems[3]
-    chartData.chartProblems.chartConfig.datasets[3].data = setsProblems[4]
-
+    combineDataPoints(chartData.chartVotingPlans, generateChartDatasets(chartData.chartVotingPlans.columns, master[pollNum].data))
+    combineDataPoints(chartData.chartAHP, generateChartDatasets(chartData.chartAHP.columns, master[pollNum].data))
+    combineDataPoints(chartData.chartProblems, generateChartDatasets(chartData.chartProblems.columns, master[pollNum].data))
     combineDataPoints(chartData.chartLP, generateChartDatasets(chartData.chartLP.columns, master[pollNum].data))
-    combineDataPoints(chartData.chartFP, generateChartDatasets(chartData.chartFP.columns, master[pollNum].data, 'none'))
-    combineDataPoints(chartData.chartS, generateChartDatasets(chartData.chartS.columns, master[pollNum].data, 'none'))
-    combineDataPoints(chartData.chartLife, generateChartDatasets(chartData.chartLife.columns, master[pollNum].data, 'none'))
-    combineDataPoints(chartData.chartFinance, generateChartDatasets(chartData.chartFinance.columns, master[pollNum].data, 'none'))
-
-    let setsExperiences = generateChartDatasets(chartData.chartExperiences.columns, master[pollNum].data)
-    //Combining 2 fields into one data point
-    var newSetE = []
-    for (let i = 0; i < setsExperiences[0].length; i++) {
-        newSetE.push(setsExperiences[0][i] + setsExperiences[1][i])
-    }
-    chartData.chartExperiences.chartConfig.datasets[0].data = newSetE
-    chartData.chartExperiences.chartConfig.datasets[1].data = setsExperiences[2]
-    chartData.chartExperiences.chartConfig.datasets[2].data = setsExperiences[3]
-
+    combineDataPoints(chartData.chartFP, generateChartDatasets(chartData.chartFP.columns, master[pollNum].data))
+    combineDataPoints(chartData.chartS, generateChartDatasets(chartData.chartS.columns, master[pollNum].data))
+    combineDataPoints(chartData.chartLife, generateChartDatasets(chartData.chartLife.columns, master[pollNum].data))
+    combineDataPoints(chartData.chartFinance, generateChartDatasets(chartData.chartFinance.columns, master[pollNum].data))
+    combineDataPoints(chartData.chartExperiences, generateChartDatasets(chartData.chartExperiences.columns, master[pollNum].data))
     combineDataPoints(chartData.chartCOL, generateChartDatasets(chartData.chartCOL.columns, master[pollNum].data))
     combineDataPoints(chartData.chartStatement, generateChartDatasets(chartData.chartStatement.columns, master[pollNum].data))
     combineDataPoints(chartData.chartChallenges, generateChartDatasets(chartData.chartChallenges.columns, master[pollNum].data))
-
-    let setsHealth = generateChartDatasets(chartData.chartHealth.columns, master[pollNum].data)
-    //Combining 2 fields into one data point
-    var newSetHealth = []
-    for (let i = 0; i < setsHealth[0].length; i++) {
-        newSetHealth.push(setsHealth[0][i] + setsHealth[1][i])
-    }
-
-    chartData.chartHealth.chartConfig.datasets[0].data = newSetHealth
-    chartData.chartHealth.chartConfig.datasets[1].data = setsHealth[2]
-    chartData.chartHealth.chartConfig.datasets[2].data = setsHealth[3]
-    chartData.chartHealth.chartConfig.datasets[3].data = setsHealth[4]
-    chartData.chartHealth.chartConfig.datasets[4].data = setsHealth[5]
-
+    combineDataPoints(chartData.chartHealth, generateChartDatasets(chartData.chartHealth.columns, master[pollNum].data))
     combineDataPoints(chartData.chartCharity, generateChartDatasets(chartData.chartCharity.columns, master[pollNum].data))
     combineDataPoints(chartData.chartVolunteer, generateChartDatasets(chartData.chartVolunteer.columns, master[pollNum].data))
     combineDataPoints(chartData.chartDonations, generateChartDatasets(chartData.chartDonations.columns, master[pollNum].data))
