@@ -3,7 +3,7 @@
         "columns" : [
             "Q3"
         ],
-        "chartConfig": {
+        "config": {
             "labels" : [
                 "In person, on the day of the election",
                 "In person, before the day of the election",
@@ -31,7 +31,7 @@
         "columns" : [
             "Q4"
         ],
-        "chartConfig" : {
+        "config" : {
             "labels": [
                 "Yes",
                 "No",
@@ -75,7 +75,7 @@
             "Q7O",
             "CRIME"
         ],
-        "chartConfig" : {
+        "config" : {
             "labels" : [
                 ["The cost of housing for  middle-", "and working-class families"],
                 "Increasing cost of living",
@@ -129,7 +129,7 @@
             "Q8O",
             "Q8P"
         ],
-        "chartConfig" : {
+        "config" : {
             "labels": [
                 ["Inadequate public", "transit service options"],
                 "Homelessness",
@@ -176,7 +176,7 @@
             "Q8J",
             "Q8N"
         ],
-        "chartConfig" : {        
+        "config" : {        
             "labels" : [
                 "Increasing cost of living",
                 "The cost of healthcare",
@@ -222,7 +222,7 @@
             "Q8I",
             "Q8M"
         ],
-        "chartConfig" : {
+        "config" : {
             "labels" : [
                 ["The cost of housing for middle-", "and working-class families"],
                 ["A lack of high-quality child care", "options for working families"],
@@ -264,7 +264,7 @@
         "columns" : [
             "Q10"
         ],
-        "chartConfig" : {
+        "config" : {
             "labels": [
                 "Thriving",
                 "Struggling",
@@ -293,7 +293,7 @@
         "columns" : [
             "Q11"
         ],
-        "chartConfig" : {
+        "config" : {
             "labels" : [
                 "Living Comfortably",
                 "Meeting living expenses",
@@ -325,7 +325,7 @@
             "Q12D",
             "Q12E"
         ],
-        "chartConfig" : {
+        "config" : {
             "labels" : [
                 ["Skipped meals because you", "couldn’t afford food"],
                 "Postponed medical or dental care",
@@ -365,7 +365,7 @@
             "Q13G",
             "Q13H"
         ],
-        "chartConfig" : {
+        "config" : {
             "labels" : [
                 ["Landlords raising the price", "of rent to maximize profits"],
                 ["Disruptions in the supply chain", "of materials and goods"],
@@ -410,7 +410,7 @@
         "columns" : [
             "Q14"
         ],
-        "chartConfig" : {
+        "config" : {
             "labels" : [
                 "Agree",
                 "Disagree",
@@ -443,7 +443,7 @@
             "Q15D",
             "Q15E"
         ],
-        "chartConfig" : {
+        "config" : {
             "labels" : [
                 "Finding affordable childcare",
                 ["Finding a job that pays sufficiently", "or gives enough hours"],
@@ -492,7 +492,7 @@
             "Q16L",
             "Q16M"
         ],
-        "chartConfig" : {
+        "config" : {
             "labels" : [
                 "Lack of access to high-quality medical care",
                 "Having a low income",
@@ -543,7 +543,7 @@
         "columns" : [
             "Q17"
         ],
-        "chartConfig": {
+        "config": {
             "labels" : [
                 "Yes",
                 "No",
@@ -567,7 +567,7 @@
         "columns" : [
             "Q18"
         ],
-        "chartConfig": {
+        "config": {
             "labels" : [
                 "Yes",
                 "No",
@@ -591,7 +591,7 @@
         "columns" : [
             "Q20"
         ],
-        "chartConfig": {
+        "config": {
             "labels" : [
                 "Yes",
                 "No",
