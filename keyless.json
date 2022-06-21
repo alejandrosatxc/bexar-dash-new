@@ -1,5 +1,5 @@
-{
-    "chartVotingPlans" : {
+[
+    {
         "columns" : [
             "Q3"
         ],
@@ -27,7 +27,7 @@
         }
     },
     
-    "chartAHP" : {
+    {
         "columns" : [
             "Q4"
         ],
@@ -56,7 +56,7 @@
         }
     },
 
-    "chartProblems" : {
+    {
         "columns" : [
             "Q7A",
             "Q7B",
@@ -120,7 +120,7 @@
         }
     },
 
-    "chartLP" : {
+    {
         "columns" : [
             "Q8C",
             "Q8E",
@@ -168,7 +168,7 @@
         }
     },
 
-    "chartFP" : {
+    {
         "columns" : [
             "Q8B",
             "Q8D",
@@ -214,7 +214,7 @@
         }
     },
 
-    "chartS" : {
+    {
         "columns" : [
             "Q8A",
             "Q8F",
@@ -260,7 +260,7 @@
         }
     },
 
-    "chartLife" : {
+    {
         "columns" : [
             "Q10"
         ],
@@ -289,7 +289,7 @@
         }
     },
 
-    "chartFinance" : {
+    {
         "columns" : [
             "Q11"
         ],
@@ -317,7 +317,7 @@
         }
     },
 
-    "chartExperiences" : {
+    {
         "columns" : [
             "Q12A",
             "Q12B",
@@ -354,7 +354,7 @@
         }
     },
 
-    "chartCOL" : {
+    {
         "columns" : [
             "Q13A",
             "Q13B",
@@ -406,9 +406,9 @@
         }
     },
 
-    "chartStatement" : {
+    {
         "columns" : [
-            "Q14"
+            "Q11"
         ],
         "chartConfig" : {
             "labels" : [
@@ -435,7 +435,7 @@
         }
     },
 
-    "chartChallenges" : {
+    {
         "columns" : [
             "Q15A",
             "Q15B",
@@ -476,7 +476,7 @@
         }
     },
 
-    "chartHealth" : {
+    {
         "columns" : [
             "Q16A",
             "Q16B",
@@ -539,7 +539,7 @@
         }
     },
 
-    "chartCharity" : {
+    {
         "columns" : [
             "Q17"
         ],
@@ -563,7 +563,7 @@
         }
     },
 
-    "chartVolunteer" : {
+    {
         "columns" : [
             "Q18"
         ],
@@ -587,7 +587,7 @@
         }
     },
 
-    "chartDonations" : {
+    {
         "columns" : [
             "Q20"
         ],
@@ -610,4 +610,4 @@
             ]
         }
     }
-}
+]

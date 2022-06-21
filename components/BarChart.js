@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton'
-import { memes, printDatasetAtEvent, printElementAtEvent, printElementsAtEvent } from '../lib/myfuncs'
+import { generateChartDatasets, printDatasetAtEvent, printElementAtEvent, printElementsAtEvent } from '../lib/myfuncs'
 import {
     Chart,
     getDatasetAtEvent,
@@ -25,10 +25,10 @@ const BarChart = (props) => {
             return;
         }
         //Access the chart's data object, and render a new chart using the filtered data.
-        let sets = memes(props.columns, props.masterDataset, filter)
+        let sets = generateChartDatasets(props.columns, props.masterDataset, filter)
         switch (props.reshape) {
             case 'none':
-                chart.config.data.datasets[0].data = memes(props.columns, props.masterDataset, filter)
+                chart.config.data.datasets[0].data = generateChartDatasets(props.columns, props.masterDataset, filter)
                 break;
             case 'problems':
                 var newSet = []
