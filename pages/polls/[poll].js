@@ -32,25 +32,14 @@ export default function Poll({ master }) {
     const { poll } = router.query
     const pollNum = poll - 1
 
+    //Read in a JSON file defining chart configuration for the poll page.
+    //Loop through all chart objects, generate chart datasets, then assign
+    //each chart's dataset.data values to the generated dataset. 
+    //This should set up all charts to be rendered into react components
     let chartData = require('/charts.json')
-
-    combineDataPoints(chartData.chartVotingPlans, generateChartDatasets(chartData.chartVotingPlans.columns, master[pollNum].data))
-    combineDataPoints(chartData.chartAHP, generateChartDatasets(chartData.chartAHP.columns, master[pollNum].data))
-    combineDataPoints(chartData.chartProblems, generateChartDatasets(chartData.chartProblems.columns, master[pollNum].data))
-    combineDataPoints(chartData.chartLP, generateChartDatasets(chartData.chartLP.columns, master[pollNum].data))
-    combineDataPoints(chartData.chartFP, generateChartDatasets(chartData.chartFP.columns, master[pollNum].data))
-    combineDataPoints(chartData.chartS, generateChartDatasets(chartData.chartS.columns, master[pollNum].data))
-    combineDataPoints(chartData.chartLife, generateChartDatasets(chartData.chartLife.columns, master[pollNum].data))
-    combineDataPoints(chartData.chartFinance, generateChartDatasets(chartData.chartFinance.columns, master[pollNum].data))
-    combineDataPoints(chartData.chartExperiences, generateChartDatasets(chartData.chartExperiences.columns, master[pollNum].data))
-    combineDataPoints(chartData.chartCOL, generateChartDatasets(chartData.chartCOL.columns, master[pollNum].data))
-    combineDataPoints(chartData.chartStatement, generateChartDatasets(chartData.chartStatement.columns, master[pollNum].data))
-    combineDataPoints(chartData.chartChallenges, generateChartDatasets(chartData.chartChallenges.columns, master[pollNum].data))
-    combineDataPoints(chartData.chartHealth, generateChartDatasets(chartData.chartHealth.columns, master[pollNum].data))
-    combineDataPoints(chartData.chartCharity, generateChartDatasets(chartData.chartCharity.columns, master[pollNum].data))
-    combineDataPoints(chartData.chartVolunteer, generateChartDatasets(chartData.chartVolunteer.columns, master[pollNum].data))
-    combineDataPoints(chartData.chartDonations, generateChartDatasets(chartData.chartDonations.columns, master[pollNum].data))
-
+    for (const chart in chartData) {
+        combineDataPoints(chartData[chart], generateChartDatasets(chartData[chart].columns, master[pollNum].data))
+    }
 
     var barOptions_stacked = {
         //responsive: true,
