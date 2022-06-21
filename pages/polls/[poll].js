@@ -362,5 +362,4 @@ export default function Poll({ master }) {
             </Row>
         </Container>
     )
-
 }
