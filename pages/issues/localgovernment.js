@@ -8,7 +8,7 @@ import {
   printElementAtEvent,
   printElementsAtEvent
 } from '../../lib/myfuncs'
-import { useEffect, useState, MouseEvent, useRef } from 'react'
+import { useRef } from 'react'
 import {
   Chart,
   getDatasetAtEvent,
@@ -17,6 +17,7 @@ import {
 } from 'react-chartjs-2';
 import 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import VBarChart from '../../components/vBarChart'
 import LineChart from '../../components/LineChart'
 
 export async function getStaticProps() {
@@ -182,7 +183,7 @@ export default function LocalGov({ master }) {
 
   columns.forEach(col => {
     master.forEach(sheet => {
-      var coldata = getColumn(sheet.data, col,'none')
+      var coldata = getColumn(sheet.data, col, 'none')
       var counts = countUnique(coldata)
       var total = 0
       for (let key in counts) {
@@ -426,47 +427,38 @@ export default function LocalGov({ master }) {
     <Container fluid>
       <Row className="justify-content-sm-center">
         <Col xs={12} className="w-100">
-          <div className={styles.vbar}>
-            <h2>Would you say Bexar County policy is on the Right Track or going the Wrong direction?</h2>
-            <div className={styles.vbarchart}>
-              <Chart
-                ref={chartRefBEXAR}
-                type='bar'
-                onClick={onClickBEXAR}
-                options={options}
-                data={dataBEXAR}
-              />
-            </div>
-          </div>
-        </Col>
-      </Row>
-
-      <Row className="justify-content-sm-center">
-        <Col xs={12} className="w-100">
-          <div className={styles.vbar}>
-            <h2>Would you say City of San Antonio policy is on the Right Track or going the Wrong direction?</h2>
-            <div className={styles.vbarchart}>
-              <Chart
-                ref={chartRefCOSA}
-                type='bar'
-                onClick={onClickCOSA}
-                options={options}
-                data={dataCOSA}
-              />
-            </div>
-          </div>
+          <VBarChart
+            title="Would you say Bexar County policy is on the Right Track or going the Wrong direction?"
+            columns="BEXAR"
+            masterDataset={master}
+            dataset={dataBEXAR}
+            options={options}
+            reshape="county"
+          />
         </Col>
       </Row>
       <Row className="justify-content-sm-center">
         <Col xs={12} className="w-100">
-        <LineChart
+          <VBarChart
+            title="Would you say City of San Antonio policy is on the Right Track or going the Wrong direction?"
+            columns="COSA"
+            masterDataset={master}
+            dataset={dataCOSA}
+            options={options}
+            reshape="city"
+          />
+        </Col>
+      </Row>
+      <Row className="justify-content-sm-center">
+        <Col xs={12} className="w-100">
+          <LineChart
             title="Do you approve or disapprove of the job they are doing?"
-            columns={columns} 
-            masterDataset= {master}
+            columns={columns}
+            masterDataset={master}
             dataset={dataApprovals}
-            options= {optionsApprovals}
+            options={optionsApprovals}
             reshape='entity'
-            />
+          />
         </Col>
       </Row>
     </Container>
