@@ -35,10 +35,13 @@ export default function Poll({ master }) {
     //Read in a JSON file defining chart configuration for the poll page.
     //Loop through all chart objects, generate chart datasets, then assign
     //each chart's dataset.data values to the generated dataset. 
-    //This should set up all charts to be rendered into react components
+    //This  should set up all charts to be rendered into react components
     let chartData = require('/charts.json')
     for (const chart in chartData) {
-        combineDataPoints(chartData[chart], generateChartDatasets(chartData[chart].columns, master[pollNum].data))
+        combineDataPoints(
+            chartData[chart], 
+            generateChartDatasets(chartData[chart].columns, master[pollNum].data)
+        )
     }
 
     var barOptions_stacked = {
@@ -175,9 +178,8 @@ export default function Poll({ master }) {
                         title="How do you plan on voting in this year's elections?"
                         column={chartData.chartVotingPlans.columns}
                         masterDataset={master[pollNum].data}
-                        dataset={chartData.chartVotingPlans.chartConfig}
+                        dataset={chartData.chartVotingPlans.config.data}
                         options={pieOptions}
-                        reshape="none"
                     />
                 </Col>
                 <Col lg={6} xs={12}>
@@ -185,9 +187,8 @@ export default function Poll({ master }) {
                         title="Would you vote yes or no on a 150 million dollar City of San Antonio bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?"
                         column={chartData.chartAHP.columns}
                         masterDataset={master[pollNum].data}
-                        dataset={chartData.chartAHP.chartConfig}
+                        dataset={chartData.chartAHP.config.data}
                         options={pieOptions}
-                        reshape="ahp"
                     />
                 </Col>
             </Row>
@@ -197,9 +198,8 @@ export default function Poll({ master }) {
                         title="Some say these issues are problems in the greater San Antonio area. Do you think it's a serious problem, somewhat serious problem or not a serious problem?"
                         columns={chartData.chartProblems.columns}
                         masterDataset={master[pollNum].data}
-                        dataset={chartData.chartProblems.chartConfig}
+                        dataset={chartData.chartProblems.config.data}
                         options={barOptions_stacked}
-                        reshape="problems"
                     />
                 </Col>
             </Row>
@@ -214,9 +214,8 @@ export default function Poll({ master }) {
                         title="Local Priorities"
                         columns={chartData.chartLP.columns}
                         masterDataset={master[pollNum].data}
-                        dataset={chartData.chartLP.chartConfig}
+                        dataset={chartData.chartLP.config.data}
                         options={barOptions_stacked}
-                        reshape="lp"
                     />
                 </Col>
             </Row>
@@ -226,9 +225,8 @@ export default function Poll({ master }) {
                         title="Federal Priorities"
                         columns={chartData.chartFP.columns}
                         masterDataset={master[pollNum].data}
-                        dataset={chartData.chartFP.chartConfig}
+                        dataset={chartData.chartFP.config.data}
                         options={barOptions_stacked}
-                        reshape="fp"
                     />
                 </Col>
             </Row>
@@ -238,9 +236,8 @@ export default function Poll({ master }) {
                         title="Split on which level of government should lead"
                         columns={chartData.chartS.columns}
                         masterDataset={master[pollNum].data}
-                        dataset={chartData.chartS.chartConfig}
+                        dataset={chartData.chartS.config.data}
                         options={barOptions_stacked}
-                        reshape="s"
                     />
                 </Col>
             </Row>
@@ -250,9 +247,8 @@ export default function Poll({ master }) {
                         title="The Cantril Self-Anchoring Scale is a tool used to assess the well-being of a population by asking respondents to rate where their life stands now, and where they think it will be in five years, using a hypothetical ten-point “ladder” scale. By combining a respondents rating we are able able to identify if people feel they are Thriving, Struggling, or Suffering."
                         column={chartData.chartLife.columns}
                         masterDataset={master[pollNum].data}
-                        dataset={chartData.chartLife.chartConfig}
+                        dataset={chartData.chartLife.config.data}
                         options={pieOptions}
-                        reshape="life"
                     />
                 </Col>
                 <Col lg={6} xs={12}>
@@ -260,9 +256,8 @@ export default function Poll({ master }) {
                         title="How would you describe your current financial situation?"
                         column={chartData.chartFinance.columns}
                         masterDataset={master[pollNum].data}
-                        dataset={chartData.chartFinance.chartConfig}
+                        dataset={chartData.chartFinance.config.data}
                         options={pieOptions}
-                        reshape="none"
                     />
                 </Col>
             </Row>
@@ -272,9 +267,8 @@ export default function Poll({ master }) {
                         title="Have you experienced any of the following over the last 12 months?"
                         columns={chartData.chartExperiences.columns}
                         masterDataset={master[pollNum].data}
-                        dataset={chartData.chartExperiences.chartConfig}
+                        dataset={chartData.chartExperiences.config.data}
                         options={barOptions_stacked}
-                        reshape="experiences"
                     />
                 </Col>
             </Row>
@@ -284,9 +278,8 @@ export default function Poll({ master }) {
                         title="Do you think these things contribute to the rising cost of living in Bexar County?"
                         columns={chartData.chartCOL.columns}
                         masterDataset={master[pollNum].data}
-                        dataset={chartData.chartCOL.chartConfig}
+                        dataset={chartData.chartCOL.config.data}
                         options={barOptions_stacked}
-                        reshape="lp"
                     />
                 </Col>
             </Row>
@@ -296,9 +289,8 @@ export default function Poll({ master }) {
                         title='Do you agree or disagree with the following statement "Having reliable, high quality child care for young children is crucial for parents to be able to work?"'
                         column={chartData.chartStatement.columns}
                         masterDataset={master[pollNum].data}
-                        dataset={chartData.chartStatement.chartConfig}
+                        dataset={chartData.chartStatement.config.data}
                         options={pieOptions}
-                        reshape="statement"
                     />
                 </Col>
             </Row>
@@ -308,9 +300,8 @@ export default function Poll({ master }) {
                         title="What do you think is a challenge when looking for a job?"
                         columns={chartData.chartChallenges.columns}
                         masterDataset={master[pollNum].data}
-                        dataset={chartData.chartChallenges.chartConfig}
+                        dataset={chartData.chartChallenges.config.data}
                         options={barOptions_stacked}
-                        reshape="challenges"
                     />
                 </Col>
             </Row>
@@ -320,9 +311,8 @@ export default function Poll({ master }) {
                         title="How important do you think each of the following factors are to a person's health?"
                         columns={chartData.chartHealth.columns}
                         masterDataset={master[pollNum].data}
-                        dataset={chartData.chartHealth.chartConfig}
+                        dataset={chartData.chartHealth.config.data}
                         options={barOptions_stacked}
-                        reshape="health"
                     />
                 </Col>
             </Row>
@@ -332,9 +322,8 @@ export default function Poll({ master }) {
                         title="Have you provided any monetary support to a charitable or non-profit organization in the last year?"
                         column={chartData.chartCharity.columns}
                         masterDataset={master[pollNum].data}
-                        dataset={chartData.chartCharity.chartConfig}
+                        dataset={chartData.chartCharity.config.data}
                         options={pieOptions}
-                        reshape="none"
                     />
                 </Col>
                 <Col lg={6} xs={12}>
@@ -342,9 +331,8 @@ export default function Poll({ master }) {
                         title="Have you or anyone in your household provided volunteer support to a charitable or non-profit organization in the last year?"
                         column={chartData.chartVolunteer.columns}
                         masterDataset={master[pollNum].data}
-                        dataset={chartData.chartVolunteer.chartConfig}
+                        dataset={chartData.chartVolunteer.config.data}
                         options={pieOptions}
-                        reshape="none"
                     />
                 </Col>
             </Row>
@@ -354,9 +342,8 @@ export default function Poll({ master }) {
                         title="Were some or all of your charitable donations in 2021 benefiting a community in Bexar County?"
                         column={chartData.chartDonations.columns}
                         masterDataset={master[pollNum].data}
-                        dataset={chartData.chartDonations.chartConfig}
+                        dataset={chartData.chartDonations.config.data}
                         options={pieOptions}
-                        reshape="none"
                     />
                 </Col>
             </Row>
