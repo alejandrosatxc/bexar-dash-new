@@ -1,22 +1,9 @@
 import { useRouter } from 'next/router'
-import styles from '../../styles/Home.module.css'
 import getMaster from '../../lib/master'
 import { Container, Row, Col } from 'react-bootstrap'
-import {
-  countUnique, getColumn,
-  printDatasetAtEvent,
-  printElementAtEvent,
-  printElementsAtEvent
-} from '../../lib/myfuncs'
-import { useRef } from 'react'
-import {
-  Chart,
-  getDatasetAtEvent,
-  getElementAtEvent,
-  getElementsAtEvent,
-} from 'react-chartjs-2';
+import { countUnique, getColumn } from '../../lib/myfuncs'
+
 import 'chart.js/auto';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
 import VBarChart from '../../components/vBarChart'
 import LineChart from '../../components/LineChart'
 
@@ -27,42 +14,6 @@ export async function getStaticProps() {
 
 export default function LocalGov({ master }) {
   const router = useRouter()
-  //const {id} = router.query
-  const chartRefBEXAR = useRef(null)
-  const chartRefApprovals = useRef(null)
-  const chartRefCOSA = useRef(null)
-
-  const onClickBEXAR = (event) => {
-    const { current: chart } = chartRefBEXAR;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-
-
-  const onClickApprovals = (event) => {
-    const { current: chart } = chartRefApprovals;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-
-  const onClickCOSA = (event) => {
-    const { current: chart } = chartRefCOSA;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-
 
   const dataSets = {
     BEXAR: [],

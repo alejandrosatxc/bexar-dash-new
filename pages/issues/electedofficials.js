@@ -1,16 +1,6 @@
-import { useRouter } from 'next/router'
-import styles from '../../styles/Home.module.css'
 import getMaster from '../../lib/master'
-import { countUnique, getColumn, printDatasetAtEvent, printElementAtEvent, printElementsAtEvent } from '../../lib/myfuncs'
-import { useRef } from 'react'
+import { countUnique, getColumn } from '../../lib/myfuncs'
 import { Container, Row, Col } from 'react-bootstrap'
-
-import {
-  Chart,
-  getDatasetAtEvent,
-  getElementAtEvent,
-  getElementsAtEvent,
-} from 'react-chartjs-2';
 import 'chart.js/auto';
 import LineChart from '../../components/LineChart'
 
@@ -124,26 +114,26 @@ export default function ElectedOfficials({ master }) {
       },
       legend: {
         display: true,
-          font: {
-            size: 16
-          }
+        font: {
+          size: 16
         }
       }
     }
-  
+  }
+
 
   return (
     <Container>
       <Row className="justify-content-sm-center">
         <Col className="w-100">
-            <LineChart
+          <LineChart
             title="Do you approve or disapprove of the job they are doing?"
             columns={columns}
             masterDataset={master}
             dataset={dataOfficials}
             options={optionsOfficials}
             reshape='none'
-            />
+          />
         </Col>
       </Row>
     </Container>
