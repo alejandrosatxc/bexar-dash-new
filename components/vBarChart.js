@@ -1,4 +1,4 @@
-import { memes, printDatasetAtEvent, printElementAtEvent, printElementsAtEvent } from '../lib/myfuncs'
+import { printDatasetAtEvent, printElementAtEvent, printElementsAtEvent } from '../lib/myfuncs'
 import {
     Chart,
     getDatasetAtEvent,
@@ -19,8 +19,7 @@ const VBarChart = (props) => {
         if (!chart) {
             return;
         }
-
-        // let sets = memes(props.columns, props.masterDataset, filter)
+        
         switch (props.reshape) {
             case 'county':
                 break;
