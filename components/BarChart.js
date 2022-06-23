@@ -18,71 +18,16 @@ const BarChart = (props) => {
     const [dropDownTitle, setDropDownTitle] = useState("Demographics: All")
     const chartRef = useRef(null)
 
-    var sets = generateChartDatasets(props.columns, props.masterDataset)
-    combineDataPoints(chart,  sets)
-
     const renderChart = (e, filter) => {
         const { current: chart } = chartRef
         console.log(filter)
         if (!chart) {
             return;
         }
-        //Access the chart's data object, and render a new chart using the filtered data.
+        //Generate a new dataset with a filter and load that  dataset into chart
         var sets = generateChartDatasets(props.columns, props.masterDataset, filter)
         combineDataPoints(chart,  sets)
-        // switch (props.reshape) {
-        //     case 'none':
-        //         chart.config.data.datasets[0].data = generateChartDatasets(props.columns, props.masterDataset, filter)
-        //         break;
-        //     case 'problems':
-        //         var newSet = []
-        //         for (let i = 0; i < sets[0].length; i++) {
-        //             newSet.push(sets[0][i] + sets[1][i])
-        //         }
-        //         chart.config.data.datasets[0].data = newSet
-        //         chart.config.data.datasets[1].data = sets[2]
-        //         chart.config.data.datasets[2].data = sets[3]
-        //         chart.config.data.datasets[3].data = sets[4]
-        //         break;
-        //     case 'experiences':
-        //         var newSet = []
-        //         for (let i = 0; i < sets[0].length; i++) {
-        //             newSet.push(sets[0][i] + sets[1][i])
-        //         }
-        //         chart.config.data.datasets[0].data = newSet
-        //         chart.config.data.datasets[1].data = sets[2]
-        //         chart.config.data.datasets[2].data = sets[3]
-        //         break;
-        //     case 'challenges':
-        //         chart.config.data.datasets[0].data = sets[0]
-        //         chart.config.data.datasets[1].data = sets[1]
-        //         chart.config.data.datasets[2].data = sets[2]
-        //         chart.config.data.datasets[3].data = sets[3]
-        //         break;
-        //     case 'lp':
-        //     case 'fp':
-        //     case 's':
-        //         chart.config.data.datasets[0].data = sets[0]
-        //         chart.config.data.datasets[1].data = sets[1]
-        //         chart.config.data.datasets[2].data = sets[2]
-        //         chart.config.data.datasets[3].data = sets[3]
-        //         chart.config.data.datasets[4].data = sets[4]
-        //         break;
-        //     case 'health':
-        //         var newSet = []
-        //         for (let i = 0; i < sets[0].length; i++) {
-        //             newSet.push(sets[0][i] + sets[1][i])
-        //         }
-        //         chart.config.data.datasets[0].data = newSet
-        //         chart.config.data.datasets[1].data = sets[2]
-        //         chart.config.data.datasets[2].data = sets[3]
-        //         chart.config.data.datasets[3].data = sets[4]
-        //         chart.config.data.datasets[4].data = sets[5]
-        //         break;
-        //     default:
-        //         break;
 
-        // }
         setDropDownTitle("Demographics: " + e.target.textContent)
         chart.update()
 

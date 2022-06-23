@@ -1,7 +1,13 @@
 import { useState, useRef } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton'
-import { printDatasetAtEvent, printElementAtEvent, printElementsAtEvent, generateChartDatasets } from '../lib/myfuncs'
+import {
+    printDatasetAtEvent,
+    printElementAtEvent,
+    printElementsAtEvent,
+    generateChartDatasets,
+    combineDataPoints
+} from '../lib/myfuncs'
 import {
     Chart,
     getDatasetAtEvent,
@@ -17,48 +23,16 @@ const PieChart = (props) => {
     const [dropDownTitle, setDropDownTitle] = useState("Demographics: All")
     const chartRef = useRef(null)
 
-    var sets = generateChartDatasets(props.columns, props.masterDataset)
-    combineDataPoints(chart,  sets)
-
     const renderChart = (e, filter) => {
         const { current: chart } = chartRef
         console.log(filter)
         if (!chart) {
             return;
         }
-        var sets = generateChartDatasets(props.columns, props.masterDataset, filter)
-        combineDataPoints(chart,  sets)
+        //Generate a new dataset with a filter and load that  dataset into chart
+        var sets = generateChartDatasets(props.column, props.masterDataset, filter)
+        combineDataPoints(chart, sets)
 
-        // //Access the chart's data object, and render a new chart using the filtered data.
-        // switch (props.reshape) {
-        //     case 'none':
-        //         chart.config.data.datasets[0].data = generateChartDatasets(props.column, props.masterDataset, filter)
-        //         break;
-        //     case 'ahp':
-        //         var set = generateChartDatasets(props.column, props.masterDataset, filter)
-        //         chart.config.data.datasets[0].data = [
-        //             set[0] + set[1] + set[2],
-        //             set[3] + set[4] + set[5],
-        //             set[6]
-        //         ]
-        //         break;
-        //     case 'life':
-        //         var set = generateChartDatasets(props.column, props.masterDataset, filter)
-        //         chart.config.data.datasets[0].data = [
-        //             set[7] + set[8] + set[9] + set[10],
-        //             set[5] + set[6],
-        //             set[0] + set[1] + set[2] + set[3] + set[4]
-        //         ]
-        //         break;
-        //     case 'statement':
-        //         var set = generateChartDatasets(props.column, props.masterDataset, filter)
-        //         chart.config.data.datasets[0].data = [
-        //             set[0] + set[1],
-        //             set[2] + set[3],
-        //             set[4]
-        //         ]
-        //         break;
-        //}
         setDropDownTitle("Demographics: " + e.target.textContent)
         chart.update()
 
