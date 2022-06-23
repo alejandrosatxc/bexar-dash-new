@@ -180,7 +180,6 @@ export default function Poll({ master }) {
                         masterDataset={master[pollNum].data}
                         dataset={chartData.chartVotingPlans.config.data}
                         options={pieOptions}
-                        reshape="none"
                     />
                 </Col>
                 <Col lg={6} xs={12}>
@@ -190,7 +189,6 @@ export default function Poll({ master }) {
                         masterDataset={master[pollNum].data}
                         dataset={chartData.chartAHP.config.data}
                         options={pieOptions}
-                        reshape="ahp"
                     />
                 </Col>
             </Row>
@@ -202,7 +200,6 @@ export default function Poll({ master }) {
                         masterDataset={master[pollNum].data}
                         dataset={chartData.chartProblems.config.data}
                         options={barOptions_stacked}
-                        reshape="problems"
                     />
                 </Col>
             </Row>
@@ -219,7 +216,6 @@ export default function Poll({ master }) {
                         masterDataset={master[pollNum].data}
                         dataset={chartData.chartLP.config.data}
                         options={barOptions_stacked}
-                        reshape="lp"
                     />
                 </Col>
             </Row>
@@ -231,7 +227,6 @@ export default function Poll({ master }) {
                         masterDataset={master[pollNum].data}
                         dataset={chartData.chartFP.config.data}
                         options={barOptions_stacked}
-                        reshape="fp"
                     />
                 </Col>
             </Row>
@@ -243,7 +238,6 @@ export default function Poll({ master }) {
                         masterDataset={master[pollNum].data}
                         dataset={chartData.chartS.config.data}
                         options={barOptions_stacked}
-                        reshape="s"
                     />
                 </Col>
             </Row>
@@ -255,7 +249,6 @@ export default function Poll({ master }) {
                         masterDataset={master[pollNum].data}
                         dataset={chartData.chartLife.config.data}
                         options={pieOptions}
-                        reshape="life"
                     />
                 </Col>
                 <Col lg={6} xs={12}>
@@ -265,7 +258,6 @@ export default function Poll({ master }) {
                         masterDataset={master[pollNum].data}
                         dataset={chartData.chartFinance.config.data}
                         options={pieOptions}
-                        reshape="none"
                     />
                 </Col>
             </Row>
@@ -277,7 +269,6 @@ export default function Poll({ master }) {
                         masterDataset={master[pollNum].data}
                         dataset={chartData.chartExperiences.config.data}
                         options={barOptions_stacked}
-                        reshape="experiences"
                     />
                 </Col>
             </Row>
@@ -289,7 +280,6 @@ export default function Poll({ master }) {
                         masterDataset={master[pollNum].data}
                         dataset={chartData.chartCOL.config.data}
                         options={barOptions_stacked}
-                        reshape="lp"
                     />
                 </Col>
             </Row>
@@ -301,7 +291,6 @@ export default function Poll({ master }) {
                         masterDataset={master[pollNum].data}
                         dataset={chartData.chartStatement.config.data}
                         options={pieOptions}
-                        reshape="statement"
                     />
                 </Col>
             </Row>
@@ -313,7 +302,6 @@ export default function Poll({ master }) {
                         masterDataset={master[pollNum].data}
                         dataset={chartData.chartChallenges.config.data}
                         options={barOptions_stacked}
-                        reshape="challenges"
                     />
                 </Col>
             </Row>
@@ -325,7 +313,6 @@ export default function Poll({ master }) {
                         masterDataset={master[pollNum].data}
                         dataset={chartData.chartHealth.config.data}
                         options={barOptions_stacked}
-                        reshape="health"
                     />
                 </Col>
             </Row>
@@ -337,7 +324,6 @@ export default function Poll({ master }) {
                         masterDataset={master[pollNum].data}
                         dataset={chartData.chartCharity.config.data}
                         options={pieOptions}
-                        reshape="none"
                     />
                 </Col>
                 <Col lg={6} xs={12}>
@@ -347,7 +333,6 @@ export default function Poll({ master }) {
                         masterDataset={master[pollNum].data}
                         dataset={chartData.chartVolunteer.config.data}
                         options={pieOptions}
-                        reshape="none"
                     />
                 </Col>
             </Row>
@@ -359,7 +344,6 @@ export default function Poll({ master }) {
                         masterDataset={master[pollNum].data}
                         dataset={chartData.chartDonations.config.data}
                         options={pieOptions}
-                        reshape="none"
                     />
                 </Col>
             </Row>
