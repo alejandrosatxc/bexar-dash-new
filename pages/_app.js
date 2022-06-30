@@ -35,16 +35,16 @@ function MyApp({ Component, pageProps }) {
         <title>Bexar Dash</title>
         <meta name="description" content="Bexar Facts' Data Dashboard!" />
         <link rel="icon" href="/favicon.ico" />
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-5XVXBB3RLW"></Script>
-        <Script>
-          {`
+      </Head>
+      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-5XVXBB3RLW"></Script>
+      <Script>
+      {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-5XVXBB3RLW');
-          `}
-        </Script>
-      </Head>
+      `}
+      </Script>
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to Bexar-Dash
