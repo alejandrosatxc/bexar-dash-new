@@ -34,13 +34,19 @@ function MyApp({ Component, pageProps }) {
         <title>Bexar Dash</title>
         <meta name="description" content="Bexar Facts' Data Dashboard!" />
         <link rel="icon" href="/favicon.ico" />
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XVXBB3RLW"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-5XVXBB3RLW');
+        </script>
       </Head>
-
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to Bexar-Dash
         </h1>
-
         <div className={styles.description}>
           A data dashboard by&nbsp;
           <Image src="/bf-1.png" alt="Vercel Logo" width={164} height={32} />
