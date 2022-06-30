@@ -36,8 +36,8 @@ function MyApp({ Component, pageProps }) {
         <meta name="description" content="Bexar Facts' Data Dashboard!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-5XVXBB3RLW"></Script>
-      <Script>
+      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-5XVXBB3RLW" strategy="afterInteractive"></Script>
+      <Script id="google-analytics" strategy="afterInteractive">
       {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
