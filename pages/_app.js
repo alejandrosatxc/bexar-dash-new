@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Button from 'react-bootstrap/Button'
 import Navbar from 'react-bootstrap/Navbar'
 import { Container } from 'react-bootstrap';
+import Script from 'next/script'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -34,13 +35,13 @@ function MyApp({ Component, pageProps }) {
         <title>Bexar Dash</title>
         <meta name="description" content="Bexar Facts' Data Dashboard!" />
         <link rel="icon" href="/favicon.ico" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XVXBB3RLW"></script>
-        <script>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-5XVXBB3RLW"></Script>
+        <Script>
           window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments)}
+          function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-5XVXBB3RLW');
-        </script>
+        </Script>
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>
