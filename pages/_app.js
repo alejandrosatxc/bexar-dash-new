@@ -37,10 +37,12 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-5XVXBB3RLW"></Script>
         <Script>
+          {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-5XVXBB3RLW');
+          `}
         </Script>
       </Head>
       <main className={styles.main}>
