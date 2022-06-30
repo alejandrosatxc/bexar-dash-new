@@ -34,11 +34,10 @@ function MyApp({ Component, pageProps }) {
         <title>Bexar Dash</title>
         <meta name="description" content="Bexar Facts' Data Dashboard!" />
         <link rel="icon" href="/favicon.ico" />
-        <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XVXBB3RLW"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
+          function gtag(){dataLayer.push(arguments)}
           gtag('js', new Date());
           gtag('config', 'G-5XVXBB3RLW');
         </script>
