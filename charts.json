@@ -1,10 +1,12 @@
 {
     "chartVotingPlans": {
+        "type" : "pie",
         "columns": [
             "Q3"
         ],
         "config": {
             "data": {
+                "title" : "How do you plan on voting in this year's elections?",
                 "labels": [
                     "In person, on the day of the election",
                     "In person, before the day of the election",
@@ -29,11 +31,13 @@
         }
     },
     "chartAHP": {
+        "type" : "pie",
         "columns": [
             "Q4"
         ],
         "config": {
             "data": {
+                "title" : "Would you vote yes or no on a 150 million dollar City of San Antonio bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?",
                 "labels": [
                     "Yes",
                     "No",
@@ -69,6 +73,7 @@
         }
     },
     "chartProblems": {
+        "type" : "bar",
         "columns": [
             "Q7A",
             "Q7B",
@@ -89,6 +94,7 @@
         ],
         "config": {
             "data": {
+                "title" : "Some say these issues are problems in the greater San Antonio area. Do you think it's a serious problem, somewhat serious problem or not a serious problem?",
                 "labels": [
                     [
                         "The cost of housing for  middle-",
@@ -158,6 +164,7 @@
         }
     },
     "chartLP": {
+        "type" : "bar",
         "columns": [
             "Q8C",
             "Q8E",
@@ -168,6 +175,7 @@
         ],
         "config": {
             "data": {
+                "title" : "Local Priorities",
                 "labels": [
                     [
                         "Inadequate public",
@@ -219,6 +227,7 @@
         }
     },
     "chartFP": {
+        "type" : "bar",
         "columns": [
             "Q8B",
             "Q8D",
@@ -228,6 +237,7 @@
         ],
         "config": {
             "data": {
+                "title" : "Federal Priorities",
                 "labels": [
                     "Increasing cost of living",
                     "The cost of healthcare",
@@ -266,6 +276,7 @@
         }
     },
     "chartS": {
+        "type" : "bar",
         "columns": [
             "Q8A",
             "Q8F",
@@ -275,6 +286,7 @@
         ],
         "config": {
             "data": {
+                "title" : "Split on which level of government should lead",
                 "labels": [
                     [
                         "The cost of housing for middle-",
@@ -325,11 +337,13 @@
         }
     },
     "chartLife": {
+        "type" : "pie",
         "columns": [
             "Q10"
         ],
         "config": {
             "data": {
+                "title" : "The Cantril Self-Anchoring Scale is a tool used to assess the well-being of a population by asking respondents to rate where their life stands now, and where they think it will be in five years, using a hypothetical ten-point “ladder” scale. By combining a respondents rating we are able able to identify if people feel they are Thriving, Struggling, or Suffering.",
                 "labels": [
                     "Thriving",
                     "Struggling",
@@ -369,11 +383,13 @@
         }
     },
     "chartFinance": {
+        "type" : "pie",
         "columns": [
             "Q11"
         ],
         "config": {
             "data": {
+                "title" : "How would you describe your current financial situation?",
                 "labels": [
                     "Living Comfortably",
                     "Meeting living expenses",
@@ -398,6 +414,7 @@
         }
     },
     "chartExperiences": {
+        "type" : "bar",
         "columns": [
             "Q12A",
             "Q12B",
@@ -407,6 +424,7 @@
         ],
         "config": {
             "data": {
+                "title" : "Have you experienced any of the following over the last 12 months?",
                 "labels": [
                     [
                         "Skipped meals because you",
@@ -449,6 +467,7 @@
         }
     },
     "chartCOL": {
+        "type" : "bar",
         "columns": [
             "Q13A",
             "Q13B",
@@ -461,6 +480,7 @@
         ],
         "config": {
             "data": {
+                "title" : "Do you think these things contribute to the rising cost of living in Bexar County?",
                 "labels": [
                     [
                         "Landlords raising the price",
@@ -520,11 +540,13 @@
         }
     },
     "chartStatement": {
+        "type" : "pie",
         "columns": [
             "Q14"
         ],
         "config": {
             "data": {
+                "title" : "Do you agree or disagree with the following statement 'Having reliable, high quality child care for young children is crucial for parents to be able to work?'",
                 "labels": [
                     "Agree",
                     "Disagree",
@@ -558,6 +580,7 @@
         }
     },
     "chartChallenges": {
+        "type" : "bar",
         "columns": [
             "Q15A",
             "Q15B",
@@ -567,6 +590,7 @@
         ],
         "config": {
             "data": {
+                "title" : "What do you think is a challenge when looking for a job?",
                 "labels": [
                     "Finding affordable childcare",
                     [
@@ -609,6 +633,7 @@
         }
     },
     "chartHealth": {
+        "type" : "bar",
         "columns": [
             "Q16A",
             "Q16B",
@@ -626,6 +651,7 @@
         ],
         "config": {
             "data": {
+                "title" : "How important do you think each of the following factors are to a person's health?",
                 "labels": [
                     "Lack of access to high-quality medical care",
                     "Having a low income",
@@ -673,11 +699,13 @@
         }
     },
     "chartCharity": {
+        "type" : "pie",
         "columns": [
             "Q17"
         ],
         "config": {
             "data": {
+                "title" : "Have you provided any monetary support to a charitable or non-profit organization in the last year?",
                 "labels": [
                     "Yes",
                     "No",
@@ -698,11 +726,13 @@
         }
     },
     "chartVolunteer": {
+        "type" : "pie",
         "columns": [
             "Q18"
         ],
         "config": {
             "data": {
+                "title" : "Have you or anyone in your household provided volunteer support to a charitable or non-profit organization in the last year?",
                 "labels": [
                     "Yes",
                     "No",
@@ -723,11 +753,13 @@
         }
     },
     "chartDonations": {
+        "type" : "pie",
         "columns": [
             "Q20"
         ],
         "config": {
             "data": {
+                "title" : "Were some or all of your charitable donations in 2021 benefiting a community in Bexar County?",
                 "labels": [
                     "Yes",
                     "No",
