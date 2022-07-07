@@ -191,7 +191,7 @@ export default function Poll({ master }) {
     )
 }
 
-const renderChart = (chart, data, arrOptions) => {
+export const renderChart = (chart, data, arrOptions) => {
     //console.log(chart)
     switch (chart.type) {
         case 'pie':
