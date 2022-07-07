@@ -6,12 +6,17 @@ import Image from 'next/image'
 import Button from 'react-bootstrap/Button'
 import Navbar from 'react-bootstrap/Navbar'
 import { Container } from 'react-bootstrap';
-
+import SideNav from  '../components/SideNav';
 function MyApp({ Component, pageProps }) {
+  const openNav = (e) =>{
+    document.getElementById("mySidenav").style.width = "250px";
+}
+  
+
+
   return (
-    
     <div className={styles.container}>
-      <Navbar className={styles.nav} sticky='top'>
+      {/* <Navbar className={styles.nav} sticky='top'>
           <Container>
             <Navbar.Brand>
             <a
@@ -29,14 +34,15 @@ function MyApp({ Component, pageProps }) {
               </a>
             </Navbar.Brand>
           </Container>
-      </Navbar>
+      </Navbar> */}
       <Head>
         <title>Bexar Dash</title>
         <meta name="description" content="Bexar Facts' Data Dashboard!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <SideNav />
       <main className={styles.main}>
+      <Button onClick={(e)=>{openNav()}}>OpenNav</Button>
         <h1 className={styles.title}>
           Welcome to Bexar-Dash
         </h1>
