@@ -2,6 +2,7 @@ import styles from '../styles/Home.module.css'
 const SideNav = (props) => {
     const closeNav = (e) => {
         document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main-app-container").style.marginLeft = "0";
     }
 
    

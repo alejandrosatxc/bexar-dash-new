@@ -10,12 +10,12 @@ import SideNav from  '../components/SideNav';
 function MyApp({ Component, pageProps }) {
   const openNav = (e) =>{
     document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main-app-container").style.marginLeft = "250px";
 }
   
-
-
-  return (
-    <div className={styles.container}>
+  return (<div>
+    <SideNav />
+    <div id = "main-app-container" className={styles.container}>
       {/* <Navbar className={styles.nav} sticky='top'>
           <Container>
             <Navbar.Brand>
@@ -40,9 +40,9 @@ function MyApp({ Component, pageProps }) {
         <meta name="description" content="Bexar Facts' Data Dashboard!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <SideNav />
+      
       <main className={styles.main}>
-      <Button onClick={(e)=>{openNav()}}>OpenNav</Button>
+      <Button className = {styles.navBtn} onClick={(e)=>{openNav()}}>OpenNav</Button>
         <h1 className={styles.title}>
           Welcome to Bexar-Dash
         </h1>
@@ -74,6 +74,7 @@ function MyApp({ Component, pageProps }) {
             </span>
           </a>
         </footer>
+    </div>
     </div>
   )
 }
