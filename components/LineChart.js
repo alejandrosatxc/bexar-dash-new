@@ -79,6 +79,67 @@ const LineChart = (props) => {
         chart.config.data.datasets[4].data = Object.values(dataSets2['VIA'])
         break;
 
+      case 'county':
+        var datasets3 = {
+          BEXAR: []
+        }
+        props.masterDataset.forEach(sheet => {
+          var coldata = getColumn(sheet.data, 'BEXAR', filter)
+          var counts = countUnique(coldata)
+          //convert data to percentages
+          var total = 0;
+          for (let key in counts) {
+            total = total + counts[key]
+          }
+          //Check for no answer, subtract from total 
+          if ('' in counts) {
+            total = total - counts['']
+          }
+          for (let key in counts) {
+            counts[key] = (counts[key] / total) * 100
+          }
+          datasets3.BEXAR.push(counts)
+        })
+        chart.config.data.datasets[0].data = Object.values(datasets3['BEXAR'][0])
+        chart.config.data.datasets[1].data = Object.values(datasets3['BEXAR'][1])
+        chart.config.data.datasets[2].data = Object.values(datasets3['BEXAR'][2])
+        chart.config.data.datasets[3].data = Object.values(datasets3['BEXAR'][3])
+        chart.config.data.datasets[4].data = Object.values(datasets3['BEXAR'][4])
+        chart.config.data.datasets[5].data = Object.values(datasets3['BEXAR'][5])
+        chart.config.data.datasets[6].data = Object.values(datasets3['BEXAR'][6])
+        break;
+      case 'city':
+        var datasets4 = {
+          COSA: []
+        }
+        props.masterDataset.forEach(sheet => {
+          var coldata = getColumn(sheet.data, 'COSA', filter)
+          var counts = countUnique(coldata)
+          //convert data to percentages
+          var total = 0;
+          for (let key in counts) {
+            total = total + counts[key]
+          }
+          //Check for no answer, subtract from total 
+          if ('' in counts) {
+            total = total - counts['']
+          }
+          for (let key in counts) {
+            counts[key] = (counts[key] / total) * 100
+          }
+          datasets4.COSA.push(counts)
+        })
+
+        chart.config.data.datasets[0].data = Object.values(datasets4['COSA'][0])
+        chart.config.data.datasets[1].data = Object.values(datasets4['COSA'][1])
+        chart.config.data.datasets[2].data = Object.values(datasets4['COSA'][2])
+        chart.config.data.datasets[3].data = Object.values(datasets4['COSA'][3])
+        chart.config.data.datasets[4].data = Object.values(datasets4['COSA'][4])
+        chart.config.data.datasets[5].data = Object.values(datasets4['COSA'][5])
+        chart.config.data.datasets[6].data = Object.values(datasets4['COSA'][6])
+
+
+        break;
       default:
         break;
 

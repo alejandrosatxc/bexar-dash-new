@@ -266,63 +266,63 @@ export default function LocalGov({ master }) {
   };
 
 
-  const options = {
-    maintainAspectRatio: false,
+  // const options = {
+  //   maintainAspectRatio: false,
 
-    scales: {
-      y: {
-        min: 0,
-        max: 60,
-        ticks: {
-          stepSize: 5,
-        },
-        title: {
-          display: true,
-          text: "Percentage"
-        }
-      },
-      x: {
-        ticks: {
-          font: {
-            size: 18
-          }
-        }
-      }
-    },
-    plugins: {
-      tooltip: {
-        enabled: true,
-        callbacks: {
-          label: function (context) {
-            var data = context.dataset.data,
-              label = context.label,
-              currentValue = context.raw,
-              total = 0;
+  //   scales: {
+  //     y: {
+  //       min: 0,
+  //       max: 60,
+  //       ticks: {
+  //         stepSize: 5,
+  //       },
+  //       title: {
+  //         display: true,
+  //         text: "Percentage"
+  //       }
+  //     },
+  //     x: {
+  //       ticks: {
+  //         font: {
+  //           size: 18
+  //         }
+  //       }
+  //     }
+  //   },
+  //   plugins: {
+  //     tooltip: {
+  //       enabled: true,
+  //       callbacks: {
+  //         label: function (context) {
+  //           var data = context.dataset.data,
+  //             label = context.label,
+  //             currentValue = context.raw,
+  //             total = 0;
 
-            //   for( var i = 0; i < data.length; i++ ){
-            //     total += data[i];
-            //   }
-            var percentage = parseFloat((currentValue).toFixed(1));
+  //           //   for( var i = 0; i < data.length; i++ ){
+  //           //     total += data[i];
+  //           //   }
+  //           var percentage = parseFloat((currentValue).toFixed(1));
 
-            return label + ": (" + percentage + '%)';
-          }
-        }
+  //           return label + ": (" + percentage + '%)';
+  //         }
+  //       }
 
-      },
-      legend: {
-        display: true,
-        labels: {
-          font: {
-            size: 16
-          },
-        },
-      },
-      title: {
-        display: true,
-        text: 'Click legend to interact!'
-      }
-    }
-  }
+  //     },
+  //     legend: {
+  //       display: true,
+  //       labels: {
+  //         font: {
+  //           size: 16
+  //         },
+  //       },
+  //     },
+  //     title: {
+  //       display: true,
+  //       text: 'Click legend to interact!'
+  //     }
+  //   }
+  // }
 
   const optionsApprovals = {
     maintainAspectRatio: false,
@@ -374,28 +374,78 @@ export default function LocalGov({ master }) {
     }
   }
 
+  const optionsTrack = {
+    maintainAspectRatio: false,
+    spanGaps: true,
+    scales: {
+      y: {
+        min: 0,
+        max: 100,
+        title: {
+          display: true,
+          text: "Percentage"
+        }
+      },
+      x: {
+        ticks: {
+          font: {
+            size: 16
+          }
+        }
+      }
+    },
+    plugins: {
+      tooltip: {
+        enabled: true,
+        callbacks: {
+          label: function (context) {
+            var data = context.dataset.data,
+              label = context.label,
+              currentValue = context.raw,
+              total = 0;
+
+            //   for( var i = 0; i < data.length; i++ ){
+            //     total += data[i];
+            //   }
+            var percentage = parseFloat((currentValue).toFixed(1));
+
+            return label + ": (" + percentage + '%)';
+          },
+        },
+      },
+      legend: {
+        display: true,
+        labels: {
+          font: {
+            size: 16
+          }
+        }
+      }
+    }
+  }
+
   return (
     <Container fluid>
       <Row className="justify-content-sm-center">
         <Col xs={12} className="w-100">
-          <VBarChart
+          <LineChart
             title="Would you say Bexar County policy is on the Right Track or going the Wrong direction?"
             columns="BEXAR"
             masterDataset={master}
             dataset={dataBEXAR}
-            options={options}
+            options={optionsTrack}
             reshape="county"
           />
         </Col>
       </Row>
       <Row className="justify-content-sm-center">
         <Col xs={12} className="w-100">
-          <VBarChart
+          <LineChart
             title="Would you say City of San Antonio policy is on the Right Track or going the Wrong direction?"
             columns="COSA"
             masterDataset={master}
             dataset={dataCOSA}
-            options={options}
+            options={optionsTrack}
             reshape="city"
           />
         </Col>
