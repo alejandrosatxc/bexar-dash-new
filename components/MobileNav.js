@@ -3,12 +3,12 @@ const MobileNav = (props) => {
     const closeMobileNav = (e) => {
         document.getElementById("myMobilenav").style.height = "0";
         document.getElementById("main-app-container").style.marginTop = "0";
-        document.getElementById("openMobile").style.display = "block";
+        // document.getElementById("openMobile").style.display = "block";
 
     }
     return (
         <div id="myMobilenav" className={styles.MobileNav}>
-            <a href="javascript:void(0)" className={styles.closeMobileBtn} onClick={(e) => { closeMobileNav() }}> &times;</a>
+            <a className={styles.closeMobileBtn} onClick={(e) => { closeMobileNav() }}> &times;</a>
             <div className={styles.mobileNavItems}>
                 <a href="#">About</a>
                 <a href="#">Services</a>

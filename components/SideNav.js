@@ -6,7 +6,7 @@ const SideNav = (props) => {
     }
     return (
         <div id="mySidenav" className={styles.sideNav}>
-            <a href="javascript:void(0)" className={styles.closeBtn} onClick={(e) => { closeNav() }}> &times;</a>
+            <a className={styles.closeBtn} onClick={(e) => { closeNav() }}> &times;</a>
             <div id ="myLinks">
             <a href="#">About</a>
             <a href="#">Services</a>
