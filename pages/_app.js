@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
   const openMobileNav = (e) => {
     document.getElementById("myMobilenav").style.height = "250px";
     // document.getElementById("main-app-container").style.marginTop= "250px"; 
-    document.getElementById("openMobile").style.display = "none";
+    // document.getElementById("openMobile").style.display = "none";
     }
 
   return (<div>
