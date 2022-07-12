@@ -68,6 +68,7 @@
 
 .sideNav .closeBtn {
   position: absolute;
+  cursor: pointer;
   top: 0;
   right: 190px;
   font-size: 36px;
@@ -414,6 +415,8 @@
     color: #4274C8;
     font-size: 30px;
     position: absolute;
+    border: solid red;
+    cursor: pointer;
   }
 
   .MobileNav {
@@ -426,15 +429,27 @@
     z-index: 1;
     position: fixed;
     width: 100%;
+    border: solid green;
+  }
 
+  .mobileNavItems {
+    margin: auto;
+    width: 50%;
+    border: solid yellow;
   }
 
   .MobileNav a {
+    position: relative;
     color: #818181;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
     display: block;
+    border: solid blue;
+  }
+
+  .MobileNav a:hover {
+    color: #f1f1f1;
   }
 
 
