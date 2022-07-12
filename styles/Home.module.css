@@ -413,6 +413,7 @@
   .MobileNav .closeMobileBtn {
     color: #4274C8;
     font-size: 30px;
+    position: absolute;
   }
 
   .MobileNav {
