@@ -4,7 +4,6 @@ export default function Home({ master }) {
   return (
     <div className={styles.wrapper}>
         <h2 className={styles.header}>Tap on a button above to see the relevant data</h2>
-        {/* <div className={styles.wrapper}> */}
           <div className={styles.box1}>BexarDash-BOX1</div>
           <div className={styles.box2}>
             Box2-Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet et vitae omnis, iusto cupiditate commodi
@@ -21,9 +20,6 @@ export default function Home({ master }) {
             ipsum mollitia impedit molestias modi nesciunt illo sint vitae tempora sequi id totam voluptate soluta nihil
             explicabo. Quae, eos eaque dolorum ad assumenda, esse eum deserunt nihil tempore debitis autem doloribus
             quas natus pariatur maxime cum unde!</div>
-        {/* </div> */}
-       {/* <div className={styles.box1}>BexarDash</div>
-      <div className={styles.box2}>BexarDash2</div> */}
     </div>
   )
 }
