@@ -113,8 +113,7 @@ export default function LocalGov({ master }) {
 
 
   var dataCOSA = {
-    // labels: ['Right Track', 'Wrong Direction', 'Mixed', 'Do not know'],
-    labels: ['Poll 1', 'Poll 2', 'Poll 3', 'Poll 4' , 'Poll 5', 'Poll 6', 'Poll 7'],
+    labels: ['20/Q1', '20/Q2', '20/Q3', '20/Q4' , '21/Q1', '21/Q3', '22/Q1'],
     datasets: [
       {
         label: 'Right Track',
@@ -160,7 +159,7 @@ export default function LocalGov({ master }) {
   };
 
   var dataApprovals = {
-    labels: ['Poll 1', 'Poll 2', 'Poll 3', 'Poll 4', 'Poll 5', 'Poll 6', 'Poll 7'],
+    labels: ['20/Q1', '20/Q2', '20/Q3', '20/Q4' , '21/Q1', '21/Q3', '22/Q1'],
     datasets: [
       {
         label: 'City Council',
@@ -216,9 +215,7 @@ export default function LocalGov({ master }) {
   }
 
   var dataBEXAR = {
-    // labels: ['Right Track', 'Wrong Direction', 'Mixed', 'Do not know'],
-    labels: ['Poll 1', 'Poll 2', 'Poll 3', 'Poll 4' , 'Poll 5', 'Poll 6', 'Poll 7'],
-
+    labels: ['20/Q1', '20/Q2', '20/Q3', '20/Q4' , '21/Q1', '21/Q3', '22/Q1'],
     datasets: [
       {
         label: 'Right Track',
@@ -368,7 +365,7 @@ export default function LocalGov({ master }) {
       <Row className="justify-content-sm-center">
         <Col xs={12} className="w-100">
           <LineChart
-            title="Would you say Bexar County policy is on the Right Track or going the Wrong direction?"
+            title="Would you say Bexar County is on the Right Track or going the Wrong direction?"
             columns="BEXAR"
             masterDataset={master}
             dataset={dataBEXAR}
@@ -380,7 +377,7 @@ export default function LocalGov({ master }) {
       <Row className="justify-content-sm-center">
         <Col xs={12} className="w-100">
           <LineChart
-            title="Would you say City of San Antonio policy is on the Right Track or going the Wrong direction?"
+            title="Would you say City of San Antonio is on the Right Track or going the Wrong direction?"
             columns="COSA"
             masterDataset={master}
             dataset={dataCOSA}
