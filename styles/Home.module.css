@@ -258,6 +258,14 @@
   /* width: auto; */
 }
 
+.navbarbrand {
+ display: flex; 
+}
+
+.bg{
+  background-color: #012130; 
+}
+
 .grid {
   /* height: 800px; */
   width: auto;

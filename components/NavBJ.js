@@ -5,13 +5,18 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Image from 'next/image'
+import styles from '../styles/Home.module.css'
 const NavBJ = (props) => {
 
-
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top" >
-        <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar className = {styles.bg} collapseOnSelect expand="lg"  variant="dark" sticky="top" >
+        <Navbar.Brand className = {styles.navbarbrand} href="#home">
+        <Image src = "/bf-11.png" 
+                width="100"
+                height = "40"
+                alt=""/> 
+        </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
@@ -36,7 +41,6 @@ const NavBJ = (props) => {
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
-        </Container>
       </Navbar>
 
     )

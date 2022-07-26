@@ -151,7 +151,7 @@ const options = {
         <h2 className={styles.header}>Tap on a button above to see the relevant data</h2>
           <div className={styles.box1}>BexarDash-BOX1</div>
           <div>
-            Box2-Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet et vitae omnis, iusto cupiditate commodi
+            Box222-Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet et vitae omnis, iusto cupiditate commodi
             debitis sunt praesentium quis. Repellendus tenetur expedita eius. Et quos provident architecto numquam vitae
             cumque voluptatem quaerat, delectus recusandae officia nesciunt quod tempore harum dolores nobis neque
             veniam est eveniet dolore assumenda eos culpa! Pariatur, iste nobis, corrupti doloribus optio numquam, eum
