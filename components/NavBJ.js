@@ -13,7 +13,7 @@ const NavBJ = (props) => {
         <Navbar className = {styles.bg} collapseOnSelect expand="lg"  variant="dark" sticky="top" >
         <Navbar.Brand className = {styles.navbarbrand} href="#home">
         <Image src = "/bf-11.png" 
-                width="100"
+                width="220"
                 height = "40"
                 alt=""/> 
         </Navbar.Brand>

@@ -12,6 +12,9 @@
   background-color: #ffffff;
 }
 
+
+
+
 .sideNav {
   height: 100%;
   /* 100% Full-height */
@@ -259,7 +262,8 @@
 }
 
 .navbarbrand {
- display: flex; 
+ padding-bottom: 0px;
+
 }
 
 .bg{
