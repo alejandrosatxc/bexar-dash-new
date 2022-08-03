@@ -160,7 +160,7 @@ export default function Home({ master }) {
           <li>About the direction of the City and County</li>
           <li>Regarding the approval of our local leaders, civic organizations and institutions</li>
           <li>Around police relations and reform</li>
-          <li>About local government's response to the pandemic and the winter storm</li>
+          <li>About local government&apos;s response to the pandemic and the winter storm</li>
           <li>About labor challenges</li>
           <li>About the health disparities in our community</li>
         </ul>
@@ -192,7 +192,7 @@ export default function Home({ master }) {
           On May 11, the South Texas Trauma-Informed Care Consortium Honors
           Trauma-Informed Care Month with Events and Training to Support
           Healing From Trauma hosted a a press conference with the City of
-          San Antonio, University Health, The Ecumenical Center, The Children's
+          San Antonio, University Health, The Ecumenical Center, The Children&apos;s
           Shelter, Methodist Healthcare Ministries, and Voices for Children, to
           launch a summer awareness campaign to support resilience and trauma-informed
           practices. They specifically referenced a recent Bexar Facts poll, highlighting
