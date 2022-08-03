@@ -1,0 +1,782 @@
+{
+    "chartVotingPlans": {
+        "type" : "pie",
+        "columns": [
+            "Q3"
+        ],
+        "config": {
+            "data": {
+                "title" : "How do you plan on voting in this year's elections?",
+                "labels": [
+                    "In person, on the day of the election",
+                    "In person, before the day of the election",
+                    "By mail",
+                    "Do not plan on voting",
+                    "I do not know"
+                ],
+                "datasets": [
+                    {
+                        "label": "",
+                        "data": null,
+                        "backgroundColor": [
+                            "rgb(12, 38, 96)",
+                            "rgb(196, 99, 0)",
+                            "rgb(66, 116, 200)",
+                            "rgb(233, 168, 34)",
+                            "rgb(235, 223, 203)"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "chartAHP": {
+        "type" : "pie",
+        "columns": [
+            "Q4"
+        ],
+        "config": {
+            "data": {
+                "title" : "Would you vote yes or no on a 150 million dollar City of San Antonio bond for Affordable Housing Projects that includes rehabilitating, preserving and producing housing for homeownership or rent, and supportive services for people exiting homelessness?",
+                "labels": [
+                    "Yes",
+                    "No",
+                    "I do not know"
+                ],
+                "datasets": [
+                    {
+                        "shape": [
+                            [
+                                0,
+                                1,
+                                2
+                            ],
+                            [
+                                3,
+                                4,
+                                5
+                            ],
+                            [
+                                6
+                            ]
+                        ],
+                        "label": "",
+                        "data": null,
+                        "backgroundColor": [
+                            "rgb(12, 38, 96)",
+                            "rgb(196, 99, 0)",
+                            "rgb(66, 116, 200)"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "chartProblems": {
+        "type" : "bar",
+        "columns": [
+            "Q7A",
+            "Q7B",
+            "Q7C",
+            "Q7D",
+            "HOMELESSNESS",
+            "Q7F",
+            "Q7G",
+            "Q7H",
+            "Q7I",
+            "Q7J",
+            "PROPERTY_TAXES",
+            "Q7L",
+            "Q7M",
+            "Q7N",
+            "Q7O",
+            "CRIME"
+        ],
+        "config": {
+            "data": {
+                "title" : "Some say these issues are problems in the greater San Antonio area. Do you think it's a serious problem, somewhat serious problem or not a serious problem?",
+                "labels": [
+                    [
+                        "The cost of housing for  middle-",
+                        "and working-class families"
+                    ],
+                    "Increasing cost of living",
+                    [
+                        "Inadequate public transit",
+                        "service options"
+                    ],
+                    "The cost of healthcare",
+                    "Homelessness",
+                    [
+                        "A lack of high-quality child care",
+                        "options for working families"
+                    ],
+                    "Climate change",
+                    "Unemployment",
+                    [
+                        "A lack of high-speed",
+                        "internet options in the area"
+                    ],
+                    "The rising price of gas",
+                    [
+                        "The amount you pay",
+                        "in local property taxes"
+                    ],
+                    [
+                        "An increase in property crimes",
+                        "such as burglary and theft"
+                    ],
+                    [
+                        "The affordability of high-",
+                        "speed internet in the area"
+                    ],
+                    "The rising price of food",
+                    [
+                        "The amount you pay",
+                        "in local utility rates"
+                    ],
+                    "An increase in violent crimes"
+                ],
+                "datasets": [
+                    {
+                        "combine": true,
+                        "label": "Serious",
+                        "data": null,
+                        "backgroundColor": "rgb(12, 38, 96)"
+                    },
+                    {
+                        "label": "Somewhat Serious",
+                        "data": null,
+                        "backgroundColor": "rgb(196, 99, 0)"
+                    },
+                    {
+                        "label": "Not Serious",
+                        "data": null,
+                        "backgroundColor": "rgb(66, 116, 200)"
+                    },
+                    {
+                        "label": "I do not know",
+                        "data": null,
+                        "backgroundColor": "rgb(233, 168, 34)"
+                    }
+                ]
+            }
+        }
+    },
+    "chartLP": {
+        "type" : "bar",
+        "columns": [
+            "Q8C",
+            "Q8E",
+            "Q8K",
+            "Q8L",
+            "Q8O",
+            "Q8P"
+        ],
+        "config": {
+            "data": {
+                "title" : "Local Priorities",
+                "labels": [
+                    [
+                        "Inadequate public",
+                        "transit service options"
+                    ],
+                    "Homelessness",
+                    [
+                        "The amount you pay",
+                        "in local property taxes"
+                    ],
+                    [
+                        "An increase in property crimes",
+                        " such as burglary and theft"
+                    ],
+                    [
+                        "The amount you pay",
+                        "in local utility rates"
+                    ],
+                    "An increase in violent crimes"
+                ],
+                "datasets": [
+                    {
+                        "label": "Local Governmnet",
+                        "data": null,
+                        "backgroundColor": "rgb(12, 38, 96)"
+                    },
+                    {
+                        "label": "Texas Government",
+                        "data": null,
+                        "backgroundColor": "rgb(196, 99, 0)"
+                    },
+                    {
+                        "label": "Federal Government",
+                        "data": null,
+                        "backgroundColor": "rgb(66, 116, 200)"
+                    },
+                    {
+                        "label": "Not a Government Problem",
+                        "data": null,
+                        "backgroundColor": "rgb(233, 168, 34)"
+                    },
+                    {
+                        "label": "I do not know",
+                        "data": null,
+                        "backgroundColor": "rgb(235, 223, 203)"
+                    }
+                ]
+            }
+        }
+    },
+    "chartFP": {
+        "type" : "bar",
+        "columns": [
+            "Q8B",
+            "Q8D",
+            "Q8G",
+            "Q8J",
+            "Q8N"
+        ],
+        "config": {
+            "data": {
+                "title" : "Federal Priorities",
+                "labels": [
+                    "Increasing cost of living",
+                    "The cost of healthcare",
+                    "Climate change",
+                    "The rising price of gas",
+                    "The rising price of food"
+                ],
+                "datasets": [
+                    {
+                        "label": "Local Governmnet",
+                        "data": null,
+                        "backgroundColor": "rgb(12, 38, 96)"
+                    },
+                    {
+                        "label": "Texas Government",
+                        "data": null,
+                        "backgroundColor": "rgb(196, 99, 0)"
+                    },
+                    {
+                        "label": "Federal Government",
+                        "data": null,
+                        "backgroundColor": "rgb(66, 116, 200)"
+                    },
+                    {
+                        "label": "Not a Government Problem",
+                        "data": null,
+                        "backgroundColor": "rgb(233, 168, 34)"
+                    },
+                    {
+                        "label": "I do not know",
+                        "data": null,
+                        "backgroundColor": "rgb(235, 223, 203)"
+                    }
+                ]
+            }
+        }
+    },
+    "chartS": {
+        "type" : "bar",
+        "columns": [
+            "Q8A",
+            "Q8F",
+            "Q8H",
+            "Q8I",
+            "Q8M"
+        ],
+        "config": {
+            "data": {
+                "title" : "Split on which level of government should lead",
+                "labels": [
+                    [
+                        "The cost of housing for middle-",
+                        "and working-class families"
+                    ],
+                    [
+                        "A lack of high-quality child care",
+                        "options for working families"
+                    ],
+                    "Unemployment",
+                    [
+                        "A lack of high-speed",
+                        "internet options in the area"
+                    ],
+                    [
+                        "The affordability of high-",
+                        "speed internet in the area"
+                    ]
+                ],
+                "datasets": [
+                    {
+                        "label": "Local Governmnet",
+                        "data": null,
+                        "backgroundColor": "rgb(12, 38, 96)"
+                    },
+                    {
+                        "label": "Texas Government",
+                        "data": null,
+                        "backgroundColor": "rgb(196, 99, 0)"
+                    },
+                    {
+                        "label": "Federal Government",
+                        "data": null,
+                        "backgroundColor": "rgb(66, 116, 200)"
+                    },
+                    {
+                        "label": "Not a Government Problem",
+                        "data": null,
+                        "backgroundColor": "rgb(233, 168, 34)"
+                    },
+                    {
+                        "label": "I do not know",
+                        "data": null,
+                        "backgroundColor": "rgb(235, 223, 203)"
+                    }
+                ]
+            }
+        }
+    },
+    "chartLife": {
+        "type" : "pie",
+        "columns": [
+            "Q10"
+        ],
+        "config": {
+            "data": {
+                "title" : "The Cantril Self-Anchoring Scale is a tool used to assess the well-being of a population by asking respondents to rate where their life stands now, and where they think it will be in five years, using a hypothetical ten-point “ladder” scale. By combining a respondents rating we are able able to identify if people feel they are Thriving, Struggling, or Suffering.",
+                "labels": [
+                    "Thriving",
+                    "Struggling",
+                    "Suffering"
+                ],
+                "datasets": [
+                    {
+                        "shape": [
+                            [
+                                7,
+                                8,
+                                9,
+                                10
+                            ],
+                            [
+                                5,
+                                6
+                            ],
+                            [
+                                0,
+                                1,
+                                2,
+                                3,
+                                4
+                            ]
+                        ],
+                        "label": "",
+                        "data": null,
+                        "backgroundColor": [
+                            "rgb(12, 38, 96)",
+                            "rgb(196, 99, 0)",
+                            "rgb(66, 116, 200)"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "chartFinance": {
+        "type" : "pie",
+        "columns": [
+            "Q11"
+        ],
+        "config": {
+            "data": {
+                "title" : "How would you describe your current financial situation?",
+                "labels": [
+                    "Living Comfortably",
+                    "Meeting living expenses",
+                    "Only just meeting living expenses",
+                    "Having trouble meeting expenses",
+                    "I do not know"
+                ],
+                "datasets": [
+                    {
+                        "label": "",
+                        "data": null,
+                        "backgroundColor": [
+                            "rgb(12, 38, 96)",
+                            "rgb(196, 99, 0)",
+                            "rgb(66, 116, 200)",
+                            "rgb(233, 168, 34)",
+                            "rgb(235, 223, 203)"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "chartExperiences": {
+        "type" : "bar",
+        "columns": [
+            "Q12A",
+            "Q12B",
+            "Q12C",
+            "Q12D",
+            "Q12E"
+        ],
+        "config": {
+            "data": {
+                "title" : "Have you experienced any of the following over the last 12 months?",
+                "labels": [
+                    [
+                        "Skipped meals because you",
+                        "couldn’t afford food"
+                    ],
+                    "Postponed medical or dental care",
+                    [
+                        "Had to change your living arrangements",
+                        "because you couldn’t afford your",
+                        "rent or mortgage"
+                    ],
+                    [
+                        "Have looked for, but been unable",
+                        "to find affordable childcare"
+                    ],
+                    [
+                        "Held off from making a large purchase",
+                        "such as a car or a home"
+                    ]
+                ],
+                "datasets": [
+                    {
+                        "combine": true,
+                        "label": "Yes",
+                        "data": null,
+                        "backgroundColor": "rgb(12, 38, 96)"
+                    },
+                    {
+                        "label": "No",
+                        "data": null,
+                        "backgroundColor": "rgb(196, 99, 0)"
+                    },
+                    {
+                        "label": "I do not know",
+                        "data": null,
+                        "backgroundColor": "rgb(66, 116, 200)"
+                    }
+                ]
+            }
+        }
+    },
+    "chartCOL": {
+        "type" : "bar",
+        "columns": [
+            "Q13A",
+            "Q13B",
+            "Q13C",
+            "Q13D",
+            "Q13E",
+            "Q13F",
+            "Q13G",
+            "Q13H"
+        ],
+        "config": {
+            "data": {
+                "title" : "Do you think these things contribute to the rising cost of living in Bexar County?",
+                "labels": [
+                    [
+                        "Landlords raising the price",
+                        "of rent to maximize profits"
+                    ],
+                    [
+                        "Disruptions in the supply chain",
+                        "of materials and goods"
+                    ],
+                    [
+                        "Forced closures of businesses during the",
+                        "COVID-19 pandemic the last two years"
+                    ],
+                    "A lack of high-paying jobs in the area",
+                    [
+                        "Not enough affordable housing",
+                        "to meet the local demand"
+                    ],
+                    [
+                        "Sanctions against Russia forbidding",
+                        "the import of crude oil and petroleum"
+                    ],
+                    [
+                        "Price gouging from companies",
+                        "on essential goods"
+                    ],
+                    "Labor shortages"
+                ],
+                "datasets": [
+                    {
+                        "label": "Major Reason",
+                        "data": null,
+                        "backgroundColor": "rgb(12, 38, 96)"
+                    },
+                    {
+                        "label": "Minor Reason",
+                        "data": null,
+                        "backgroundColor": "rgb(196, 99, 0)"
+                    },
+                    {
+                        "label": "Not much of a Reason",
+                        "data": null,
+                        "backgroundColor": "rgb(66, 116, 200)"
+                    },
+                    {
+                        "label": "Not a Reason",
+                        "data": null,
+                        "backgroundColor": "rgb(233, 168, 34)"
+                    },
+                    {
+                        "label": "I do not know",
+                        "data": null,
+                        "backgroundColor": "rgb(235, 223, 203)"
+                    }
+                ]
+            }
+        }
+    },
+    "chartStatement": {
+        "type" : "pie",
+        "columns": [
+            "Q14"
+        ],
+        "config": {
+            "data": {
+                "title" : "Do you agree or disagree with the following statement 'Having reliable, high quality child care for young children is crucial for parents to be able to work?'",
+                "labels": [
+                    "Agree",
+                    "Disagree",
+                    "I do not know"
+                ],
+                "datasets": [
+                    {
+                        "shape": [
+                            [
+                                0,
+                                1
+                            ],
+                            [
+                                2,
+                                3
+                            ],
+                            [
+                                4
+                            ]
+                        ],
+                        "label": "",
+                        "data": null,
+                        "backgroundColor": [
+                            "rgb(12, 38, 96)",
+                            "rgb(196, 99, 0)",
+                            "rgb(66, 116, 200)"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "chartChallenges": {
+        "type" : "bar",
+        "columns": [
+            "Q15A",
+            "Q15B",
+            "Q15C",
+            "Q15D",
+            "Q15E"
+        ],
+        "config": {
+            "data": {
+                "title" : "What do you think is a challenge when looking for a job?",
+                "labels": [
+                    "Finding affordable childcare",
+                    [
+                        "Finding a job that pays sufficiently",
+                        "or gives enough hours"
+                    ],
+                    [
+                        "Receiving more in unemployment benefits",
+                        "than a job would pay"
+                    ],
+                    [
+                        "A lack of good, mid-level jobs",
+                        "that are not starting positions"
+                    ],
+                    "A lack of job training or skill-building programs"
+                ],
+                "datasets": [
+                    {
+                        "label": "Major Challenge",
+                        "data": null,
+                        "backgroundColor": "rgb(12, 38, 96)"
+                    },
+                    {
+                        "label": "Minor Challenge",
+                        "data": null,
+                        "backgroundColor": "rgb(196, 99, 0)"
+                    },
+                    {
+                        "label": "Not a Challenge",
+                        "data": null,
+                        "backgroundColor": "rgb(66, 116, 200)"
+                    },
+                    {
+                        "label": "I do not know",
+                        "data": null,
+                        "backgroundColor": "rgb(233, 168, 34)"
+                    }
+                ]
+            }
+        }
+    },
+    "chartHealth": {
+        "type" : "bar",
+        "columns": [
+            "Q16A",
+            "Q16B",
+            "Q16C",
+            "Q16D",
+            "Q16E",
+            "Q16F",
+            "Q16G",
+            "Q16H",
+            "Q16I",
+            "Q16J",
+            "Q16K",
+            "Q16L",
+            "Q16M"
+        ],
+        "config": {
+            "data": {
+                "title" : "How important do you think each of the following factors are to a person's health?",
+                "labels": [
+                    "Lack of access to high-quality medical care",
+                    "Having a low income",
+                    "High stress",
+                    "Lack of access to high-quality, healthy food",
+                    "Not having health insurance",
+                    "Smoking",
+                    "Personal behavioral choices",
+                    "Being exposed to air, water or chemical pollution",
+                    "Bad genes",
+                    "Poor neighborhood and housing conditions",
+                    "Not having enough opportunity for education",
+                    "Racism and discrimination",
+                    "Family violence"
+                ],
+                "datasets": [
+                    {
+                        "combine": true,
+                        "label": "Important",
+                        "data": null,
+                        "backgroundColor": "rgb(12, 38, 96)"
+                    },
+                    {
+                        "label": "Somewhat Important",
+                        "data": null,
+                        "backgroundColor": "rgb(196, 99, 0)"
+                    },
+                    {
+                        "label": "Not Too Important",
+                        "data": null,
+                        "backgroundColor": "rgb(66, 116, 200)"
+                    },
+                    {
+                        "label": "Not At All Important",
+                        "data": null,
+                        "backgroundColor": "rgb(233, 168, 34)"
+                    },
+                    {
+                        "label": "I do not know",
+                        "data": null,
+                        "backgroundColor": "rgb(235, 223, 203)"
+                    }
+                ]
+            }
+        }
+    },
+    "chartCharity": {
+        "type" : "pie",
+        "columns": [
+            "Q17"
+        ],
+        "config": {
+            "data": {
+                "title" : "Have you provided any monetary support to a charitable or non-profit organization in the last year?",
+                "labels": [
+                    "Yes",
+                    "No",
+                    "I do not know"
+                ],
+                "datasets": [
+                    {
+                        "label": "",
+                        "data": null,
+                        "backgroundColor": [
+                            "rgb(12, 38, 96)",
+                            "rgb(196, 99, 0)",
+                            "rgb(66, 116, 200)"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "chartVolunteer": {
+        "type" : "pie",
+        "columns": [
+            "Q18"
+        ],
+        "config": {
+            "data": {
+                "title" : "Have you or anyone in your household provided volunteer support to a charitable or non-profit organization in the last year?",
+                "labels": [
+                    "Yes",
+                    "No",
+                    "I do not know"
+                ],
+                "datasets": [
+                    {
+                        "label": "",
+                        "data": null,
+                        "backgroundColor": [
+                            "rgb(12, 38, 96)",
+                            "rgb(196, 99, 0)",
+                            "rgb(66, 116, 200)"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "chartDonations": {
+        "type" : "pie",
+        "columns": [
+            "Q20"
+        ],
+        "config": {
+            "data": {
+                "title" : "Were some or all of your charitable donations in 2021 benefiting a community in Bexar County?",
+                "labels": [
+                    "Yes",
+                    "No",
+                    "I do not know"
+                ],
+                "datasets": [
+                    {
+                        "label": "",
+                        "data": null,
+                        "backgroundColor": [
+                            "rgb(12, 38, 96)",
+                            "rgb(196, 99, 0)",
+                            "rgb(66, 116, 200)"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

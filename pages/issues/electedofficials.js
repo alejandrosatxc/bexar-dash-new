@@ -1,18 +1,8 @@
-import { useRouter } from 'next/router'
-import styles from '../../styles/Home.module.css'
 import getMaster from '../../lib/master'
-import { memes, simplePie, countUnique, getColumn, printDatasetAtEvent, printElementAtEvent, printElementsAtEvent } from '../../lib/myfuncs'
-import { useEffect, useState, MouseEvent, useRef } from 'react'
+import { countUnique, getColumn } from '../../lib/myfuncs'
 import { Container, Row, Col } from 'react-bootstrap'
-
-import {
-  Chart,
-  getDatasetAtEvent,
-  getElementAtEvent,
-  getElementsAtEvent,
-} from 'react-chartjs-2';
 import 'chart.js/auto';
-
+import LineChart from '../../components/LineChart'
 
 export async function getStaticProps() {
   const master = await getMaster()
@@ -21,65 +11,34 @@ export async function getStaticProps() {
 
 export default function ElectedOfficials({ master }) {
 
-  const router = useRouter()
-  const chartRefOfficials = useRef(null)
-
-
-  const onClickOfficials = (event) => {
-    const { current: chart } = chartRefOfficials;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-
   const dataSets = {
     NIRENBERG: [],
     WOLFF: [],
     ABBOT: [],
   }
 
-  master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'NIRENBERG')
-    var counts = countUnique(coldata)
-    var total = 0
-    for (let key in counts) {
-      total = total + counts[key]
-    }
-    var approve = counts['1'] + counts['2']
-    var rating = approve / total
-    // console.log("approve: " + approve + " total: " + total)
-    dataSets.NIRENBERG.push(rating * 100)
-  })
-  master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'WOLFF')
-    var counts = countUnique(coldata)
-    var total = 0
-    for (let key in counts) {
-      total = total + counts[key]
-    }
-    var approve = counts['1'] + counts['2']
-    // console.log("approve: " + approve + " total: " + total)
-    var rating = approve / total
-    dataSets.WOLFF.push(rating * 100)
-  })
-  master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'ABBOT')
-    var counts = countUnique(coldata)
-    var total = 0
-    for (let key in counts) {
-      total = total + counts[key]
-    }
-    var approve = counts['1'] + counts['2']
-    // console.log("approve: " + approve + " total: " + total)
-    var rating = approve / total
-    dataSets.ABBOT.push(rating * 100)
+  const columns = [
+    'NIRENBERG',
+    'WOLFF',
+    'ABBOT'
+  ]
+
+  columns.forEach(col => {
+    master.forEach(sheet => {
+      var coldata = getColumn(sheet.data, col, 'none')
+      var counts = countUnique(coldata)
+      var total = 0
+      for (let key in counts) {
+        total = total + counts[key]
+      }
+      var approve = counts['1'] + counts['2']
+      var rating = approve / total
+      dataSets[col].push(rating * 100)
+    })
   })
 
   var dataOfficials = {
-    labels: ['Poll 1', 'Poll 2', 'Poll 3', 'Poll 4', 'Poll 5', 'Poll 6', 'Poll 7'],
+    labels: ['20/Q1', '20/Q2', '20/Q3', '20/Q4', '21/Q1', '21/Q3', '22/Q1'],
     datasets: [
       {
         label: 'Governor Greg Abbott',
@@ -115,10 +74,11 @@ export default function ElectedOfficials({ master }) {
   }
 
   const optionsOfficials = {
+    maintainAspectRatio: false,
     scales: {
       y: {
-        min: 35,
-        max: 85,
+        min: 0,
+        max: 100,
         title: {
           display: true,
           text: "Percentage"
@@ -154,36 +114,29 @@ export default function ElectedOfficials({ master }) {
       },
       legend: {
         display: true,
-        labels: {
-          font: {
-            size: 16
-          }
+        font: {
+          size: 16
         }
       }
     }
   }
 
+
   return (
-    // <div className={styles.grid}>
     <Container>
       <Row className="justify-content-sm-center">
-        <Col xs={12} className="w-100">
-          <div className={styles.line}>
-            <h2>Do you approve or disapprove of the job they are doing?</h2>
-            <div className={styles.linechart}>
-              <Chart
-                ref={chartRefOfficials}
-                options={optionsOfficials}
-                type='line'
-                onClick={onClickOfficials}
-                data={dataOfficials}
-              />
-            </div>
-          </div>
+        <Col className="w-100">
+          <LineChart
+            title="Do you approve or disapprove of the job they are doing?"
+            columns={columns}
+            masterDataset={master}
+            dataset={dataOfficials}
+            options={optionsOfficials}
+            reshape='none'
+          />
         </Col>
       </Row>
     </Container>
-    // </div>
   )
 
 }

@@ -1,22 +1,11 @@
 import { useRouter } from 'next/router'
-import styles from '../../styles/Home.module.css'
 import getMaster from '../../lib/master'
 import { Container, Row, Col } from 'react-bootstrap'
-import {
-  memes, simplePie, countUnique, getColumn,
-  printDatasetAtEvent,
-  printElementAtEvent,
-  printElementsAtEvent
-} from '../../lib/myfuncs'
-import { useEffect, useState, MouseEvent, useRef } from 'react'
-import {
-  Chart,
-  getDatasetAtEvent,
-  getElementAtEvent,
-  getElementsAtEvent,
-} from 'react-chartjs-2';
+import { countUnique, getColumn } from '../../lib/myfuncs'
+
 import 'chart.js/auto';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
+import VBarChart from '../../components/vBarChart'
+import LineChart from '../../components/LineChart'
 
 export async function getStaticProps() {
   const master = await getMaster()
@@ -25,42 +14,6 @@ export async function getStaticProps() {
 
 export default function LocalGov({ master }) {
   const router = useRouter()
-  //const {id} = router.query
-  const chartRefBEXAR = useRef(null)
-  const chartRefApprovals = useRef(null)
-  const chartRefCOSA = useRef(null)
-
-  const onClickBEXAR = (event) => {
-    const { current: chart } = chartRefBEXAR;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-
-
-  const onClickApprovals = (event) => {
-    const { current: chart } = chartRefApprovals;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-
-  const onClickCOSA = (event) => {
-    const { current: chart } = chartRefCOSA;
-    if (!chart) {
-      return;
-    }
-    printDatasetAtEvent(getDatasetAtEvent(chart, event));
-    printElementAtEvent(getElementAtEvent(chart, event));
-    printElementsAtEvent(getElementsAtEvent(chart, event));
-  };
-
 
   const dataSets = {
     BEXAR: [],
@@ -73,8 +26,8 @@ export default function LocalGov({ master }) {
   }
 
   master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'COSA')
-    var counts = countUnique(coldata)
+    var coldata = getColumn(sheet.data, 'COSA') //Get a column in a sheet
+    var counts = countUnique(coldata)           //Count unique values
     //convert data to percentages
     var total = 0;
     for (let key in counts) {
@@ -84,11 +37,26 @@ export default function LocalGov({ master }) {
     if ('' in counts) {
       total = total - counts['']
     }
+    //
     for (let key in counts) {
       counts[key] = (counts[key] / total) * 100
     }
     dataSets.COSA.push(counts)
   })
+
+  let COSADataset = [...Array(dataSets['COSA'].length)].map(e => Array(dataSets['COSA'].length))
+  let j = 0
+  console.log(dataSets['COSA'])
+  dataSets['COSA'].forEach(set => {
+      let i = 0
+      console.log(set)
+      for(let key in set) {
+          COSADataset[i][j] = set[key]
+          i = i + 1
+      }
+      j = j + 1
+  })
+  console.log(COSADataset)
 
   master.forEach(sheet => {
     var coldata = getColumn(sheet.data, 'BEXAR')
@@ -108,132 +76,90 @@ export default function LocalGov({ master }) {
     dataSets.BEXAR.push(counts)
   })
 
-  master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'CC')
-    var counts = countUnique(coldata)
-    var total = 0
-    for (let key in counts) {
-      total = total + counts[key]
-    }
-    var approve = counts['1'] + counts['2']
-    // console.log("approve: " + approve + " total: " + total)
-    var rating = approve / total
-    dataSets.CC.push(rating * 100)
-  })
-  master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'COUNCIL')
-    var counts = countUnique(coldata)
-    var total = 0
-    for (let key in counts) {
-      total = total + counts[key]
-    }
-    var approve = counts['1'] + counts['2']
-    // console.log("approve: " + approve + " total: " + total)
-    var rating = approve / total
-    dataSets.COUNCIL.push(rating * 100)
-  })
-  master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'SAWS')
-    var counts = countUnique(coldata)
-    var total = 0
-    for (let key in counts) {
-      total = total + counts[key]
-    }
-    var approve = counts['1'] + counts['2']
-    // console.log("approve: " + approve + " total: " + total)
-    var rating = approve / total
-    dataSets.SAWS.push(rating * 100)
-  })
-  master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'CPS')
-    var counts = countUnique(coldata)
-    var total = 0
-    for (let key in counts) {
-      total = total + counts[key]
-    }
-    var approve = counts['1'] + counts['2']
-    // console.log("approve: " + approve + " total: " + total)
-    var rating = approve / total
-    dataSets.CPS.push(rating * 100)
-  })
-  master.forEach(sheet => {
-    var coldata = getColumn(sheet.data, 'VIA')
-    var counts = countUnique(coldata)
-    var total = 0
-    for (let key in counts) {
-      total = total + counts[key]
-    }
-    var approve = counts['1'] + counts['2']
-    // console.log("approve: " + approve + " total: " + total)
-    var rating = approve / total
-    dataSets.VIA.push(rating * 100)
+  let BEXARDataset = [...Array(dataSets['BEXAR'].length)].map(e => Array(dataSets['BEXAR'].length))
+  j = 0
+  console.log(dataSets['BEXAR'])
+  dataSets['BEXAR'].forEach(set => {
+      let i = 0
+      console.log(set)
+      for(let key in set) {
+          BEXARDataset[i][j] = set[key]
+          i = i + 1
+      }
+      j = j + 1
   })
 
+  const columns = [
+    'COUNCIL',
+    'CC',
+    'SAWS',
+    'CPS',
+    'VIA',
+  ]
+
+  columns.forEach(col => {
+    master.forEach(sheet => {
+      var coldata = getColumn(sheet.data, col, 'none')
+      var counts = countUnique(coldata)
+      var total = 0
+      for (let key in counts) {
+        total = total + counts[key]
+      }
+      var approve = counts['1'] + counts['2']
+      var rating = approve / total
+      dataSets[col].push(rating * 100)
+    })
+  })
+
+
   var dataCOSA = {
-    labels: ['Right Track', 'Wrong Direction', 'Mixed', 'Do not know'],
+    labels: ['20/Q1', '20/Q2', '20/Q3', '20/Q4' , '21/Q1', '21/Q3', '22/Q1'],
     datasets: [
       {
-        label: 'Poll 1',
-        data: Object.values(dataSets['COSA'][0]),
+        label: 'Right Track',
+        data: Object.values(COSADataset[0]),
         backgroundColor: [
           'rgb(12, 38, 96)',
         ],
-        borderWidth: 1,
+        borderColor: [
+          'rgb(12, 38, 96)',
+        ]
       },
       {
-        label: 'Poll 2',
-        data: Object.values(dataSets['COSA'][1]),
+        label: 'Wrong Direction',
+        data: Object.values(COSADataset[1]),
         backgroundColor: [
           'rgb(196, 99, 0)',
         ],
-        borderWidth: 1,
+        borderColor: [
+          'rgb(196, 99, 0)',
+        ]
       },
       {
-        label: 'Poll 3',
-        data: Object.values(dataSets['COSA'][2]),
+        label: 'Mixed',
+        data: Object.values(COSADataset[2]),
         backgroundColor: [
           'rgb(66, 116, 200)',
         ],
-        borderWidth: 1,
+        borderColor: [
+          'rgb(66, 116, 200)',
+        ]     
       },
       {
-        label: 'Poll 4',
-        data: Object.values(dataSets['COSA'][3]),
+        label: 'Do not know',
+        data: Object.values(COSADataset[3]),
         backgroundColor: [
           'rgb(233, 168, 34)'
         ],
-        borderWidth: 1,
+        borderColor: [
+          'rgb(233, 168, 34)'
+        ]      
       },
-      {
-        label: 'Poll 5',
-        data: Object.values(dataSets['COSA'][4]),
-        backgroundColor: [
-          'rgb(4, 15, 39)',
-        ],
-        borderWidth: 1,
-      },
-      {
-        label: 'Poll 6',
-        data: Object.values(dataSets['COSA'][5]),
-        backgroundColor: [
-          'rgb(235, 223, 203)',
-        ],
-        borderWidth: 1,
-      },
-      {
-        label: 'Poll 7',
-        data: Object.values(dataSets['COSA'][6]),
-        backgroundColor: [
-          'rgb(0, 0, 0)',
-        ],
-        borderWidth: 1,
-      },
-
     ],
   };
 
   var dataApprovals = {
-    labels: ['Poll 1', 'Poll 2', 'Poll 3', 'Poll 4', 'Poll 5', 'Poll 6', 'Poll 7'],
+    labels: ['20/Q1', '20/Q2', '20/Q3', '20/Q4' , '21/Q1', '21/Q3', '22/Q1'],
     datasets: [
       {
         label: 'City Council',
@@ -289,79 +215,58 @@ export default function LocalGov({ master }) {
   }
 
   var dataBEXAR = {
-    labels: ['Right Track', 'Wrong Direction', 'Mixed', 'Do not know'],
+    labels: ['20/Q1', '20/Q2', '20/Q3', '20/Q4' , '21/Q1', '21/Q3', '22/Q1'],
     datasets: [
       {
-        label: 'Poll 1',
-        data: Object.values(dataSets['BEXAR'][0]),
+        label: 'Right Track',
+        data: Object.values(BEXARDataset[0]),
         backgroundColor: [
           'rgb(12, 38, 96)',
         ],
-        borderWidth: 1,
+        borderColor: [
+          'rgb(12, 38, 96)',
+        ]
       },
       {
-        label: 'Poll 2',
-        data: Object.values(dataSets['BEXAR'][1]),
+        label: 'Wrong Direction',
+        data: Object.values(BEXARDataset[1]),
         backgroundColor: [
           'rgb(196, 99, 0)',
         ],
-        borderWidth: 1,
+        borderColor: [
+          'rgb(196, 99, 0)',
+        ]
       },
       {
-        label: 'Poll 3',
-        data: Object.values(dataSets['BEXAR'][2]),
+        label: 'Mixed',
+        data: Object.values(BEXARDataset[2]),
         backgroundColor: [
           'rgb(66, 116, 200)',
         ],
-        borderWidth: 1,
+        borderColor: [
+          'rgb(66, 116, 200)',
+        ]
       },
       {
-        label: 'Poll 4',
-        data: Object.values(dataSets['BEXAR'][3]),
+        label: 'Do not know',
+        data: Object.values(BEXARDataset[3]),
         backgroundColor: [
           'rgb(233, 168, 34)'
         ],
-        borderWidth: 1,
-      },
-      {
-        label: 'Poll 5',
-        data: Object.values(dataSets['BEXAR'][4]),
-        backgroundColor: [
-          'rgb(4, 15, 39)',
-        ],
-        borderWidth: 1,
-      },
-      {
-        label: 'Poll 6',
-        data: Object.values(dataSets['BEXAR'][5]),
-        backgroundColor: [
-          'rgb(235, 223, 203)',
-        ],
-        borderWidth: 1,
-      },
-      {
-        label: 'Poll 7',
-        data: Object.values(dataSets['BEXAR'][6]),
-        backgroundColor: [
-          'rgb(0, 0, 0)',
-        ],
-        borderWidth: 1,
-      },
-
+        borderColor: [
+          'rgb(233, 168, 34)'
+        ]
+      }
     ],
   };
 
-
-  const options = {
+  const optionsApprovals = {
     maintainAspectRatio: false,
-
+    spanGaps: true,
     scales: {
       y: {
-        min: 0,
-        max: 60,
-        ticks: {
-          stepSize: 5,
-        },
+        min: 35,
+        max: 100,
         title: {
           display: true,
           text: "Percentage"
@@ -370,7 +275,7 @@ export default function LocalGov({ master }) {
       x: {
         ticks: {
           font: {
-            size: 18
+            size: 16
           }
         }
       }
@@ -381,8 +286,8 @@ export default function LocalGov({ master }) {
         callbacks: {
           label: function (context) {
             var data = context.dataset.data,
-              label = context.label,
-              currentValue = context.raw,
+            label = context.dataset.label,
+            currentValue = context.raw,
               total = 0;
 
             //   for( var i = 0; i < data.length; i++ ){
@@ -391,32 +296,27 @@ export default function LocalGov({ master }) {
             var percentage = parseFloat((currentValue).toFixed(1));
 
             return label + ": (" + percentage + '%)';
-          }
-        }
-
+          },
+        },
       },
       legend: {
         display: true,
         labels: {
           font: {
             size: 16
-          },
-        },
-      },
-      title: {
-        display: true,
-        text: 'Click legend to interact!'
+          }
+        }
       }
     }
   }
 
-  const optionsApprovals = {
+  const optionsTrack = {
     maintainAspectRatio: false,
     spanGaps: true,
     scales: {
       y: {
-        min: 35,
-        max: 85,
+        min: 0,
+        max: 80,
         title: {
           display: true,
           text: "Percentage"
@@ -436,8 +336,8 @@ export default function LocalGov({ master }) {
         callbacks: {
           label: function (context) {
             var data = context.dataset.data,
-              label = context.label,
-              currentValue = context.raw,
+            label = context.dataset.label,
+            currentValue = context.raw,
               total = 0;
 
             //   for( var i = 0; i < data.length; i++ ){
@@ -464,52 +364,38 @@ export default function LocalGov({ master }) {
     <Container fluid>
       <Row className="justify-content-sm-center">
         <Col xs={12} className="w-100">
-          <div className={styles.vbar}>
-            <h2>Would you say Bexar County policy is on the Right Track or going the Wrong direction?</h2>
-            <div className={styles.vbarchart}>
-              <Chart
-                ref={chartRefBEXAR}
-                type='bar'
-                onClick={onClickBEXAR}
-                options={options}
-                data={dataBEXAR}
-              />
-            </div>
-          </div>
-        </Col>
-      </Row>
-
-      <Row className="justify-content-sm-center">
-        <Col xs={12} className="w-100">
-          <div className={styles.vbar}>
-            <h2>Would you say City of San Antonio policy is on the Right Track or going the Wrong direction?</h2>
-            <div className={styles.vbarchart}>
-              <Chart
-                ref={chartRefCOSA}
-                type='bar'
-                onClick={onClickCOSA}
-                options={options}
-                data={dataCOSA}
-              />
-            </div>
-          </div>
+          <LineChart
+            title="Would you say Bexar County is on the Right Track or going the Wrong direction?"
+            columns="BEXAR"
+            masterDataset={master}
+            dataset={dataBEXAR}
+            options={optionsTrack}
+            reshape="county"
+          />
         </Col>
       </Row>
       <Row className="justify-content-sm-center">
         <Col xs={12} className="w-100">
-          <div className={styles.line}>
-            <h2>Do you approve or disapprove of the job they are doing?</h2>
-            <div className={styles.linechart}>
-              <Chart
-                ref={chartRefApprovals}
-                options={optionsApprovals}
-                type='line'
-                onClick={onClickApprovals}
-                data={dataApprovals}
-              />
-            </div>
-            <p> The gaps indicate that some local entities were not included in every poll.</p>
-          </div>
+          <LineChart
+            title="Would you say City of San Antonio is on the Right Track or going the Wrong direction?"
+            columns="COSA"
+            masterDataset={master}
+            dataset={dataCOSA}
+            options={optionsTrack}
+            reshape="city"
+          />
+        </Col>
+      </Row>
+      <Row className="justify-content-sm-center">
+        <Col xs={12} className="w-100">
+          <LineChart
+            title="Do you approve or disapprove of the job they are doing?"
+            columns={columns}
+            masterDataset={master}
+            dataset={dataApprovals}
+            options={optionsApprovals}
+            reshape='entity'
+          />
         </Col>
       </Row>
     </Container>
