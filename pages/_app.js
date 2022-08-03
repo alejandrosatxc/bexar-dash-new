@@ -10,6 +10,7 @@ import SideNav from '../components/SideNav';
 import MobileNav from '../components/MobileNav';
 import NavBJ from '../components/NavBJ';
 import Script from 'next/script';
+import 'bootstrap/dist/css/bootstrap.min.css';
 function MyApp({ Component, pageProps }) {
 
 
@@ -24,7 +25,8 @@ function MyApp({ Component, pageProps }) {
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossOrigin="anonymous" />
+          
+          {/* <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossOrigin="anonymous" /> */}
 
         </Head>
         <NavBJ />
@@ -42,10 +44,10 @@ function MyApp({ Component, pageProps }) {
           </div>
 
 
-          <div className={styles.menuButtons}>
-            <Button className={styles.poll7} variant='poll7' href="/polls/7">NEW - Poll 7 Results!</Button>
-            <Button className={styles.localgov} variant='localgov' href="/issues/localgovernment">Local Government</Button>
-            <Button className={styles.electedofc} variant='electedofc' href="/issues/electedofficials">Elected Officials</Button>
+          <div>
+            <Button variant="primary" href="/polls/7">NEW - Poll 7 Results!</Button>{' '}
+            <Button variant="warning" href="/issues/localgovernment">Local Government</Button>{' '}
+            <Button variant="success" href="/issues/electedofficials">Elected Officials</Button>{' '}
           </div>
           <p className={styles.disclaimer}>This dashboard is currently formatted for viewing on desktop or laptop only. We will make it mobile friendly overtime.</p>
           <Component {...pageProps} />
