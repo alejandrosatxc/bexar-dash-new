@@ -38,7 +38,7 @@ export default function ElectedOfficials({ master }) {
   })
 
   var dataOfficials = {
-    labels: ['Poll 1', 'Poll 2', 'Poll 3', 'Poll 4', 'Poll 5', 'Poll 6', 'Poll 7'],
+    labels: ['20/Q1', '20/Q2', '20/Q3', '20/Q4', '21/Q1', '21/Q3', '22/Q1'],
     datasets: [
       {
         label: 'Governor Greg Abbott',
