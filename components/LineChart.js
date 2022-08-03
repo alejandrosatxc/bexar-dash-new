@@ -23,6 +23,8 @@ const LineChart = (props) => {
       return;
     }
 
+    let j = 0
+
     //Access the chart's data object, and render a new chart using the filtered data.
     switch (props.reshape) {
       case 'none':
@@ -79,6 +81,83 @@ const LineChart = (props) => {
         chart.config.data.datasets[4].data = Object.values(dataSets2['VIA'])
         break;
 
+      case 'county':
+        var datasets3 = {
+          BEXAR: []
+        }
+        props.masterDataset.forEach(sheet => {
+          var coldata = getColumn(sheet.data, 'BEXAR', filter)
+          var counts = countUnique(coldata)
+          //convert data to percentages
+          var total = 0;
+          for (let key in counts) {
+            total = total + counts[key]
+          }
+          //Check for no answer, subtract from total 
+          if ('' in counts) {
+            total = total - counts['']
+          }
+          for (let key in counts) {
+            counts[key] = (counts[key] / total) * 100
+          }
+          datasets3.BEXAR.push(counts)
+        })
+
+        let BEXARDataset = [...Array(datasets3.BEXAR.length)].map(e => Array(datasets3.BEXAR.length))
+        j = 0
+        datasets3.BEXAR.forEach(set => {
+            let i = 0
+            for(let key in set) {
+                BEXARDataset[i][j] = set[key]
+                i = i + 1
+            }
+            j = j + 1
+        })
+        chart.config.data.datasets[0].data = Object.values(BEXARDataset[0])
+        chart.config.data.datasets[1].data = Object.values(BEXARDataset[1])
+        chart.config.data.datasets[2].data = Object.values(BEXARDataset[2])
+        chart.config.data.datasets[3].data = Object.values(BEXARDataset[3])
+        break;
+      case 'city':
+        var datasets4 = {
+          COSA: []
+        }
+        props.masterDataset.forEach(sheet => {
+          var coldata = getColumn(sheet.data, 'COSA', filter) //Get a column in a sheet
+          var counts = countUnique(coldata)           //Count unique values
+          //convert data to percentages
+          var total = 0;
+          for (let key in counts) {
+            total = total + counts[key]
+          }
+          //Check for no answer, subtract from total 
+          if ('' in counts) {
+            total = total - counts['']
+          }
+          //
+          for (let key in counts) {
+            counts[key] = (counts[key] / total) * 100
+          }
+          datasets4.COSA.push(counts)
+        })
+
+        let COSADataset = [...Array(datasets4.COSA.length)].map(e => Array(datasets4.COSA.length))
+        j = 0
+        datasets4.COSA.forEach(set => {
+            let i = 0
+            console.log(set)
+            for(let key in set) {
+                COSADataset[i][j] = set[key]
+                i = i + 1
+            }
+            j = j + 1
+        })
+        chart.config.data.datasets[0].data = Object.values(COSADataset[0])
+        chart.config.data.datasets[1].data = Object.values(COSADataset[1])
+        chart.config.data.datasets[2].data = Object.values(COSADataset[2])
+        chart.config.data.datasets[3].data = Object.values(COSADataset[3])
+
+        break;
       default:
         break;
 
