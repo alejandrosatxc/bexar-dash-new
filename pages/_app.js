@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
           <meta name="description" content="Bexar Facts' Data Dashboard!" />
           <link rel="icon" href="/favicon.ico" />
           <meta charset="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          {/* <meta name="viewport" content="width=device-width, initial-scale=1.0" /> */}
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossOrigin="anonymous" />
 

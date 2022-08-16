@@ -1,6 +1,6 @@
 .container {
-  max-width: 100%;
   background-color: #EBDFCB;
+  overflow-x: hidden;
 }
 
 .disclaimer {
@@ -10,9 +10,6 @@
 .nav {
   background-color: #ffffff;
 }
-
-
-
 
 .sideNav {
   height: 100%;
@@ -145,19 +142,10 @@
   font-size: 1.5rem;
 }
 
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
 .menuButtons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  display: block;
+  /* flex-direction: row;
+  align-items: center; */
 }
 
 .poll7 {
@@ -359,6 +347,10 @@
   border-color: #0070f3;
 }
 
+.h3 {
+  font-size: 1.5rem;
+}
+
 .card h3 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
@@ -390,12 +382,17 @@
 @media handheld,
 (max-width: 800px) {
 
-  .container {
-    width: 1000px;
+  .h3 {
+    font-size: 1rem;
+  }
+
+  .chartGrid {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   }
 
   .container {
-    margin-left: 0px;
+    min-width: 800px;
+    overflow-x: hidden;
   }
 
   .sideNav {
