@@ -4,10 +4,10 @@ import styles from '../styles/Home.module.css'
 // import 'chart.js/auto';
 // import { generateChartDatasets, combineDataPoints } from '../lib/myfuncs'
 
-export async function getStaticProps() {
-  const master = await getMaster()
-  return ({ props: { master } })
-}
+// export async function getStaticProps() {
+//   const master = await getMaster()
+//   return ({ props: { master } })
+// }
 
 
 
