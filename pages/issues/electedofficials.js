@@ -120,23 +120,23 @@ export default function ElectedOfficials({ master }) {
       }
     }
   }
-
-
-  return (
+    
+  
+  return(
     <Container>
-      <Row className="justify-content-sm-center">
-        <Col className="w-100">
-          <LineChart
-            title="Do you approve or disapprove of the job they are doing?"
-            columns={columns}
-            masterDataset={master}
-            dataset={dataOfficials}
-            options={optionsOfficials}
-            reshape='none'
-          />
-        </Col>
-      </Row>
-    </Container>
+    <Row className="justify-content-sm-center">
+      <Col className="w-100">
+        <LineChart
+          title="Do you approve or disapprove of the job they are doing?"
+          columns={columns}
+          masterDataset={master}
+          dataset={dataOfficials}
+          options={optionsOfficials}
+          reshape='none'
+        />
+      </Col>
+    </Row>
+    </Container >
   )
 
 }

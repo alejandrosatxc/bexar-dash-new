@@ -10,12 +10,11 @@ import SideNav from '../components/SideNav';
 import MobileNav from '../components/MobileNav';
 import NavBJ from '../components/NavBJ';
 import Script from 'next/script';
-function MyApp({ Component, pageProps }) {
 
+function MyApp({ Component, pageProps }) {
 
   return (
     <div>
-    
       <div id="main-app-container" className={styles.container}>
         <Head>
           <title>Bexar Dash</title>
@@ -27,6 +26,15 @@ function MyApp({ Component, pageProps }) {
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossOrigin="anonymous" />
 
         </Head>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-5XVXBB3RLW" strategy="afterInteractive"></Script>
+        <Script id="google-analytics" strategy="afterInteractive">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-5XVXBB3RLW');
+        `}
+        </Script>
         <NavBJ />
         <main className={styles.main}>
 
