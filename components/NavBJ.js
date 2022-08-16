@@ -23,7 +23,7 @@ const NavBJ = (props) => {
           <Nav.Link href="/issues/localgovernment">Local Government</Nav.Link>
           <Nav.Link href="/issues/electedofficials">Elected Officials</Nav.Link>
           <NavDropdown title="Polls" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="/polls/7">Poll 7</NavDropdown.Item>
+            <NavDropdown.Item href="/polls/7">22/Q1</NavDropdown.Item>
             {/* <NavDropdown.Item href="#action/3.2">Local Government</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">Elected Officials</NavDropdown.Item> */}
           </NavDropdown>
